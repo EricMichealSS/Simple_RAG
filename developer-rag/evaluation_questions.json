@@ -1,0 +1,37 @@
+[
+  {
+    "question": "How do I authenticate with the API?",
+    "expected_source": "authentication.pdf",
+    "should_answer": true
+  },
+  {
+    "question": "What is the default API rate limit?",
+    "expected_source": "rate-limits.pdf",
+    "should_answer": true
+  },
+  {
+    "question": "What does a 401 error mean?",
+    "expected_source": "errors.pdf",
+    "should_answer": true
+  },
+  {
+    "question": "How do I configure the API endpoint?",
+    "expected_source": "configuration.pdf",
+    "should_answer": true
+  },
+  {
+    "question": "How do I register a webhook?",
+    "expected_source": "webhooks.pdf",
+    "should_answer": true
+  },
+  {
+    "question": "What is the recipe for chocolate cake?",
+    "expected_source": null,
+    "should_answer": false
+  },
+  {
+    "question": "Who won the 2026 FIFA World Cup?",
+    "expected_source": null,
+    "should_answer": false
+  }
+]
