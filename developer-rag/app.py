@@ -1,21 +1,24 @@
-"""Streamlit app — Developer Docs Q&A with Structure-Aware Chunking & Metadata Filters."""
+"""Streamlit app — Upload-driven RAG Q&A (hybrid + rerank, always)."""
+
+import time
+import functools
 
 import streamlit as st
 
 from rag_hybrid import (
     retrieve,
     is_relevant,
+    refresh_indexes,
+    collection,
+    _embedding_model,
 )
-from config import (
-    GROK_API_KEY,
-    GENERATION_MODEL,
-    COLLECTION_NAME,
-)
+from ingest_live import ingest_uploaded_file
+from config import GROK_API_KEY, GENERATION_MODEL, COLLECTION_NAME
 from openai import OpenAI
 
 
 st.set_page_config(
-    page_title="Ask My Developer Docs",
+    page_title="Doc Q&A",
     page_icon="📚",
     layout="wide",
 )
@@ -34,23 +37,21 @@ grok_client = get_grok_client()
 
 
 # ============================================================
-# Cited answer generation with error handling
+# Cached query embedding
 # ============================================================
 
-def generate_cited_answer(question, results):
-    """Generate answer with [chunk_id] citations per claim.
-    Falls back to retrieval-only display on error.
-    """
+@functools.lru_cache(maxsize=256)
+def _embed_query(question: str):
+    return _embedding_model.encode([question], normalize_embeddings=True)[0].tolist()
 
-    if not results:
-        return "I don't know based on the provided documents."
 
-    if not is_relevant(results):
-        return "I don't know based on the provided documents."
+# ============================================================
+# Streaming answer generation
+# ============================================================
 
-    # Limit context size to avoid 413 Request Entity Too Large (Groq compound model)
-    MAX_CHUNK_CHARS = 1200  # Full chunk fits
-    MAX_TOTAL_CHARS = 2000  # 1-2 chunks
+def _build_prompt(question, results):
+    MAX_CHUNK_CHARS = 600   # trim each chunk
+    MAX_TOTAL_CHARS = 1800  # total context cap Groq accepts
 
     context_parts = []
     total_chars = 0
@@ -58,36 +59,30 @@ def generate_cited_answer(question, results):
         chunk_id = result.get("chunk_id", "unknown")
         source_file = result.get("source_file", result.get("source", "unknown"))
         anchor = result.get("anchor", "")
-        sdk_version = result.get("sdk_version", "")
-        page_type = result.get("page_type", "")
-        
-        text = result['text'][:MAX_CHUNK_CHARS]
+
+        text = result["text"][:MAX_CHUNK_CHARS]
         if total_chars + len(text) > MAX_TOTAL_CHARS:
             break
         total_chars += len(text)
-        
+
         context_parts.append(
-            f"SOURCE {i} [chunk_id: {chunk_id} | {source_file}#{anchor} | sdk_version={sdk_version} | type={page_type}]\n"
-            f"{text}"
+            f"SOURCE {i} [chunk_id: {chunk_id} | {source_file}#{anchor}]\n{text}"
         )
 
     context = "\n\n".join(context_parts)
-
-    prompt = f"""
-You are a developer documentation question-answering assistant.
+    return f"""You are a document question-answering assistant.
 
 Your ONLY source of truth is the documentation supplied in CONTEXT.
 
 STRICT RULES:
 1. Answer ONLY from the supplied context.
 2. Do not use your general knowledge.
-3. Do not guess.
-4. Do not invent API endpoints, parameters, or code examples.
-5. If the answer cannot be supported by the supplied context, respond:
+3. Do not guess or invent facts.
+4. If the answer cannot be supported by the context, respond exactly:
    "I don't know based on the provided documents."
-6. For EVERY factual claim in your answer, cite the source chunk_id
-   in square brackets, e.g. [rate-limits:p2:primary-rate-limits:2].
-7. Keep the answer concise and technically accurate.
+5. For EVERY factual claim, cite the source chunk_id in square brackets,
+   e.g. [my-doc:p1:introduction:0].
+6. Keep the answer concise and accurate.
 
 CONTEXT:
 {context}
@@ -95,33 +90,40 @@ CONTEXT:
 USER QUESTION:
 {question}
 
-ANSWER (with [chunk_id] citations):
-"""
+ANSWER (with [chunk_id] citations):"""
+
+
+def stream_answer(question, results):
+    if not results or not is_relevant(results):
+        yield "I don't know based on the provided documents."
+        return
+
+    prompt = _build_prompt(question, results)
 
     try:
-        response = grok_client.chat.completions.create(
+        stream = grok_client.chat.completions.create(
             model=GENERATION_MODEL,
             messages=[
-                {"role": "system", "content": "You are a developer documentation QA assistant."},
+                {"role": "system", "content": "You are a document QA assistant."},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.1,
-            max_tokens=1024,
+            max_tokens=512,
+            stream=True,
         )
-        return response.choices[0].message.content
+        for chunk in stream:
+            delta = chunk.choices[0].delta.content
+            if delta:
+                yield delta
     except Exception as e:
-        # Clean error fallback
         chunks_md = "\n\n---\n\n".join(
-            f"**Source {i}** `[{r.get('chunk_id', 'unknown')}]` "
-            f"({r.get('source_file', 'unknown')}#{r.get('anchor', '')})  \n"
-            f"{r['text'][:300]}..."
+            f"**Source {i}** `[{r.get('chunk_id', '?')}]` ({r.get('source_file', '?')})\n{r['text'][:300]}..."
             for i, r in enumerate(results, 1)
         )
-        return (
+        yield (
             f"⚠️ **Generation unavailable ({type(e).__name__}).**\n\n"
             f"Error: {str(e)}\n\n"
-            f"Here are the most relevant retrieved chunks — you can read the answer directly:\n\n"
-            f"{chunks_md}"
+            f"Relevant chunks:\n\n{chunks_md}"
         )
 
 
@@ -129,165 +131,145 @@ ANSWER (with [chunk_id] citations):
 # UI
 # ============================================================
 
-st.title("📚 Ask My Developer Docs")
-st.caption("Powered by **structure-aware chunking** + **metadata filters** (page_type)")
+st.title("📚 Document Q&A")
+st.caption("Upload a PDF or Markdown file — then ask anything about it.")
 
-st.write(
-    "Ask questions about the GitHub REST API documentation. "
-    "Answers are grounded only in the indexed documents with citations."
-)
-
-# --- Sidebar: Search Configuration ---
+# --- Sidebar ---
 with st.sidebar:
-    st.header("🔧 Search Settings")
+    st.header("📤 Upload Document")
+    st.caption("Supported: `.pdf`, `.md`")
 
-    st.info("📚 Searching: **developer_docs** (structure-aware chunking, v2 + v3 metadata)")
+    uploaded_file = st.file_uploader("Choose a file", type=["pdf", "md"])
 
-    # Metadata filters
-    st.subheader("Metadata Filters")
-    col1, col2 = st.columns(2)
-    with col1:
-        sdk_version_filter = st.selectbox(
-            "sdk_version",
-            options=["All", "v2", "v3"],
-            index=0,
-            help="Filter by SDK version: v2 = GitHub REST API, v3 = OctoKit SDK"
-        )
-    with col2:
-        page_type_filter = st.selectbox(
-            "page_type",
-            options=["All", "guide", "reference"],
-            index=0,
-            help="Filter by document type: 'guide' = tutorials/overviews, 'reference' = API endpoint listings"
-        )
+    if uploaded_file is not None:
+        if st.button("Ingest Document", type="primary", use_container_width=True):
+            with st.spinner(f"Processing `{uploaded_file.name}`..."):
+                try:
+                    t0 = time.perf_counter()
+                    added, skipped = ingest_uploaded_file(
+                        file_bytes=uploaded_file.read(),
+                        filename=uploaded_file.name,
+                        embedding_model=_embedding_model,
+                    )
+                    refresh_indexes()
+                    elapsed_ms = (time.perf_counter() - t0) * 1000
 
-    # Build where filter
-    where_filter = {}
-    if sdk_version_filter != "All":
-        where_filter["sdk_version"] = sdk_version_filter
-    if page_type_filter != "All":
-        where_filter["page_type"] = page_type_filter
-
-    if not where_filter:
-        where_filter = None
-
-    top_k = st.slider(
-        "Top-K chunks",
-        min_value=1,
-        max_value=10,
-        value=5,
-    )
+                    if added > 0:
+                        st.success(
+                            f"✅ **{added} chunks** indexed from `{uploaded_file.name}`"
+                            + (f" · {skipped} duplicates skipped" if skipped else "")
+                            + f"\n\n⏱ {elapsed_ms:.0f} ms"
+                        )
+                        st.rerun()
+                    else:
+                        st.info(f"`{uploaded_file.name}` already indexed ({skipped} chunks present).")
+                except Exception as e:
+                    st.error(f"❌ Ingestion failed: {e}")
 
     st.divider()
-    st.caption(
-        "**Chunking Strategy:** Structure-aware (splits on headers, "
-        "keeps tables & code blocks whole). "
-        "**Corpus:** 5 GitHub REST API PDFs (v2) + 6 OctoKit SDK v3 reference pages."
-    )
 
-    # Quick stats
-    with st.expander("📊 Index Stats"):
-        st.markdown("""
-        - **Documents:** 5 PDFs (v2) + 6 Markdown (v3)
-        - **Chunks:** 62 (37 v2 + 25 v3, structure-aware)
-        - **Metadata per chunk:** 10 fields
-        - **Filterable:** sdk_version (v2/v3), page_type (guide/reference)
-        - **Embedding:** BGE-small-en-v1.5 (local)
-        - **Generation:** Groq (compound)
-        """)
+    # Index stats + per-file chunk breakdown
+    try:
+        total = collection.count()
+    except Exception:
+        total = 0
+
+    st.metric("Indexed chunks", total)
+
+    if total > 0:
+        try:
+            metas = collection.get(include=["metadatas"])["metadatas"]
+            files = sorted({m.get("source_file", "?") for m in metas})
+            st.markdown("**Indexed files:**")
+            for f in files:
+                chunk_count = sum(1 for m in metas if m.get("source_file") == f)
+                with st.expander(f"📄 {f} — {chunk_count} chunks"):
+                    file_metas = [m for m in metas if m.get("source_file") == f]
+                    for m in file_metas:
+                        section = m.get("section") or m.get("anchor") or "—"
+                        st.markdown(f"- `{section}`")
+        except Exception:
+            pass
+
+    st.divider()
+    top_k = st.slider("Top-K chunks", 1, 10, 5)
 
 
-# --- Main Input ---
+# --- Main area ---
+if total == 0:
+    st.info("👈 **Upload a document** from the sidebar to get started.")
+    st.stop()
+
 question = st.text_input(
-    "Ask a question",
-    placeholder=(
-        "Examples:\n"
-        "• What is the primary rate limit for unauthenticated requests?\n"
-        "• How do I authenticate with a personal access token?\n"
-        "• What does a 401 error mean?\n"
-        "• How does pagination work in the REST API?"
-    ),
+    "Ask a question about your documents",
+    placeholder="e.g. What are the authentication methods supported?",
 )
 
 if st.button("🔍 Ask", type="primary", use_container_width=True):
-
     if not question.strip():
         st.warning("Please enter a question.")
         st.stop()
 
-    with st.spinner("Searching documentation..."):
+    # Retrieval — cached embedding, hybrid + rerank always
+    with st.spinner("Searching..."):
         try:
+            t0 = time.perf_counter()
+            query_vec = _embed_query(question)
             results = retrieve(
                 question,
                 top_k=top_k,
                 collection_name=COLLECTION_NAME,
-                where=where_filter,
+                where=None,
+                use_hybrid=True,
+                use_rerank=True,
+                _query_embedding=query_vec,
             )
+            retrieval_ms = (time.perf_counter() - t0) * 1000
         except Exception as e:
-            st.error(f"❌ **Retrieval Error:** {type(e).__name__}: {str(e)}")
+            st.error(f"❌ Retrieval error: {type(e).__name__}: {e}")
             st.stop()
 
     if not results:
-        st.error("No results found. Try adjusting filters or rephrasing your question.")
+        st.warning("No results found. Try rephrasing your question.")
         st.stop()
 
-    # --- Answer ---
+    # Streaming answer
     st.subheader("Answer")
-    with st.spinner("Generating answer..."):
-        answer = generate_cited_answer(question, results)
-    st.markdown(answer)
+    t1 = time.perf_counter()
+    st.write_stream(stream_answer(question, results))
+    gen_ms = (time.perf_counter() - t1) * 1000
 
-    # --- Sources with rich metadata ---
+    st.caption(
+        f"⏱ Retrieval: **{retrieval_ms:.0f} ms** (hybrid + rerank) · "
+        f"Generation: **{gen_ms:.0f} ms**"
+    )
+
+    # Sources
     st.subheader("Sources")
-
     for result in results:
-        chunk_id = result.get("chunk_id", "unknown")
-        source_file = result.get("source_file", result.get("source", "unknown"))
-        page_id = result.get("page_id", "")
+        chunk_id = result.get("chunk_id", "?")
+        source_file = result.get("source_file", result.get("source", "?"))
         anchor = result.get("anchor", "")
-        sdk_version = result.get("sdk_version", "")
-        page_type = result.get("page_type", "")
         distance = result.get("distance", 0)
+        rerank_score = result.get("rerank_score")
 
-        # Build a nice header
-        meta_parts = []
-        if sdk_version:
-            meta_parts.append(f"`sdk_version={sdk_version}`")
-        if page_type:
-            meta_parts.append(f"`type={page_type}`")
-        if page_id:
-            meta_parts.append(f"`page_id={page_id}`")
-        if anchor:
-            meta_parts.append(f"`#{anchor}`")
-
-        meta_str = " · ".join(meta_parts)
+        score_line = f"Distance: `{distance:.4f}`"
+        if rerank_score is not None:
+            score_line += f" · Rerank: `{rerank_score:.4f}`"
 
         with st.container(border=True):
             st.markdown(
                 f"**📄 {source_file}**  \n"
-                f"`chunk_id: {chunk_id}`  \n"
-                f"{meta_str}  \n"
-                f"Distance: `{distance:.4f}`"
+                f"`{chunk_id}`"
+                + (f"  \n`#{anchor}`" if anchor else "")
+                + f"  \n{score_line}"
             )
-
-            # Show text preview
             with st.expander("Show chunk text"):
                 st.code(result["text"], language="markdown")
 
-    # --- Debug: Raw retrieved metadata ---
-    with st.expander("🔧 Debug: Raw Retrieved Metadata"):
+    with st.expander("🔧 Debug: Raw metadata"):
         for i, r in enumerate(results):
-            st.json({
-                "rank": i + 1,
-                "chunk_id": r.get("chunk_id"),
-                "source_file": r.get("source_file"),
-                "source": r.get("source"),
-                "page_id": r.get("page_id"),
-                "page": r.get("page"),
-                "chunk": r.get("chunk"),
-                "sdk_version": r.get("sdk_version"),
-                "page_type": r.get("page_type"),
-                "anchor": r.get("anchor"),
-                "section": r.get("section"),
-                "distance": r.get("distance"),
-            })
+            st.json({k: r.get(k) for k in [
+                "chunk_id", "source_file", "page_id", "page", "chunk",
+                "anchor", "section", "distance", "rerank_score",
+            ] if r.get(k) is not None} | {"rank": i + 1})

@@ -28,7 +28,10 @@ from config import (
 # ============================================================
 
 chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
-collection = chroma_client.get_collection(name=COLLECTION_NAME)
+collection = chroma_client.get_or_create_collection(
+    name=COLLECTION_NAME,
+    metadata={"hnsw:space": "cosine"},
+)
 
 # Load all chunks for BM25 index (only for unfiltered queries)
 _all_data = collection.get(include=["documents", "metadatas"])
@@ -108,6 +111,20 @@ class BM25:
 
 # Build BM25 index once (for unfiltered queries)
 _bm25_index = BM25(_all_docs)
+
+
+def refresh_indexes():
+    """Reload all docs from ChromaDB and rebuild the BM25 index.
+
+    Call this after ingesting new documents via the UI so that hybrid
+    retrieval (BM25 + dense) sees the newly added chunks.
+    """
+    global _all_data, _all_docs, _all_metas, _all_ids, _bm25_index
+    _all_data = collection.get(include=["documents", "metadatas"])
+    _all_docs = _all_data["documents"]
+    _all_metas = _all_data["metadatas"]
+    _all_ids = _all_data["ids"]
+    _bm25_index = BM25(_all_docs)
 
 
 # ============================================================
@@ -190,6 +207,7 @@ def retrieve(
     where: Optional[Dict] = None,
     use_hybrid: bool = True,
     use_rerank: bool = True,
+    _query_embedding: Optional[List] = None,
 ) -> List[Dict]:
     """
     Main retrieval function with automatic strategy selection.
@@ -210,19 +228,25 @@ def retrieve(
     target = (
         collection
         if collection_name == COLLECTION_NAME
-        else chroma_client.get_collection(name=collection_name)
+        else chroma_client.get_or_create_collection(name=collection_name, metadata={"hnsw:space": "cosine"})
     )
-    
+
+    # Nothing indexed yet
+    if target.count() == 0:
+        return []
+
+    # Compute (or reuse) query embedding once
+    query_embedding = _query_embedding if _query_embedding is not None else \
+        _embedding_model.encode([question], normalize_embeddings=True)[0].tolist()
+
     # ========================================================
     # PATH 1: FILTERED QUERY → Dense (with filter) + Rerank
     # ========================================================
     if where is not None:
-        # Dense search WITH metadata filter
-        query_embedding = _embedding_model.encode([question], normalize_embeddings=True)[0].tolist()
         
         results = target.query(
             query_embeddings=[query_embedding],
-            n_results=min(25, top_k * 5),  # Get more for reranking
+            n_results=min(25, top_k * 5),
             where=where,
             include=["documents", "metadatas", "distances"]
         )
@@ -246,7 +270,6 @@ def retrieve(
     else:
         if not use_hybrid:
             # Dense only (fallback)
-            query_embedding = _embedding_model.encode([question], normalize_embeddings=True)[0].tolist()
             results = target.query(
                 query_embeddings=[query_embedding],
                 n_results=top_k,
@@ -258,7 +281,6 @@ def retrieve(
             )
         else:
             # ---- Dense vector search (top 25 for fusion pool) ----
-            query_embedding = _embedding_model.encode([question], normalize_embeddings=True)[0].tolist()
             dense_results = target.query(
                 query_embeddings=[query_embedding],
                 n_results=25,
