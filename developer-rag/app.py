@@ -2,6 +2,10 @@
 
 import time
 import functools
+import json
+import uuid
+from datetime import datetime
+from pathlib import Path
 
 import streamlit as st
 
@@ -34,6 +38,41 @@ def get_grok_client():
 
 
 grok_client = get_grok_client()
+
+TRACES_FILE = Path(__file__).parent / "traces.jsonl"
+
+
+def write_trace(
+    question: str,
+    results: list,
+    answer: str,
+    retrieval_ms: float,
+    gen_ms: float,
+):
+    """Append one complete trace to traces.jsonl."""
+    trace = {
+        "trace_id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "question": question,
+        "retrieval_ms": round(retrieval_ms, 1),
+        "gen_ms": round(gen_ms, 1),
+        "model": GENERATION_MODEL,
+        "model_params": {"temperature": 0.1, "max_tokens": 512},
+        "retrieved_chunks": [
+            {
+                "chunk_id": r.get("chunk_id"),
+                "source_file": r.get("source_file"),
+                "anchor": r.get("anchor"),
+                "distance": round(r.get("distance", 0), 4),
+                "rerank_score": round(r["rerank_score"], 4) if r.get("rerank_score") is not None else None,
+                "text_snippet": r.get("text", "")[:300],
+            }
+            for r in results
+        ],
+        "raw_answer": answer,
+    }
+    with open(TRACES_FILE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(trace) + "\n")
 
 
 # ============================================================
@@ -233,15 +272,26 @@ if st.button("🔍 Ask", type="primary", use_container_width=True):
         st.warning("No results found. Try rephrasing your question.")
         st.stop()
 
-    # Streaming answer
+    # Streaming answer — collect tokens for tracing while streaming to UI
     st.subheader("Answer")
     t1 = time.perf_counter()
-    st.write_stream(stream_answer(question, results))
+    collected_tokens = []
+
+    def _traced_stream():
+        for token in stream_answer(question, results):
+            collected_tokens.append(token)
+            yield token
+
+    st.write_stream(_traced_stream())
     gen_ms = (time.perf_counter() - t1) * 1000
+
+    # Write trace after stream completes
+    full_answer = "".join(collected_tokens)
+    write_trace(question, results, full_answer, retrieval_ms, gen_ms)
 
     st.caption(
         f"⏱ Retrieval: **{retrieval_ms:.0f} ms** (hybrid + rerank) · "
-        f"Generation: **{gen_ms:.0f} ms**"
+        f"Generation: **{gen_ms:.0f} ms** · trace logged ✓"
     )
 
     # Sources
