@@ -206,13 +206,65 @@ per-chunk truncation, not to retrieval ranking at all. Worth a line in a
 future taxonomy revision, and a cheap fix (raise `MAX_CHUNK_CHARS` or trim
 each chunk to only the matched section) once someone picks it up.
 
-## 7. Bonus (RAGAS) — not attempted
+## 7. Bonus — RAGAS faithfulness + context precision
 
-Out of scope for this pass given time — flag if you want it done: faithfulness
-+ context precision on the docs-backed cases, specifically hunting for a
-high-faithfulness/wrong-version answer like `c24` (it grounds itself
-correctly in a real chunk while answering the wrong question — a strong
-candidate for "confidently faithfully wrong").
+Implemented by hand rather than via the `ragas` pip package, to avoid
+dependency-resolving this Python 3.9 venv's pinned ML stack (numpy / torch /
+sentence-transformers, which `rag_hybrid.py` depends on) into something that
+breaks chromadb. `ragas_bonus.py` computes the same two metric definitions
+using the same Groq-backed LLM calls `judge.py` already relies on:
+
+- **Faithfulness** = (# claims in the answer supported by the retrieved
+  context) / (# claims in the answer)
+- **Context precision** = RAGAS's rank-weighted precision: for each rank
+  where a chunk is judged relevant, precision@k at that rank, averaged over
+  only the relevant ranks
+
+Run over the 16 "docs-backed" cases (real, claim-bearing answers — excludes
+every "I don't know" and Groq-error case, since faithfulness/precision are
+undefined when there's no claim to check):
+
+```
+id    mode                              faithfulness  ctx_precision
+c01   baseline                                  1.00           1.00
+c02   baseline                                  1.00           0.75
+c04   baseline                                  1.00           0.00
+c05   baseline                                  1.00           0.70
+c06   baseline                                  1.00           0.50
+...
+c24   version_confusion_w6                      1.00           1.00
+----------------------------------------------------------------------
+AVERAGE                                         1.00           0.87
+```
+(full table: `ragas_bonus_results.json`)
+
+**The target case, and it's a stronger result than the bonus even asked
+for:** `c24` — "Does the REST API automatically retry a request if it
+fails?" answered with the v3 SDK's `client.send()` retry defaults — scores
+**faithfulness = 1.00 AND context precision = 1.00**. Not just faithfulness:
+*both* RAGAS metrics say this is a great answer.
+
+Why: the faithfulness checker correctly finds all 3 of the answer's claims
+(`enable_retries` defaults true, `max_retries` defaults 3, etc.) really are
+in the retrieved `client-reference:clientsend:2` chunk — so faithfulness is
+technically correct, the answer isn't hallucinating anything. The context
+precision checker marks exactly one retrieved chunk "relevant" —
+`client-reference:clientsend:2`, ranked #1 — because that chunk's own text
+says it "executes a single HTTP request **against the REST API**." A
+shallow relevance check reads that phrase and calls it a topical match. Rank
+#1 relevant chunk → perfect precision@1 → context precision = 1.00.
+
+**Neither metric can see the actual bug**, because neither one asks "is this
+chunk the right API surface for the question," only "is this chunk
+traceable/topically-related." The question asked about the REST API in
+general; the only chunk that grounds the answer describes one specific v3
+SDK method. That's a version-scope mismatch, not a groundedness or
+topic-relevance problem — which is exactly the kind of failure Requirement
+4's few-shot judge iteration was built to catch (and did catch, in
+`judge_v2`), and exactly why "the overall average hides it": `c24` sits
+right at or above the 1.00/0.87 averages on both metrics, nothing about its
+RAGAS profile stands out. You'd have to actually read the answer against the
+question, not just the score, to find it.
 
 ## 8. Files
 
@@ -228,4 +280,5 @@ candidate for "confidently faithfully wrong").
 | `judge.py` / `judge_v1_verdicts.json` / `judge_v2_verdicts.json` | judge runner + both verdict sets |
 | `prediction.txt` | written before building judge_v2 |
 | `run_eval.py` / `run_eval_latest.json` | the one-command eval (live pipeline + assertions + judge_v1, pass rate by mode) |
+| `ragas_bonus.py` / `ragas_bonus_results.json` | bonus: hand-implemented faithfulness + context precision |
 | `report.md` | this file |
