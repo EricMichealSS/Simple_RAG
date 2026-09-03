@@ -9,6 +9,8 @@ from google import genai
 from google.genai import types
 from sentence_transformers import SentenceTransformer
 
+from chunkers import chunk_text
+
 from config import (
     GEMINI_API_KEY,
     EMBEDDING_MODEL,
@@ -26,34 +28,6 @@ embedding_model = SentenceTransformer(
 client = genai.Client(
     api_key=GEMINI_API_KEY
 )
-
-
-def chunk_text(
-    text,
-    chunk_size=CHUNK_SIZE,
-    overlap=CHUNK_OVERLAP
-):
-
-    chunks = []
-
-    start = 0
-
-    while start < len(text):
-
-        end = start + chunk_size
-
-        chunk = text[
-            start:end
-        ].strip()
-
-        if chunk:
-            chunks.append(chunk)
-
-        start += (
-            chunk_size - overlap
-        )
-
-    return chunks
 
 
 def load_documents():
