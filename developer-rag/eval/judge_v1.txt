@@ -1,0 +1,35 @@
+You are grading one answer from a developer-documentation Q&A assistant.
+
+You will be given a QUESTION, the CONTEXT chunks the assistant retrieved, and
+the assistant's ANSWER. Grade the answer against a single binary criterion:
+
+HELPFUL: Does this answer correctly and completely resolve the developer's
+question using only information that is actually true of the supplied
+context (or is a correct "I don't know" when the context genuinely does not
+contain the answer)?
+
+Grade PASS if the answer is factually correct, grounded in the context, and
+would let the developer move on. Grade FAIL if the answer is wrong, invents
+information not in the context, is an unnecessary "I don't know" when the
+context does contain the answer, or is a correct-sounding answer that
+actually contradicts the context.
+
+Judge ONLY this one criterion. Ignore code style, tone, or citation
+formatting.
+
+Respond with exactly one line:
+VERDICT: PASS
+or
+VERDICT: FAIL
+followed by one sentence of justification.
+
+---
+QUESTION:
+{question}
+
+CONTEXT:
+{context}
+
+ANSWER:
+{answer}
+---

@@ -1,0 +1,344 @@
+{
+  "hit_rate_at_3": 83.33333333333334,
+  "hits": 10,
+  "total": 12,
+  "p50_latency_ms": 215.26,
+  "per_question": [
+    {
+      "id": "q1",
+      "question": "What is the default value of retry_backoff_ms in the OctoClient send method?",
+      "expected_chunk_id": "client-reference:clientsend:2",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 6200.2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "client-reference:clientsend:2",
+          "distance": 1.0,
+          "preview": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagains"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "client-reference:octoclient-constructor:1",
+          "distance": 1.0,
+          "preview": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional;"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "errors-reference:ratelimiterror:2",
+          "distance": 1.0,
+          "preview": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTT"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "What is the HTTP status code for RateLimitError in the OctoKit SDK v3?",
+      "expected_chunk_id": "errors-reference:ratelimiterror:2",
+      "hit": false,
+      "hit_rank": null,
+      "latency_ms": 232.12,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The "
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What is the primary rate limit for unauthenticated requests per hour?",
+      "expected_chunk_id": "rate-limits:p2:top:2",
+      "hit": true,
+      "hit_rank": 2,
+      "latency_ms": 355.16,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The "
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rate-limits:p2:top:2",
+          "distance": 1.0,
+          "preview": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rate-limits:p5:top:5",
+          "distance": 1.0,
+          "preview": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to d"
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What is the version string for the OctoKit SDK documented in the reference pages?",
+      "expected_chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 224.89,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with Oct"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "How do you authenticate with a personal access token using curl?",
+      "expected_chunk_id": "authentication:p2:top:3",
+      "hit": false,
+      "hit_rank": null,
+      "latency_ms": 216.72,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "authentication:p1:in-this-article:2",
+          "distance": 1.0,
+          "preview": "About authentication\nMany REST API endpoints require authentication or return additional information"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "authentication:p5:top:7",
+          "distance": 1.0,
+          "preview": "Authenticating in a GitHub Actions workflow using curl\nTo make an authenticated request to the API i"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "authentication:p4:top:5",
+          "distance": 1.0,
+          "preview": "1\n2\n3\n4\n5\n6\n7\ncurl --request POST \\\n--url \"https://api.github.com/applications/YOUR_CLIENT_ID/token\""
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What are the required parameters for creating a webhook in the OctoKit SDK v3?",
+      "expected_chunk_id": "events-reference:createwebhook:1",
+      "hit": true,
+      "hit_rank": 2,
+      "latency_ms": 176.35,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3."
+        },
+        {
+          "rank": 2,
+          "chunk_id": "events-reference:createwebhook:1",
+          "distance": 1.0,
+          "preview": "## createWebhook()\n\n`createWebhook()` registers a new webhook on a repository or organization.\n\n| Pa"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every"
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "What error is thrown when the SDK exceeds the rate limit?",
+      "expected_chunk_id": "errors-reference:ratelimiterror:2",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 183.56,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "errors-reference:ratelimiterror:2",
+          "distance": 1.0,
+          "preview": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTT"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rate-limits:p6:top:6",
+          "distance": 1.0,
+          "preview": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow"
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "How do you create an issue using the GitHub REST API with gh CLI?",
+      "expected_chunk_id": "getting-started:p8:top:12",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 230.88,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "getting-started:p8:top:12",
+          "distance": 1.0,
+          "preview": "The following example uses the \"Create an issue\" endpoint to create a new issue in the\noctocat/Spoon"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "getting-started:p6:3-choose-an-endpoint-for-your-request:9",
+          "distance": 1.0,
+          "preview": "## 3. Choose an endpoint for your request\n\nChoose an endpoint to make a request to. You can explore "
+        },
+        {
+          "rank": 3,
+          "chunk_id": "getting-started:p5:2-authenticate:7",
+          "distance": 1.0,
+          "preview": "## 2. Authenticate\n\nTo authenticate to GitHub, run the following command from your terminal.\ngh auth"
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "What is the default value of max_retries in the OctoClient send method?",
+      "expected_chunk_id": "client-reference:clientsend:2",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 213.81,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "client-reference:clientsend:2",
+          "distance": 1.0,
+          "preview": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagains"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "errors-reference:ratelimiterror:2",
+          "distance": 1.0,
+          "preview": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTT"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client-reference:octoclient-constructor:1",
+          "distance": 1.0,
+          "preview": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional;"
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What is the default scope for getAccessToken in the OctoKit SDK v3?",
+      "expected_chunk_id": "auth-reference:getaccesstoken:2",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 191.31,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "auth-reference:getaccesstoken:2",
+          "distance": 1.0,
+          "preview": "## getAccessToken()\n\n`getAccessToken()` exchanges an OAuth authorization code for an access token.\n\n"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with Oct"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every"
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "What is the maximum number of concurrent requests allowed for the GitHub REST API?",
+      "expected_chunk_id": "rate-limits:p4:top:4",
+      "hit": true,
+      "hit_rank": 1,
+      "latency_ms": 203.27,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "rate-limits:p4:top:4",
+          "distance": 1.0,
+          "preview": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is s"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rate-limits:p2:top:2",
+          "distance": 1.0,
+          "preview": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rate-limits:p1:in-this-article:1",
+          "distance": 1.0,
+          "preview": "### In this article\n\nAbout primary rate limits\nGitHub limits the number of REST API requests that yo"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "How do you upload a release asset using the OctoKit SDK v3?",
+      "expected_chunk_id": "uploads-reference:uploadreleaseasset:1",
+      "hit": true,
+      "hit_rank": 2,
+      "latency_ms": 193.08,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "uploads-reference:uploads-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# Uploads reference (SDK v3)\n\nThis page documents the upload helpers in OctoKit SDK v3. Uploads send"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "uploads-reference:uploadreleaseasset:1",
+          "distance": 1.0,
+          "preview": "## uploadReleaseAsset()\n\n`uploadReleaseAsset()` uploads a binary asset to an existing release.\n\n| Pa"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+          "distance": 1.0,
+          "preview": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every"
+        }
+      ]
+    }
+  ]
+}

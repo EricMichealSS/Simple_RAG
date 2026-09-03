@@ -1,0 +1,43 @@
+{
+  "agreement_pct": 76.9,
+  "agree": 20,
+  "total": 26,
+  "disagreements": [
+    {
+      "id": "c03",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly states that the primary rate limit for unauthenticated requests is 60 requests per hour, which is directly supported by the provided context."
+    },
+    {
+      "id": "c05",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly states that a personal access token should be included in the Authorization header of a curl request, which is supported by the provided context."
+    },
+    {
+      "id": "c16",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly states that the errors reference indicates SDK errors are never swallowed after retries."
+    },
+    {
+      "id": "c20",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS  \nThe answer correctly states that the provided documents do not contain the requested information."
+    },
+    {
+      "id": "c21",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly states that the provided documents do not contain information about the authenticated Git LFS request limit per minute."
+    },
+    {
+      "id": "c26",
+      "human": "PASS",
+      "judge": "FAIL",
+      "judge_reasoning": "VERDICT: FAIL  \nThe answer incorrectly claims uncertainty; the context shows that `client.send()` has retry settings, but using curl directly does not invoke those SDK defaults, so the answer is incomplete and misleading."
+    }
+  ]
+}
