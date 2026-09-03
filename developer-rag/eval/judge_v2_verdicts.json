@@ -1,0 +1,158 @@
+[
+  {
+    "id": "c01",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the default value of `retry_backoff_ms` as 1000\u202fms, matching the provided context."
+  },
+  {
+    "id": "c02",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly cites the status property of RateLimitError as 429 from the provided context."
+  },
+  {
+    "id": "c03",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the primary rate limit for unauthenticated requests is 60 requests per hour, which is directly supported by the provided context."
+  },
+  {
+    "id": "c04",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the SDK version string is \u201cv3\u201d, which matches the SDK v3 designation in the provided reference pages."
+  },
+  {
+    "id": "c05",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that a personal access token should be included in the Authorization header of a curl request, which is supported by the provided context."
+  },
+  {
+    "id": "c06",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly lists the required parameters (owner, repo, url) as documented."
+  },
+  {
+    "id": "c07",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly identifies that the SDK throws a `RateLimitError` when the rate limit is exceeded, as documented in the provided context."
+  },
+  {
+    "id": "c08",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer accurately describes authenticating, using the correct POST endpoint with headers and form fields, and notes the response contains the issue URL, all supported by the provided context."
+  },
+  {
+    "id": "c09",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the default value of `max_retries` is 3, as documented."
+  },
+  {
+    "id": "c10",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the default scopes are `repo, workflow`, matching the provided context."
+  },
+  {
+    "id": "c11",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the maximum concurrent requests (100) as documented in the provided context."
+  },
+  {
+    "id": "c12",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly describes how to use `uploadReleaseAsset()` with the required parameters, matches the documented method signature, and cites the relevant context."
+  },
+  {
+    "id": "c13",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly explains that `uploadAttachment()` is used, lists the required parameters, and provides an example, all grounded in the supplied context."
+  },
+  {
+    "id": "c14",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer accurately states that listWebhooks() returns paginated webhooks and lists the per_page and page parameters with their defaults."
+  },
+  {
+    "id": "c15",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the default poll_interval_ms value of 5000 ms, which matches the provided context."
+  },
+  {
+    "id": "c16",
+    "mode": "mode1_groq_error",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the errors reference indicates SDK errors are never swallowed after retries."
+  },
+  {
+    "id": "c17",
+    "mode": "mode1_groq_error",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer fails to explicitly state that `client.send()` returns a Promise, merely listing the source chunks without providing a clear response to the question."
+  },
+  {
+    "id": "c18",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, whereas the context provides the default value for `follow_redirects`."
+  },
+  {
+    "id": "c19",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly cites the default value of `enable_retries` as `true` from the provided context."
+  },
+  {
+    "id": "c20",
+    "mode": "mode3_answerable_wrong_chunks",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS  \nThe answer correctly states that the provided documents do not contain the requested information."
+  },
+  {
+    "id": "c21",
+    "mode": "mode3_answerable_wrong_chunks",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the provided documents do not contain information about the authenticated Git LFS request limit per minute."
+  },
+  {
+    "id": "c22",
+    "mode": "mode4_cross_document",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly claims the question is unanswerable, yet the context does provide the REST header description, and the question is about a comparison that the docs do cover; the answer should have addressed the difference or noted the missing SDK info."
+  },
+  {
+    "id": "c23",
+    "mode": "mode4_cross_document",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, while the provided context contains information about secondary rate limits and the SDK\u2019s retry behavior, allowing a concrete answer."
+  },
+  {
+    "id": "c24",
+    "mode": "version_confusion_w6",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly attributes retry behavior to the SDK\u2019s `client.send()` method, which is not the same as the REST API itself; the question asks about the REST API\u2019s behavior, not the SDK."
+  },
+  {
+    "id": "c25",
+    "mode": "version_confusion_w6",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS  \nThe answer correctly states that the provided documents do not contain information about the default User-Agent."
+  },
+  {
+    "id": "c26",
+    "mode": "version_confusion_w6",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly claims uncertainty; the context shows that `client.send()` has retry settings, but using curl directly does not invoke those SDK defaults, so the answer is incomplete and misleading."
+  }
+]
