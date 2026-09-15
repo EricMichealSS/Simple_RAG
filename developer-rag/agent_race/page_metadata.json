@@ -1,0 +1,42 @@
+{
+  "_comment": "Hand-authored ground truth per PDF page, from a full read of all 24 pages across the 3 docs on 2026-09-10. Drives ingestion metadata for get_openapi_spec (current-version params) and check_deprecation (the 'Previous version' / 'Compared to v2' diff paragraph on the newer page of each pair).",
+
+  "github_combined_reference.pdf": {
+    "1": {"api_version": "2022-11-28", "endpoint": "render_markdown", "has_diff": false},
+    "2": {"api_version": "2022-11-28", "endpoint": "render_markdown", "has_diff": false},
+    "3": {"api_version": "2025-06-01", "endpoint": "render_markdown", "has_diff": true},
+    "4": {"api_version": "2022-11-28", "endpoint": "create_issue", "has_diff": false},
+    "5": {"api_version": "2025-06-01", "endpoint": "create_issue", "has_diff": true},
+    "6": {"api_version": "2022-11-28", "endpoint": "create_pull_request", "has_diff": false},
+    "7": {"api_version": "2025-06-01", "endpoint": "create_pull_request", "has_diff": true},
+    "8": {"api_version": "2022-11-28", "endpoint": "create_repository", "has_diff": false},
+    "9": {"api_version": "2025-06-01", "endpoint": "create_repository", "has_diff": true},
+    "10": {"api_version": "2022-11-28", "endpoint": "create_release", "has_diff": false},
+    "11": {"api_version": "2022-11-28", "endpoint": "create_release", "has_diff": false},
+    "12": {"api_version": "2025-06-01", "endpoint": "create_release", "has_diff": false},
+    "13": {"api_version": "2025-06-01", "endpoint": "create_release", "has_diff": true}
+  },
+
+  "swagger_v3_reference.pdf": {
+    "1": {"api_version": "3.x", "endpoint": "cli_general", "has_diff": false},
+    "2": {"api_version": "3.x", "endpoint": "cli_general", "has_diff": true},
+    "3": {"api_version": "3.x", "endpoint": "java_generator", "has_diff": true},
+    "4": {"api_version": "3.x", "endpoint": "python_generator", "has_diff": true},
+    "5": {"api_version": "3.x", "endpoint": "ignore_file", "has_diff": true},
+    "6": {"api_version": "3.x", "endpoint": "config_file", "has_diff": true}
+  },
+
+  "swagger_v2_reference.pdf": {
+    "1": {"api_version": "2.x", "endpoint": "cli_general", "has_diff": false},
+    "2": {"api_version": "2.x", "endpoint": "java_generator", "has_diff": false},
+    "3": {"api_version": "2.x", "endpoint": "python_generator", "has_diff": false},
+    "4": {"api_version": "2.x", "endpoint": "ignore_file", "has_diff": false},
+    "5": {"api_version": "2.x", "endpoint": "config_file", "has_diff": false}
+  },
+
+  "known_endpoints": [
+    "render_markdown", "create_issue", "create_pull_request", "create_repository", "create_release",
+    "cli_general", "java_generator", "python_generator", "ignore_file", "config_file"
+  ],
+  "known_api_versions": ["2022-11-28", "2025-06-01", "2.x", "3.x"]
+}

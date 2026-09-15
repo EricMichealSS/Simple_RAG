@@ -1,0 +1,14 @@
+Prediction (written 2026-09-03, before building judge_v2, after computing
+agreement_before = 21/26 = 80.8% but before writing a single word of judge_v2):
+
+Adding c22 (cross-document: judge PASSed an "I don't know" for a comparison
+the retrieved context couldn't support, without weighing that the underlying
+corpus does contain both halves of the answer) and c24 (version-confusion:
+judge PASSed an answer that silently swapped "the REST API" for "the SDK's
+client.send()") as few-shot FAIL examples will fix those two specific
+failure shapes and raise agreement to roughly 88-92% (23-24/26). It will NOT
+fix c05, c20, or c26, because on inspection those three are cases where my
+own blind hand-label was the miscalibrated one (too strict on c05 and c20,
+too lenient on c26) rather than a judge reasoning error -- and per the
+brief's own warning, those get left alone rather than quietly re-labeled to
+inflate the agreement number.

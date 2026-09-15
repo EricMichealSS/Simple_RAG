@@ -1,25 +1,14 @@
+"""Retrieval module — Structure-aware RAG with metadata filters."""
+
 import chromadb
 
-from google import genai
 from sentence_transformers import SentenceTransformer
 
 from config import (
-    GEMINI_API_KEY,
-    GENERATION_MODEL,
     CHROMA_PATH,
     COLLECTION_NAME,
     TOP_K,
     RELEVANCE_THRESHOLD,
-)
-
-
-# ============================================================
-# Gemini client
-# Used ONLY for answer generation
-# ============================================================
-
-gemini_client = genai.Client(
-    api_key=GEMINI_API_KEY
 )
 
 
@@ -52,12 +41,26 @@ collection = chroma_client.get_collection(
 
 def retrieve(
     question,
-    top_k=TOP_K
+    top_k=TOP_K,
+    collection_name=COLLECTION_NAME,
+    where=None,
 ):
     """
     Convert the question into a local BGE embedding
     and retrieve the most similar document chunks.
+
+    ``collection_name`` selects which index to search
+    (e.g. the benchmark collections) and ``where`` applies
+    a ChromaDB metadata filter (e.g. {"page_type": "reference"}).
     """
+
+    target = (
+        collection
+        if collection_name == COLLECTION_NAME
+        else chroma_client.get_collection(
+            name=collection_name
+        )
+    )
 
     # IMPORTANT:
     # Use the SAME embedding model used during ingestion.
@@ -66,35 +69,49 @@ def retrieve(
         normalize_embeddings=True
     )[0].tolist()
 
-    results = collection.query(
-        query_embeddings=[
+    query_kwargs = {
+        "query_embeddings": [
             query_embedding
         ],
-        n_results=top_k,
-        include=[
+        "n_results": top_k,
+        "include": [
             "documents",
             "metadatas",
             "distances"
-        ]
-    )
+        ],
+    }
+
+    if where:
+        query_kwargs["where"] = where
+
+    results = target.query(**query_kwargs)
 
     retrieved = []
 
     documents = results["documents"][0]
     metadatas = results["metadatas"][0]
     distances = results["distances"][0]
+    ids = results["ids"][0]
 
-    for document, metadata, distance in zip(
+    for chunk_id, document, metadata, distance in zip(
+        ids,
         documents,
         metadatas,
         distances
     ):
         retrieved.append(
             {
+                "chunk_id": chunk_id,
                 "text": document,
-                "source": metadata["source"],
-                "page": metadata["page"],
-                "chunk": metadata["chunk"],
+                "source": metadata.get("source", ""),
+                "source_file": metadata.get("source_file", ""),
+                "page_id": metadata.get("page_id", ""),
+                "page": metadata.get("page", 1),
+                "chunk": metadata.get("chunk", 0),
+                "sdk_version": metadata.get("sdk_version", ""),
+                "page_type": metadata.get("page_type", ""),
+                "anchor": metadata.get("anchor", ""),
+                "section": metadata.get("section", ""),
                 "distance": distance,
             }
         )
@@ -124,7 +141,7 @@ def is_relevant(results):
 
 
 # ============================================================
-# BUILD CONTEXT
+# BUILD CONTEXT (legacy, used by old generate_answer)
 # ============================================================
 
 def build_context(results):
@@ -154,80 +171,3 @@ Content:
     return "\n".join(
         context_parts
     )
-
-
-# ============================================================
-# GENERATE ANSWER
-# ============================================================
-
-def generate_answer(
-    question,
-    results
-):
-
-    if not is_relevant(results):
-
-        return (
-            "I don't know based on "
-            "the provided documents."
-        )
-
-    context = build_context(
-        results
-    )
-
-    prompt = f"""
-You are a developer documentation
-question-answering assistant.
-
-Your ONLY source of truth is the
-documentation supplied in CONTEXT.
-
-STRICT RULES:
-
-1. Answer ONLY from the supplied context.
-
-2. Do not use your general knowledge.
-
-3. Do not guess.
-
-4. Do not invent API endpoints.
-
-5. Do not invent parameters.
-
-6. Do not invent configuration values.
-
-7. Do not invent code examples.
-
-8. If the answer cannot be supported
-   by the supplied context, respond:
-
-"I don't know based on the provided documents."
-
-9. Keep the answer concise and technically
-   accurate.
-
-10. Always mention the source document
-    and page used for the answer.
-
-DOCUMENTATION CONTEXT:
-
-{context}
-
-USER QUESTION:
-
-{question}
-
-ANSWER:
-"""
-
-    response = (
-        gemini_client
-        .models
-        .generate_content(
-            model=GENERATION_MODEL,
-            contents=prompt
-        )
-    )
-
-    return response.text
