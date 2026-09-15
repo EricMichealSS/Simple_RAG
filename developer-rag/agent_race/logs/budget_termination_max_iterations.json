@@ -1,0 +1,31 @@
+{
+  "status": "budget_exceeded",
+  "budget_hit": "max_iterations",
+  "answer": null,
+  "iterations": 1,
+  "total_tokens": 933,
+  "total_cost_usd": 0.00024,
+  "wall_clock_s": 3.132,
+  "log": [
+    {
+      "event": "llm_call",
+      "iteration": 1,
+      "prompt_tokens": 710,
+      "completion_tokens": 223,
+      "cumulative_tokens": 933,
+      "cumulative_cost_usd": 0.00024
+    },
+    {
+      "event": "tool_call",
+      "iteration": 1,
+      "tool": "check_deprecation",
+      "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_release\"}",
+      "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nThe prior version had no discussion_category_name field, so linking a discussion to a release\\nrequired a separate manual step in the UI after t"
+    },
+    {
+      "event": "budget_exceeded",
+      "budget": "max_iterations",
+      "limit": 1
+    }
+  ]
+}

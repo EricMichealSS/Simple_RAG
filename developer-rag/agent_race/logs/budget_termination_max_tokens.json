@@ -1,0 +1,71 @@
+{
+  "question": "What is the rate limit for unauthenticated GraphQL queries in GitHub API version 2025-06-01?",
+  "golden_answer": "Information not provided in context. The context only covers REST API endpoints and does not contain details about GraphQL endpoints or rate limits.",
+  "status": "budget_exceeded",
+  "budget_hit": "max_tokens",
+  "answer": null,
+  "iterations": 4,
+  "total_tokens": 9011,
+  "total_cost_usd": 0.001632,
+  "wall_clock_s": 5.625,
+  "log": [
+    {
+      "event": "llm_call",
+      "iteration": 1,
+      "prompt_tokens": 701,
+      "completion_tokens": 85,
+      "cumulative_tokens": 786,
+      "cumulative_cost_usd": 0.000156
+    },
+    {
+      "event": "tool_call",
+      "iteration": 1,
+      "tool": "search_docs",
+      "args": "{\"query\":\"unauthenticated GraphQL queries rate limit 2025-06-01\"}",
+      "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+    },
+    {
+      "event": "llm_call",
+      "iteration": 2,
+      "prompt_tokens": 1642,
+      "completion_tokens": 86,
+      "cumulative_tokens": 2514,
+      "cumulative_cost_usd": 0.000454
+    },
+    {
+      "event": "tool_call",
+      "iteration": 2,
+      "tool": "search_docs",
+      "args": "{\"query\":\"rate limit unauthenticated GraphQL 2025-06-01\"}",
+      "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+    },
+    {
+      "event": "llm_call",
+      "iteration": 3,
+      "prompt_tokens": 2495,
+      "completion_tokens": 263,
+      "cumulative_tokens": 5272,
+      "cumulative_cost_usd": 0.000986
+    },
+    {
+      "event": "tool_call",
+      "iteration": 3,
+      "tool": "search_docs",
+      "args": "{\"query\":\"unauthenticated GraphQL rate limit\"}",
+      "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+    },
+    {
+      "event": "llm_call",
+      "iteration": 4,
+      "prompt_tokens": 3551,
+      "completion_tokens": 188,
+      "cumulative_tokens": 9011,
+      "cumulative_cost_usd": 0.001632
+    },
+    {
+      "event": "budget_exceeded",
+      "budget": "max_tokens",
+      "total_tokens": 9011
+    }
+  ]
+}
