@@ -1,0 +1,414 @@
+{
+  "rows": [
+    {
+      "id": "c01",
+      "mode": "baseline",
+      "question": "What is the default value of retry_backoff_ms in the OctoClient send method?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The default value of retry_backoff_ms in the OctoClient send method is 1000 ms.",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c02",
+      "mode": "baseline",
+      "question": "What is the HTTP status code for RateLimitError in the OctoKit SDK v3?",
+      "faithfulness": 1.0,
+      "context_precision": 0.75,
+      "claims": [
+        {
+          "claim": "The HTTP status code for RateLimitError in the OctoKit SDK v3 is 429",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "c04",
+      "mode": "baseline",
+      "question": "What is the version string for the OctoKit SDK documented in the reference pages?",
+      "faithfulness": 1.0,
+      "context_precision": 0.0,
+      "claims": [
+        {
+          "claim": "The reference pages indicate the SDK version as v3",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c05",
+      "mode": "baseline",
+      "question": "How do you authenticate with a personal access token using curl?",
+      "faithfulness": 1.0,
+      "context_precision": 0.7,
+      "claims": [
+        {
+          "claim": "After you create a personal access token, include it in the Authorization header of your curl request to authenticate the API call.",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": "c06",
+      "mode": "baseline",
+      "question": "What are the required parameters for creating a webhook in the OctoKit SDK v3?",
+      "faithfulness": 1.0,
+      "context_precision": 0.5,
+      "claims": [
+        {
+          "claim": "The required parameters for createWebhook() are owner, repo, and url",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c07",
+      "mode": "baseline",
+      "question": "What error is thrown when the SDK exceeds the rate limit?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The SDK throws a RateLimitError when it exceeds the rate limit",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c08",
+      "mode": "baseline",
+      "question": "How do you create an issue using the GitHub REST API with gh CLI?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "Authenticate to GitHub first using `gh auth login`",
+          "supported": true
+        },
+        {
+          "claim": "Send a POST request to the Create an issue endpoint using `gh api --method POST /repos/{owner}/{repo}/issues`",
+          "supported": true
+        },
+        {
+          "claim": "Include the headers `Accept: application/vnd.github+json` and `X-GitHub-Api-Version: 2022-11-28` in the request",
+          "supported": true
+        },
+        {
+          "claim": "Supply the issue title and body using `-f title='Your issue title'` and `-f body='Your issue description'`",
+          "supported": true
+        },
+        {
+          "claim": "The Create an issue endpoint uses the HTTP method POST and the path `/repos/{owner}/{repo}/issues`",
+          "supported": true
+        },
+        {
+          "claim": "The command returns a response containing the issue\u2019s `html_url`",
+          "supported": true
+        },
+        {
+          "claim": "An example of creating an issue in the octocat/Spoon\u2011Knife repository is provided",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "c09",
+      "mode": "baseline",
+      "question": "What is the default value of max_retries in the OctoClient send method?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The default value of max_retries in the OctoClient send method is 3",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c10",
+      "mode": "baseline",
+      "question": "What is the default scope for getAccessToken in the OctoKit SDK v3?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The default scope for getAccessToken is repo, workflow",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c11",
+      "mode": "baseline",
+      "question": "What is the maximum number of concurrent requests allowed for the GitHub REST API?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The maximum number of concurrent requests allowed for the GitHub REST API is 100.",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c12",
+      "mode": "baseline",
+      "question": "How do you upload a release asset using the OctoKit SDK v3?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The OctoKit SDK v3 provides an uploadReleaseAsset() helper method.",
+          "supported": true
+        },
+        {
+          "claim": "The uploadReleaseAsset() helper is called on an OctoClient instance.",
+          "supported": true
+        },
+        {
+          "claim": "The uploadReleaseAsset() method requires the parameters owner, repo, release_id, asset_name, and body.",
+          "supported": true
+        },
+        {
+          "claim": "The body parameter must be a Buffer or Stream.",
+          "supported": true
+        },
+        {
+          "claim": "The content_type parameter is optional and defaults to application/octet-stream.",
+          "supported": true
+        },
+        {
+          "claim": "An example usage of uploadReleaseAsset() is provided using fs.createReadStream(\"bundle.tar.gz\").",
+          "supported": true
+        },
+        {
+          "claim": "uploadReleaseAsset() uploads a binary file to the specified release.",
+          "supported": true
+        },
+        {
+          "claim": "The uploadReleaseAsset() method is documented under the Uploads reference for SDK v3.",
+          "supported": true
+        },
+        {
+          "claim": "The Uploads reference for SDK v3 is located in uploads-reference.md.",
+          "supported": true
+        },
+        {
+          "claim": "The OctoClient is described as the core entry point of the OctoKit SDK v3.",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "c13",
+      "mode": "baseline",
+      "question": "How do you attach a file to an issue comment using the OctoKit SDK v3?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "Use the uploadAttachment() helper, which attaches a file to an issue comment.",
+          "supported": true
+        },
+        {
+          "claim": "The required parameters are owner, repo, comment_id, and file.",
+          "supported": true
+        },
+        {
+          "claim": "An optional name parameter can be supplied to set the file\u2019s name.",
+          "supported": true
+        },
+        {
+          "claim": "The example code shows how to call uploadAttachment with a file stream and optional name.",
+          "supported": true
+        },
+        {
+          "claim": "This call uploads the file and attaches it to the specified issue comment.",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c14",
+      "mode": "baseline",
+      "question": "What does listWebhooks() return and what are its pagination parameters?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "listWebhooks() returns the webhooks registered on a repository, in pages.",
+          "supported": true
+        },
+        {
+          "claim": "Its pagination parameters are per_page (default 30) and page (default 1).",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c15",
+      "mode": "baseline",
+      "question": "What is the default poll_interval_ms for waitForRateLimit()?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The default poll_interval_ms for waitForRateLimit() is 5000 ms",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c19",
+      "mode": "mode2_relevance_gate_false_refusal",
+      "question": "What is the default value of enable_retries in client.send()?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The default value of enable_retries in client.send() is true",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "c24",
+      "mode": "version_confusion_w6",
+      "question": "Does the REST API automatically retry a request if it fails?",
+      "faithfulness": 1.0,
+      "context_precision": 1.0,
+      "claims": [
+        {
+          "claim": "The SDK\u2019s low\u2011level client.send() method retries failed requests automatically",
+          "supported": true
+        },
+        {
+          "claim": "client.send() has an enable_retries boolean that defaults to true",
+          "supported": true
+        },
+        {
+          "claim": "client.send() has a max_retries default of 3",
+          "supported": true
+        }
+      ],
+      "relevance": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "avg_faithfulness": 1.0,
+  "avg_context_precision": 0.871875
+}

@@ -1,0 +1,1293 @@
+[
+  {
+    "id": "c01",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the default value of retry_backoff_ms in the OctoClient send method?",
+    "expected_chunk_id": "client-reference:clientsend:2",
+    "key_fact": "1000",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.1372,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-constructor:1",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.6813,
+        "text_snippet": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional; a\nclient created with no options makes unauthenticated requests.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| auth | string \\| object | none | no |\n| base_url | string | https://api"
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.8317,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -4.1677,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "getting-started:p8:top:12",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.9704,
+        "text_snippet": "The following example uses the \"Create an issue\" endpoint to create a new issue in the\noctocat/Spoon-Knife repository. In the response, find the html_url of your issue, and\nnavigate to your issue in the browser.\nShell\ngh api --method POST /repos/octocat/Spoon-Knife/issues \\\n--header \"Accept: applica"
+      }
+    ],
+    "answer": "The default value of `retry_backoff_ms` in the OctoClient `send` method is **1000**\u202fms. \u3010client-reference:clientsend:2\u3011",
+    "retrieval_ms": 27760.8,
+    "gen_ms": 8164.5,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c02",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the HTTP status code for RateLimitError in the OctoKit SDK v3?",
+    "expected_chunk_id": "errors-reference:ratelimiterror:2",
+    "key_fact": "429",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 5.3936,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.8272,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.7486,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.1402,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.1591,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      }
+    ],
+    "answer": "The HTTP status code for **RateLimitError** in the OctoKit SDK v3 is **429**\u202f[errors-reference:ratelimiterror:2].",
+    "retrieval_ms": 13123.3,
+    "gen_ms": 5278.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c03",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the primary rate limit for unauthenticated requests per hour?",
+    "expected_chunk_id": "rate-limits:p2:top:2",
+    "key_fact": "60 requests per hour",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 9.9483,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "rate-limits:p2:top:2",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 8.8413,
+        "text_snippet": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests are associated with the originating IP address, not with the user or application that\nmade the request.\nThe primary rate limit for unauthenticated requests is 60 requests per hour.\nPrimary rate limit"
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.7655,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "rate-limits:p1:in-this-article:1",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.508,
+        "text_snippet": "### In this article\n\nAbout primary rate limits\nGitHub limits the number of REST API requests that you can make within a specific amount of\ntime. This limit helps prevent abuse and denial-of-service attacks, and ensures that the API\nremains available for all users.\nSome endpoints, like the search end"
+      },
+      {
+        "chunk_id": "rate-limits:p3:top:3",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 2.7023,
+        "text_snippet": "Primary rate limits for GitHub App user access tokens (as opposed to installation access\ntokens) are dictated by the primary rate limits for the authenticated user. This rate limit is\ncombined with any requests that another GitHub App or OAuth app makes on that user's\nbehalf and any requests that th"
+      }
+    ],
+    "answer": "\u26a0\ufe0f **Generation unavailable (APIStatusError).**\n\nError: Error code: 413 - {'error': {'message': 'Request Entity Too Large', 'type': 'invalid_request_error', 'code': 'request_too_large'}}\n\nRelevant chunks:\n\n**Source 1** `[rate-limits-reference:rate-limits-reference-sdk-v3:0]` (rate-limits-reference.md)\n# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited...\n\n---\n\n**Source 2** `[rate-limits:p2:top:2]` (rate-limits.pdf)\nYou can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests are associated with the originating IP address, not with the user or application that\nmade the request.\nThe primary rate limit for unauthenticated requests is 60 requests per hour.\nPrimary rate limit...\n\n---\n\n**Source 3** `[rate-limits:p5:top:5]` (rate-limits.pdf)\nChecking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren...\n\n---\n\n**Source 4** `[rate-limits:p1:in-this-article:1]` (rate-limits.pdf)\n### In this article\n\nAbout primary rate limits\nGitHub limits the number of REST API requests that you can make within a specific amount of\ntime. This limit helps prevent abuse and denial-of-service attacks, and ensures that the API\nremains available for all users.\nSome endpoints, like the search end...\n\n---\n\n**Source 5** `[rate-limits:p3:top:3]` (rate-limits.pdf)\nPrimary rate limits for GitHub App user access tokens (as opposed to installation access\ntokens) are dictated by the primary rate limits for the authenticated user. This rate limit is\ncombined with any requests that another GitHub App or OAuth app makes on that user's\nbehalf and any requests that th...",
+    "retrieval_ms": 6768.4,
+    "gen_ms": 6426.8,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c04",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the version string for the OctoKit SDK documented in the reference pages?",
+    "expected_chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+    "key_fact": "v3",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 4.0932,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": 4.0729,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      },
+      {
+        "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.4961,
+        "text_snippet": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3. Webhooks let your\napplication receive events such as `issues`, `push` and `pull_request` as\nthey happen, without polling."
+      },
+      {
+        "chunk_id": "uploads-reference:uploads-reference-sdk-v3:0",
+        "source_file": "uploads-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.457,
+        "text_snippet": "# Uploads reference (SDK v3)\n\nThis page documents the upload helpers in OctoKit SDK v3. Uploads send binary\ncontent such as release assets and issue attachments to the API."
+      },
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.3418,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      }
+    ],
+    "answer": "The reference pages indicate the SDK version as **v3**\u3010client-reference:octoclient-reference-sdk-v3:0\u3011.",
+    "retrieval_ms": 1239.6,
+    "gen_ms": 1927.5,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c05",
+    "mode": "baseline",
+    "regression": false,
+    "question": "How do you authenticate with a personal access token using curl?",
+    "expected_chunk_id": "authentication:p2:top:3",
+    "key_fact": "Authorization: Bearer YOUR-TOKEN header",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "authentication:p1:in-this-article:2",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.654,
+        "text_snippet": "About authentication\nMany REST API endpoints require authentication or return additional information if you are\nauthenticated. Additionally, you can make more requests per hour when you are authenticated.\nTo authenticate your request, you will need to provide an authentication token with the\nrequire"
+      },
+      {
+        "chunk_id": "authentication:p5:top:7",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.2452,
+        "text_snippet": "Authenticating in a GitHub Actions workflow using curl\nTo make an authenticated request to the API in a GitHub Actions workflow using curl , you\ncan store the value of GITHUB_TOKEN as an environment variable, and use the run keyword to\nexecute a curl request to the API. For more information about th"
+      },
+      {
+        "chunk_id": "authentication:p4:top:5",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": 5.5366,
+        "text_snippet": "1\n2\n3\n4\n5\n6\n7\ncurl --request POST \\\n--url \"https://api.github.com/applications/YOUR_CLIENT_ID/token\" \\\n--user \"YOUR_CLIENT_ID:YOUR_CLIENT_SECRET\" \\\n--header \"Accept: application/vnd.github+json\" \\\n--header \"X-GitHub-Api-Version: 2026-03-10\" \\\n--data '{\n  \"access_token\": \"ACCESS_TOKEN_TO_CHECK\"\n}'\nTh"
+      },
+      {
+        "chunk_id": "authentication:p3:top:4",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": 4.0676,
+        "text_snippet": "Personal access tokens and SAML SSO\nIf you use a personal access token (classic) to access an organization that enforces SAML\nsingle sign-on (SSO) for authentication, you will need to authorize your token after creation.\nFine-grained personal access tokens are authorized during token creation, befor"
+      },
+      {
+        "chunk_id": "authentication:p2:top:3",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.2875,
+        "text_snippet": "--header \"Authorization: Bearer YOUR-TOKEN\" \\\n--header \"X-GitHub-Api-Version: 2026-03-10\"\nNote\nIn most cases, you can use Authorization: Bearer or Authorization: token to pass a\ntoken. However, if you are passing a JSON web token (JWT), you must use\nAuthorization: Bearer .\nFailed login limit\nIf you "
+      }
+    ],
+    "answer": "After you create a personal access token, include it in the\u202fAuthorization\u202fheader of your\u202fcurl\u202frequest to authenticate the API call.\u202f[authentication:p1:in-this-article:2]",
+    "retrieval_ms": 1295.8,
+    "gen_ms": 4839.1,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c06",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What are the required parameters for creating a webhook in the OctoKit SDK v3?",
+    "expected_chunk_id": "events-reference:createwebhook:1",
+    "key_fact": "owner, repo, url",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.3277,
+        "text_snippet": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3. Webhooks let your\napplication receive events such as `issues`, `push` and `pull_request` as\nthey happen, without polling."
+      },
+      {
+        "chunk_id": "events-reference:createwebhook:1",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.555,
+        "text_snippet": "## createWebhook()\n\n`createWebhook()` registers a new webhook on a repository or organization.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| owner | string | \u2014 | yes |\n| repo | string | \u2014 | yes |\n| url | string | \u2014 | yes |\n| events | string[] | [\"push\"] | no |\n| secret | string | \u2014 "
+      },
+      {
+        "chunk_id": "client-reference:octoclient-constructor:1",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.0937,
+        "text_snippet": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional; a\nclient created with no options makes unauthenticated requests.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| auth | string \\| object | none | no |\n| base_url | string | https://api"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.9064,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.6563,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      }
+    ],
+    "answer": "The required parameters for `createWebhook()` are **`owner`**, **`repo`**, and **`url`** [events-reference:createwebhook:1].",
+    "retrieval_ms": 1399.8,
+    "gen_ms": 13142.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c07",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What error is thrown when the SDK exceeds the rate limit?",
+    "expected_chunk_id": "errors-reference:ratelimiterror:2",
+    "key_fact": "RateLimitError",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.3244,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.2392,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      },
+      {
+        "chunk_id": "rate-limits:p6:top:6",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 0.0762,
+        "text_snippet": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best "
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 0.0496,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.0369,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      }
+    ],
+    "answer": "The SDK throws a **`RateLimitError`** when it exceeds the rate limit\u202f[errors-reference:ratelimiterror:2].",
+    "retrieval_ms": 3782.4,
+    "gen_ms": 4283.1,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c08",
+    "mode": "baseline",
+    "regression": false,
+    "question": "How do you create an issue using the GitHub REST API with gh CLI?",
+    "expected_chunk_id": "getting-started:p8:top:12",
+    "key_fact": "gh api --method POST /repos/{owner}/{repo}/issues",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "getting-started:p8:top:12",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.9063,
+        "text_snippet": "The following example uses the \"Create an issue\" endpoint to create a new issue in the\noctocat/Spoon-Knife repository. In the response, find the html_url of your issue, and\nnavigate to your issue in the browser.\nShell\ngh api --method POST /repos/octocat/Spoon-Knife/issues \\\n--header \"Accept: applica"
+      },
+      {
+        "chunk_id": "getting-started:p6:3-choose-an-endpoint-for-your-request:9",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.4131,
+        "text_snippet": "## 3. Choose an endpoint for your request\n\nChoose an endpoint to make a request to. You can explore GitHub's REST API\ndocumentation to discover endpoints that you can use to interact with GitHub.\nIdentify the HTTP method and path of the endpoint. You will send these with your request.\nFor more infor"
+      },
+      {
+        "chunk_id": "getting-started:p5:2-authenticate:7",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 5.4896,
+        "text_snippet": "## 2. Authenticate\n\nTo authenticate to GitHub, run the following command from your terminal.\ngh auth login\nYou can use the --scopes option to specify what scopes you want. If you want to\nauthenticate with a token that you created, you can use the --with-token option. For\nmore information, see the Gi"
+      },
+      {
+        "chunk_id": "issues:p1:top:0",
+        "source_file": "issues.pdf",
+        "distance": 1.0,
+        "rerank_score": 4.7038,
+        "text_snippet": "REST API endpoints for issues\nUse the REST API to view and manage issues, including issue assignees,\ncomments, labels, and milestones.\nREST API endpoints for issues\nList issues assigned to the authenticated user\nList organization issues assigned to the authenticated user\nList repository issues\nCreat"
+      },
+      {
+        "chunk_id": "getting-started:p5:top:5",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 4.3971,
+        "text_snippet": "1\n2\nthe issue body, users to assign to the new issue, or labels to apply to the new issue. For an\nexample of a request that uses body parameters, see Making a request.\nYou must authenticate your request to pass body parameters. For more information, see\nAuthentication.\nQuery parameters\nQuery paramet"
+      }
+    ],
+    "answer": "To create an issue with the GitHub REST API using the\u202fgh\u202fCLI:\n\n1. **Authenticate** to GitHub first:  \n   ```bash\n   gh auth login\n   ```  \n   (see authentication instructions)\u3010getting-started:p5:2-authenticate:7\u3011\n\n2. **Send a POST request** to the \u201cCreate an issue\u201d endpoint, supplying the repository owner and name, and the issue title and body:  \n   ```bash\n   gh api --method POST /repos/{owner}/{repo}/issues \\\n     --header \"Accept: application/vnd.github+json\" \\\n     --header \"X-GitHub-Api-Version: 2022-11-28\" \\\n     -f title='Your issue title' \\\n     -f body='Your issue description'\n   ```  \n   (the endpoint uses HTTP\u202fPOST and the path\u202f/repos/{owner}/{repo}/issues)\u3010getting-started:p6:3-choose-an-endpoint-for-your-request:9\u3011\n\n3. The command returns a response containing the issue\u2019s\u202fhtml_url, which you can open in a browser.  \n   (example for octocat/Spoon\u2011Knife)\u3010getting-started:p8:top:12\u3011",
+    "retrieval_ms": 1268.6,
+    "gen_ms": 9565.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c09",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the default value of max_retries in the OctoClient send method?",
+    "expected_chunk_id": "client-reference:clientsend:2",
+    "key_fact": "3",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.9189,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -3.214,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-constructor:1",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -3.461,
+        "text_snippet": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional; a\nclient created with no options makes unauthenticated requests.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| auth | string \\| object | none | no |\n| base_url | string | https://api"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -3.6445,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "getting-started:p9:top:13",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.036,
+        "text_snippet": "Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-\nRateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-\nGitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset\nCache-Control: private, max-age=60, s-maxage=60\nContent-Security-Policy: de"
+      }
+    ],
+    "answer": "The default value of `max_retries` in the OctoClient\u202f`send` method is **3**\u3010client-reference:clientsend:2\u3011.",
+    "retrieval_ms": 3746.3,
+    "gen_ms": 4030.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c10",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the default scope for getAccessToken in the OctoKit SDK v3?",
+    "expected_chunk_id": "auth-reference:getaccesstoken:2",
+    "key_fact": "repo, workflow",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "auth-reference:getaccesstoken:2",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.4294,
+        "text_snippet": "## getAccessToken()\n\n`getAccessToken()` exchanges an OAuth authorization code for an access token.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| code | string | \u2014 | yes |\n| state | string | \u2014 | no |\n| scopes | string[] | repo, workflow | no |\n\nThe default scope set of `repo` and `wo"
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.993,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.6538,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.1373,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.6555,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      }
+    ],
+    "answer": "The default scope for `getAccessToken` is **`repo, workflow`**\u202f[auth-reference:getaccesstoken:2].",
+    "retrieval_ms": 1620.9,
+    "gen_ms": 3263.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c11",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the maximum number of concurrent requests allowed for the GitHub REST API?",
+    "expected_chunk_id": "rate-limits:p4:top:4",
+    "key_fact": "100 concurrent requests",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits:p4:top:4",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.7576,
+        "text_snippet": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is shared across the REST API and GraphQL API.\nMake too many requests to a single endpoint per minute. No more than 900 points per\nminute are allowed for REST API endpoints, and no more than 2,000 points "
+      },
+      {
+        "chunk_id": "rate-limits:p2:top:2",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.5837,
+        "text_snippet": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests are associated with the originating IP address, not with the user or application that\nmade the request.\nThe primary rate limit for unauthenticated requests is 60 requests per hour.\nPrimary rate limit"
+      },
+      {
+        "chunk_id": "rate-limits:p1:in-this-article:1",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.241,
+        "text_snippet": "### In this article\n\nAbout primary rate limits\nGitHub limits the number of REST API requests that you can make within a specific amount of\ntime. This limit helps prevent abuse and denial-of-service attacks, and ensures that the API\nremains available for all users.\nSome endpoints, like the search end"
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.2801,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 2.2699,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      }
+    ],
+    "answer": "The maximum number of concurrent requests allowed for the GitHub REST API is **100**\u202f[rate-limits:p4:top:4].",
+    "retrieval_ms": 1837.1,
+    "gen_ms": 2964.6,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c12",
+    "mode": "baseline",
+    "regression": false,
+    "question": "How do you upload a release asset using the OctoKit SDK v3?",
+    "expected_chunk_id": "uploads-reference:uploadreleaseasset:1",
+    "key_fact": "uploadReleaseAsset(owner, repo, release_id, asset_name, content_type, body)",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "uploads-reference:uploads-reference-sdk-v3:0",
+        "source_file": "uploads-reference.md",
+        "distance": 1.0,
+        "rerank_score": 6.6578,
+        "text_snippet": "# Uploads reference (SDK v3)\n\nThis page documents the upload helpers in OctoKit SDK v3. Uploads send binary\ncontent such as release assets and issue attachments to the API."
+      },
+      {
+        "chunk_id": "uploads-reference:uploadreleaseasset:1",
+        "source_file": "uploads-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.7901,
+        "text_snippet": "## uploadReleaseAsset()\n\n`uploadReleaseAsset()` uploads a binary asset to an existing release.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| owner | string | \u2014 | yes |\n| repo | string | \u2014 | yes |\n| release_id | number | \u2014 | yes |\n| asset_name | string | \u2014 | yes |\n| content_type | st"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.5449,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.1709,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      },
+      {
+        "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.3732,
+        "text_snippet": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3. Webhooks let your\napplication receive events such as `issues`, `push` and `pull_request` as\nthey happen, without polling."
+      }
+    ],
+    "answer": "To upload a release asset with OctoKit SDK\u202fv3, call the `uploadReleaseAsset()` helper on an\u202f`OctoClient` instance, providing the required fields:\n\n```js\nawait client.uploadReleaseAsset({\n  owner: \"octo\",               // repository owner (required)\n  repo: \"hello-world\",         // repository name (required)\n  release_id: 1,               // ID of the target release (required)\n  asset_name: \"bundle.tar.gz\", // name for the uploaded asset (required)\n  body: fs.createReadStream(\"bundle.tar.gz\") // file data as Buffer/Stream (required)\n  // optional: content_type (defaults to application/octet-stream)\n});\n```\n\n`uploadReleaseAsset()` sends the binary file to the specified release\u202f[uploads-reference:uploadreleaseasset:1]. The uploads helpers, including this method, are documented under the Uploads reference for SDK\u202fv3\u202f[uploads-reference:uploads-reference-sdk-v3:0].",
+    "retrieval_ms": 1313.5,
+    "gen_ms": 15964.5,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c13",
+    "mode": "baseline",
+    "regression": false,
+    "question": "How do you attach a file to an issue comment using the OctoKit SDK v3?",
+    "expected_chunk_id": "uploads-reference:uploadattachment:2",
+    "key_fact": "uploadAttachment(owner, repo, comment_id, file, name)",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "uploads-reference:uploads-reference-sdk-v3:0",
+        "source_file": "uploads-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.7193,
+        "text_snippet": "# Uploads reference (SDK v3)\n\nThis page documents the upload helpers in OctoKit SDK v3. Uploads send binary\ncontent such as release assets and issue attachments to the API."
+      },
+      {
+        "chunk_id": "uploads-reference:uploadattachment:2",
+        "source_file": "uploads-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.1924,
+        "text_snippet": "## uploadAttachment()\n\n`uploadAttachment()` attaches a file to an issue comment.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| owner | string | \u2014 | yes |\n| repo | string | \u2014 | yes |\n| comment_id | number | \u2014 | yes |\n| file | Buffer \\| Stream | \u2014 | yes |\n| name | string | \u2014 | no |"
+      },
+      {
+        "chunk_id": "events-reference:events-and-webhooks-reference-sdk-v3:0",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.0816,
+        "text_snippet": "# Events and webhooks reference (SDK v3)\n\nThis page documents the webhook helpers in OctoKit SDK v3. Webhooks let your\napplication receive events such as `issues`, `push` and `pull_request` as\nthey happen, without polling."
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.3654,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.142,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      }
+    ],
+    "answer": "Use the `uploadAttachment()` helper, which attaches a file to an issue comment.  \nProvide the required parameters\u202f`owner` (repo owner), `repo` (repository name), `comment_id` (the comment\u2019s ID), and `file` (a\u202fBuffer or Stream containing the file). An optional `name` parameter can be supplied to set the file\u2019s name\u202f[uploads-reference:uploadattachment:2].\n\nExample (illustrative only):\n\n```js\nawait uploadAttachment({\n  owner: 'octocat',\n  repo: 'hello-world',\n  comment_id: 123456,\n  file: fs.createReadStream('path/to/file.txt'),\n  name: 'file.txt'   // optional\n});\n```\n\nThis call uploads the file and attaches it to the specified issue comment\u202f[uploads-reference:uploadattachment:2].",
+    "retrieval_ms": 7270.9,
+    "gen_ms": 2899.8,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c14",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What does listWebhooks() return and what are its pagination parameters?",
+    "expected_chunk_id": "events-reference:listwebhooks:2",
+    "key_fact": "per_page (default 30), page (default 1)",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "events-reference:listwebhooks:2",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.6241,
+        "text_snippet": "## listWebhooks()\n\n`listWebhooks()` returns the webhooks registered on a repository, in pages.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| owner | string | \u2014 | yes |\n| repo | string | \u2014 | yes |\n| per_page | number | 30 | no |\n| page | number | 1 | no |"
+      },
+      {
+        "chunk_id": "client-reference:clientpaginate:3",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -1.2598,
+        "text_snippet": "## Client.paginate()\n\n`client.paginate()` iterates over every page of a paginated endpoint and\nreturns the concatenated results.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| route | string | \u2014 | yes |\n| parameters | object | {} | no |\n| map_fn | function | identity | no |\n\n```js\nco"
+      },
+      {
+        "chunk_id": "events-reference:createwebhook:1",
+        "source_file": "events-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.2868,
+        "text_snippet": "## createWebhook()\n\n`createWebhook()` registers a new webhook on a repository or organization.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| owner | string | \u2014 | yes |\n| repo | string | \u2014 | yes |\n| url | string | \u2014 | yes |\n| events | string[] | [\"push\"] | no |\n| secret | string | \u2014 "
+      },
+      {
+        "chunk_id": "getting-started:p5:top:5",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -3.7262,
+        "text_snippet": "1\n2\nthe issue body, users to assign to the new issue, or labels to apply to the new issue. For an\nexample of a request that uses body parameters, see Making a request.\nYou must authenticate your request to pass body parameters. For more information, see\nAuthentication.\nQuery parameters\nQuery paramet"
+      },
+      {
+        "chunk_id": "getting-started:p7:top:11",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -6.3832,
+        "text_snippet": "application/vnd.github+json,application/vnd.github.diff . For more information,\nsee Accept and Media types.\nX-GitHub-Api-Version : Pass the API version in a X-GitHub-Api-Version header.\nFor more information, see X-GitHub-Api-Version .\n-f or -F followed by any body parameters or query parameters in k"
+      }
+    ],
+    "answer": "`listWebhooks()` returns the webhooks registered on a repository, in pages. Its pagination parameters are\u202f`per_page` (default\u202f30) and\u202f`page` (default\u202f1)\u202f[events-reference:listwebhooks:2].",
+    "retrieval_ms": 1884.4,
+    "gen_ms": 2678.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c15",
+    "mode": "baseline",
+    "regression": false,
+    "question": "What is the default poll_interval_ms for waitForRateLimit()?",
+    "expected_chunk_id": "rate-limits-reference:waitforratelimit:3",
+    "key_fact": "5000",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits-reference:waitforratelimit:3",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 6.2545,
+        "text_snippet": "## waitForRateLimit()\n\n`waitForRateLimit()` suspends execution until the current rate-limit window\nresets, then returns the reset timestamp.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| poll_interval_ms | number | 5000 | no |\n\n```js\nawait client.waitForRateLimit({ poll_interval_ms:"
+      },
+      {
+        "chunk_id": "getting-started:p9:top:13",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -2.2694,
+        "text_snippet": "Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-\nRateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-\nGitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset\nCache-Control: private, max-age=60, s-maxage=60\nContent-Security-Policy: de"
+      },
+      {
+        "chunk_id": "rate-limits-reference:checkratelimit:2",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.6413,
+        "text_snippet": "## checkRateLimit()\n\n`checkRateLimit()` returns `true` when the caller still has requests remaining\nunder the primary rate limit, and `false` otherwise.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| request | object | {} | no |"
+      },
+      {
+        "chunk_id": "rate-limits-reference:getratelimit:1",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": -4.0875,
+        "text_snippet": "## getRateLimit()\n\n`client.getRateLimit()` reports the current rate limit status for the\nauthenticated identity.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| request | object | {} | no |"
+      },
+      {
+        "chunk_id": "client-reference:clientgetratelimit:4",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -4.1793,
+        "text_snippet": "## Client.getRateLimit()\n\n`client.getRateLimit()` returns the rate limit status for the authenticated\nuser, including the remaining requests and the reset time.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| request | object | {} | no |\n\n```js\nconst { data } = await client.getRateLim"
+      }
+    ],
+    "answer": "The default `poll_interval_ms` for `waitForRateLimit()` is **5000**\u202fms\u202f[rate-limits-reference:waitforratelimit:3].",
+    "retrieval_ms": 2261.6,
+    "gen_ms": 6245.3,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c16",
+    "mode": "mode1_groq_error",
+    "regression": true,
+    "source_trace_id": "610698d4-b8c9-4006-bf9d-7e499116cb94",
+    "question": "Does the errors reference say that SDK errors are swallowed after retries?",
+    "expected_chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+    "key_fact": "No \u2014 errors are never swallowed",
+    "notes": "Real trace failed with Groq 413 payload-too-large; the correct chunk was retrieved and ranked #1 but no answer was generated.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "errors-reference:errors-reference-sdk-v3:0",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 5.7762,
+        "text_snippet": "# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error."
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -0.3254,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -3.8121,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "rate-limits:p6:top:6",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -4.1459,
+        "text_snippet": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best "
+      },
+      {
+        "chunk_id": "errors-reference:apierror:1",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -4.9,
+        "text_snippet": "## ApiError\n\nThe base class for every SDK error.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | \u2014 | yes |\n| headers | object | \u2014 | no |\n| cause | Error | null | no |"
+      }
+    ],
+    "answer": "\u26a0\ufe0f **Generation unavailable (APIStatusError).**\n\nError: Error code: 413 - {'error': {'message': 'Request Entity Too Large', 'type': 'invalid_request_error', 'code': 'request_too_large'}}\n\nRelevant chunks:\n\n**Source 1** `[errors-reference:errors-reference-sdk-v3:0]` (errors-reference.md)\n# Errors reference (SDK v3)\n\nThis page documents the error classes that OctoKit SDK v3 throws. Every error\nextends `ApiError` and carries a `status` property with the HTTP status code.\nErrors are never swallowed; if a request fails the SDK always rejects with a\ntyped error....\n\n---\n\n**Source 2** `[errors-reference:ratelimiterror:2]` (errors-reference.md)\n## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st...\n\n---\n\n**Source 3** `[client-reference:clientsend:2]` (client-reference.md)\n## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo...\n\n---\n\n**Source 4** `[rate-limits:p6:top:6]` (rate-limits.pdf)\nsecondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best ...\n\n---\n\n**Source 5** `[errors-reference:apierror:1]` (errors-reference.md)\n## ApiError\n\nThe base class for every SDK error.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | \u2014 | yes |\n| headers | object | \u2014 | no |\n| cause | Error | null | no |...",
+    "retrieval_ms": 3224.3,
+    "gen_ms": 29595.4,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c17",
+    "mode": "mode1_groq_error",
+    "regression": true,
+    "source_trace_id": "49bcc271-35e6-4e55-872c-91c4d8840c72",
+    "question": "Does the OctoClient documentation state that client.send() returns a Promise?",
+    "expected_chunk_id": "client-reference:clientsend:2",
+    "key_fact": "Yes \u2014 it returns a Promise that resolves to the response body",
+    "notes": "Real trace failed with Groq 413 payload-too-large; correct chunk was top-ranked but the LLM call was never completed.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 3.0851,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "client-reference:octoclient-reference-sdk-v3:0",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -1.2176,
+        "text_snippet": "# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process."
+      },
+      {
+        "chunk_id": "auth-reference:authentication-reference-sdk-v3:0",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.3561,
+        "text_snippet": "# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient."
+      },
+      {
+        "chunk_id": "client-reference:octoclient-constructor:1",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -2.9439,
+        "text_snippet": "## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional; a\nclient created with no options makes unauthenticated requests.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| auth | string \\| object | none | no |\n| base_url | string | https://api"
+      },
+      {
+        "chunk_id": "getting-started:p11:top:15",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -7.4884,
+        "text_snippet": "The documentation provides an example response for each API method. The example\nresponse illustrates all attributes that are returned by that method.\nHypermedia\nAll resources may have one or more *_url properties linking to other resources. These are\nmeant to provide explicit URLs so that proper API"
+      }
+    ],
+    "answer": "\u26a0\ufe0f **Generation unavailable (APIStatusError).**\n\nError: Error code: 413 - {'error': {'message': 'Request Entity Too Large', 'type': 'invalid_request_error', 'code': 'request_too_large'}}\n\nRelevant chunks:\n\n**Source 1** `[client-reference:clientsend:2]` (client-reference.md)\n## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo...\n\n---\n\n**Source 2** `[client-reference:octoclient-reference-sdk-v3:0]` (client-reference.md)\n# OctoClient reference (SDK v3)\n\nThe OctoClient is the core entry point of the OctoKit SDK v3. Every SDK call\ngoes through an OctoClient instance. You construct one client per\nauthentication identity and reuse it for the lifetime of your process....\n\n---\n\n**Source 3** `[auth-reference:authentication-reference-sdk-v3:0]` (auth-reference.md)\n# Authentication reference (SDK v3)\n\nThis page documents the authentication helpers shipped with OctoKit SDK v3.\nThe SDK supports personal access tokens, OAuth apps and GitHub Apps. Every\ntoken-based helper in this page accepts a `token` and a set of scopes, and\nreturns an authenticated OctoClient....\n\n---\n\n**Source 4** `[client-reference:octoclient-constructor:1]` (client-reference.md)\n## OctoClient constructor\n\n`new OctoClient(options)` creates a new client. All options are optional; a\nclient created with no options makes unauthenticated requests.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| auth | string \\| object | none | no |\n| base_url | string | https://api...\n\n---\n\n**Source 5** `[getting-started:p11:top:15]` (getting-started.pdf)\nThe documentation provides an example response for each API method. The example\nresponse illustrates all attributes that are returned by that method.\nHypermedia\nAll resources may have one or more *_url properties linking to other resources. These are\nmeant to provide explicit URLs so that proper API...",
+    "retrieval_ms": 7135.4,
+    "gen_ms": 10289.7,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c18",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "regression": true,
+    "source_trace_id": "03099fdc-f5f1-4407-964f-4e2fb687ecc1",
+    "question": "What is the default value of follow_redirects?",
+    "expected_chunk_id": "client-reference:clientsend:2",
+    "key_fact": "true",
+    "notes": "Real trace: correct chunk retrieved at rank 1 but rerank score was negative (-1.26), tripping the is_relevant() gate into a false \"I don't know\".",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -1.2594,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "getting-started:p7:top:11",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -8.6599,
+        "text_snippet": "application/vnd.github+json,application/vnd.github.diff . For more information,\nsee Accept and Media types.\nX-GitHub-Api-Version : Pass the API version in a X-GitHub-Api-Version header.\nFor more information, see X-GitHub-Api-Version .\n-f or -F followed by any body parameters or query parameters in k"
+      },
+      {
+        "chunk_id": "rate-limits:p4:top:4",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -9.735,
+        "text_snippet": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is shared across the REST API and GraphQL API.\nMake too many requests to a single endpoint per minute. No more than 900 points per\nminute are allowed for REST API endpoints, and no more than 2,000 points "
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -9.7439,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -9.7537,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 2808.7,
+    "gen_ms": 0.0,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c19",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "regression": false,
+    "question": "What is the default value of enable_retries in client.send()?",
+    "expected_chunk_id": "client-reference:clientsend:2",
+    "key_fact": "true",
+    "notes": "Constructed sibling of c18 \u2014 same chunk, different parameter row, testing whether the same relevance-gate failure recurs.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 4.9708,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.829,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      },
+      {
+        "chunk_id": "auth-reference:createoauthclient:1",
+        "source_file": "auth-reference.md",
+        "distance": 1.0,
+        "rerank_score": -4.7839,
+        "text_snippet": "## createOAuthClient()\n\n`createOAuthClient(options)` builds a client authenticated with a token\nobtained from an OAuth flow.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| client_id | string | \u2014 | yes |\n| client_secret | string | \u2014 | yes |\n| token | string | \u2014 | yes |\n| scopes | stri"
+      },
+      {
+        "chunk_id": "client-reference:clientgetratelimit:4",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": -5.2239,
+        "text_snippet": "## Client.getRateLimit()\n\n`client.getRateLimit()` returns the rate limit status for the authenticated\nuser, including the remaining requests and the reset time.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| request | object | {} | no |\n\n```js\nconst { data } = await client.getRateLim"
+      },
+      {
+        "chunk_id": "errors-reference:authenticationerror:4",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": -5.4051,
+        "text_snippet": "## AuthenticationError\n\nThrown when a request is rejected because the token is missing, expired or\ninsufficient for the endpoint.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 401 | yes |\n\n```js\nconst auth = await createOAuthClient({ t"
+      }
+    ],
+    "answer": "The default value of **`enable_retries`** in `client.send()` is **`true`**\u3010client-reference:clientsend:2\u3011.",
+    "retrieval_ms": 1099.6,
+    "gen_ms": 2871.1,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c20",
+    "mode": "mode3_answerable_wrong_chunks",
+    "regression": true,
+    "source_trace_id": "fd0c9df9-f70e-46bb-ac47-14fbc3c32e6a",
+    "question": "What is the maximum number of OAuth access-token requests allowed per hour under the secondary rate limits?",
+    "expected_chunk_id": "rate-limits:p4:top:4",
+    "key_fact": "2,000 OAuth access token requests per hour",
+    "notes": "Real trace: retrieval surfaced concurrent-request and per-minute-point limits but missed the OAuth-token-request figure documented in the same chunk (rate-limits:p4:top:4).",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 5.7196,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "rate-limits:p2:top:2",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 5.4806,
+        "text_snippet": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests are associated with the originating IP address, not with the user or application that\nmade the request.\nThe primary rate limit for unauthenticated requests is 60 requests per hour.\nPrimary rate limit"
+      },
+      {
+        "chunk_id": "rate-limits:p3:top:3",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 5.2652,
+        "text_snippet": "Primary rate limits for GitHub App user access tokens (as opposed to installation access\ntokens) are dictated by the primary rate limits for the authenticated user. This rate limit is\ncombined with any requests that another GitHub App or OAuth app makes on that user's\nbehalf and any requests that th"
+      },
+      {
+        "chunk_id": "rate-limits:p4:top:4",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 4.9954,
+        "text_snippet": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is shared across the REST API and GraphQL API.\nMake too many requests to a single endpoint per minute. No more than 900 points per\nminute are allowed for REST API endpoints, and no more than 2,000 points "
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 2.086,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 4019.4,
+    "gen_ms": 2668.8,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c21",
+    "mode": "mode3_answerable_wrong_chunks",
+    "regression": true,
+    "source_trace_id": "9fe19bdb-1809-4d18-b00f-81e1a67dd977",
+    "question": "What is the authenticated Git LFS request limit per minute?",
+    "expected_chunk_id": "rate-limits:p2:top:2",
+    "key_fact": "3,000 requests per minute",
+    "notes": "Real trace: top-ranked chunk discussed the unauthenticated 60-per-hour primary limit instead of the Git LFS bucket (rate-limits:p2:top:2).",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits:p2:top:2",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.9265,
+        "text_snippet": "You can make unauthenticated requests if you are only fetching public data. Unauthenticated\nrequests are associated with the originating IP address, not with the user or application that\nmade the request.\nThe primary rate limit for unauthenticated requests is 60 requests per hour.\nPrimary rate limit"
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.3496,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "rate-limits:p4:top:4",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 0.2761,
+        "text_snippet": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is shared across the REST API and GraphQL API.\nMake too many requests to a single endpoint per minute. No more than 900 points per\nminute are allowed for REST API endpoints, and no more than 2,000 points "
+      },
+      {
+        "chunk_id": "rate-limits:p3:top:3",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -0.648,
+        "text_snippet": "Primary rate limits for GitHub App user access tokens (as opposed to installation access\ntokens) are dictated by the primary rate limits for the authenticated user. This rate limit is\ncombined with any requests that another GitHub App or OAuth app makes on that user's\nbehalf and any requests that th"
+      },
+      {
+        "chunk_id": "rate-limits:p6:top:6",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -1.7856,
+        "text_snippet": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best "
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 1054.2,
+    "gen_ms": 2026.1,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c22",
+    "mode": "mode4_cross_document",
+    "regression": true,
+    "source_trace_id": "4335c1b8-95c8-4303-8988-52ef0f1da6f4",
+    "question": "What is the difference between the REST API's x-ratelimit-reset information and the SDK's RateLimitError.reset_at property?",
+    "expected_chunk_id": "rate-limits:p5:top:5 + errors-reference:ratelimiterror:2",
+    "key_fact": "x-ratelimit-reset is a response header (UTC epoch seconds); RateLimitError.reset_at is a property on the SDK's thrown error object",
+    "notes": "Real trace: all 5 retrieved chunks came from rate-limits.pdf; errors-reference.md contributed nothing, making the comparison structurally impossible.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 2.9196,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 1.7505,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "getting-started:p9:top:13",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -0.2837,
+        "text_snippet": "Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-\nRateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-\nGitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset\nCache-Control: private, max-age=60, s-maxage=60\nContent-Security-Policy: de"
+      },
+      {
+        "chunk_id": "getting-started:p8:top:12",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -1.1245,
+        "text_snippet": "The following example uses the \"Create an issue\" endpoint to create a new issue in the\noctocat/Spoon-Knife repository. In the response, find the html_url of your issue, and\nnavigate to your issue in the browser.\nShell\ngh api --method POST /repos/octocat/Spoon-Knife/issues \\\n--header \"Accept: applica"
+      },
+      {
+        "chunk_id": "rate-limits:p4:top:4",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -2.1049,
+        "text_snippet": "Make too many concurrent requests. No more than 100 concurrent requests are allowed.\nThis limit is shared across the REST API and GraphQL API.\nMake too many requests to a single endpoint per minute. No more than 900 points per\nminute are allowed for REST API endpoints, and no more than 2,000 points "
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 712.6,
+    "gen_ms": 2118.5,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c23",
+    "mode": "mode4_cross_document",
+    "regression": false,
+    "question": "How does the SDK's default max_retries in client.send() relate to the secondary rate limits described in the REST API rate-limits guide?",
+    "expected_chunk_id": "client-reference:clientsend:2 + rate-limits:p3-4",
+    "key_fact": "client.send() retries up to 3 times by default with exponential backoff via retry_backoff_ms; the REST API's secondary limits (100 concurrent, 900 points/min) are what those retries are guarding against",
+    "notes": "Constructed cross-document case pairing v3 SDK retry behavior with the v2 REST secondary-limit guide.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 4.1417,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "rate-limits-reference:rate-limits-reference-sdk-v3:0",
+        "source_file": "rate-limits-reference.md",
+        "distance": 1.0,
+        "rerank_score": 2.106,
+        "text_snippet": "# Rate limits reference (SDK v3)\n\nThis page documents the rate-limit helpers in OctoKit SDK v3. The SDK enforces\nthe same primary rate limits as the REST API. The primary rate limit for\nunauthenticated requests is 60 requests per hour. Authenticated requests using\na personal access token are limited"
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 1.3321,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "rate-limits:p6:top:6",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 0.5149,
+        "text_snippet": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best "
+      },
+      {
+        "chunk_id": "errors-reference:ratelimiterror:2",
+        "source_file": "errors-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.463,
+        "text_snippet": "## RateLimitError\n\nThrown when the client exhausts its rate limit and a request is rejected with\nHTTP 429. It is raised after the built-in retries are exhausted.\n\n| Property | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | yes |\n| status | number | 429 | yes |\n| reset_at | st"
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 667.7,
+    "gen_ms": 4297.7,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c24",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "question": "Does the REST API automatically retry a request if it fails?",
+    "expected_chunk_id": "N/A - plain REST API docs describe no built-in retry",
+    "key_fact": "The raw REST API itself has no built-in retry; automatic retry with backoff (retry_backoff_ms, max_retries) is a v3 SDK client.send() feature, not a REST API behavior",
+    "notes": "New mode this week \u2014 DevRel's complaint that v2 (raw REST) and v3 (SDK) get conflated. A version-confused answer applies the SDK's retry defaults to the plain REST API.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 4.0482,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.5989,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "getting-started:p2:top:2",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 1.4595,
+        "text_snippet": "Parameters\nEvery request to the REST API includes an HTTP method and a path. Depending on the REST\nAPI endpoint, you might also need to specify request headers, authentication information,\nquery parameters, or body parameters.\nThe REST API reference documentation describes the HTTP method, path, and"
+      },
+      {
+        "chunk_id": "getting-started:p5:top:5",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 1.4576,
+        "text_snippet": "1\n2\nthe issue body, users to assign to the new issue, or labels to apply to the new issue. For an\nexample of a request that uses body parameters, see Making a request.\nYou must authenticate your request to pass body parameters. For more information, see\nAuthentication.\nQuery parameters\nQuery paramet"
+      },
+      {
+        "chunk_id": "rate-limits:p6:top:6",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": 0.9735,
+        "text_snippet": "secondary rate limit, wait for an exponentially increasing amount of time between retries, and\nthrow an error after a specific number of retries.\nContinuing to make requests while you are rate limited may result in the banning of your\nintegration.\nStaying under the rate limit\nYou should follow best "
+      }
+    ],
+    "answer": "Yes. The SDK\u2019s low\u2011level `client.send()` method retries failed requests automatically: it has an `enable_retries` boolean that defaults to **true**, and a `max_retries` default of\u202f3\u202f[client-reference:clientsend:2].",
+    "retrieval_ms": 618.7,
+    "gen_ms": 5917.9,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c25",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "question": "What is the default User-Agent used when making a request to the GitHub REST API?",
+    "expected_chunk_id": "N/A - v2 guide has no SDK default; v3 OctoClient defaults to octokit.js/v3.0.0",
+    "key_fact": "The plain REST API has no default User-Agent (a valid one is required or the request is rejected); the v3 SDK's OctoClient defaults user_agent to octokit.js/v3.0.0",
+    "notes": "Tests whether the answer conflates the v3 SDK constructor default with the version-agnostic REST API requirement.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "getting-started:p3:top:3",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 6.2999,
+        "text_snippet": "example of a request that uses headers, see Making a request.\nAccept\nMost GitHub REST API endpoints specify that you should pass an Accept header with a value\nof application/vnd.github+json . The value of the Accept header is a media type. For more\ninformation about media types, see Media types.\nX-G"
+      },
+      {
+        "chunk_id": "getting-started:p5:top:5",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 5.0065,
+        "text_snippet": "1\n2\nthe issue body, users to assign to the new issue, or labels to apply to the new issue. For an\nexample of a request that uses body parameters, see Making a request.\nYou must authenticate your request to pass body parameters. For more information, see\nAuthentication.\nQuery parameters\nQuery paramet"
+      },
+      {
+        "chunk_id": "getting-started:p1:in-this-article:1",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.7,
+        "text_snippet": "### In this article\n\nIntroduction\nThis article describes how to use the GitHub REST API with GitHub CLI, curl , or JavaScript.\nFor a quickstart guide, see Quickstart for GitHub REST API.\nAbout requests to the REST API\nThis section describes the elements that make up an API request:\nHTTP method\nPath\n"
+      },
+      {
+        "chunk_id": "getting-started:p4:top:4",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.4059,
+        "text_snippet": "There are custom media types that you can use with some endpoints. For example, the REST\nAPI to manage commits and pull requests support the media types diff , patch , and sha .\nThe media types full , raw , text , or html are used by some other endpoints.\nAll custom media types for GitHub look like "
+      },
+      {
+        "chunk_id": "getting-started:p6:3-choose-an-endpoint-for-your-request:9",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": 3.0489,
+        "text_snippet": "## 3. Choose an endpoint for your request\n\nChoose an endpoint to make a request to. You can explore GitHub's REST API\ndocumentation to discover endpoints that you can use to interact with GitHub.\nIdentify the HTTP method and path of the endpoint. You will send these with your request.\nFor more infor"
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 885.3,
+    "gen_ms": 5471.6,
+    "model": "groq/compound"
+  },
+  {
+    "id": "c26",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "question": "If I call client.send() to hit a v2 REST endpoint directly with curl instead of the SDK, do I still get automatic retries?",
+    "expected_chunk_id": "N/A - client.send() is v3-SDK-only",
+    "key_fact": "No \u2014 client.send()'s retry_backoff_ms/max_retries behavior belongs to the v3 SDK method itself; a raw curl request to the REST API has no SDK wrapping it and gets no automatic retry",
+    "notes": "Deliberately mixes SDK method name with a non-SDK transport (curl) to probe whether the model keeps the two mechanisms straight.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "client-reference:clientsend:2",
+        "source_file": "client-reference.md",
+        "distance": 1.0,
+        "rerank_score": 0.5562,
+        "text_snippet": "## Client.send()\n\n`client.send()` is the low-level method that executes a single HTTP request\nagainst the REST API. Every higher-level SDK method is built on top of\n`send()`. It returns a Promise that resolves to the response body.\n\n| Parameter | Type | Default | Required |\n|---|---|---|---|\n| endpo"
+      },
+      {
+        "chunk_id": "authentication:p1:in-this-article:2",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.0747,
+        "text_snippet": "About authentication\nMany REST API endpoints require authentication or return additional information if you are\nauthenticated. Additionally, you can make more requests per hour when you are authenticated.\nTo authenticate your request, you will need to provide an authentication token with the\nrequire"
+      },
+      {
+        "chunk_id": "rate-limits:p5:top:5",
+        "source_file": "rate-limits.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.4996,
+        "text_snippet": "Checking the status of your rate limit\nYou can use the headers that are sent with each response to determine the current status of\nyour primary rate limit.\nx-ratelimit-limit The maximum number of requests that you can\nmake per hour\nx-ratelimit-remaining The number of requests remaining in the curren"
+      },
+      {
+        "chunk_id": "getting-started:p4:top:4",
+        "source_file": "getting-started.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.6431,
+        "text_snippet": "There are custom media types that you can use with some endpoints. For example, the REST\nAPI to manage commits and pull requests support the media types diff , patch , and sha .\nThe media types full , raw , text , or html are used by some other endpoints.\nAll custom media types for GitHub look like "
+      },
+      {
+        "chunk_id": "authentication:p5:top:7",
+        "source_file": "authentication.pdf",
+        "distance": 1.0,
+        "rerank_score": -5.9526,
+        "text_snippet": "Authenticating in a GitHub Actions workflow using curl\nTo make an authenticated request to the API in a GitHub Actions workflow using curl , you\ncan store the value of GITHUB_TOKEN as an environment variable, and use the run keyword to\nexecute a curl request to the API. For more information about th"
+      }
+    ],
+    "answer": "I don't know based on the provided documents.",
+    "retrieval_ms": 1029.1,
+    "gen_ms": 5716.2,
+    "model": "groq/compound"
+  }
+]

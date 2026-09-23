@@ -1,0 +1,763 @@
+{
+  "rows": [
+    {
+      "race_id": "easy_01",
+      "level": "easy",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: The default value for the **mode** parameter is `\"markdown\"`.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "render_markdown"
+        ]
+      ],
+      "steps_taken": 1,
+      "min_steps": 1,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 1,
+      "total_steps": 1,
+      "arg_valid_steps": 1,
+      "total_arg_steps": 1,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 1930,
+      "total_cost_usd": 0.000343,
+      "wall_clock_s": 1.84,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 703,
+          "completion_tokens": 74,
+          "cumulative_tokens": 777,
+          "cumulative_cost_usd": 0.00015
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"render_markdown\"}",
+          "result_preview": "{'found': True, 'text': 'Render a Markdown document\\nApplies to API version 2025-06-01 and later.\\nRenders a Markdown document server-side, returning either an HTML fragment or raw text\\ndepending on "
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 1108,
+          "completion_tokens": 45,
+          "cumulative_tokens": 1930,
+          "cumulative_cost_usd": 0.000343
+        }
+      ]
+    },
+    {
+      "race_id": "easy_02",
+      "level": "easy",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: The Maven group ID for downloading the Swagger Codegen CLI jar in version\u202f3.x is **`io.swagger.codegen.v3`**.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "search_docs"
+      ],
+      "tool_pairs": [],
+      "steps_taken": 1,
+      "min_steps": 1,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 1,
+      "total_steps": 1,
+      "arg_valid_steps": 0,
+      "total_arg_steps": 0,
+      "trajectory_pass": false,
+      "failure_mode": "incomplete_grounding",
+      "total_tokens": 2966,
+      "total_cost_usd": 0.000553,
+      "wall_clock_s": 1.77,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 696,
+          "completion_tokens": 99,
+          "cumulative_tokens": 795,
+          "cumulative_cost_usd": 0.000164
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "search_docs",
+          "args": "{\"query\":\"Swagger Codegen CLI jar Maven group id 3.x\"}",
+          "result_preview": "[{'text': 'SwaggerCodegenReference-v3\\nContents\\nSwagger Codegen CLI \u2014 general options (v3) 1\\nJava client generator \u2014 configuration options (v3) 3\\nPython generator \u2014 config options 4\\nThe .swagger-c"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 2029,
+          "completion_tokens": 142,
+          "cumulative_tokens": 2966,
+          "cumulative_cost_usd": 0.000553
+        }
+      ]
+    },
+    {
+      "race_id": "easy_13",
+      "level": "easy",
+      "is_negative_case": true,
+      "status": "budget_exceeded",
+      "budget_hit": "max_tokens",
+      "answer": null,
+      "outcome_pass": false,
+      "outcome_verdict": "FAIL",
+      "tool_sequence": [
+        "search_docs",
+        "search_docs",
+        "search_docs"
+      ],
+      "tool_pairs": [],
+      "steps_taken": 3,
+      "min_steps": 1,
+      "step_efficiency": 3.0,
+      "tool_choice_valid_steps": 3,
+      "total_steps": 3,
+      "arg_valid_steps": 0,
+      "total_arg_steps": 0,
+      "trajectory_pass": true,
+      "failure_mode": "budget_exhausted_no_answer",
+      "total_tokens": 8923,
+      "total_cost_usd": 0.001578,
+      "wall_clock_s": 35.167,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 701,
+          "completion_tokens": 88,
+          "cumulative_tokens": 789,
+          "cumulative_cost_usd": 0.000158
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "search_docs",
+          "args": "{\"query\":\"unauthenticated GraphQL queries rate limit 2025-06-01\"}",
+          "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 1642,
+          "completion_tokens": 120,
+          "cumulative_tokens": 2551,
+          "cumulative_cost_usd": 0.000476
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "search_docs",
+          "args": "{\"query\":\"rate limit unauthenticated GraphQL 2025-06-01\"}",
+          "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 2495,
+          "completion_tokens": 160,
+          "cumulative_tokens": 5206,
+          "cumulative_cost_usd": 0.000946
+        },
+        {
+          "event": "tool_call",
+          "iteration": 3,
+          "tool": "search_docs",
+          "args": "{\"query\":\"GraphQL rate limit unauthenticated\"}",
+          "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 4,
+          "prompt_tokens": 3552,
+          "completion_tokens": 165,
+          "cumulative_tokens": 8923,
+          "cumulative_cost_usd": 0.001578
+        },
+        {
+          "event": "budget_exceeded",
+          "budget": "max_tokens",
+          "total_tokens": 8923
+        }
+      ]
+    },
+    {
+      "race_id": "medium_01",
+      "level": "medium",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: The deprecated `assignee` field is replaced by the `assignees` parameter, which accepts an array of user logins.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "search_docs"
+      ],
+      "tool_pairs": [],
+      "steps_taken": 1,
+      "min_steps": 1,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 1,
+      "total_steps": 1,
+      "arg_valid_steps": 0,
+      "total_arg_steps": 0,
+      "trajectory_pass": false,
+      "failure_mode": "incomplete_grounding",
+      "total_tokens": 2693,
+      "total_cost_usd": 0.000511,
+      "wall_clock_s": 20.712,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 703,
+          "completion_tokens": 126,
+          "cumulative_tokens": 829,
+          "cumulative_cost_usd": 0.000181
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "search_docs",
+          "args": "{\"query\":\"2025-06-01 create_issue assignee deprecated single assignee field replaces\"}",
+          "result_preview": "[{'text': 'Create an issue\\nPOST /repos/{owner}/{repo}/issues\\nAPI version 2025-06-01\\nCreates an issue on the specified repository . Any user with pull access can create one.\\nStarting in this versio"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 1751,
+          "completion_tokens": 113,
+          "cumulative_tokens": 2693,
+          "cumulative_cost_usd": 0.000511
+        }
+      ]
+    },
+    {
+      "race_id": "medium_07",
+      "level": "medium",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: In API version\u202f2025\u201106\u201101 the `visibility` field is an enum that supports three values: **public**, **private**, and **internal**. The `internal` option is new (the prior version only used a boolean `private` field).",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "check_deprecation",
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "check_deprecation",
+          "2025-06-01",
+          "create_repository"
+        ],
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "create_repository"
+        ]
+      ],
+      "steps_taken": 2,
+      "min_steps": 1,
+      "step_efficiency": 2.0,
+      "tool_choice_valid_steps": 2,
+      "total_steps": 2,
+      "arg_valid_steps": 2,
+      "total_arg_steps": 2,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 3108,
+      "total_cost_usd": 0.000642,
+      "wall_clock_s": 17.399,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 700,
+          "completion_tokens": 113,
+          "cumulative_tokens": 813,
+          "cumulative_cost_usd": 0.000173
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "check_deprecation",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_repository\"}",
+          "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\\nnizations offering \u201cinternal\u201d visibility had no "
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 830,
+          "completion_tokens": 143,
+          "cumulative_tokens": 1786,
+          "cumulative_cost_usd": 0.000383
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_repository\"}",
+          "result_preview": "{'found': True, 'text': 'Create a repository for the authenticated user\\nPOST /user/repos \u2014 API version 2025-06-01\\nWhat changed\\nAs of this version, has_issues defaults to true only for public reposi"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 1187,
+          "completion_tokens": 135,
+          "cumulative_tokens": 3108,
+          "cumulative_cost_usd": 0.000642
+        }
+      ]
+    },
+    {
+      "race_id": "medium_13",
+      "level": "medium",
+      "is_negative_case": true,
+      "status": "budget_exceeded",
+      "budget_hit": "max_tokens",
+      "answer": null,
+      "outcome_pass": false,
+      "outcome_verdict": "FAIL",
+      "tool_sequence": [
+        "search_docs",
+        "search_docs",
+        "search_docs"
+      ],
+      "tool_pairs": [],
+      "steps_taken": 3,
+      "min_steps": 1,
+      "step_efficiency": 3.0,
+      "tool_choice_valid_steps": 3,
+      "total_steps": 3,
+      "arg_valid_steps": 0,
+      "total_arg_steps": 0,
+      "trajectory_pass": true,
+      "failure_mode": "budget_exhausted_no_answer",
+      "total_tokens": 10109,
+      "total_cost_usd": 0.001641,
+      "wall_clock_s": 74.121,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 699,
+          "completion_tokens": 101,
+          "cumulative_tokens": 800,
+          "cumulative_cost_usd": 0.000165
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "search_docs",
+          "args": "{\"query\":\"Swagger Codegen 3.x auto format generated Python code Black flag\"}",
+          "result_preview": "[{'text': 'SwaggerCodegenReference-v3\\nContents\\nSwagger Codegen CLI \u2014 general options (v3) 1\\nJava client generator \u2014 configuration options (v3) 3\\nPython generator \u2014 config options 4\\nThe .swagger-c"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 1927,
+          "completion_tokens": 74,
+          "cumulative_tokens": 2801,
+          "cumulative_cost_usd": 0.000499
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "search_docs",
+          "args": "{\"query\":\"Black formatter flag swagger codegen 3.x\"}",
+          "result_preview": "[{'text': 'SwaggerCodegenReference-v3\\nContents\\nSwagger Codegen CLI \u2014 general options (v3) 1\\nJava client generator \u2014 configuration options (v3) 3\\nPython generator \u2014 config options 4\\nThe .swagger-c"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 3020,
+          "completion_tokens": 51,
+          "cumulative_tokens": 5872,
+          "cumulative_cost_usd": 0.000982
+        },
+        {
+          "event": "tool_call",
+          "iteration": 3,
+          "tool": "search_docs",
+          "args": "{\"query\":\"black formatter swagger codegen python\"}",
+          "result_preview": "[{'text': 'SwaggerCodegenReference-v2\\nContents\\nSwagger Codegen CLI \u2014 general options 1\\nJava client generator \u2014 configuration options 2\\npython generator config options 3\\n.swagger-codegen-ignore 4\\"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 4,
+          "prompt_tokens": 4186,
+          "completion_tokens": 51,
+          "cumulative_tokens": 10109,
+          "cumulative_cost_usd": 0.001641
+        },
+        {
+          "event": "budget_exceeded",
+          "budget": "max_tokens",
+          "total_tokens": 10109
+        }
+      ]
+    },
+    {
+      "race_id": "hard_01",
+      "level": "hard",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: In the 2022\u201111\u201128 version of the **Render Markdown** endpoint, the `context` parameter was a simple string (e.g., `\"octocat/Hello-World\"`). It was used only as a plain identifier for repository\u2011scoped linking in GFM mode.\n\nIn the 2025\u201106\u201101 version, `context` was changed to a **structured object** instead of a plain string. The object must contain two fields:\n\n- `owner` (string) \u2013 the repository owner name  \n- `repo` (string) \u2013 the repository name  \n\nThis object format allows the API to more explicitly identify the repository for reference\u2011link resolution. Additionally, the newer version introduced a new `wrap_tables` boolean flag, but the change to `context` itself is the shift from a plain string to an `{ \"owner\": \"...\", \"repo\": \"...\" }` object.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "check_deprecation",
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "check_deprecation",
+          "2025-06-01",
+          "render_markdown"
+        ],
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "render_markdown"
+        ]
+      ],
+      "steps_taken": 2,
+      "min_steps": 2,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 2,
+      "total_steps": 2,
+      "arg_valid_steps": 2,
+      "total_arg_steps": 2,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 3291,
+      "total_cost_usd": 0.000711,
+      "wall_clock_s": 19.492,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 707,
+          "completion_tokens": 131,
+          "cumulative_tokens": 838,
+          "cumulative_cost_usd": 0.000185
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "check_deprecation",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"render_markdown\"}",
+          "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nThe prior version of this endpoint accepted only text, mode, and context, where context was a\\nplain string (e.g. \u201doctocat/Hello-World\u201d) rather "
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 848,
+          "completion_tokens": 101,
+          "cumulative_tokens": 1787,
+          "cumulative_cost_usd": 0.000372
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"render_markdown\"}",
+          "result_preview": "{'found': True, 'text': 'Render a Markdown document\\nApplies to API version 2025-06-01 and later.\\nRenders a Markdown document server-side, returning either an HTML fragment or raw text\\ndepending on "
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 1253,
+          "completion_tokens": 251,
+          "cumulative_tokens": 3291,
+          "cumulative_cost_usd": 0.000711
+        }
+      ]
+    },
+    {
+      "race_id": "hard_04",
+      "level": "hard",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: In the 2022\u201111\u201128 version of the GitHub REST API, the\u202f`maintainer_can_modify`\u202ffield could **not** be supplied when a pull request was created. It always defaulted to\u202f`true`\u202fand could only be changed later with a separate\u202fPATCH\u202frequest to the pull\u2011request endpoint.\n\nIn the 2025\u201106\u201101 version, the API was updated so that\u202f`maintainer_can_modify`\u202fis **settable at creation time**. The field remains optional, defaults to\u202f`true`, but you can now explicitly set it to\u202f`false`\u202fin the POST\u202f`/repos/{owner}/{repo}/pulls`\u202frequest body (e.g., `\"maintainer_can_modify\": false`). This change eliminates the need for a follow\u2011up PATCH call to adjust the setting.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "check_deprecation",
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "check_deprecation",
+          "2025-06-01",
+          "create_pull_request"
+        ],
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "create_pull_request"
+        ]
+      ],
+      "steps_taken": 2,
+      "min_steps": 2,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 2,
+      "total_steps": 2,
+      "arg_valid_steps": 2,
+      "total_arg_steps": 2,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 3445,
+      "total_cost_usd": 0.000816,
+      "wall_clock_s": 24.068,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 708,
+          "completion_tokens": 157,
+          "cumulative_tokens": 865,
+          "cumulative_cost_usd": 0.0002
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "check_deprecation",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_pull_request\"}",
+          "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nmaintainer_can_modify could not be set at creation time in the prior version \u2014 it was true by\\ndefault with no way to override it until a follow"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 860,
+          "completion_tokens": 134,
+          "cumulative_tokens": 1859,
+          "cumulative_cost_usd": 0.00041
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_pull_request\"}",
+          "result_preview": "{'found': True, 'text': 'Create a pull request\\nVersion 2025-06-01 \u00b7 reference\\nOverview\\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\\nfying maintaine"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 1211,
+          "completion_tokens": 375,
+          "cumulative_tokens": 3445,
+          "cumulative_cost_usd": 0.000816
+        }
+      ]
+    },
+    {
+      "race_id": "hard_06",
+      "level": "hard",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: In the 2022\u201111\u201128 version of the **Create a release** endpoint there was no `make_latest` field. Whether a release appeared as the repository\u2019s \u201cLatest\u201d release was decided by an internal, undocumented heuristic that looked only at the release\u2019s publish date together with its `draft` and `prerelease` flags. This heuristic could incorrectly mark an older, already\u2011published release as \u201cLatest\u201d if a newer release was still a draft or prerelease.\n\nStarting with API version **2025\u201106\u201101**, the endpoint adds a new `make_latest` parameter (type\u202fenum, default\u202f`true`). The possible values are:\n\n| Value   | Meaning |\n|---------|---------|\n| `true`  | Explicitly mark this release as the repository\u2019s \u201cLatest\u201d release. |\n| `false` | Do **not** mark this release as \u201cLatest\u201d (the repository\u2019s existing latest release remains unchanged). |\n| `legacy`| Preserve the old behavior (use the internal heuristic). |\n\nBy providing `make_latest`, callers now have explicit, documented control over the \u201cLatest\u201d status instead of relying on the previous hidden heuristic. This replaces the undocumented logic with a clear, API\u2011driven option.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "search_docs",
+        "check_deprecation",
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "check_deprecation",
+          "2025-06-01",
+          "create_release"
+        ],
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "create_release"
+        ]
+      ],
+      "steps_taken": 3,
+      "min_steps": 2,
+      "step_efficiency": 1.5,
+      "tool_choice_valid_steps": 3,
+      "total_steps": 3,
+      "arg_valid_steps": 2,
+      "total_arg_steps": 2,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 7863,
+      "total_cost_usd": 0.001581,
+      "wall_clock_s": 43.89,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 710,
+          "completion_tokens": 132,
+          "cumulative_tokens": 842,
+          "cumulative_cost_usd": 0.000186
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "search_docs",
+          "args": "{\"query\":\"make_latest parameter release creation 2025-06-01 undocumented heuristic 2022-11-28\"}",
+          "result_preview": "[{'text': 'Example\\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\\\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\\\\n-d \\'{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_rel"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 1831,
+          "completion_tokens": 193,
+          "cumulative_tokens": 2866,
+          "cumulative_cost_usd": 0.000576
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "check_deprecation",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_release\"}",
+          "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nThe prior version had no discussion_category_name field, so linking a discussion to a release\\nrequired a separate manual step in the UI after t"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 1993,
+          "completion_tokens": 182,
+          "cumulative_tokens": 5041,
+          "cumulative_cost_usd": 0.000984
+        },
+        {
+          "event": "tool_call",
+          "iteration": 3,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_release\"}",
+          "result_preview": "{'found': True, 'text': 'Create a release\\nAPI version 2025-06-01\\nSummary\\nPublishes a new release against an existing or new tag. As of this version, discussion_categ\\nory_name can be supplied to au"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 4,
+          "prompt_tokens": 2436,
+          "completion_tokens": 386,
+          "cumulative_tokens": 7863,
+          "cumulative_cost_usd": 0.001581
+        }
+      ]
+    },
+    {
+      "race_id": "hard_11",
+      "level": "hard",
+      "is_negative_case": false,
+      "status": "pass",
+      "budget_hit": null,
+      "answer": "ANSWER: In the 2022\u201111\u201128 version of the **Create Issue** endpoint there was no `type` field at all, so the issue\u2019s type could not be set when the issue was created; you had to make a separate request after creation to change the type.  \n\nIn the 2025\u201106\u201101 version a new optional `type` string field was added to the request body. This lets you specify the issue type (e.g., \u201cBug\u201d, \u201cFeature\u201d, etc.) directly when you create the issue, eliminating the need for a follow\u2011up call.",
+      "outcome_pass": true,
+      "outcome_verdict": "PASS",
+      "tool_sequence": [
+        "check_deprecation",
+        "get_openapi_spec"
+      ],
+      "tool_pairs": [
+        [
+          "check_deprecation",
+          "2025-06-01",
+          "create_issue"
+        ],
+        [
+          "get_openapi_spec",
+          "2025-06-01",
+          "create_issue"
+        ]
+      ],
+      "steps_taken": 2,
+      "min_steps": 2,
+      "step_efficiency": 1.0,
+      "tool_choice_valid_steps": 2,
+      "total_steps": 2,
+      "arg_valid_steps": 2,
+      "total_arg_steps": 2,
+      "trajectory_pass": true,
+      "failure_mode": "clean_pass",
+      "total_tokens": 3322,
+      "total_cost_usd": 0.000764,
+      "wall_clock_s": 17.043,
+      "log": [
+        {
+          "event": "llm_call",
+          "iteration": 1,
+          "prompt_tokens": 705,
+          "completion_tokens": 178,
+          "cumulative_tokens": 883,
+          "cumulative_cost_usd": 0.000213
+        },
+        {
+          "event": "tool_call",
+          "iteration": 1,
+          "tool": "check_deprecation",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_issue\"}",
+          "result_preview": "{'found': True, 'text': 'Previous version (2022-11-28)\\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\\nsignees array, so an issue could only be assigned"
+        },
+        {
+          "event": "llm_call",
+          "iteration": 2,
+          "prompt_tokens": 839,
+          "completion_tokens": 150,
+          "cumulative_tokens": 1872,
+          "cumulative_cost_usd": 0.000428
+        },
+        {
+          "event": "tool_call",
+          "iteration": 2,
+          "tool": "get_openapi_spec",
+          "args": "{\"api_version\":\"2025-06-01\",\"endpoint\":\"create_issue\"}",
+          "result_preview": "{'found': True, 'text': 'Create an issue\\nPOST /repos/{owner}/{repo}/issues\\nAPI version 2025-06-01\\nCreates an issue on the specified repository . Any user with pull access can create one.\\nStarting "
+        },
+        {
+          "event": "llm_call",
+          "iteration": 3,
+          "prompt_tokens": 1188,
+          "completion_tokens": 262,
+          "cumulative_tokens": 3322,
+          "cumulative_cost_usd": 0.000764
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "n": 10,
+    "outcome_pass_rate": 0.8,
+    "trajectory_pass_rate": 0.8,
+    "tool_choice_accuracy": 1.0,
+    "argument_validity_rate": 1.0,
+    "step_efficiency_mean": 1.55,
+    "cost_p50_usd": 0.000738,
+    "cost_max_usd": 0.001641,
+    "mode_counts": {
+      "budget_exhausted_no_answer": 2,
+      "hallucinated_argument": 0,
+      "no_tool_used": 0,
+      "incomplete_grounding": 2,
+      "search_thrash_loop": 0,
+      "clean_pass": 6
+    }
+  }
+}

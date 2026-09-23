@@ -1,0 +1,37 @@
+{
+  "baseline_hit_rate_at_3": 83.3,
+  "baseline_p50_latency_ms": 36.5,
+  "failures": [
+    {
+      "question_id": "q8",
+      "question": "How do you create an issue using the GitHub REST API with gh CLI?",
+      "expected_chunk_id": "getting-started:p8:top:12",
+      "label": "R",
+      "evidence": "Expected chunk getting-started:p8:top:12 (contains 'gh api --method POST /repos/REPO-OWNER/REPO-NAME/issues' example) exists in corpus but ranks #6+ at distance >0.25. Top-3 returns intro page (p1), auth (p5), endpoint selection (p6) - none contain the issue creation code example.",
+      "retrieved_top3": [
+        "getting-started:p1:top:0 (intro page)",
+        "getting-started:p5:2-authenticate:7 (auth)",
+        "getting-started:p6:3-choose-an-endpoint-for-your-request:9 (endpoint selection)"
+      ],
+      "expected_rank": "6+"
+    },
+    {
+      "question_id": "q9",
+      "question": "What is the default value of max_retries in the OctoClient send method?",
+      "expected_chunk_id": "client-reference:clientsend:2",
+      "label": "R",
+      "evidence": "Expected chunk client-reference:clientsend:2 (contains parameter table with 'max_retries | number | 3 | no') exists in corpus but ranks #4 at distance 0.3005. Top-3 returns octoclient-constructor (p1), ratelimiterror (errors), getting-started rate limits - none contain the Client.send parameter table.",
+      "retrieved_top3": [
+        "client-reference:octoclient-constructor:1 (constructor params)",
+        "errors-reference:ratelimiterror:2 (error class)",
+        "getting-started:p9:top:13 (rate limit headers)"
+      ],
+      "expected_rank": "4"
+    }
+  ],
+  "tally": {
+    "R": 2,
+    "G": 0,
+    "Not_In_Corpus": 0
+  }
+}

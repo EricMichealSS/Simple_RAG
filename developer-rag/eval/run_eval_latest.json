@@ -1,0 +1,276 @@
+[
+  {
+    "id": "c01",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c02",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c03",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c04",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c05",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c06",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c07",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c08",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": false,
+    "judge_pass": true,
+    "overall_pass": false,
+    "failed_assertions": [
+      "endpoints_and_symbols_exist"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c09",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c10",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c11",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c12",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c13",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c14",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c15",
+    "mode": "baseline",
+    "regression": false,
+    "assertions_pass": false,
+    "judge_pass": true,
+    "overall_pass": false,
+    "failed_assertions": [
+      "api_version_stated"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c16",
+    "mode": "mode1_groq_error",
+    "regression": true,
+    "assertions_pass": true,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c17",
+    "mode": "mode1_groq_error",
+    "regression": true,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c18",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "regression": true,
+    "assertions_pass": false,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [
+      "api_version_stated"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c19",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "regression": false,
+    "assertions_pass": false,
+    "judge_pass": true,
+    "overall_pass": false,
+    "failed_assertions": [
+      "api_version_stated"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c20",
+    "mode": "mode3_answerable_wrong_chunks",
+    "regression": true,
+    "assertions_pass": false,
+    "judge_pass": true,
+    "overall_pass": false,
+    "failed_assertions": [
+      "api_version_stated"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c21",
+    "mode": "mode3_answerable_wrong_chunks",
+    "regression": true,
+    "assertions_pass": false,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [
+      "api_version_stated"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c22",
+    "mode": "mode4_cross_document",
+    "regression": true,
+    "assertions_pass": false,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [
+      "endpoints_and_symbols_exist"
+    ],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c23",
+    "mode": "mode4_cross_document",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c24",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c25",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": true,
+    "overall_pass": true,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  },
+  {
+    "id": "c26",
+    "mode": "version_confusion_w6",
+    "regression": false,
+    "assertions_pass": true,
+    "judge_pass": false,
+    "overall_pass": false,
+    "failed_assertions": [],
+    "distance_guard_clean": false
+  }
+]

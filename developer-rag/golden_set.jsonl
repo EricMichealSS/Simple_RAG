@@ -1,0 +1,12 @@
+{"id": "q1", "question": "What is the default value of retry_backoff_ms in the OctoClient send method?", "expected_chunk_id": "client-reference:clientsend:2", "token_type": "symbol", "token": "retry_backoff_ms"}
+{"id": "q2", "question": "What is the HTTP status code for RateLimitError in the OctoKit SDK v3?", "expected_chunk_id": "errors-reference:ratelimiterror:2", "token_type": "error_code", "token": "429"}
+{"id": "q3", "question": "What is the primary rate limit for unauthenticated requests per hour?", "expected_chunk_id": "rate-limits:p2:top:2", "token_type": "symbol", "token": "60 requests per hour"}
+{"id": "q4", "question": "What is the version string for the OctoKit SDK documented in the reference pages?", "expected_chunk_id": "client-reference:octoclient-reference-sdk-v3:0", "token_type": "version_string", "token": "v3"}
+{"id": "q5", "question": "How do you authenticate with a personal access token using curl?", "expected_chunk_id": "authentication:p2:top:3", "token_type": "procedure", "token": null}
+{"id": "q6", "question": "What are the required parameters for creating a webhook in the OctoKit SDK v3?", "expected_chunk_id": "events-reference:createwebhook:1", "token_type": "parameter_list", "token": null}
+{"id": "q7", "question": "What error is thrown when the SDK exceeds the rate limit?", "expected_chunk_id": "errors-reference:ratelimiterror:2", "token_type": "error_class", "token": "RateLimitError"}
+{"id": "q8", "question": "How do you create an issue using the GitHub REST API with gh CLI?", "expected_chunk_id": "getting-started:p8:top:12", "token_type": "procedure", "token": null}
+{"id": "q9", "question": "What is the default value of max_retries in the OctoClient send method?", "expected_chunk_id": "client-reference:clientsend:2", "token_type": "symbol", "token": "max_retries"}
+{"id": "q10", "question": "What is the default scope for getAccessToken in the OctoKit SDK v3?", "expected_chunk_id": "auth-reference:getaccesstoken:2", "token_type": "symbol", "token": "repo, workflow"}
+{"id": "q11", "question": "What is the maximum number of concurrent requests allowed for the GitHub REST API?", "expected_chunk_id": "rate-limits:p4:top:4", "token_type": "symbol", "token": "100 concurrent requests"}
+{"id": "q12", "question": "How do you upload a release asset using the OctoKit SDK v3?", "expected_chunk_id": "uploads-reference:uploadreleaseasset:1", "token_type": "procedure", "token": null}

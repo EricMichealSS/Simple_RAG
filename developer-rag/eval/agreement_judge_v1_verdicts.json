@@ -1,0 +1,37 @@
+{
+  "agreement_pct": 80.8,
+  "agree": 21,
+  "total": 26,
+  "disagreements": [
+    {
+      "id": "c05",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS"
+    },
+    {
+      "id": "c20",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly acknowledges that the provided context does not specify a maximum number of OAuth access\u2011token requests per hour under secondary rate limits."
+    },
+    {
+      "id": "c22",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS"
+    },
+    {
+      "id": "c24",
+      "human": "FAIL",
+      "judge": "PASS",
+      "judge_reasoning": "VERDICT: PASS\nThe answer correctly states that `client.send()` automatically retries failed requests, citing the `enable_retries` and `max_retries` defaults from the provided context."
+    },
+    {
+      "id": "c26",
+      "human": "PASS",
+      "judge": "FAIL",
+      "judge_reasoning": "VERDICT: FAIL\nThe answer incorrectly states uncertainty; the context indicates that automatic retries are a feature of client.send(), not of curl, so the answer is wrong."
+    }
+  ]
+}
