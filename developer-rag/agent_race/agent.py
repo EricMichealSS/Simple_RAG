@@ -46,17 +46,32 @@ exactly this format and do not call any more tools:
 ANSWER: <your final answer>
 """
 
+# Week 8 mitigation for the "incomplete_grounding" failure mode: the baseline
+# prompt above let the model treat search_docs's preview snippet as good
+# enough to answer from directly, skipping the authoritative spec/diff tool
+# entirely -- a right answer today, unverified against a source that WILL
+# change. This is the only change made for the mitigation; everything else
+# (tools, budgets, loop shape) is untouched.
+SYSTEM_PROMPT_MITIGATED = SYSTEM_PROMPT + """
+IMPORTANT: search_docs returns only a short preview snippet to help you locate the right
+(api_version, endpoint) pair -- it is NOT the authoritative record, even when it looks like it
+already contains the answer. Before writing your final ANSWER, you must have called
+get_openapi_spec (for a current-parameter question) and/or check_deprecation (for a
+what-changed/deprecated question) for the specific pair the question is about. Never finalize
+an answer using only a search_docs result.
+"""
+
 
 def _build_default_budgets():
     return dict(max_iterations=8, max_tokens=8000, max_cost_usd=0.01, max_wall_clock_s=60.0)
 
 
-def run_agent(question: str, **budget_overrides) -> dict:
+def run_agent(question: str, mitigated: bool = False, **budget_overrides) -> dict:
     budgets = _build_default_budgets()
     budgets.update(budget_overrides)
 
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": SYSTEM_PROMPT_MITIGATED if mitigated else SYSTEM_PROMPT},
         {"role": "user", "content": question},
     ]
     log = []
