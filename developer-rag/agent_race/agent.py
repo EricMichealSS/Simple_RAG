@@ -61,17 +61,52 @@ what-changed/deprecated question) for the specific pair the question is about. N
 an answer using only a search_docs result.
 """
 
+# Follow-up experiment (not part of the graded Week 8 mitigation -- that was
+# exactly one change, this is a separate, later, optional efficiency test):
+# encourage batching tool calls the model already knows it needs, instead of
+# spending one whole lap per tool.
+PARALLEL_HINT = """
+EFFICIENCY: if you already know, from the question itself, that you will need more than one
+tool call (for example both get_openapi_spec and check_deprecation for the same
+api_version/endpoint), request them together in the same response instead of one at a time
+across multiple turns.
+"""
+
 
 def _build_default_budgets():
     return dict(max_iterations=8, max_tokens=8000, max_cost_usd=0.01, max_wall_clock_s=60.0)
 
 
-def run_agent(question: str, mitigated: bool = False, **budget_overrides) -> dict:
+def _compact_messages(messages: list, keep_last_n_tool_msgs: int = 2, max_len: int = 180) -> list:
+    """Return a COPY of messages where all but the most recent N tool-result
+    messages have their content truncated. The model already made its
+    decision after seeing a tool result once; it doesn't need the full text
+    resent, in full, on every subsequent lap forever. Does not mutate the
+    original `messages` -- the caller keeps the untouched full history for
+    logging/trajectory analysis; only what's sent to the API is compacted.
+    """
+    tool_indices = [i for i, m in enumerate(messages) if m.get("role") == "tool"]
+    keep = set(tool_indices[-keep_last_n_tool_msgs:]) if tool_indices else set()
+    compacted = []
+    for i, m in enumerate(messages):
+        if m.get("role") == "tool" and i not in keep and len(m["content"]) > max_len:
+            compacted.append({**m, "content": m["content"][:max_len] + "...[earlier result, truncated]"})
+        else:
+            compacted.append(m)
+    return compacted
+
+
+def run_agent(question: str, mitigated: bool = False, parallel_hint: bool = False,
+              compact_history: bool = False, **budget_overrides) -> dict:
     budgets = _build_default_budgets()
     budgets.update(budget_overrides)
 
+    system_prompt = SYSTEM_PROMPT_MITIGATED if mitigated else SYSTEM_PROMPT
+    if parallel_hint:
+        system_prompt = system_prompt + PARALLEL_HINT
+
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT_MITIGATED if mitigated else SYSTEM_PROMPT},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": question},
     ]
     log = []
@@ -94,8 +129,9 @@ def run_agent(question: str, mitigated: bool = False, **budget_overrides) -> dic
             log.append({"event": "budget_exceeded", "budget": "max_wall_clock_s", "elapsed_s": round(elapsed, 2)})
             return finish("budget_exceeded", "max_wall_clock_s", iteration=iteration - 1)
 
+        messages_for_api = _compact_messages(messages) if compact_history else messages
         resp = _client.chat.completions.create(
-            model=MODEL, messages=messages, tools=TOOL_SCHEMAS, tool_choice="auto",
+            model=MODEL, messages=messages_for_api, tools=TOOL_SCHEMAS, tool_choice="auto",
             temperature=0.0, max_tokens=1024,
         )
         usage = resp.usage
