@@ -1,0 +1,184 @@
+{
+  "_note": "Raw JSON-RPC captured directly over the real subprocess stdin/stdout pipes to package_registry_server.py -- not re-serialized from SDK objects.",
+  "phases": [
+    {
+      "phase": "initialize",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "wire-capture-script",
+            "version": "0.1"
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {
+            "experimental": {},
+            "prompts": {
+              "listChanged": false
+            },
+            "resources": {
+              "subscribe": false,
+              "listChanged": false
+            },
+            "tools": {
+              "listChanged": false
+            }
+          },
+          "serverInfo": {
+            "name": "package-registry",
+            "version": "1.30.0"
+          }
+        }
+      },
+      "annotations": {
+        "request.jsonrpc": "Protocol version tag -- MCP rides on JSON-RPC 2.0 verbatim, no custom envelope.",
+        "request.id": "Correlates this request with its response; the client picks it, increments per call.",
+        "request.method": "'initialize' -- always the first call; nothing else is legal before this completes.",
+        "request.params.protocolVersion": "The MCP protocol version (not this server's app version) the client speaks.",
+        "request.params.capabilities": "What optional protocol features the CLIENT supports (empty here -- we support nothing extra).",
+        "request.params.clientInfo": "Free-form self-identification, for logging/debugging on the server side.",
+        "response.result.protocolVersion": "The version the SERVER agreed to use for the rest of the session.",
+        "response.result.capabilities": "What optional features the SERVER supports (e.g. whether it supports resources, prompts, notifications).",
+        "response.result.serverInfo": "The server's own self-identification (name/version) -- 'package-registry' per FastMCP(name=...)."
+      }
+    },
+    {
+      "phase": "initialized (notification, no response)",
+      "request": {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized",
+        "params": {}
+      },
+      "response": null,
+      "annotations": {
+        "method": "'notifications/initialized' -- a notification (no 'id' field), meaning the server must not and cannot reply to it. This tells the server the client has finished processing the initialize response and the session is now live."
+      }
+    },
+    {
+      "phase": "tools/list",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list",
+        "params": {}
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "tools": [
+            {
+              "name": "get_package_version",
+              "description": "Look up the latest known version of a package by name.\n\n    Use this first if you don't yet know which specific version to ask\n    check_package_deprecated or get_release_date about.\n    ",
+              "inputSchema": {
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "title": "get_package_versionArguments",
+                "type": "object"
+              }
+            },
+            {
+              "name": "get_release_date",
+              "description": "Look up the release date of one specific (package, version) pair.\n\n    Does not say whether that version is deprecated -- call\n    check_package_deprecated for that.\n    ",
+              "inputSchema": {
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "type": "string"
+                  },
+                  "version": {
+                    "title": "Version",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "version"
+                ],
+                "title": "get_release_dateArguments",
+                "type": "object"
+              }
+            },
+            {
+              "name": "check_package_deprecated",
+              "description": "Check whether one specific (package, version) pair is deprecated, and\n    if so, return the deprecation note explaining what to upgrade to.\n\n    Recoverable by design: an unknown package or version returns a message\n    naming the packages/versions that ARE known, not a bare \"not found\" --\n    so the model can tell \"this doesn't exist\" apart from \"the registry is\n    down,\" per the Week 9 brief's own warning about that exact failure mode.\n    ",
+              "inputSchema": {
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "type": "string"
+                  },
+                  "version": {
+                    "title": "Version",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "version"
+                ],
+                "title": "check_package_deprecatedArguments",
+                "type": "object"
+              }
+            }
+          ]
+        }
+      },
+      "annotations": {
+        "request.method": "'tools/list' -- the actual discovery call. Nothing about these 3 tools is known to the client before this response arrives.",
+        "response.result.tools": "Array of tool definitions: name, description (this IS what the model reads to decide whether to call it), and inputSchema (a real JSON Schema object, auto-generated by FastMCP from the Python function's type hints -- this is why str vs Literal[...] typing matters, see PHASE1/PHASE3 docs)."
+      }
+    },
+    {
+      "phase": "tools/call",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "check_package_deprecated",
+          "arguments": {
+            "name": "octokit",
+            "version": "2.4.0"
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\n  \"found\": true,\n  \"name\": \"octokit\",\n  \"version\": \"2.4.0\",\n  \"deprecated\": true,\n  \"deprecation_note\": \"octokit 2.x is unsupported; upgrade to 3.x, which uses the 2025-06-01 GitHub API version by default.\"\n}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      "annotations": {
+        "request.params.name": "Which discovered tool to invoke -- must match a name from tools/list exactly.",
+        "request.params.arguments": "Arguments the CALLER (the LLM, via the host) chose -- validated by the server against that tool's inputSchema before the function body runs.",
+        "response.result.content": "Array of content blocks (here: one 'text' block, a JSON-encoded string -- this server's Python function returned a dict, so FastMCP wrapped it as exactly one text block; see PHASE2 doc for what happens when a tool returns a list instead).",
+        "response.result.isError": "Protocol-level error flag, separate from any 'error'/'found' key inside the tool's own JSON payload -- this call succeeded at the protocol level even though the underlying package IS deprecated; that's an application-level fact, not a protocol failure."
+      }
+    }
+  ]
+}

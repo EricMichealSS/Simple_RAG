@@ -1,0 +1,158 @@
+[
+  {
+    "id": "c01",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the default value of 1000 ms as shown in the provided context."
+  },
+  {
+    "id": "c02",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that RateLimitError has status 429, matching the provided context."
+  },
+  {
+    "id": "c03",
+    "mode": "baseline",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe assistant did not provide the requested rate limit; it returned an error instead of stating 60 requests per hour."
+  },
+  {
+    "id": "c04",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the SDK version is \u201cv3,\u201d which matches the information in the provided context."
+  },
+  {
+    "id": "c05",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS"
+  },
+  {
+    "id": "c06",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly lists the required parameters (owner, repo, url) as shown in the context."
+  },
+  {
+    "id": "c07",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly identifies that the SDK throws a RateLimitError when the rate limit is exceeded."
+  },
+  {
+    "id": "c08",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer accurately reflects the information provided in the context and correctly explains how to create an issue using the GitHub REST API with the gh CLI."
+  },
+  {
+    "id": "c09",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS"
+  },
+  {
+    "id": "c10",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the default scopes are `repo, workflow`, which matches the provided context."
+  },
+  {
+    "id": "c11",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the maximum concurrent requests as 100, matching the provided context."
+  },
+  {
+    "id": "c12",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer accurately reflects the documented `uploadReleaseAsset` method and its parameters from the provided context."
+  },
+  {
+    "id": "c13",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer accurately describes the `uploadAttachment()` method and its parameters using only the information provided in the context."
+  },
+  {
+    "id": "c14",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS"
+  },
+  {
+    "id": "c15",
+    "mode": "baseline",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states the default poll_interval_ms value of 5000 ms as shown in the provided context."
+  },
+  {
+    "id": "c16",
+    "mode": "mode1_groq_error",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer does not address the question and provides unrelated error information."
+  },
+  {
+    "id": "c17",
+    "mode": "mode1_groq_error",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer does not provide the requested information and instead shows an error."
+  },
+  {
+    "id": "c18",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe context shows that `follow_redirects` defaults to `true`, so the answer is incorrect."
+  },
+  {
+    "id": "c19",
+    "mode": "mode2_relevance_gate_false_refusal",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that the default value of `enable_retries` is `true`, matching the provided context."
+  },
+  {
+    "id": "c20",
+    "mode": "mode3_answerable_wrong_chunks",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly acknowledges that the provided context does not specify a maximum number of OAuth access\u2011token requests per hour under secondary rate limits."
+  },
+  {
+    "id": "c21",
+    "mode": "mode3_answerable_wrong_chunks",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty; the context does not provide the Git LFS limit, so the assistant should have indicated that the information is not present rather than claiming ignorance."
+  },
+  {
+    "id": "c22",
+    "mode": "mode4_cross_document",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS"
+  },
+  {
+    "id": "c23",
+    "mode": "mode4_cross_document",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, whereas the context explains that the SDK\u2019s default max_retries (3) is tied to handling secondary rate limits by retrying with exponential backoff and eventually throwing a RateLimitError."
+  },
+  {
+    "id": "c24",
+    "mode": "version_confusion_w6",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS\nThe answer correctly states that `client.send()` automatically retries failed requests, citing the `enable_retries` and `max_retries` defaults from the provided context."
+  },
+  {
+    "id": "c25",
+    "mode": "version_confusion_w6",
+    "verdict": "PASS",
+    "raw": "VERDICT: PASS"
+  },
+  {
+    "id": "c26",
+    "mode": "version_confusion_w6",
+    "verdict": "FAIL",
+    "raw": "VERDICT: FAIL\nThe answer incorrectly states uncertainty; the context indicates that automatic retries are a feature of client.send(), not of curl, so the answer is wrong."
+  }
+]

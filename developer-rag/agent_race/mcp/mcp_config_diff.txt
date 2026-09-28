@@ -1,0 +1,13 @@
+--- mcp_config.json.phase2_snapshot	2026-09-28 03:07:39
++++ mcp_config.json	2026-09-28 03:04:20
+@@ -3,6 +3,10 @@
+     "docs-search": {
+       "command": "python3",
+       "args": ["docs_search_server.py"]
++    },
++    "package-registry": {
++      "command": "python3",
++      "args": ["package_registry_server.py"]
+     }
+   }
+ }
