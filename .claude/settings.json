@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/softsuave/Downloads/**)",
+      "Bash(textutil -convert txt -stdout \"/Users/softsuave/Downloads/Week6_Module3_Evals_Task_Brief.docx\")"
+    ]
+  }
+}

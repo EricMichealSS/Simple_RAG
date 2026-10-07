@@ -1,0 +1,7 @@
+Prediction written 2026-10-04, BEFORE any squad run.
+
+1. Context re-send multiplier (squad tokens / single tokens): between 2x and 4x.
+2. The single agent wins on cost and latency.
+3. Pass rates land within one question of each other.
+4. The biggest token share is the manager re-reading worker results (the hand-off back into the orchestrator), not the first worker task.
+5. On the failure test, the manager with no failure handling will most likely degrade or lie, not retry.

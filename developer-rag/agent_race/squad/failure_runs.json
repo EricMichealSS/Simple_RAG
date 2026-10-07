@@ -1,0 +1,149 @@
+{
+  "case": "hard_04",
+  "question": "How did setting maintainer_can_modify during pull request creation change between GitHub API 2022-11-28 and 2025-06-01?",
+  "golden": "In version 2025-06-01, maintainer_can_modify can be specified directly in the body during POST creation. In version 2022-11-28, it defaulted to true with no way to override it at creation time, requiring a follow-up PATCH call.",
+  "runs": [
+    {
+      "mode": "persistent",
+      "status": "pass",
+      "answer": "ANSWER: Between the GitHub REST API versions\u202f2022\u201111\u201128 and\u202f2025\u201106\u201101 the **`maintainer_can_modify`** field on the **`create_pull_request`** endpoint did not change in any functional way. In both versions it is an optional Boolean that, when set to\u202f`true`, gives repository maintainers permission to push to the head branch of a pull request (typically a fork). Its default value remains\u202f`false` (i.e., maintainers cannot modify the head branch unless the flag is explicitly set). The allowed values are still only `true` or `false`, and the parameter continues to be documented as \u201cWhether maintainers can modify the pull request\u2019s head branch.\u201d The only differences between the two releases are minor wording updates in the documentation; the API contract for `maintainer_can_modify` is otherwise unchanged.",
+      "verdict_vs_golden": "FAIL",
+      "version_worker_calls": 7,
+      "version_worker_statuses": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        429
+      ],
+      "other_delegations": [],
+      "retried_after_500": true,
+      "total_tokens": 9091,
+      "wall_clock_s": 7.657,
+      "delegation_log": [
+        {
+          "event": "delegation",
+          "lap": 1,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2022-11-28",
+            "endpoint": "create_pull_request",
+            "request": "What changed regarding the maintainer_can_modify parameter in the create_pull_request endpoint between API versions 2022-11-28 and 2025-06-01?"
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 2,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2022-11-28",
+            "endpoint": "create_pull_request",
+            "request": "Describe the maintainer_can_modify parameter behavior in the create_pull_request endpoint for version 2022-11-28 and note any changes in version 2025-06-01."
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 3,
+          "worker": "version_worker",
+          "args": {
+            "request": "What changed regarding the maintainer_can_modify parameter in the create_pull_request endpoint between GitHub API versions 2022-11-28 and 2025-06-01?"
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 4,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2022-11-28",
+            "endpoint": "create_pull_request",
+            "request": "Explain the maintainer_can_modify parameter for this version: its type, default, allowed values, and description."
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 5,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2022-11-28",
+            "endpoint": "create_pull_request",
+            "request": "maintainer_can_modify parameter details"
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 6,
+          "worker": "version_worker",
+          "args": {
+            "request": "maintainer_can_modify parameter create_pull_request GitHub API 2022-11-28"
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 7,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2025-06-01",
+            "endpoint": "create_pull_request",
+            "request": "maintainer_can_modify parameter details"
+          },
+          "status": 429,
+          "result_preview": "{'error': 'delegation cap of 6 reached'}"
+        }
+      ]
+    },
+    {
+      "mode": "transient",
+      "status": "pass",
+      "answer": "ANSWER: In the 2022\u201111\u201128 version of the GitHub REST API, the **maintainer_can_modify** flag could not be specified when creating a pull request\u2014it was implicitly true and could only be changed later with a PATCH request. Starting with the 2025\u201106\u201101 version, the **maintainer_can_modify** parameter became configurable at creation time, allowing you to set it directly in the\u202fcreate_pull_request\u202fcall.",
+      "verdict_vs_golden": "PASS",
+      "version_worker_calls": 2,
+      "version_worker_statuses": [
+        500,
+        200
+      ],
+      "other_delegations": [],
+      "retried_after_500": true,
+      "total_tokens": 4204,
+      "wall_clock_s": 4.863,
+      "delegation_log": [
+        {
+          "event": "delegation",
+          "lap": 1,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2022-11-28",
+            "endpoint": "create_pull_request",
+            "request": "What changed regarding the maintainer_can_modify parameter in the create_pull_request endpoint between API versions 2022-11-28 and 2025-06-01?"
+          },
+          "status": 500,
+          "result_preview": "{'error': 'Internal Server Error'}"
+        },
+        {
+          "event": "delegation",
+          "lap": 2,
+          "worker": "version_worker",
+          "args": {
+            "api_version": "2025-06-01",
+            "request": "What changed regarding the maintainer_can_modify parameter in the create_pull_request endpoint compared to previous version 2022-11-28?"
+          },
+          "status": 200,
+          "result_preview": "- In version\u202f2025\u201106\u201101, the **maintainer_can_modify** parameter can be set when creating a pull request.  \n- In version\u202f2022\u201111\u201128, **maintainer_can_modify** could not be set at creation time; it was"
+        }
+      ]
+    }
+  ]
+}

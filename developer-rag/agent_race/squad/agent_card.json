@@ -1,0 +1,30 @@
+{
+  "_note": "Illustrative AgentCard for the docs-squad orchestrator. Field names follow the A2A spec as read on 2026-10-04; the well-known URL path is intentionally NOT asserted here (not verified). Not served by any live endpoint.",
+  "name": "docs-squad-orchestrator",
+  "description": "Answers developer questions about GitHub REST API versions 2022-11-28 / 2025-06-01 and Swagger Codegen 2.x/3.x by delegating to a version/deprecation worker and a code-sample worker.",
+  "version": "0.1.0",
+  "skills": [
+    {
+      "id": "version-deprecation-check",
+      "name": "Version and deprecation check",
+      "description": "What changed, was added or was deprecated for an api_version + endpoint, or where a topic lives in the docs.",
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"],
+      "examples": ["How did make_latest change between 2022-11-28 and 2025-06-01?"]
+    },
+    {
+      "id": "current-spec-and-sample",
+      "name": "Current parameter table and code sample",
+      "description": "Current parameters (names, types, defaults, allowed values) for one api_version + endpoint, and a minimal sample.",
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"],
+      "examples": ["Which visibility values does create_repository accept in 2025-06-01?"]
+    }
+  ],
+  "capabilities": {"streaming": false, "pushNotifications": false},
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "supportedInterfaces": [{"binding": "HTTP+JSON", "url": "https://docs-squad.example.internal/a2a"}],
+  "securitySchemes": {"bearer": {"type": "http", "scheme": "bearer"}},
+  "security": [{"bearer": []}]
+}

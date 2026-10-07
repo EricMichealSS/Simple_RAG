@@ -1,0 +1,4 @@
+/Users/softsuave/Sam_RAG/developer-rag/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+[repeat 1] easy_13 squad...
+STOP: daily quota exhausted, resume later. Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0f00hvbewfswqnwd39a7m42` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199799, Requested 7847. Please try again in 55m3.072s. Need more tokens? Upgrade to Dev Tie

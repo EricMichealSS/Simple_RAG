@@ -1,0 +1,47 @@
+# handoffs.log: every model call / hand-off in every squad run, with its token count
+# fields: trace | case | repeat | seq | caller | hand-off | prompt + completion = total
+
+2eecd997c98c | easy_01 | r1 | #1 | orchestrator | user -> orchestrator | 654 + 203 = 857
+2eecd997c98c | easy_01 | r1 | #2 | code_worker | orchestrator -> code_worker (task in) | 376 + 70 = 446
+2eecd997c98c | easy_01 | r1 | #3 | code_worker | code_worker tool-loop lap 2 | 781 + 84 = 865
+2eecd997c98c | easy_01 | r1 | #4 | orchestrator | code_worker -> orchestrator (results read) | 753 + 31 = 784
+010e0dd4d70d | easy_02 | r1 | #1 | orchestrator | user -> orchestrator | 647 + 329 = 976
+010e0dd4d70d | easy_02 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 531 + 71 = 602
+010e0dd4d70d | easy_02 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 1963 + 67 = 2030
+010e0dd4d70d | easy_02 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 709 + 36 = 745
+f26e3f13e176 | medium_01 | r1 | #1 | orchestrator | user -> orchestrator | 654 + 93 = 747
+f26e3f13e176 | medium_01 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 540 + 79 = 619
+f26e3f13e176 | medium_01 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 674 + 219 = 893
+f26e3f13e176 | medium_01 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 757 + 50 = 807
+5aba92b2189d | medium_07 | r1 | #1 | orchestrator | user -> orchestrator | 651 + 153 = 804
+5aba92b2189d | medium_07 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 537 + 222 = 759
+5aba92b2189d | medium_07 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 1806 + 35 = 1841
+5aba92b2189d | medium_07 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 720 + 61 = 781
+c1e64da4901f | hard_01 | r1 | #1 | orchestrator | user -> orchestrator | 658 + 120 = 778
+c1e64da4901f | hard_01 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 551 + 252 = 803
+c1e64da4901f | hard_01 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 692 + 229 = 921
+c1e64da4901f | hard_01 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 784 + 111 = 895
+60025127d5dd | hard_04 | r1 | #1 | orchestrator | user -> orchestrator | 659 + 105 = 764
+60025127d5dd | hard_04 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 553 + 215 = 768
+60025127d5dd | hard_04 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 705 + 303 = 1008
+60025127d5dd | hard_04 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 815 + 201 = 1016
+de92092abd94 | hard_06 | r1 | #1 | orchestrator | user -> orchestrator | 661 + 271 = 932
+de92092abd94 | hard_06 | r1 | #2 | version_worker | orchestrator -> version_worker (task in) | 562 + 100 = 662
+de92092abd94 | hard_06 | r1 | #3 | version_worker | version_worker tool-loop lap 2 | 724 + 301 = 1025
+de92092abd94 | hard_06 | r1 | #4 | orchestrator | version_worker -> orchestrator (results read) | 852 + 149 = 1001
+
+# SUMMARY BY HAND-OFF (all repeats pooled)
+
+| Hand-off | Calls | Tokens | Share of all squad tokens |
+|---|---|---|---|
+| version_worker tool-loop (lap 2+) | 6 | 7,718 | 30.7% |
+| user -> orchestrator | 7 | 5,858 | 23.3% |
+| version_worker -> orchestrator (results read) | 6 | 5,245 | 20.9% |
+| orchestrator -> version_worker (task in) | 6 | 4,213 | 16.8% |
+| code_worker tool-loop (lap 2+) | 1 | 865 | 3.4% |
+| code_worker -> orchestrator (results read) | 1 | 784 | 3.1% |
+| orchestrator -> code_worker (task in) | 1 | 446 | 1.8% |
+
+Reconciliation OK: hand-off tokens sum to 25,129 (squad) and 21,118 (single), matching the race totals.
+
+MULTIPLIER: 1.2x  (squad 25,129 / single 21,118 tokens per run, median of 1 repeats; pooled 1.2x). Largest hand-off: "version_worker tool-loop (lap 2+)", 31% of all squad tokens.

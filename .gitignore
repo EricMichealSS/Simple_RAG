@@ -1,0 +1,18 @@
+# Python virtual environments (regeneratable from requirements.txt / pip installs, never push)
+.venv/
+.venv-*/
+venv/
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Regeneratable vector databases (ChromaDB) — rebuild via the project's ingest.py scripts
+data/
+
+# Secrets
+.env
+*.env
+
+# OS clutter
+.DS_Store

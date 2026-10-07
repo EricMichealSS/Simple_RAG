@@ -1,0 +1,1 @@
+MULTIPLIER: 1.2x  (squad 25,129 / single 21,118 tokens per run, median of 1 repeats; pooled 1.2x). Largest hand-off: "version_worker tool-loop (lap 2+)", 31% of all squad tokens.
