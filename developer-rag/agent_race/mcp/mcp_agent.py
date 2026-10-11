@@ -84,10 +84,16 @@ class MCPToolRouter:
         self.tool_owner: dict[str, str] = {}           # tool_name -> server_name
         self.openai_schemas: list = []
 
-    async def connect_all(self, config_path: Path = CONFIG_PATH):
+    async def connect_all(self, config_path: Path = CONFIG_PATH, cwd: Path = None):
+        """`cwd` defaults to config_path's own directory (where this method was
+        originally hardcoded to assume `HERE`, i.e. agent_race/mcp/). Made
+        explicit so this router is reusable from OTHER directories too (e.g.
+        agent_race/squad/squad_mcp_config.json) without silently resolving
+        relative server `args` against the wrong folder."""
         config = json.loads(config_path.read_text())
+        base_cwd = str(cwd) if cwd is not None else str(config_path.parent)
         for server_name, server_cfg in config["mcpServers"].items():
-            params = StdioServerParameters(command=server_cfg["command"], args=server_cfg["args"], cwd=str(HERE))
+            params = StdioServerParameters(command=server_cfg["command"], args=server_cfg["args"], cwd=base_cwd)
             try:
                 read, write = await self._stack.enter_async_context(stdio_client(params))
                 session = await self._stack.enter_async_context(ClientSession(read, write))
