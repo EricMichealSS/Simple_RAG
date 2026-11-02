@@ -1,0 +1,17 @@
+﻿Week 11 regression suite -- RED run (BEFORE fix)
+Command: python week11/test_regression_w11.py
+Timestamp (local): 2026-10-12 02:57:35 +05:30
+agent.py state: mitigated default = False, parallel_hint default = False, compact_history default = False (unmodified Week 8 code)
+Exit code: 1
+==============================================================================
+Week 11 regression suite -- 1 case(s)
+==============================================================================
+[w11_reg_01] FAIL
+  question           : In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?
+  prompt_version      : None
+  mitigated_effective : None  (True means the Week 8 fix prompt was used)
+  answer              : ANSWER: You can keep using the `assignee` field to set a single user when creating an issue; GitHub continues to accept it as documented.
+  reason              : answer uses the deprecated term 'assignee' but never mentions the required replacement 'assignees' -- this is the deprecated-method code-sample bug this case guards against.
+  tokens=2693  cost_usd=0.000511
+------------------------------------------------------------------------------
+SUITE RESULT: RED (0/1 shown above)

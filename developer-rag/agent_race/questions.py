@@ -52,6 +52,53 @@ def get_race_questions():
     return out
 
 
+# ---------------------------------------------------------------------------
+# Week 11 — permanent regression case(s), added after a production incident.
+#
+# Deliberately a SEPARATE function from get_race_questions(), not appended to
+# SELECTED/get_race_questions() itself: run_squad_race.py, trajectory_eval.py,
+# and trajectory_specs.py all assume exactly these 10 fixed race questions
+# (trajectory_specs.py has one hand-written spec per race_id, and growing the
+# race to 11 with no matching spec would break trajectory_eval.py). Keeping
+# the regression suite separate means every existing caller of
+# get_race_questions() is completely unaffected by this addition.
+#
+# Case w11_reg_01 is the SAME underlying fact as medium_01 (the assignee ->
+# assignees deprecation for GitHub API 2025-06-01's create_issue endpoint) --
+# intentionally, because the real historical trace for medium_01
+# (trajectory_results_baseline.json) is already-recorded evidence that this
+# exact question was answered via `incomplete_grounding` (search_docs preview
+# only, no check_deprecation/get_openapi_spec call). A lucky correct guess
+# today is a wrong answer waiting to happen tomorrow -- this case tests the
+# DEFAULT, no-flags call path (exactly how every production caller invokes
+# run_agent()), not the Week 8 --mitigated flag path that only test scripts
+# opt into explicitly. See agent_race/week11/phase5.md for the full story.
+# ---------------------------------------------------------------------------
+
+REGRESSION_CASES = [
+    {
+        "race_id": "w11_reg_01",
+        "level": "regression",
+        "question": _medium["01"]["question"],
+        "golden_answer": _medium["01"]["answer"],
+        "is_negative_case": False,
+        "dependency_case": False,
+        "forbidden_term": "assignee",
+        "required_replacement": "assignees",
+        "expected_chunk_id": _medium["01"]["expected_chunk_id"],
+        "source": "week11_incident_drill",
+        "added": "2026-10-12",
+    },
+]
+
+
+def get_regression_cases():
+    return list(REGRESSION_CASES)
+
+
 if __name__ == "__main__":
     for q in get_race_questions():
         print(f"[{q['race_id']}] dep={q['dependency_case']} neg={q['is_negative_case']} :: {q['question']}")
+    print("\n-- regression cases (Week 11) --")
+    for q in get_regression_cases():
+        print(f"[{q['race_id']}] forbidden={q['forbidden_term']!r} required={q['required_replacement']!r} :: {q['question']}")

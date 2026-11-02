@@ -43,7 +43,13 @@ def evaluate_one(question_row: dict, mitigated: bool = False) -> dict:
     race_id = question_row["race_id"]
     spec = TRAJECTORY_SPECS[race_id]
 
-    result = run_agent(question_row["question"], mitigated=mitigated)
+    # Week 11: agent.py's run_agent() defaults for parallel_hint/compact_history
+    # changed (see agent.py's docstring on run_agent). Pinned explicitly here so
+    # this script's baseline/after A/B test keeps isolating ONLY `mitigated` as
+    # its one variable, exactly as it always has -- unaffected by any future
+    # change to agent.py's own defaults.
+    result = run_agent(question_row["question"], mitigated=mitigated,
+                        parallel_hint=False, compact_history=False)
     tool_sequence, tool_pairs = _extract_trajectory(result["log"])
 
     steps_taken = len(tool_sequence)

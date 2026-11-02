@@ -1,0 +1,18 @@
+﻿Week 11 regression suite -- GREEN run (AFTER fix)
+Command: python week11/test_regression_w11.py
+Timestamp (local): 2026-10-12 02:58:24 +05:30
+agent.py state: mitigated default = True, parallel_hint default = True, compact_history default = True (Week 11 fix applied)
+PROMPT_VERSION bumped to: agent-v2-mitigated-default
+Exit code: 0
+==============================================================================
+Week 11 regression suite -- 1 case(s)
+==============================================================================
+[w11_reg_01] PASS
+  question           : In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?
+  prompt_version      : agent-v2-mitigated-default
+  mitigated_effective : True  (True means the Week 8 fix prompt was used)
+  answer              : ANSWER: In the 2025-06-01 version of the GitHub API, the deprecated `assignee` field is replaced by the `assignees` parameter, which accepts an array of user login strings.
+  reason              : replacement term 'assignees' is present.
+  tokens=3324  cost_usd=0.000627
+------------------------------------------------------------------------------
+SUITE RESULT: GREEN (1/1 shown above)

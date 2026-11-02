@@ -18,6 +18,7 @@ All 4 budgets are checked EVERY iteration, before doing more work:
 import json
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -30,6 +31,16 @@ from pricing import MODEL, cost_usd  # noqa: E402
 from tools import TOOL_SCHEMAS, TOOL_IMPLS  # noqa: E402
 
 _client = OpenAI(api_key=GROK_API_KEY, base_url="https://api.groq.com/openai/v1", timeout=60.0)
+
+# Week 11 production incident fix (see agent_race/week11/phase5.md and drill.md
+# for the full investigation). Root cause: the Week 8 "mitigated" system prompt
+# that forces an authoritative tool call before finalizing an answer ALREADY
+# EXISTED in this file, but every real caller of run_agent() invoked it with no
+# `mitigated=` argument, so the fix was never actually active outside of Week 8's
+# own one-off --mitigated experiment script. Bumped whenever the EFFECTIVE
+# default prompt behavior of run_agent() changes, so a trace's prompt_version
+# field reliably tells you which behavior produced that answer.
+PROMPT_VERSION = "agent-v2-mitigated-default"
 
 SYSTEM_PROMPT = """You are a migration assistant for API documentation (GitHub REST API \
 versions 2022-11-28 and 2025-06-01, and Swagger Codegen 2.x/3.x).
@@ -96,8 +107,22 @@ def _compact_messages(messages: list, keep_last_n_tool_msgs: int = 2, max_len: i
     return compacted
 
 
-def run_agent(question: str, mitigated: bool = False, parallel_hint: bool = False,
-              compact_history: bool = False, **budget_overrides) -> dict:
+def run_agent(question: str, mitigated: bool = True, parallel_hint: bool = True,
+              compact_history: bool = True, **budget_overrides) -> dict:
+    """Week 11 note on these three defaults (previously all False):
+    real historical measurement (trajectory_results_after.json) showed that
+    turning on `mitigated` ALONE fixes the deprecated-method/incomplete-
+    grounding bug but regresses outcome pass rate 0.8 -> 0.6 elsewhere, because
+    the longer prompt pushes other questions over the token budget. The
+    already-existing agent_optimized_experiment.py follow-up proved that
+    pairing `mitigated` with `parallel_hint` + `compact_history` recovers the
+    lost budget headroom (trajectory_results_optimized.json: pass rate back to
+    0.8, with ZERO incomplete_grounding, vs. 2 before). So the fix is three
+    defaults flipped together, not one -- flipping only `mitigated` would have
+    traded one honest bug for a different, already-measured regression.
+    Explicit callers (trajectory_eval.py, agent_optimized_experiment.py) still
+    pass their own values and are unaffected by this default change.
+    """
     budgets = _build_default_budgets()
     budgets.update(budget_overrides)
 
@@ -121,6 +146,14 @@ def run_agent(question: str, mitigated: bool = False, parallel_hint: bool = Fals
             "total_cost_usd": round(total_cost, 6),
             "wall_clock_s": round(time.perf_counter() - start, 3),
             "log": log,
+            # Week 11 observability additions -- new keys only, nothing above
+            # was removed or renamed, so every existing caller that reads
+            # result["status"]/["answer"]/["total_tokens"]/etc. is unaffected.
+            "prompt_version": PROMPT_VERSION,
+            "mitigated": mitigated,
+            "parallel_hint": parallel_hint,
+            "compact_history": compact_history,
+            "model": MODEL,
         }
 
     for iteration in range(1, budgets["max_iterations"] + 1):
@@ -139,7 +172,9 @@ def run_agent(question: str, mitigated: bool = False, parallel_hint: bool = Fals
         total_cost += cost_usd(MODEL, usage.prompt_tokens, usage.completion_tokens)
         log.append({
             "event": "llm_call", "iteration": iteration,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "prompt_tokens": usage.prompt_tokens, "completion_tokens": usage.completion_tokens,
+            "cost_usd": round(cost_usd(MODEL, usage.prompt_tokens, usage.completion_tokens), 8),
             "cumulative_tokens": total_tokens, "cumulative_cost_usd": round(total_cost, 6),
         })
 
@@ -171,7 +206,13 @@ def run_agent(question: str, mitigated: bool = False, parallel_hint: bool = Fals
             except Exception as e:
                 result = {"error": f"{type(e).__name__}: {e}"}
             log.append({"event": "tool_call", "iteration": iteration, "tool": name,
-                        "args": tc.function.arguments, "result_preview": str(result)[:200]})
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "args": tc.function.arguments, "result_preview": str(result)[:200],
+                        # Week 11: full (untruncated) result alongside the existing preview, so a
+                        # trace extractor can recover real context/chunk IDs (e.g. search_docs'
+                        # chunk ids) without re-running the call. Additive key, result_preview
+                        # (already read by nothing else in this repo) is left in place too.
+                        "result_full": result})
             messages.append({"role": "tool", "tool_call_id": tc.id, "content": json.dumps(result)})
 
     log.append({"event": "budget_exceeded", "budget": "max_iterations", "limit": budgets["max_iterations"]})

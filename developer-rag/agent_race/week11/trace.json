@@ -1,0 +1,75 @@
+{
+  "trace_id": "5f408babb9874db5",
+  "timestamp": "2026-10-11T21:30:12.281910+00:00",
+  "timestamp_note": "generation time of THIS extracted trace.json (a reproduction run), not the original incident's wall-clock time (no real timestamp was ever logged for the original incident -- see drill.md, 'missing log field').",
+  "input_type": "developer_question",
+  "status": "pass",
+  "prompt_version": "agent-v1-unmitigated-default (PRE-FIX; reproduced on purpose via explicit mitigated=False, parallel_hint=False, compact_history=False -- the fixed code's new default is agent-v2-mitigated-default, see PROMPT_VERSION in agent.py)",
+  "model": "openai/gpt-oss-120b",
+  "application_version": "pre-Week-11-fix (agent.py as of commit 91c1f03, before PROMPT_VERSION/default changes in this Week 11 branch)",
+  "latency_ms": 20712.0,
+  "latency_ms_provenance": "REAL -- trajectory_results_baseline.json, race_id=medium_01 (actual prior Groq run)",
+  "input_tokens": 2454,
+  "output_tokens": 239,
+  "total_tokens": 2693,
+  "total_tokens_provenance": "REAL -- reproduced via the actual agent.py loop logic; token counts in the scripted test double are copied verbatim from the real historical trace for this exact question/path (see week11/fakes.py).",
+  "cost_usd": 0.000511,
+  "cost_usd_provenance": "CALCULATED -- pricing.cost_usd() applied to the real token counts above, using the published Groq rate table in agent_race/pricing.py.",
+  "context_ids": [
+    "github_combined_reference.pdf:p5"
+  ],
+  "error_type": null,
+  "answer": "ANSWER: You can keep using the `assignee` field to set a single user when creating an issue; GitHub continues to accept it as documented.",
+  "incident_evidence": {
+    "forbidden_term_present": true,
+    "required_replacement_present": false,
+    "verdict": "INCIDENT CONFIRMED -- forbidden term present without the required replacement"
+  },
+  "spans": [
+    {
+      "span_id": "5f408babb9874db5-s0",
+      "parent_span_id": "5f408babb9874db5",
+      "trace_id": "5f408babb9874db5",
+      "span_name": "generation:llm_call_1",
+      "start_time": "2026-10-11T21:30:12.281805+00:00",
+      "duration_ms": 6375.9,
+      "duration_ms_provenance": "ESTIMATED -- proportional share of REAL historical total wall_clock_s (20.712s, source: trajectory_results_baseline.json, race_id=medium_01 (actual prior Groq run)); original trace did not log per-call latency. Phase 2 instrumentation (this run) now timestamps every event going forward so future traces do not need this estimate.",
+      "status": "ok",
+      "input_tokens": 703,
+      "output_tokens": 126,
+      "cost_usd": 0.00018105,
+      "context_ids": []
+    },
+    {
+      "span_id": "5f408babb9874db5-s1",
+      "parent_span_id": "5f408babb9874db5",
+      "trace_id": "5f408babb9874db5",
+      "span_name": "retrieval:search_docs",
+      "start_time": "2026-10-11T21:30:12.281846+00:00",
+      "duration_ms": null,
+      "duration_ms_provenance": "UNAVAILABLE -- tool execution time was not separately logged in this run; only the LLM call latency around it was estimated.",
+      "status": "ok",
+      "input_tokens": null,
+      "output_tokens": null,
+      "cost_usd": 0.0,
+      "context_ids": [
+        "github_combined_reference.pdf:p5"
+      ],
+      "args": "{\"query\":\"2025-06-01 create_issue assignee deprecated single assignee field replaces\"}"
+    },
+    {
+      "span_id": "5f408babb9874db5-s2",
+      "parent_span_id": "5f408babb9874db5",
+      "trace_id": "5f408babb9874db5",
+      "span_name": "generation:llm_call_2",
+      "start_time": "2026-10-11T21:30:12.281881+00:00",
+      "duration_ms": 14336.1,
+      "duration_ms_provenance": "ESTIMATED -- proportional share of REAL historical total wall_clock_s (20.712s, source: trajectory_results_baseline.json, race_id=medium_01 (actual prior Groq run)); original trace did not log per-call latency. Phase 2 instrumentation (this run) now timestamps every event going forward so future traces do not need this estimate.",
+      "status": "ok",
+      "input_tokens": 1751,
+      "output_tokens": 113,
+      "cost_usd": 0.00033045,
+      "context_ids": []
+    }
+  ]
+}
