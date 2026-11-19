@@ -1,0 +1,27 @@
+[1/23] judged item01: PASS
+[2/23] judged item02: FAIL
+[3/23] judged item03: FAIL
+[4/23] judged item04: FAIL
+[5/23] judged item05: PASS
+[6/23] judged item06: FAIL
+[7/23] judged item07: FAIL
+[8/23] judged item08: FAIL
+[9/23] judged item09: PASS
+[10/23] judged item10: FAIL
+[11/23] judged item11: FAIL
+[12/23] judged item12: FAIL
+[13/23] judged item13: PASS
+[14/23] judged item14: PASS
+[15/23] judged item15: PASS
+[16/23] judged item16: FAIL
+[17/23] judged item17: PASS
+[18/23] judged item18: FAIL
+[19/23] judged item19: PASS
+[20/23] judged item20: PASS
+[21/23] judged item21: FAIL
+[22/23] judged item22: PASS
+[23/23] judged item23: FAIL
+23 verdicts: {'PASS': 10, 'FAIL': 13, 'UNPARSED': 0, 'ERROR': 0} | judge cost (reported separately from user-query cost): 0.003302 USD, 38388 tokens
+informational (NOT hand labels): {"n": 0, "agree": 0, "agreement": null, "note": "judge vs the suite's deterministic case verdict; NOT human labels; not the 85% check"}
+informational (vs MY construction of known-bad answers, NOT hand labels): {"controlled_negatives": 13, "judge_said_fail": 13, "judge_caught_rate_vs_construction": 1.0, "real_outputs": 10, "real_judged_pass": 10, "note": "measured against my construction of known-bad answers, NOT against human labels; not the 85% check"}
+judge done exit 0

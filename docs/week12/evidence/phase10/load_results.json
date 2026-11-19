@@ -1,0 +1,66 @@
+[
+ {
+  "concurrency": 1,
+  "requests": 40,
+  "wall_s": 7.39,
+  "throughput_rps": 5.41,
+  "latency_ms": {
+   "p50": 146.5,
+   "p95": 288.1,
+   "max": 297.2
+  },
+  "outcomes": {
+   "answered": 40
+  },
+  "failures": 0,
+  "failure_samples": []
+ },
+ {
+  "concurrency": 2,
+  "requests": 40,
+  "wall_s": 5.77,
+  "throughput_rps": 6.94,
+  "latency_ms": {
+   "p50": 249.2,
+   "p95": 419.5,
+   "max": 493.9
+  },
+  "outcomes": {
+   "answered": 40
+  },
+  "failures": 0,
+  "failure_samples": []
+ },
+ {
+  "concurrency": 4,
+  "requests": 40,
+  "wall_s": 5.89,
+  "throughput_rps": 6.79,
+  "latency_ms": {
+   "p50": 437.1,
+   "p95": 993.3,
+   "max": 1064.5
+  },
+  "outcomes": {
+   "answered": 40
+  },
+  "failures": 0,
+  "failure_samples": []
+ },
+ {
+  "concurrency": 8,
+  "requests": 40,
+  "wall_s": 12.72,
+  "throughput_rps": 3.14,
+  "latency_ms": {
+   "p50": 1916.0,
+   "p95": 5063.0,
+   "max": 5154.5
+  },
+  "outcomes": {
+   "answered": 40
+  },
+  "failures": 0,
+  "failure_samples": []
+ }
+]

@@ -1,0 +1,117 @@
+{
+ "item01": {
+  "kind": "real",
+  "source": "g06#1",
+  "expected_by_construction": null
+ },
+ "item02": {
+  "kind": "answers_a_different_question",
+  "source": "g02#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item03": {
+  "kind": "one_sided_comparison",
+  "source": "g08#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item04": {
+  "kind": "false_refusal",
+  "source": "g03#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item05": {
+  "kind": "real",
+  "source": "g08#1",
+  "expected_by_construction": null
+ },
+ "item06": {
+  "kind": "wrong_fact",
+  "source": "g05#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item07": {
+  "kind": "fabricated_answer",
+  "source": "g09#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item08": {
+  "kind": "one_sided_comparison",
+  "source": "g07#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item09": {
+  "kind": "real",
+  "source": "g07#1",
+  "expected_by_construction": null
+ },
+ "item10": {
+  "kind": "answers_a_different_question",
+  "source": "g04#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item11": {
+  "kind": "wrong_fact",
+  "source": "g04#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item12": {
+  "kind": "false_refusal",
+  "source": "g05#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item13": {
+  "kind": "real",
+  "source": "g09#1",
+  "expected_by_construction": null
+ },
+ "item14": {
+  "kind": "real",
+  "source": "g01#1",
+  "expected_by_construction": null
+ },
+ "item15": {
+  "kind": "real",
+  "source": "k04#1",
+  "expected_by_construction": null
+ },
+ "item16": {
+  "kind": "wrong_fact",
+  "source": "g02#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item17": {
+  "kind": "real",
+  "source": "g04#1",
+  "expected_by_construction": null
+ },
+ "item18": {
+  "kind": "false_refusal",
+  "source": "g06#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item19": {
+  "kind": "real",
+  "source": "g03#1",
+  "expected_by_construction": null
+ },
+ "item20": {
+  "kind": "real",
+  "source": "g02#1",
+  "expected_by_construction": null
+ },
+ "item21": {
+  "kind": "wrong_fact",
+  "source": "g03#1",
+  "expected_by_construction": "FAIL"
+ },
+ "item22": {
+  "kind": "real",
+  "source": "g05#1",
+  "expected_by_construction": null
+ },
+ "item23": {
+  "kind": "wrong_fact",
+  "source": "g01#1",
+  "expected_by_construction": "FAIL"
+ }
+}

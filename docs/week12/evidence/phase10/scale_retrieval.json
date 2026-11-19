@@ -1,0 +1,41 @@
+{
+ "synthetic_search": {
+  "39": {
+   "p50_ms": 3.25,
+   "max_ms": 4.5,
+   "n": 30,
+   "of_which_pool_fetch_p50_ms": 1.47
+  },
+  "1000": {
+   "p50_ms": 26.05,
+   "max_ms": 28.33,
+   "n": 30,
+   "of_which_pool_fetch_p50_ms": 22.18
+  },
+  "5000": {
+   "p50_ms": 326.72,
+   "max_ms": 479.13,
+   "n": 30,
+   "of_which_pool_fetch_p50_ms": 280.66
+  },
+  "20000": {
+   "p50_ms": 1208.06,
+   "max_ms": 1455.21,
+   "n": 30,
+   "of_which_pool_fetch_p50_ms": 1180.3
+  }
+ },
+ "note": "synthetic text, hash embeddings, in-memory Chroma, dense-only (the engine default), one version scope",
+ "embedding_model_load_s": 18.63,
+ "real_query_embedding": {
+  "p50_ms": 74.0,
+  "max_ms": 92.4,
+  "n": 40
+ },
+ "real_query_embedding_45_questions": {
+  "p50_ms": 80.2,
+  "p95_ms": 98.3,
+  "max_ms": 110.0,
+  "n": 45
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "engine_pid": 18348,
+ "after_start_engine_MB": "112",
+ "after_3_queries_engine_MB": "113",
+ "mcp_server_process": [
+  {
+   "ProcessId": 37272,
+   "MB": 5,
+   "cmd": "\"C:\\Projects\\AI Learning\\Simple_RAG\\.venv\\Scripts\\python.exe\" -m sdk_engine.mcp_server"
+  },
+  {
+   "ProcessId": 30652,
+   "MB": 632,
+   "cmd": "\"C:\\Projects\\AI Learning\\Simple_RAG\\.venv\\Scripts\\python.exe\" -m sdk_engine.mcp_server"
+  },
+  {
+   "ProcessId": 33028,
+   "MB": 83,
+   "cmd": "powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.CommandL"
+  }
+ ]
+}

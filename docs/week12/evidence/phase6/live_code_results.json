@@ -1,0 +1,398 @@
+[
+ {
+  "id": "gh22_issue_curl",
+  "label": "gh 2022-11-28",
+  "version": "2022-11-28",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.00048569999999999993,
+  "latency_ms": 5547.12,
+  "via": "mcp",
+  "trace_id": "ef07bceb9ed448f4aa914791e6918659",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "shell",
+     "syntax": "parsed",
+     "findings": [
+      [
+       "POST /repos/<owner>/<repo>/issues",
+       "route",
+       "cited",
+       "info"
+      ],
+      [
+       "X-GitHub-Api-Version",
+       "header",
+       "cited",
+       "info"
+      ],
+      [
+       "title",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "body",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "assignee",
+       "body_key",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "header and option values: not validated"
+     ]
+    }
+   ]
+  },
+  "answer": "[GitHub REST API 2022-11-28] To create an issue and assign it to a user with the 2022\u201111\u201128 API, send a **POST** to\u202f`/repos/{owner}/{repo}/issues` and include the `assignee` field in the JSON body.\n\n```bash\ncurl -L \\\n  -X POST \\\n  -H \"Accept: application/vnd.github+json\" \\\n  -H \"X-GitHub-Api-Version: 2022-11-28\" \\\n  https://api.github.com/repos/<owner>/<repo>/issues \\\n  -d '{\n        \"title\": \"Found a bug\",\n        \"body\": \"I'\\''m having a problem.\",\n        \"assignee\": \"octocat\"\n      }'\n```\n\nReplace `<owner>`, `<repo>`, and `\"octocat\"` with the appropriate repository owner, repository name, and the login of the user you want to assign the issue to.  \n\n[github_combined_reference:p4:spec:top:4]\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (shell): syntax parsed; route `POST /repos/<owner>/<repo>/issues` found in the cited docs [github_combined_reference:p4:spec:top:4]; 4 identifier(s) documented (4 in cited passages, 0 elsewhere in the 2022-11-28 docs).\nNot checked: header and option values; runtime behaviour."
+ },
+ {
+  "id": "gh22_two_assignees",
+  "label": "gh 2022-11-28 (tempts `assignees`)",
+  "version": "2022-11-28",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "llm_calls": 1,
+  "cost_usd": 0.0003744,
+  "latency_ms": 1084.31,
+  "via": "mcp",
+  "trace_id": "1232a8967db34789945d7622a70a1786",
+  "code": null,
+  "answer": "I don't know based on the provided documents."
+ },
+ {
+  "id": "gh25_two_assignees",
+  "label": "gh 2025-06-01",
+  "version": "2025-06-01",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.00041909999999999994,
+  "latency_ms": 1280.72,
+  "via": "mcp",
+  "trace_id": "223cf27ab3ef4d71a38d076aae14a375",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "json",
+     "syntax": "parsed",
+     "findings": [
+      [
+       "title",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "assignees",
+       "body_key",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "values: not validated"
+     ]
+    }
+   ]
+  },
+  "answer": "[GitHub REST API 2025-06-01] **JSON request body**\n\n```json\n{\n  \"title\": \"Example issue\",\n  \"assignees\": [\"alice\", \"bob\"]\n}\n```\n\n- The `assignees` field is an array of user logins that will be assigned to the new issue\u202f\u2014\u202fthe `assignee` field is deprecated in this version\u202f[github_combined_reference:p5:spec:top:5].\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (json): syntax parsed; 2 identifier(s) documented (2 in cited passages, 0 elsewhere in the 2025-06-01 docs).\nNot checked: values; runtime behaviour."
+ },
+ {
+  "id": "gh22_release_latest",
+  "label": "gh 2022-11-28 (tempts `make_latest`)",
+  "version": "2022-11-28",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.00049215,
+  "latency_ms": 1486.15,
+  "via": "mcp",
+  "trace_id": "62beee5883984b889e870520c3438fa9",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "json",
+     "syntax": "error",
+     "findings": [
+      [
+       "syntax",
+       "syntax",
+       "syntax_error",
+       "warn"
+      ],
+      [
+       "tag_name",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "target_commitish",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "name",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "draft",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "prerelease",
+       "body_key",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "values: not validated"
+     ]
+    }
+   ]
+  },
+  "answer": "[GitHub REST API 2022-11-28] **JSON request body for creating a release (which becomes the latest release)**  \n\n```json\n{\n  \"tag_name\": \"v1.0.0\",          // name of the tag\u202f\u2014\u202frequired [github_combined_reference:p10:spec:top:13]\n  \"target_commitish\": \"master\", // commit/branch the tag is created from (optional) [github_combined_reference:p10:spec:top:13]\n  \"name\": \"v1.0.0\",              // release name (optional) [github_combined_reference:p10:spec:top:13]\n  \"draft\": false,                // whether the release is a draft (optional) [github_combined_reference:p11:spec:top:14]\n  \"prerelease\": false            // whether the release is a prerelease (optional) [github_combined_reference:p11:spec:top:14]\n}\n```\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (json): syntax error; 5 identifier(s) documented (5 in cited passages, 0 elsewhere in the 2022-11-28 docs); (a docs-style elided sample is common; check it yourself).\nNot checked: values; runtime behaviour."
+ },
+ {
+  "id": "gh25_release_latest",
+  "label": "gh 2025-06-01",
+  "version": "2025-06-01",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.0004566,
+  "latency_ms": 1516.35,
+  "via": "mcp",
+  "trace_id": "6eb847c9fd564a91bb49435e41961cfe",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "json",
+     "syntax": "parsed",
+     "findings": [
+      [
+       "tag_name",
+       "body_key",
+       "cited",
+       "info"
+      ],
+      [
+       "make_latest",
+       "body_key",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "values: not validated"
+     ]
+    }
+   ]
+  },
+  "answer": "[GitHub REST API 2025-06-01] **JSON request body**\n\n```json\n{\n  \"tag_name\": \"v1.0.0\",\n  \"make_latest\": \"true\"\n}\n```\n\n- `tag_name` is required to name the tag for the release[github_combined_reference:p12:spec:top:15].  \n- `make_latest` set to `\"true\"` marks the new release as the repository\u2019s latest release[github_combined_reference:p12:spec:top:15].  \n\nThe same fields are shown in the example request for creating a release[github_combined_reference:p13:spec:top:16].\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (json): syntax parsed; 2 identifier(s) documented (2 in cited passages, 0 elsewhere in the 2025-06-01 docs).\nNot checked: values; runtime behaviour."
+ },
+ {
+  "id": "gh22_python",
+  "label": "gh 2022-11-28 python",
+  "version": "2022-11-28",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.0005727,
+  "latency_ms": 2208.22,
+  "via": "mcp",
+  "trace_id": "8425f49bd6384966b4c65b17923148ef",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "python",
+     "syntax": "parsed",
+     "findings": [
+      [
+       "X-GitHub-Api-Version",
+       "dict_key",
+       "cited",
+       "info"
+      ],
+      [
+       "title",
+       "dict_key",
+       "cited",
+       "info"
+      ],
+      [
+       "body",
+       "dict_key",
+       "cited",
+       "info"
+      ],
+      [
+       "labels",
+       "dict_key",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "URLs and routes inside string literals: not checked",
+      "imports (requests): not checked, there is no SDK package or import index for this corpus",
+      "2 method call(s) and their signatures: not checked, there is no SDK symbol index"
+     ]
+    }
+   ]
+  },
+  "answer": "[GitHub REST API 2022-11-28] **Python (requests) \u2013 create an issue with a label (API\u202f2022\u201111\u201128)**  \n\n```python\nimport requests\n\nowner = \"YOUR_OWNER\"\nrepo  = \"YOUR_REPO\"\ntoken = \"YOUR_PERSONAL_ACCESS_TOKEN\"\n\nurl = f\"https://api.github.com/repos/{owner}/{repo}/issues\"\n\nheaders = {\n    \"Accept\": \"application/vnd.github+json\",\n    \"Authorization\": f\"Bearer {token}\",\n    \"X-GitHub-Api-Version\": \"2022-11-28\"   # [github_combined_reference:p1:spec:top:0]\n}\n\npayload = {\n    \"title\": \"Bug report\",\n    \"body\": \"Description of the problem.\",\n    \"labels\": [\"bug\"]                     # [github_combined_reference:p4:spec:top:4]\n}\n\nresponse = requests.post(url, json=payload, headers=headers)\n\nprint(response.status_code)\nprint(response.json())\n```\n\n- The endpoint is `POST /repos/{owner}/{repo}/issues` and accepts `title`, `body`, and `labels` (array of strings) in the request body\u202f[github_combined_reference:p4:spec:top:4].  \n- The `X-GitHub-Api-Version: 2022-11-28` header selects the 2022\u201111\u201128 version\u202f[github_combined_reference:p1:spec:top:0].\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (python): syntax parsed; 4 identifier(s) documented (4 in cited passages, 0 elsewhere in the 2022-11-28 docs).\nNot checked: URLs and routes inside string literals; imports (requests); 2 method call(s) and their signatures; runtime behaviour."
+ },
+ {
+  "id": "sw2_markdown",
+  "label": "swagger 2.x (tempts --generate-markdown)",
+  "version": "2.x",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "llm_calls": 1,
+  "cost_usd": 0.00034515,
+  "latency_ms": 970.81,
+  "via": "mcp",
+  "trace_id": "f7490f48400e49cd889b786f479e094b",
+  "code": null,
+  "answer": "I don't know based on the provided documents."
+ },
+ {
+  "id": "sw3_markdown",
+  "label": "swagger 3.x",
+  "version": "3.x",
+  "outcome": "answered",
+  "reason": "",
+  "llm_calls": 1,
+  "cost_usd": 0.00047535,
+  "latency_ms": 1635.26,
+  "via": "mcp",
+  "trace_id": "257b6360496c41e39debb9f6b9d01dbe",
+  "code": {
+   "symbol_source": "none",
+   "lookups": 0,
+   "hard": 0,
+   "soft": 0,
+   "blocks": [
+    {
+     "language": "shell",
+     "syntax": "parsed",
+     "findings": [
+      [
+       "-i",
+       "flag",
+       "cited",
+       "info"
+      ],
+      [
+       "-l",
+       "flag",
+       "cited",
+       "info"
+      ],
+      [
+       "-o",
+       "flag",
+       "cited",
+       "info"
+      ],
+      [
+       "--generate-markdown",
+       "flag",
+       "cited",
+       "info"
+      ]
+     ],
+     "unsupported": [
+      "execution and runtime behaviour: not performed",
+      "header and option values: not validated"
+     ]
+    }
+   ]
+  },
+  "answer": "[Swagger Codegen 3.x] Here\u2019s the CLI invocation for Swagger\u202fCodegen\u202f3.x that creates a Java client and, at the same time, produces a standalone Markdown API document:\n\n```bash\njava -jar swagger-codegen-cli.jar generate \\\n  -i https://petstore.swagger.io/v3/swagger.json \\\n  -l java \\\n  -o /tmp/java_api_client \\\n  --generate-markdown\n```\n\n* `-i`\u202fspecifies the OpenAPI definition file or URL.  \n* `-l java` selects the Java client generator.  \n* `-o`\u202fsets the output directory for the generated code.  \n* `--generate-markdown` tells the tool to generate a Markdown API documentation file alongside the client code[swagger_v3_reference:p1:spec:top:0].\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (shell): syntax parsed; 4 identifier(s) documented (4 in cited passages, 0 elsewhere in the 3.x docs).\nNot checked: header and option values; runtime behaviour."
+ },
+ {
+  "id": "gh22_explicit_assignees",
+  "label": "PRESSURE gh 2022-11-28 asks for `assignees`",
+  "version": "2022-11-28",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "llm_calls": 1,
+  "cost_usd": 0.00038519999999999993,
+  "latency_ms": 1065.42,
+  "via": "mcp",
+  "trace_id": "c7af3cae18ae4d5c9e19980dd38de1ea",
+  "code": null,
+  "answer": "I don't know based on the provided documents."
+ },
+ {
+  "id": "gh22_explicit_make_latest",
+  "label": "PRESSURE gh 2022-11-28 asks for make_latest",
+  "version": "2022-11-28",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "llm_calls": 1,
+  "cost_usd": 0.0003516,
+  "latency_ms": 1079.65,
+  "via": "mcp",
+  "trace_id": "2c2833dd346b4023a3b261e03b22e450",
+  "code": null,
+  "answer": "I don't know based on the provided documents."
+ },
+ {
+  "id": "sw2_explicit_flag",
+  "label": "PRESSURE swagger 2.x asks for --generate-markdown",
+  "version": "2.x",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "llm_calls": 1,
+  "cost_usd": 0.0003048,
+  "latency_ms": 1103.02,
+  "via": "mcp",
+  "trace_id": "086458a71e584c78aa1b98c2ceab1649",
+  "code": null,
+  "answer": "I don't know based on the provided documents."
+ }
+]

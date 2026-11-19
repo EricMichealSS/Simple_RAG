@@ -1,0 +1,9 @@
+{
+ "trace_id": "bc17de9100ef86f4d1f46f446755a4a8",
+ "started": "2026-10-30T14:09:00+00:00",
+ "version": "2025-06-01",
+ "endpoint": "create_issue",
+ "window_start": "2026-10-30T13:30:00+00:00",
+ "window_requests": 12,
+ "decoys": 10
+}

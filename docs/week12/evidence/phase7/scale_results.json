@@ -1,0 +1,35 @@
+[
+ {
+  "requests": 1000,
+  "client_spans": 12804,
+  "mb": 7.2,
+  "generate_s": 0.2,
+  "find_s": 0.022,
+  "naive_parse_all_s": 0.057,
+  "show_s": 0.012,
+  "show_spans": 5,
+  "matched": 3
+ },
+ {
+  "requests": 10000,
+  "client_spans": 128884,
+  "mb": 73.0,
+  "generate_s": 1.8,
+  "find_s": 0.229,
+  "naive_parse_all_s": 1.607,
+  "show_s": 0.219,
+  "show_spans": 15,
+  "matched": 32
+ },
+ {
+  "requests": 30000,
+  "client_spans": 386513,
+  "mb": 218.8,
+  "generate_s": 12.8,
+  "find_s": 1.514,
+  "naive_parse_all_s": 5.971,
+  "show_s": 1.673,
+  "show_spans": 16,
+  "matched": 104
+ }
+]

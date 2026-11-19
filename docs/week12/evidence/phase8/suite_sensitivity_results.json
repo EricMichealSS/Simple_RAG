@@ -1,0 +1,67 @@
+{
+ "cases": 29,
+ "baseline_failures": [],
+ "mutations": {
+  "broken_filter_and_no_post_check": [
+   "v01",
+   "v02",
+   "f01",
+   "f02",
+   "a02",
+   "x03",
+   "m02",
+   "k01",
+   "k02",
+   "reg01",
+   "reg02"
+  ],
+  "output_safety_checks_off": [
+   "i01",
+   "i02",
+   "reg02",
+   "reg04"
+  ],
+  "code_validation_off": [
+   "o01",
+   "m03",
+   "k01",
+   "k02",
+   "k03",
+   "reg03"
+  ],
+  "uploads_not_isolated_by_owner": [
+   "x01"
+  ],
+  "unknown_version_is_guessed_not_asked": [
+   "v01",
+   "v02",
+   "v03",
+   "v04",
+   "o01",
+   "x03",
+   "k01",
+   "r01",
+   "reg05"
+  ],
+  "tool_failure_not_handled": [
+   "d01",
+   "m01",
+   "m02",
+   "m03",
+   "t01"
+  ],
+  "pii_redaction_off": [
+   "t02"
+  ],
+  "changelog_lookup_returns_nothing": [
+   "d01",
+   "m01"
+  ],
+  "citation_verification_off": [
+   "c01",
+   "reg05"
+  ]
+ },
+ "detected": 9,
+ "total": 9
+}

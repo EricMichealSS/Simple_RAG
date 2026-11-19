@@ -1,0 +1,2198 @@
+{
+ "meta": {
+  "started": "2026-11-03T19:39:03.677527+00:00",
+  "live": true,
+  "model": "openai/gpt-oss-120b",
+  "pace_s": 17.0,
+  "index_chunks": 39,
+  "collection": "race_docs"
+ },
+ "results": [
+  {
+   "id": "v01",
+   "title": "An explicit version beats anything in the question and scopes retrieval",
+   "category": "version_resolution",
+   "covers": [],
+   "modes": [
+    "version_confusion"
+   ],
+   "origin": "week6:version_confusion_w6",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "resolution source is the caller's explicit version",
+     "passed": true,
+     "detail": "explicit"
+    },
+    {
+     "name": "only 2025-06-01 chunks were retrieved",
+     "passed": true,
+     "detail": "0/5 wrong"
+    }
+   ],
+   "trace_ids": [
+    "ee221f21abfb4f4e882d33f575ff52ac"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.08,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "v02",
+   "title": "The version is read from the question when none is passed",
+   "category": "version_resolution",
+   "covers": [],
+   "modes": [
+    "version_confusion"
+   ],
+   "origin": "week6:version_confusion_w6",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "source=question, version=2025-06-01",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "only 2025-06-01 chunks were retrieved",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "bb5f77aa76b2488f8adae1177bb83e75"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.07,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "v03",
+   "title": "No version, or an unsupported one: ask the caller; nothing is retrieved, no model is called",
+   "category": "version_resolution",
+   "covers": [],
+   "modes": [
+    "version_confusion",
+    "false_refusal"
+   ],
+   "origin": "golden:gs_easy (questions without a version)",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "clarifies: How do I create an issue?",
+     "passed": true,
+     "detail": "clarify/unknown"
+    },
+    {
+     "name": "nothing retrieved, no citations",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "clarifies: In version 2024-01-01, how do I create a",
+     "passed": true,
+     "detail": "clarify/unsupported"
+    },
+    {
+     "name": "nothing retrieved, no citations",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the model was never called",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "e333ea026e0249acb09aa5d9724d5bec",
+    "3c03186162204c0b841354e017443335"
+   ],
+   "asks": 2,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 9.52,
+   "retrieved": 0,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "v04",
+   "title": "An explicit comparison is the only way to reach two versions, and both are labelled",
+   "category": "version_resolution",
+   "covers": [
+    "breaking_changes"
+   ],
+   "modes": [
+    "version_confusion",
+    "cross_document"
+   ],
+   "origin": "golden:gs_hard (comparison questions)",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "recognised as a comparison of both versions",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "evidence came from both versions, none from elsewhere",
+     "passed": true,
+     "detail": "{'2025-06-01', '2022-11-28'}"
+    },
+    {
+     "name": "the answer names both versions",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "42511824357946e8a373f715aa1e6253"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.05,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "f01",
+   "title": "No wrong-version chunk, and the asked endpoint is found, for every (version, endpoint) pair",
+   "category": "strict_filtering",
+   "covers": [],
+   "modes": [
+    "version_confusion",
+    "retrieval_miss"
+   ],
+   "origin": "week6:mode3_answerable_wrong_chunks",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "every pair returns evidence (a filter returning nothing is trivially safe)",
+     "passed": true,
+     "detail": "0 empty of 20"
+    },
+    {
+     "name": "no chunk from another version",
+     "passed": true,
+     "detail": "0 of 100 returned chunks"
+    },
+    {
+     "name": "the asked endpoint is retrieved within the version (>= 90%)",
+     "passed": true,
+     "detail": "20/20"
+    }
+   ],
+   "trace_ids": [],
+   "asks": 0,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.31,
+   "retrieved": 100,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {
+    "pairs": 20,
+    "endpoint_recall": "20/20"
+   }
+  },
+  {
+   "id": "f02",
+   "title": "A vector store whose filter is broken fails closed instead of answering",
+   "category": "strict_filtering",
+   "covers": [
+    "injection"
+   ],
+   "modes": [
+    "version_confusion",
+    "unsafe_content"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the request ends as an error with a scope violation",
+     "passed": true,
+     "detail": "error: scope_violation: a retrieved chunk was outside the allowed version sco"
+    },
+    {
+     "name": "nothing from the leaky store is shown",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "00e923ead95f46388b9ee1bcfd2abb0b"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.06,
+   "retrieved": 0,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "d01",
+   "title": "An older caller gets a LABELLED upgrade note, never newer text presented as its own behaviour",
+   "category": "deprecation_reporting",
+   "covers": [
+    "breaking_changes",
+    "mcp"
+   ],
+   "modes": [
+    "version_confusion"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "retrieval and changelog went through the MCP tools",
+     "passed": true,
+     "detail": "mcp"
+    },
+    {
+     "name": "an upgrade note exists, labelled as 2025-06-01 for a 2022-11-28 caller",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the tool's evidence-backed fact: assignee -> assignees",
+     "passed": true,
+     "detail": "[{'version': '2025-06-01', 'deprecated': 'assignee', 'replacement': 'assignees', 'chunk_id': 'github_combined_reference:p5:spec:top:5', 'endpoint': 'create_issue', 'cross_version': True}]"
+    },
+    {
+     "name": "the answer body itself shows no 2025-06-01 text",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "30975de686d94545af052cdad48b2df9"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.1,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g01",
+   "title": "GitHub 2022-11-28: HTTP status for creating a pull request",
+   "category": "version_tagged_citations",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "retrieval_miss"
+   ],
+   "origin": "golden:gs_easy#12",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: 201",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "eca0106d62154d81bbd9f63aedc43789"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.00031005,
+   "unpriced_calls": 0,
+   "duration_s": 2.22,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g02",
+   "title": "GitHub 2022-11-28: OAuth scopes to create a repository",
+   "category": "version_tagged_citations",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "retrieval_miss"
+   ],
+   "origin": "golden:gs_easy#07",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: public_repo",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "3aef5037be694c659f4dcd65ee2141f7"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.000357,
+   "unpriced_calls": 0,
+   "duration_s": 17.63,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g03",
+   "title": "GitHub 2025-06-01: the field that replaces the deprecated assignee",
+   "category": "deprecation_reporting",
+   "covers": [
+    "breaking_changes",
+    "version_tagged_citations"
+   ],
+   "modes": [
+    "false_refusal",
+    "version_confusion"
+   ],
+   "origin": "golden:gs_medium#01",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: assignees",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "94abd57b55044f67a952a05a29f801d5"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.00037095,
+   "unpriced_calls": 0,
+   "duration_s": 17.94,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g04",
+   "title": "Swagger Codegen 3.x: the flag that generates standalone markdown docs",
+   "category": "breaking_changes",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "version_confusion"
+   ],
+   "origin": "golden:gs_medium#02",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: --generate-markdown",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "1f109eeb207f4c5ca73094a5f7b7413c"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.0002775,
+   "unpriced_calls": 0,
+   "duration_s": 17.79,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g05",
+   "title": "GitHub 2025-06-01: visibility values for creating a repository",
+   "category": "breaking_changes",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "version_confusion"
+   ],
+   "origin": "golden:gs_medium#07",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: internal",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "2d96320a06ec4a919e42f1e830ae829e"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.00035475,
+   "unpriced_calls": 0,
+   "duration_s": 17.82,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g06",
+   "title": "GitHub 2025-06-01: the parameter that links a discussion to a release",
+   "category": "breaking_changes",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "version_confusion"
+   ],
+   "origin": "golden:gs_medium#09",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: discussion_category_name",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "1 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    }
+   ],
+   "trace_ids": [
+    "cf0b5bf246ee4d64b63e57004b55464d"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.00032985,
+   "unpriced_calls": 0,
+   "duration_s": 17.78,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g07",
+   "title": "Multi-version: make_latest in 2025-06-01 versus the 2022-11-28 heuristic",
+   "category": "multi_hop",
+   "covers": [
+    "deprecation_reporting",
+    "breaking_changes"
+   ],
+   "modes": [
+    "cross_document",
+    "false_refusal"
+   ],
+   "origin": "golden:gs_hard#06",
+   "tier": "live",
+   "regression": false,
+   "status": "fail",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: make_latest",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "2 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    },
+    {
+     "name": "both versions are named in the answer",
+     "passed": false,
+     "detail": ""
+    },
+    {
+     "name": "recognised as a comparison",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "a66bb04486d541e4a3796fdd9f8a2d81"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.0005184,
+   "unpriced_calls": 0,
+   "duration_s": 18.38,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 2,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g08",
+   "title": "Multi-version: how setting the issue type on creation changed",
+   "category": "multi_hop",
+   "covers": [
+    "breaking_changes"
+   ],
+   "modes": [
+    "cross_document",
+    "false_refusal"
+   ],
+   "origin": "golden:gs_hard#11",
+   "tier": "live",
+   "regression": false,
+   "status": "fail",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered (not a false refusal, not degraded)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "gold token present: type",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited, every citation retrieved + version-correct + sourced",
+     "passed": true,
+     "detail": "3 citations, bad=[]"
+    },
+    {
+     "name": "no chunk from another version was retrieved",
+     "passed": true,
+     "detail": "0/5"
+    },
+    {
+     "name": "both versions are named in the answer",
+     "passed": false,
+     "detail": ""
+    },
+    {
+     "name": "recognised as a comparison",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "1ea6fd3277c141059af1012239afc6cc"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.000501,
+   "unpriced_calls": 0,
+   "duration_s": 18.35,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 3,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "g09",
+   "title": "Unanswerable (not in the corpus): GraphQL rate limit in 2025-06-01",
+   "category": "abstention",
+   "covers": [],
+   "modes": [
+    "false_refusal",
+    "unsupported_answer"
+   ],
+   "origin": "golden:gs_easy#13",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "abstains instead of inventing an answer",
+     "passed": true,
+     "detail": "abstain: model_abstained: documents do not contain the answer"
+    },
+    {
+     "name": "no citations for an answer that was not given",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "059c825dbda9445b98f3d8c906cb4aaa"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.0003006,
+   "unpriced_calls": 0,
+   "duration_s": 17.46,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "c01",
+   "title": "A fabricated citation, or a claim about another version, is rejected and the answer withheld",
+   "category": "version_tagged_citations",
+   "covers": [
+    "abstention"
+   ],
+   "modes": [
+    "unsupported_answer",
+    "version_confusion"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "a citation that was never retrieved is rejected",
+     "passed": true,
+     "detail": "unverifiable_answer: cites chunks that were not retrieved: ['made:up:chunk:id:9']"
+    },
+    {
+     "name": "bounded: one retry, then withheld",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "a claim about 2025-06-01 for a 2022-11-28 caller is rejected",
+     "passed": true,
+     "detail": "unverifiable_answer: answer makes claims about versions outside the allowed set: ['2025-06"
+    }
+   ],
+   "trace_ids": [
+    "9db4c200f4d0498dbebd08998b4f26ff",
+    "41a5b594c1ce4a5089f5d6c136c44bf1"
+   ],
+   "asks": 2,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 4,
+   "cost_usd": null,
+   "unpriced_calls": 4,
+   "duration_s": 0.13,
+   "retrieved": 10,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "a02",
+   "title": "No answer model available: the user still gets cited, version-correct excerpts",
+   "category": "abstention",
+   "covers": [
+    "version_tagged_citations"
+   ],
+   "modes": [
+    "generation_unavailable"
+   ],
+   "origin": "week6:mode1_groq_error",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "degrades, not errors",
+     "passed": true,
+     "detail": "degraded"
+    },
+    {
+     "name": "excerpts are cited and from 2022-11-28 only",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the user is told why",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "15a4f853270e4c7aa9004e15c2f4cda3"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.06,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "o01",
+   "title": "An obsolete symbol in a community-style page must not hide the official deprecation warning",
+   "category": "community_obsolete",
+   "covers": [],
+   "modes": [
+    "version_confusion",
+    "code_wrong_version"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the fixture reached the model (the community page was retrieved)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "`assignee` is reported as deprecated, not merely 'cited'",
+     "passed": true,
+     "detail": "tier=deprecated"
+    },
+    {
+     "name": "the delivered answer warns about it",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "6edeabe40e4a4313a62486f3c61f31dc"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.22,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "json"
+     ],
+     "tiers": [
+      "cited",
+      "deprecated"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "i01",
+   "title": "A poisoned official page and an obedient model: the exfiltration channel is closed; hidden characters are stripped and flagged",
+   "category": "injection",
+   "covers": [],
+   "modes": [
+    "unsafe_content"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the poisoned page reached the model",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "an obedient model cannot get the image out",
+     "passed": true,
+     "detail": "blocked_by_safety_check: security: the answer embeds or auto-loads content from "
+    },
+    {
+     "name": "the injection was detected and recorded",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "zero-width characters never reach the prompt, and are flagged",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "d06bdf42e53a46c6bf55c3e7495d45a4",
+    "98772fb2dd0641afa88a36c1f44da187"
+   ],
+   "asks": 2,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 2,
+   "cost_usd": null,
+   "unpriced_calls": 2,
+   "duration_s": 0.24,
+   "retrieved": 10,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "i02",
+   "title": "A poisoned UPLOAD and an obedient model: flagged at upload, kept as data, exfiltration closed",
+   "category": "injection",
+   "covers": [
+    "upload_qa"
+   ],
+   "modes": [
+    "unsafe_content"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "flagged at upload time",
+     "passed": true,
+     "detail": "('external_image', 'hide_from_user', 'override_instructions')"
+    },
+    {
+     "name": "an obedient model cannot get the image out",
+     "passed": true,
+     "detail": "blocked_by_safety_check: security: the answer embeds or auto-loads content from "
+    }
+   ],
+   "trace_ids": [
+    "d0347f9eb794459a9f698f5de08ff06c"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.18,
+   "retrieved": 0,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "u01",
+   "title": "Question about the user's own upload: answered from it, cited by filename, never mixed with the official corpus",
+   "category": "upload_qa",
+   "covers": [
+    "version_tagged_citations"
+   ],
+   "modes": [
+    "false_refusal",
+    "isolation_breach"
+   ],
+   "origin": "new",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered from the upload",
+     "passed": true,
+     "detail": "answered/upload"
+    },
+    {
+     "name": "the fact is stated",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "cited by filename, upload chunks only",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "no official chunk was retrieved",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "4df1828f2c0246e4828d46cdd9207a2e"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.0001308,
+   "unpriced_calls": 0,
+   "duration_s": 16.83,
+   "retrieved": 0,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "x01",
+   "title": "Cross-user isolation: another owner sees nothing of it; the same owner sees only uploads; official questions never touch uploads",
+   "category": "cross_user_isolation",
+   "covers": [
+    "upload_qa"
+   ],
+   "modes": [
+    "isolation_breach"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "another owner retrieves nothing and the model is not called",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the marker never appears for them",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the owner does retrieve it (a control: isolation is not just an empty store)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "only upload chunks for an upload question",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "an official question with an owner never touches uploads",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "6ec59cc609194fc6bd63be13f7c62824",
+    "2e41c0b8d81c435780469cc0dfcb8080",
+    "c2eae9d47dec4bebadd8c5529bb5c2b2"
+   ],
+   "asks": 3,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.25,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "x02",
+   "title": "Deleting an upload invalidates it: no retrieval afterwards, and the delete is physical",
+   "category": "cross_user_isolation",
+   "covers": [
+    "cache_isolation"
+   ],
+   "modes": [
+    "isolation_breach"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "retrievable before the delete",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "physically purged",
+     "passed": true,
+     "detail": "purged=True chunks=1"
+    },
+    {
+     "name": "not retrievable after, and the text is gone from the answer",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "b9431e24783f46fbaceab6201cb17487",
+    "b72f6978f3ca47be90b244b656bd7004"
+   ],
+   "asks": 2,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.24,
+   "retrieved": 0,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "x03",
+   "title": "One engine instance, the same question for two versions: no state carries over",
+   "category": "cache_isolation",
+   "covers": [
+    "strict_filtering"
+   ],
+   "modes": [
+    "version_confusion",
+    "isolation_breach"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "each request is scoped to its own version",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "repeating a request gives the same evidence (deterministic, no drift)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "no wrong-version chunk in any of the three",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "46c2f89b36994a3684f10b6e34a14c61",
+    "10963bb3ed084092a3e73bd2fb6ad199",
+    "06b598348cf143a597734e2d770f3897"
+   ],
+   "asks": 3,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.13,
+   "retrieved": 15,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {
+    "cache": "the engine has no cache layer; there is nothing to invalidate besides uploads (see x02)"
+   }
+  },
+  {
+   "id": "m01",
+   "title": "MCP: tools are discovered at runtime and allow-listed; the calls the graph chose carry the caller's version",
+   "category": "mcp",
+   "covers": [
+    "tool_routing",
+    "trace_pii"
+   ],
+   "modes": [
+    "tool_path_failure"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "three tools discovered",
+     "passed": true,
+     "detail": "['check_symbol', 'lookup_changes', 'search_docs']"
+    },
+    {
+     "name": "all authorised by the operator allow-list; no instruction-like descriptions",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the selected tools were search_docs then lookup_changes",
+     "passed": true,
+     "detail": "['search_docs', 'lookup_changes']"
+    },
+    {
+     "name": "the SERVER saw the caller's version on every call",
+     "passed": true,
+     "detail": "['2022-11-28', '2022-11-28']"
+    }
+   ],
+   "trace_ids": [
+    "0d831324d95c4bb788b98db0d1d0fe45"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.11,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "m02",
+   "title": "MCP failure: every tool call times out; the request is still served, from the in-process path, and the trace says so",
+   "category": "mcp",
+   "covers": [
+    "trace_pii"
+   ],
+   "modes": [
+    "tool_path_failure"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the tools were tried",
+     "passed": true,
+     "detail": "[('search_docs', {'query': 'On API version 2022-11-28, how do I create an issue?', 'top_k': 5, 'version': '2022-11-28'}), ('lookup_changes', {'endpoint': 'create_issue', 'version': '2022-11-28'})]"
+    },
+    {
+     "name": "served from the local path, with cited version-correct excerpts",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the trace records the fallback",
+     "passed": true,
+     "detail": "fallbacks=2"
+    }
+   ],
+   "trace_ids": [
+    "22f3e103032c40b29405d0bba02caa6e"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.08,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "m03",
+   "title": "check_symbol is called through the MCP tool for an identifier the passages do not show, with the version enforced",
+   "category": "mcp",
+   "covers": [
+    "code_validation",
+    "tool_routing"
+   ],
+   "modes": [
+    "tool_path_failure",
+    "code_wrong_version"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the answer was delivered (has_issues is documented for 2022-11-28, on another endpoint)",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "check_symbol was called as an MCP tool",
+     "passed": true,
+     "detail": "['search_docs', 'lookup_changes', 'check_symbol', 'check_symbol']"
+    },
+    {
+     "name": "the evidence source was the tool",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "classified as documented elsewhere in the version, not as an error",
+     "passed": true,
+     "detail": "tier=elsewhere_in_version"
+    }
+   ],
+   "trace_ids": [
+    "0a1530448bb5422d9f321791dd2722ba"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.13,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "json"
+     ],
+     "tiers": [
+      "cited",
+      "elsewhere_in_version"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "k01",
+   "title": "Wrong-version samples are blocked, with a plain explanation: a 2025 field, a field the next version says did not exist, a CLI flag 3.x added",
+   "category": "code_validation",
+   "covers": [
+    "breaking_changes",
+    "deprecation_reporting"
+   ],
+   "modes": [
+    "code_wrong_version"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "blocked, with `assignees` named",
+     "passed": true,
+     "detail": "abstain: unverifiable_code: code block 1: `assignees` is not document"
+    },
+    {
+     "name": "blocked, with `make_latest` named",
+     "passed": true,
+     "detail": "abstain: unverifiable_code: code block 1: `make_latest` did not exist"
+    },
+    {
+     "name": "blocked, with `--generate-markdown` named",
+     "passed": true,
+     "detail": "abstain: unverifiable_code: code block 1: `--generate-markdown` did n"
+    }
+   ],
+   "trace_ids": [
+    "db5ffb33169d4f80ab8451555c47d809",
+    "7acc218324fb4f9595f01219acd25ff1",
+    "d329b39a2deb4f8ca14a145b3fb151af"
+   ],
+   "asks": 3,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 6,
+   "cost_usd": null,
+   "unpriced_calls": 6,
+   "duration_s": 0.24,
+   "retrieved": 15,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "abstain",
+     "hard": 1,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "json"
+     ],
+     "tiers": [
+      "cited",
+      "other_version_only"
+     ]
+    },
+    {
+     "live": false,
+     "outcome": "abstain",
+     "hard": 1,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "json"
+     ],
+     "tiers": [
+      "absent_per_docs",
+      "cited"
+     ]
+    },
+    {
+     "live": false,
+     "outcome": "abstain",
+     "hard": 1,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "shell"
+     ],
+     "tiers": [
+      "absent_per_docs",
+      "cited"
+     ]
+    }
+   ],
+   "notes": {
+    "blocked": "3/3"
+   }
+  },
+  {
+   "id": "k02",
+   "title": "A documented header the passage does not show is accepted, and the footer says what was and was not checked",
+   "category": "code_validation",
+   "covers": [],
+   "modes": [
+    "over_blocking"
+   ],
+   "origin": "observed:phase6 (X-GitHub-Api-Version calibration)",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "delivered",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "no blocking finding",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "the footer states it is static analysis that executed nothing",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "7c0b3699fbbe445ea31ab880b0bb391a"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.07,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "shell"
+     ],
+     "tiers": [
+      "cited"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "k03",
+   "title": "A Python sample that does not parse is never delivered",
+   "category": "code_validation",
+   "covers": [],
+   "modes": [
+    "code_wrong_version"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "blocked and explained",
+     "passed": true,
+     "detail": "abstain: I could not give a code sample that is validated for GitHub REST API 2022-11-28."
+    }
+   ],
+   "trace_ids": [
+    "dce40bf1377b41b3b57e7484aab5cc52"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 2,
+   "cost_usd": null,
+   "unpriced_calls": 2,
+   "duration_s": 0.07,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "abstain",
+     "hard": 1,
+     "soft": 0,
+     "syntax": [
+      "error"
+     ],
+     "languages": [
+      "python"
+     ],
+     "tiers": [
+      "syntax_error"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "k04",
+   "title": "Live: a code sample from the real model parses, and no identifier belongs only to another version",
+   "category": "code_validation",
+   "covers": [
+    "version_tagged_citations"
+   ],
+   "modes": [
+    "code_wrong_version",
+    "false_refusal"
+   ],
+   "origin": "new",
+   "tier": "live",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "answered with a code sample",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "every block parsed",
+     "passed": true,
+     "detail": "['parsed']"
+    },
+    {
+     "name": "nothing blocking, nothing evidenced as another version's",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "d23abe65088a49d599796fe5b4cfc005"
+   ],
+   "asks": 1,
+   "live_llm_calls": 1,
+   "scripted_llm_calls": 0,
+   "cost_usd": 0.00055755,
+   "unpriced_calls": 0,
+   "duration_s": 17.2,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 1,
+   "citations_bad": 0,
+   "live_code_samples": 1,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": true,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "shell"
+     ],
+     "tiers": [
+      "cited"
+     ]
+    }
+   ],
+   "notes": {
+    "tiers": [
+     "cited"
+    ]
+   }
+  },
+  {
+   "id": "t01",
+   "title": "One trace id spans the engine and the MCP server process, with the server's spans nested under the client call",
+   "category": "trace_pii",
+   "covers": [
+    "mcp"
+   ],
+   "modes": [
+    "tool_path_failure"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "both processes recorded spans under this trace id",
+     "passed": true,
+     "detail": "{'mcp_server', 'sdk_engine'}"
+    },
+    {
+     "name": "every server span hangs under the client mcp.call that caused it",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "no orphan spans",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "efa74049980441f0a53f20240d963ad5"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.1,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "t02",
+   "title": "A question containing an email and a token: redacted before persistence, counted, never stored",
+   "category": "trace_pii",
+   "covers": [],
+   "modes": [
+    "unsafe_content"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "what was redacted is counted",
+     "passed": true,
+     "detail": "{'provider-key': 1, 'email': 1}"
+    },
+    {
+     "name": "neither value, nor the question text, is anywhere in the persisted log",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "c65c0802d9844546bbc5acbe20f5c63b"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.1,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "r01",
+   "title": "Routing: intent, changelog and specialist follow from the question",
+   "category": "tool_routing",
+   "covers": [],
+   "modes": [
+    "tool_path_failure"
+   ],
+   "origin": "new",
+   "tier": "offline",
+   "regression": false,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "On API version 2022-11-28, what does the title param... -> lookup",
+     "passed": true,
+     "detail": "lookup changelog=True ['documentation_researcher', 'deprecation_migration']"
+    },
+    {
+     "name": "On API version 2022-11-28, show a curl example that ... -> code_help",
+     "passed": true,
+     "detail": "code_help changelog=True ['documentation_researcher', 'deprecation_migration', 'code_validation']"
+    },
+    {
+     "name": "How do I migrate creating an issue from 2022-11-28 t... -> migration",
+     "passed": true,
+     "detail": "migration changelog=True ['documentation_researcher', 'deprecation_migration']"
+    },
+    {
+     "name": "Using Swagger Codegen 3.x, which flag generates mark... -> lookup",
+     "passed": true,
+     "detail": "lookup changelog=False ['documentation_researcher']"
+    },
+    {
+     "name": "What do my uploaded notes say about zebras?... -> uploaded_doc",
+     "passed": true,
+     "detail": "uploaded_doc changelog=False ['user_document_researcher']"
+    }
+   ],
+   "trace_ids": [
+    "6305ef7c9e2741d88ac6b35fdc996272",
+    "3884ef0893e941909206422e104030a6",
+    "c70066f849b04171bf51085ac60d3cf7",
+    "663ba6ac877d48809e31a7cd09766941",
+    "ea3adb83a2d54964bf04f3034359eecc"
+   ],
+   "asks": 5,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.34,
+   "retrieved": 20,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  },
+  {
+   "id": "reg01",
+   "title": "REGRESSION: a semver tag in a code sample (\"v2.0.0\") is not a claim about another version",
+   "category": "code_validation",
+   "covers": [],
+   "modes": [
+    "over_blocking"
+   ],
+   "origin": "observed:phase6 live run (a correct release example was withheld)",
+   "tier": "offline",
+   "regression": true,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "delivered, not withheld as 'claims about versions outside the allowed set'",
+     "passed": true,
+     "detail": "answered: "
+    }
+   ],
+   "trace_ids": [
+    "52e1ed73fac4414fbcb61b0c79efc5be"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.06,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "json"
+     ],
+     "tiers": [
+      "cited",
+      "elsewhere_in_version"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "reg02",
+   "title": "REGRESSION: the user's own pasted token echoed in a Bearer header is not an invented secret",
+   "category": "code_validation",
+   "covers": [],
+   "modes": [
+    "over_blocking",
+    "unsafe_content"
+   ],
+   "origin": "observed:phase7 live demo (a correct curl answer was withheld)",
+   "tier": "offline",
+   "regression": true,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "delivered, not blocked as 'a secret-shaped value that is not in the sources'",
+     "passed": true,
+     "detail": "answered: "
+    },
+    {
+     "name": "the SAME echo without the token in the question is still refused",
+     "passed": true,
+     "detail": "abstain"
+    }
+   ],
+   "trace_ids": [
+    "6e948983514449c3a12f02f4e56cf96b",
+    "8f486f73397b4c61854185ced20ae1a9"
+   ],
+   "asks": 2,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 2,
+   "cost_usd": null,
+   "unpriced_calls": 2,
+   "duration_s": 0.13,
+   "retrieved": 10,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "shell"
+     ],
+     "tiers": [
+      "cited"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "reg03",
+   "title": "REGRESSION: a multi-line quoted JSON body in curl is one argument, not several shell commands",
+   "category": "code_validation",
+   "covers": [],
+   "modes": [
+    "over_blocking"
+   ],
+   "origin": "observed:phase6 live run (footer listed JSON keys as commands)",
+   "tier": "offline",
+   "regression": true,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "the block parses",
+     "passed": true,
+     "detail": "parsed"
+    },
+    {
+     "name": "no JSON key was mistaken for a command",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "trace_ids": [
+    "f2d198190eca40e4bc790b5f0cf70c10"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 1,
+   "cost_usd": null,
+   "unpriced_calls": 1,
+   "duration_s": 0.06,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [
+    {
+     "live": false,
+     "outcome": "answered",
+     "hard": 0,
+     "soft": 0,
+     "syntax": [
+      "parsed"
+     ],
+     "languages": [
+      "shell"
+     ],
+     "tiers": [
+      "cited"
+     ]
+    }
+   ],
+   "notes": {}
+  },
+  {
+   "id": "reg04",
+   "title": "REGRESSION: with no answer model, a poisoned page's auto-loading image is not printed as an 'excerpt'",
+   "category": "injection",
+   "covers": [],
+   "modes": [
+    "unsafe_content",
+    "generation_unavailable"
+   ],
+   "origin": "observed:phase5 live run (degraded mode printed retrieved text unchecked)",
+   "tier": "offline",
+   "regression": true,
+   "status": "pass",
+   "error": null,
+   "checks": [
+    {
+     "name": "degraded answer, none of the poisoned page's URL shown",
+     "passed": true,
+     "detail": "degraded"
+    }
+   ],
+   "trace_ids": [
+    "e1a82877a7dd4c948fa9169d1958d735"
+   ],
+   "asks": 1,
+   "live_llm_calls": 0,
+   "scripted_llm_calls": 0,
+   "cost_usd": null,
+   "unpriced_calls": 0,
+   "duration_s": 0.11,
+   "retrieved": 5,
+   "wrong_version_chunks": 0,
+   "citations_total": 0,
+   "citations_bad": 0,
+   "live_code_samples": 0,
+   "live_wrong_version_samples": 0,
+   "code": [],
+   "notes": {}
+  }
+ ]
+}

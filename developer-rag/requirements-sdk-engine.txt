@@ -1,0 +1,19 @@
+# Direct runtime dependencies of sdk_engine/ and sdk_eval/ (the Week 12 answer engine), pinned to the versions the
+# suite was measured with: Python 3.14.8 on Windows 11. Transitive dependencies are resolved by pip;
+# requirements-sdk-engine.lock.txt is the full 137-package snapshot of that environment.
+#
+#   pip install -r requirements-sdk-engine.txt                 # run the engine with the in-process or MCP retriever
+#   pip install -r requirements-embeddings.txt                 # ALSO needed for real embeddings (see that file)
+#   pip install -r requirements-dev.txt                        # tests
+#
+# The older requirements.txt (Weeks 1-11, unpinned, includes streamlit) is left as it was.
+chromadb==1.5.9
+jsonschema==4.26.0
+langgraph==1.2.19
+mcp==1.30.0
+numpy==2.5.4
+openai==3.42.1
+pydantic==2.14.2
+pypdf==6.21.4
+python-docx==1.2.0
+python-dotenv==1.2.4

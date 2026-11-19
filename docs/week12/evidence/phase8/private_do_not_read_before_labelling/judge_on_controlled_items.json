@@ -1,0 +1,30 @@
+{
+ "controlled_negatives": 13,
+ "judge_said_fail": 13,
+ "judge_caught_rate_vs_construction": 1.0,
+ "by_kind": {
+  "answers_a_different_question": {
+   "items": 2,
+   "judge_said_fail": 2
+  },
+  "one_sided_comparison": {
+   "items": 2,
+   "judge_said_fail": 2
+  },
+  "false_refusal": {
+   "items": 3,
+   "judge_said_fail": 3
+  },
+  "wrong_fact": {
+   "items": 5,
+   "judge_said_fail": 5
+  },
+  "fabricated_answer": {
+   "items": 1,
+   "judge_said_fail": 1
+  }
+ },
+ "real_outputs": 10,
+ "real_judged_pass": 10,
+ "note": "measured against my construction of known-bad answers, NOT against human labels; not the 85% check"
+}

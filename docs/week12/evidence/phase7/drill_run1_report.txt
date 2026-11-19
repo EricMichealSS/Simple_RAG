@@ -1,0 +1,93 @@
+DRILL RUN 1 — verbatim final report of the blind investigator (a fresh Claude subagent given only the complaint, the CLI path and
+the rules in incident_drill.md). This is model output, kept as evidence; it is not a statement of fact by the project.
+CLI at the time: trace find|show|stats with filters --since/--until/--version/--tool/--status/--corpus/--endpoint/--code-tier/--security/
+--min-cost/--min-ms. Log: the FIRST synthetic drill log (generator version before the duration fix). Harness-recorded run duration: 98.1 s.
+Ground truth (never shown to the investigator): planted trace bc17de9100ef86f4d1f46f446755a4a8 (2026-10-30 14:09 UTC, 2025-06-01, create_issue).
+---------------------------------------------------------------------------------------------------------------------------------------
+INCIDENT DRILL REPORT
+
+Bottom line: I could NOT pin the complaint to one request. The best explanation is a cluster of 4 requests during an MCP outage on 2026-10-30. There is also a second, weaker candidate set of 13 requests. The logs cannot separate them.
+
+1. TIMING
+- Start: 1793731934.794500200
+- End: 1793732000.094386600
+- Elapsed: about 65.3 s. This includes the --help calls.
+- The end value was taken after two final confirmation calls. The candidate set was identified roughly 15 s earlier.
+- "Last week" is relative to the drill date, 2026-11-04. I treated it as about 10-24 to 11-02.
+
+2. COMMANDS RUN, IN ORDER
+All were `... -m sdk_engine trace --dir <drill_log> ...`, except `date`.
+1. `date +%s.%N`, then `trace --help`: discover the CLI.
+2. `trace find --help`, `trace show --help`, `trace stats --help`: discover filters. `find` has `--code-tier` with values deprecated, not_checked and absent_per_docs. It also has `--endpoint` and `--version`.
+3. `trace find --code-tier deprecated --since 14d --limit 50`: the literal reading of "deprecated". It returned 23 requests, all `answered`, all `code:cited+deprecated`, spread evenly from 10-22 to 11-03. That is about 2-3 per day, so it looks like baseline.
+4. `trace find --since 2026-10-24 --until 2026-11-02 --limit 500 | awk | sort | uniq -c`, plus `trace stats` over the same window.
+   - I tallied the flags column across the week. 286 requests, 83 with code.
+   - Code tiers: cited 79, deprecated 17, elsewhere_in_version 4, not_checked 4.
+   - 32 MCP fallbacks.
+5. `trace show 7e7ba466ffe7`: read one deprecated-tier trace, to learn what that tier looks like in a span tree.
+6. `trace find --code-tier not_checked --since 30d`, `--code-tier elsewhere_in_version`, `--code-tier absent_per_docs`: look for anomalous tiers. not_checked gave 4 requests, all on 10-30 between 13:39 and 14:28. absent_per_docs gave 0.
+7. `trace show 18b53a5ebcf3` and `trace show ca73f9208e57`: read two of the not_checked traces.
+8. A loop of `trace show` over all 23 deprecated-tier ids, grepping the `verify_citations_and_version` and `code_validation` lines: check whether any deprecated-tier request differs from the others. None does.
+9. `trace find --since 30d --limit 1000 | grep -E 'fallback|security|error'`: find the full extent of the MCP outage and the other anomalies.
+10. `trace show c126de5f61fd` (a fallback:2 request) and `trace show --json 18b53a5ebcf3`: confirm that fallback:2 requests have no code, and check whether the JSON holds more detail. It did not. Then `date`.
+
+3. THE REQUEST I BELIEVE IS THE INCIDENT
+The leading hypothesis is one of 4 requests, all 2026-10-30 UTC and all `outcome=answered` with a code block:
+
+| Trace id | Time (UTC) | Version | Endpoint |
+|---|---|---|---|
+| 18b53a5ebcf3 | 13:39 | 2.x | java_generator |
+| ca73f9208e57 | 13:51 | 2025-06-01 | create_repository |
+| bc17de9100ef | 14:09 | 2025-06-01 | create_issue |
+| 276188f6b5c5 | 14:28 | 2025-06-01 | create_repository |
+
+The evidence that sets these apart from everything else:
+- They are the only 4 requests in the whole log with `code:not_checked` (`tiers=[not_checked]`, `symbol_source=none`). Every other code-bearing request has symbol_source=mcp and tier `cited`, so its code was checked against the catalog.
+- Each has `tools=-`, meaning no MCP tools were called. Their `mcp.call` spans show `search_docs` and `lookup_changes` both failing with `!error:timeout` at 30000 ms. `retrieve` shows `via=local ... mcp_fallback=timeout`.
+- Each has `blocks=1 languages=[shell] hard=0 soft=0`, `code_failures=0`, `ok=True`. The unvalidated code sample was served as a normal answered response.
+- They sit inside a 13:32-14:52 outage window of 12 fallback requests. The other 8 are `fallback:2` with no code, so they are not candidates.
+
+If the deprecated-tier set is also in scope, the only trace-based candidate I can name for it is `7e7ba466ffe7` (2026-11-01 19:21, 2025-06-01, create_release). I have no stronger reason to pick it than any other deprecated-tier request. The full set of 13 deprecated-tier requests dated 10-26 to 11-01 is:
+7e7ba466ffe7, 4049f4de59f5, 82dfaae0a229, 13f53cc9a7e2, 18a2e3a5d895, b04fa6f5771c, fa4a95269721, 6549cd03df8d, 4a183f3f6ec0, ab9641d86ea8, f8c9c27675ba, cb311bc3d29b, f9fe1bb62c80.
+
+4. WHAT HAPPENED AND ROOT CAUSE, AS FAR AS THE TRACE SHOWS
+- On 10-30 from about 13:32 to 14:52 the MCP server did not answer (30 s timeouts). The engine silently fell back to local retrieval, which is the "fallback" in the flags.
+- On those requests the code validator had no symbol source (`symbol_source=none`, `lookups=0`). It could not check whether the generated method is deprecated or exists in the caller's version. It recorded the tier `not_checked`, counted zero hard and zero soft failures, and let the answer through.
+- So any deprecated method in those 4 samples would have been shipped unflagged. This is the one situation where the engine could not detect the problem it exists to prevent.
+- I cannot confirm any of the 4 samples actually contained a deprecated method. The logs hold no code or symbol names. This is a risk exposure that fits the complaint, not a proven match.
+- The 13 deprecated-tier requests are ambiguous:
+  - All 23 look identical, with hard=0 and soft=0.
+  - They occur at a steady rate from 10-22 onward, so no event separates last week from earlier.
+  - They may be the validator correctly recognising and handling a deprecated symbol, for example by annotating it.
+  - They may instead be deprecated methods passing through with no failure counted.
+  - The trace does not say which. I judged them more likely baseline than the incident, but with low confidence.
+
+5. CONFIDENCE AND GAPS
+- Confidence: medium-low (about 40-50%) that the incident is among the 4 not_checked requests, and under 10% for any single one of them.
+- The first thing to ask the developer is which SDK version and which endpoint or generator they were using, plus the rough day and time.
+  - A version of 2025-06-01 narrows it to 3 of the 4.
+  - A version of 2.x narrows it to 18b53a5ebcf3.
+  - A version of 2022-11-28 or 3.x rules out the not_checked cluster, so the deprecated-tier set becomes the focus.
+- I could not determine:
+  - what the sample contained or which method it used;
+  - whether a deprecated-tier answer carried a visible warning;
+  - whether the complaint is about unflagged deprecated code (not_checked cluster) or flagged-but-shipped code (deprecated tier);
+  - the timezone or time of the complaint.
+- Odd data points I noticed:
+  - mcp.call spans show 30000 ms timeouts, but the whole request took only 1.2-3.4 s. The stage table shows `mcp.call calls=2 60000.0 ms` inside a 3.4 s request. This looks like synthetic-data artefacts or a mislabelled timeout unit.
+  - The `deprecated` tier gives no failure count and no way to tell a warned deprecation from an unwarned one.
+
+6. TOOL FEEDBACK
+Good:
+- `--code-tier` and the `flags` column made the outage cluster visible quickly.
+- `find` output with fallback and code flags was readable.
+
+Slow, confusing or missing:
+- `find` cannot filter on `fallback`, `mcp_fallback` or error category. I had to filter `find` output with grep to see the fallback cluster.
+- The `deprecated` tier is ambiguous. The output never says whether the deprecated symbol was warned about or stripped. The `soft` and `hard` counts stay 0 for these requests, so I cannot tell a handled deprecation from a missed one.
+- Retrieval and the fallback line are hidden in the spans: `tools=-` and the `fallback:N` flag are cryptic. Nothing names an outage.
+- There is no way to group `find` results by time or by flag. Spotting the 10-30 outage cluster took multiple greps.
+- `--since 14d` is relative to the real clock, not to the drill date. The synthetic data is dated Oct-Nov 2026, so absolute dates were safer.
+- `show --json` carries no extra data, such as symbol names or a deprecation verdict.
+
+Single change that would have helped most: record the specific validator verdict on `code_validation`. For example, a count of symbols found deprecated and whether a warning was emitted, and a loud `code_unchecked_reason=mcp_timeout` on not_checked requests. Pair that with a `find --unchecked` or `--fallback` filter. With that, the not_checked requests would not need a separate hypothesis, and deprecated-tier requests could be told apart as warned or silent.

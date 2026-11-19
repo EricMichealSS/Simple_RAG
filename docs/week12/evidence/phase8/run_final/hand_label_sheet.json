@@ -1,0 +1,685 @@
+{
+ "how_to_label": "PASS = the answer is correct for the caller's version, supported by the context shown, and would let a developer move on (or it is a correct 'I don't know' because the context really contains no answer). FAIL = wrong, invented, an unnecessary 'I don't know' when the context has the answer, or a one-sided answer to a comparison. Judge the answer text only: code parsing, symbol existence and the version label are checked by deterministic assertions, not by you.",
+ "how_to_return": "Copy hand_labels_template.json, set each \"label\" to \"PASS\" or \"FAIL\" (and optionally a one-line reason). Leave a row's label null to skip it. Do not look at judge_verdicts.json until you have finished.",
+ "items": [
+  {
+   "id": "item01",
+   "question": "What parameter can be provided when creating a release in GitHub API version 2025-06-01 to automatically trigger a linked discussion?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The release\u2011creation request can include the **`discussion_category_name`** body parameter (a string) to automatically create and link a discussion to the new release.\u202f[github_combined_reference:p12:spec:top:15]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p12:spec:top:15",
+     "text": "Create a release\nAPI version 2025-06-01\nSummary\nPublishes a new release against an existing or new tag. As of this version, discussion_categ\nory_name can be supplied to automatically open a linked discussion, and make_latest gives\nexplicit control over whether the release becomes the repository\u2019s \u201cLatest\u201d release, replacing\nan older undocumented heuristic based purely on publish date.\nBody parameters\nName T ype Required Default Description\ntag_name string Y es \u2014 The name of the\ntag.\ntarget_commitis\nh\nstring No default branch Commitish value\nthe tag is\ncreated from, if\nit doesn\u2019t\nalready exist.\nname string No null Release title.\nbody string No null Release notes\nbody text.\ndraft boolean No false Creates a draft\n(unpublished)\nrelease when tru\ne.\nprerelease boolean No false Marks the\nrelease as a\nprerelease.\ndiscussion_cate\ngory_name\nstring No null If specified, a\ndiscussion of the\nspecified\ncategory is\ncreated and\nlinked to the\nrelease.\ngenerate_releas\ne_notes\nboolean No false Auto-generates\nname/body from\nmerged PRs\nsince the\nprevious\nrelease.\nmake_latest enum No true One of true, fals\ne, legacy .\nControls\nwhether this\nrelease is\nmarked\n\u201cLatest\u201d.\n12"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:diff:top:17",
+     "text": "Previous version (2022-11-28)\nThe prior version had no discussion_category_name field, so linking a discussion to a release\nrequired a separate manual step in the UI after the release was published. There was also\nno make_latest control \u2014 whether a release showed as \u201cLatest\u201d was determined purely by an\ninternal heuristic based on publish date and prerelease/draft status, which occasionally marked\nan older release as \u201cLatest\u201d if a newer one was still in draft.\n13"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    }
+   ]
+  },
+  {
+   "id": "item02",
+   "question": "Which OAuth scopes are required to create a repository for an authenticated user using the GitHub REST API?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] The API returns **status\u202f201** (Created) when a pull request is successfully created[github_combined_reference:p6:spec:top:7].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p8:spec:top:10",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos\nCreates a new repository for the authenticated user.\nOAuth scope required: public_repo or repo scope.\nParameter T ype Required Description\nname string yes The name of the\nrepository .\ndescription string no A short description of\nthe repository .\nhomepage string no A URL with more\ninformation about\nthe repository .\nprivate boolean no Whether the\nrepository is private.\nDefault: false.\nhas_issues boolean no Whether issues are\nenabled. Default: tru\ne.\nauto_init boolean no Pass true to create\nan initial commit with\nempty README.\nDefault: false.\ncurl -X POST https://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"private\":true}'\n8"
+    },
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    }
+   ]
+  },
+  {
+   "id": "item03",
+   "question": "How did setting issue types on creation change between GitHub API versions 2022-11-28 and 2025-06-01?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [
+    "2022-11-28",
+    "2025-06-01"
+   ],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] - **2022\u201111\u201128** \u2013 The endpoint did not have a `type` parameter, so the issue type could not be set when the issue was created; a separate request was required after creation\u202f[github_combined_reference:p5:diff:top:6].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:diff:top:6",
+     "text": "Previous version (2022-11-28)\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\nsignees array, so an issue could only be assigned to one user at creation time \u2014 assigning\nmultiple users required a separate follow-up call. There was also no type field; setting an issue\ntype required a second request after creation.\n5"
+    },
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    }
+   ]
+  },
+  {
+   "id": "item04",
+   "question": "In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] I don't know based on the provided documents.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:diff:top:6",
+     "text": "Previous version (2022-11-28)\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\nsignees array, so an issue could only be assigned to one user at creation time \u2014 assigning\nmultiple users required a separate follow-up call. There was also no type field; setting an issue\ntype required a second request after creation.\n5"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    }
+   ]
+  },
+  {
+   "id": "item05",
+   "question": "How did setting issue types on creation change between GitHub API versions 2022-11-28 and 2025-06-01?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [
+    "2022-11-28",
+    "2025-06-01"
+   ],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] - **2022\u201111\u201128** \u2013 The endpoint did not have a `type` parameter, so the issue type could not be set when the issue was created; a separate request was required after creation\u202f[github_combined_reference:p5:diff:top:6].\n\n- **2025\u201106\u201101** \u2013 A new optional `type` field was added to the request body, allowing the issue type to be specified at creation time\u202f[github_combined_reference:p5:spec:top:5].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:diff:top:6",
+     "text": "Previous version (2022-11-28)\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\nsignees array, so an issue could only be assigned to one user at creation time \u2014 assigning\nmultiple users required a separate follow-up call. There was also no type field; setting an issue\ntype required a second request after creation.\n5"
+    },
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    }
+   ]
+  },
+  {
+   "id": "item06",
+   "question": "What new visibility enum values are supported when creating a repository in GitHub API version 2025-06-01?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The\u202f2025\u201106\u201101\u202frepository\u2011creation endpoint adds a **visibility** enum with three possible values:\n\n- `public`  \n- `private`  \n- `confidential`\u202f(the new option for organizations)  \n\n[github_combined_reference:p9:spec:top:11]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:diff:top:12",
+     "text": "Previous version (2022-11-28)\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\nnizations offering \u201cinternal\u201d visibility had no way to request it through this endpoint. has_iss\nues also defaulted to true unconditionally, regardless of whether the repository was public or\nprivate.\n9"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    }
+   ]
+  },
+  {
+   "id": "item07",
+   "question": "What is the rate limit for unauthenticated GraphQL queries in GitHub API version 2025-06-01?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "Unauthenticated GraphQL queries are limited to 60 requests per hour [github_combined_reference:p1:spec:top:0].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:diff:top:12",
+     "text": "Previous version (2022-11-28)\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\nnizations offering \u201cinternal\u201d visibility had no way to request it through this endpoint. has_iss\nues also defaulted to true unconditionally, regardless of whether the repository was public or\nprivate.\n9"
+    }
+   ]
+  },
+  {
+   "id": "item08",
+   "question": "How does the make_latest parameter in GitHub API version 2025-06-01 release creation replace the undocumented heuristic used in 2022-11-28?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [
+    "2022-11-28",
+    "2025-06-01"
+   ],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] In the 2025\u201106\u201101 API, the **`make_latest`** body parameter lets the caller explicitly decide whether the new release should be marked as the repository\u2019s \u201cLatest\u201d release (values\u202f`true`, `false`, or `legacy`)[github_combined_reference:p12:spec:top:15].  ",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    },
+    {
+     "chunk_id": "github_combined_reference:p12:spec:top:15",
+     "text": "Create a release\nAPI version 2025-06-01\nSummary\nPublishes a new release against an existing or new tag. As of this version, discussion_categ\nory_name can be supplied to automatically open a linked discussion, and make_latest gives\nexplicit control over whether the release becomes the repository\u2019s \u201cLatest\u201d release, replacing\nan older undocumented heuristic based purely on publish date.\nBody parameters\nName T ype Required Default Description\ntag_name string Y es \u2014 The name of the\ntag.\ntarget_commitis\nh\nstring No default branch Commitish value\nthe tag is\ncreated from, if\nit doesn\u2019t\nalready exist.\nname string No null Release title.\nbody string No null Release notes\nbody text.\ndraft boolean No false Creates a draft\n(unpublished)\nrelease when tru\ne.\nprerelease boolean No false Marks the\nrelease as a\nprerelease.\ndiscussion_cate\ngory_name\nstring No null If specified, a\ndiscussion of the\nspecified\ncategory is\ncreated and\nlinked to the\nrelease.\ngenerate_releas\ne_notes\nboolean No false Auto-generates\nname/body from\nmerged PRs\nsince the\nprevious\nrelease.\nmake_latest enum No true One of true, fals\ne, legacy .\nControls\nwhether this\nrelease is\nmarked\n\u201cLatest\u201d.\n12"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    }
+   ]
+  },
+  {
+   "id": "item09",
+   "question": "How does the make_latest parameter in GitHub API version 2025-06-01 release creation replace the undocumented heuristic used in 2022-11-28?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [
+    "2022-11-28",
+    "2025-06-01"
+   ],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] In the 2025\u201106\u201101 API, the **`make_latest`** body parameter lets the caller explicitly decide whether the new release should be marked as the repository\u2019s \u201cLatest\u201d release (values\u202f`true`, `false`, or `legacy`)[github_combined_reference:p12:spec:top:15].  \n\nIn the earlier 2022\u201111\u201128 version there was no `make_latest` field; the \u201cLatest\u201d release was determined automatically by an undocumented heuristic that simply used the release\u2019s publish date[github_combined_reference:p10:spec:top:13].  \n\nThus, `make_latest` replaces that implicit date\u2011based rule with a clear, opt\u2011in/out flag.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    },
+    {
+     "chunk_id": "github_combined_reference:p12:spec:top:15",
+     "text": "Create a release\nAPI version 2025-06-01\nSummary\nPublishes a new release against an existing or new tag. As of this version, discussion_categ\nory_name can be supplied to automatically open a linked discussion, and make_latest gives\nexplicit control over whether the release becomes the repository\u2019s \u201cLatest\u201d release, replacing\nan older undocumented heuristic based purely on publish date.\nBody parameters\nName T ype Required Default Description\ntag_name string Y es \u2014 The name of the\ntag.\ntarget_commitis\nh\nstring No default branch Commitish value\nthe tag is\ncreated from, if\nit doesn\u2019t\nalready exist.\nname string No null Release title.\nbody string No null Release notes\nbody text.\ndraft boolean No false Creates a draft\n(unpublished)\nrelease when tru\ne.\nprerelease boolean No false Marks the\nrelease as a\nprerelease.\ndiscussion_cate\ngory_name\nstring No null If specified, a\ndiscussion of the\nspecified\ncategory is\ncreated and\nlinked to the\nrelease.\ngenerate_releas\ne_notes\nboolean No false Auto-generates\nname/body from\nmerged PRs\nsince the\nprevious\nrelease.\nmake_latest enum No true One of true, fals\ne, legacy .\nControls\nwhether this\nrelease is\nmarked\n\u201cLatest\u201d.\n12"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    }
+   ]
+  },
+  {
+   "id": "item10",
+   "question": "Which CLI flag in Swagger Codegen v3 generates a standalone markdown API doc alongside client code?",
+   "caller_version": "3.x",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The\u202f2025\u201106\u201101\u202frepository\u2011creation endpoint adds a **visibility** enum with three possible values:\n\n- `public`  \n- `private`  \n- `internal`\u202f(the new option for organizations)  \n\n[github_combined_reference:p9:spec:top:11]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "swagger_v3_reference:p1:spec:top:0",
+     "text": "SwaggerCodegenReference-v3\nContents\nSwagger Codegen CLI \u2014 general options (v3) 1\nJava client generator \u2014 configuration options (v3) 3\nPython generator \u2014 config options 4\nThe .swagger-codegen-ignore file (v3) 5\nConfig file usage (v3) 6\nSwagger Codegen CLI \u2014 general options (v3)\nSwaggerCodegen3.xusesMavengroupidio.swagger.codegen.v3andsupportsOpenAPI3.0.x\nspecs(2.xdoesnot).\nGetting the CLI\nwget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.71/\\\nswagger-codegen-cli-3.0.71.jar -O swagger-codegen-cli.jar\nRunning\njava -jar swagger-codegen-cli.jar generate \\\n-i https://petstore.swagger.io/v3/swagger.json \\\n-l php \\\n-o /tmp/php_api_client\nFlag reference\nFlag Description Presentinv2?\n-i Speclocation,URLorfile. Yes\n-l Targetlanguage. Yes\n-o Outputdirectory. Yes\n-c JSONconfigfilepath. Yes\n--generate-markdown Newinv3\u2014generatesa\nstandalonemarkdownAPI\ndocalongsideclientcode.\nNo\n-DhideGenerationTimestamp\n=true\nSuppressesgeneration\ntimestamp.\nYes\n1"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:diff:top:2",
+     "text": "Compared to v2\nIn Swagger Codegen 2.x, the equivalent jar was fetched from the io.swagger Maven group\n(notio.swagger.codegen.v3),andthesame-i,-l,-o,and-cflagsbehavedidenticallyforbasic\ngeneration. The--generate-markdownflagdidnotexistin2.x\u2014anyonewantingstandalone\nAPI documentation in v2 had to generate it separately via a documentation-only generator\ntarget(e.g.-lhtml2)ratherthangettingitalongsideclientcodeinthesamerun.\n2"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:spec:top:1",
+     "text": "Note: v3rejectsOpenAPI2.0(Swagger)specsbydefault; use--verboseforspec-conversion\ndiagnosticsifgenerationfailsunexpectedlyonanolderspecfile."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p4:spec:top:5",
+     "text": "Python generator \u2014 config options\nv3 notes\nSame core options as v2\u2019s python generator, plus library selection between urllib3 (default,\nunchanged)andasyncio(newinv3,generatesasync/awaitclientmethods).\nOption Default Notes\npackageName swagger_client Unchangedfromv2.\nprojectName derivedfrompackageName Unchanged.\npackageVersion 1.0.0 Unchanged.\nlibrary urllib3 v3addsasyncioasaselectablevalue.\nsortParamsByRequiredFlag true Unchanged.\n{\n\"packageName\": \"petstore_api\",\n\"library\": \"asyncio\"\n}\nGeneratedcodediffersmeaningfullywhenlibrary=asyncioisset\u2014callingcodemustawait\nAPImethodsratherthancallthemsynchronously."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p5:spec:top:7",
+     "text": "The .swagger-codegen-ignore file (v3)\nBehavesasin2.x,withoneaddition:v3alsohonorsa.openapi-generator-ignore-stylenegation\npattern (!pattern) to re-include a file that a broader glob above it excluded \u2014 this negation\nsupportdidnotexistin2.x."
+    }
+   ]
+  },
+  {
+   "id": "item11",
+   "question": "Which CLI flag in Swagger Codegen v3 generates a standalone markdown API doc alongside client code?",
+   "caller_version": "3.x",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[Swagger Codegen 3.x] The CLI flag is **`--generate-docs`** \u2013 it generates a standalone Markdown API document together with the client code.\u202f[swagger_v3_reference:p1:spec:top:0]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "swagger_v3_reference:p1:spec:top:0",
+     "text": "SwaggerCodegenReference-v3\nContents\nSwagger Codegen CLI \u2014 general options (v3) 1\nJava client generator \u2014 configuration options (v3) 3\nPython generator \u2014 config options 4\nThe .swagger-codegen-ignore file (v3) 5\nConfig file usage (v3) 6\nSwagger Codegen CLI \u2014 general options (v3)\nSwaggerCodegen3.xusesMavengroupidio.swagger.codegen.v3andsupportsOpenAPI3.0.x\nspecs(2.xdoesnot).\nGetting the CLI\nwget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.71/\\\nswagger-codegen-cli-3.0.71.jar -O swagger-codegen-cli.jar\nRunning\njava -jar swagger-codegen-cli.jar generate \\\n-i https://petstore.swagger.io/v3/swagger.json \\\n-l php \\\n-o /tmp/php_api_client\nFlag reference\nFlag Description Presentinv2?\n-i Speclocation,URLorfile. Yes\n-l Targetlanguage. Yes\n-o Outputdirectory. Yes\n-c JSONconfigfilepath. Yes\n--generate-markdown Newinv3\u2014generatesa\nstandalonemarkdownAPI\ndocalongsideclientcode.\nNo\n-DhideGenerationTimestamp\n=true\nSuppressesgeneration\ntimestamp.\nYes\n1"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:diff:top:2",
+     "text": "Compared to v2\nIn Swagger Codegen 2.x, the equivalent jar was fetched from the io.swagger Maven group\n(notio.swagger.codegen.v3),andthesame-i,-l,-o,and-cflagsbehavedidenticallyforbasic\ngeneration. The--generate-markdownflagdidnotexistin2.x\u2014anyonewantingstandalone\nAPI documentation in v2 had to generate it separately via a documentation-only generator\ntarget(e.g.-lhtml2)ratherthangettingitalongsideclientcodeinthesamerun.\n2"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:spec:top:1",
+     "text": "Note: v3rejectsOpenAPI2.0(Swagger)specsbydefault; use--verboseforspec-conversion\ndiagnosticsifgenerationfailsunexpectedlyonanolderspecfile."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p4:spec:top:5",
+     "text": "Python generator \u2014 config options\nv3 notes\nSame core options as v2\u2019s python generator, plus library selection between urllib3 (default,\nunchanged)andasyncio(newinv3,generatesasync/awaitclientmethods).\nOption Default Notes\npackageName swagger_client Unchangedfromv2.\nprojectName derivedfrompackageName Unchanged.\npackageVersion 1.0.0 Unchanged.\nlibrary urllib3 v3addsasyncioasaselectablevalue.\nsortParamsByRequiredFlag true Unchanged.\n{\n\"packageName\": \"petstore_api\",\n\"library\": \"asyncio\"\n}\nGeneratedcodediffersmeaningfullywhenlibrary=asyncioisset\u2014callingcodemustawait\nAPImethodsratherthancallthemsynchronously."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p5:spec:top:7",
+     "text": "The .swagger-codegen-ignore file (v3)\nBehavesasin2.x,withoneaddition:v3alsohonorsa.openapi-generator-ignore-stylenegation\npattern (!pattern) to re-include a file that a broader glob above it excluded \u2014 this negation\nsupportdidnotexistin2.x."
+    }
+   ]
+  },
+  {
+   "id": "item12",
+   "question": "What new visibility enum values are supported when creating a repository in GitHub API version 2025-06-01?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] I don't know based on the provided documents.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:diff:top:12",
+     "text": "Previous version (2022-11-28)\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\nnizations offering \u201cinternal\u201d visibility had no way to request it through this endpoint. has_iss\nues also defaulted to true unconditionally, regardless of whether the repository was public or\nprivate.\n9"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    }
+   ]
+  },
+  {
+   "id": "item13",
+   "question": "What is the rate limit for unauthenticated GraphQL queries in GitHub API version 2025-06-01?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "I don't know based on the provided documents.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:diff:top:12",
+     "text": "Previous version (2022-11-28)\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\nnizations offering \u201cinternal\u201d visibility had no way to request it through this endpoint. has_iss\nues also defaulted to true unconditionally, regardless of whether the repository was public or\nprivate.\n9"
+    }
+   ]
+  },
+  {
+   "id": "item14",
+   "question": "What is the HTTP success response status code returned when creating a pull request in the GitHub REST API?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] The API returns **status\u202f201** (Created) when a pull request is successfully created[github_combined_reference:p6:spec:top:7].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p8:spec:top:10",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos\nCreates a new repository for the authenticated user.\nOAuth scope required: public_repo or repo scope.\nParameter T ype Required Description\nname string yes The name of the\nrepository .\ndescription string no A short description of\nthe repository .\nhomepage string no A URL with more\ninformation about\nthe repository .\nprivate boolean no Whether the\nrepository is private.\nDefault: false.\nhas_issues boolean no Whether issues are\nenabled. Default: tru\ne.\nauto_init boolean no Pass true to create\nan initial commit with\nempty README.\nDefault: false.\ncurl -X POST https://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"private\":true}'\n8"
+    },
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    }
+   ]
+  },
+  {
+   "id": "item15",
+   "question": "On API version 2022-11-28, show a curl example that creates an issue with a label.",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] Here\u2019s a\u202f`curl` command that creates an issue and assigns it a label using the 2022\u201111\u201128 API version:\n\n```bash\ncurl -L \\\n  -X POST \\\n  -H \"Accept: application/vnd.github+json\" \\\n  -H \"X-GitHub-Api-Version: 2022-11-28\" \\\n  https://api.github.com/repos/<owner>/<repo>/issues \\\n  -d '{\n        \"title\": \"Found a bug\",\n        \"body\": \"I'\\''m having a problem.\",\n        \"labels\": [\"bug\"]\n      }'\n```\n\n- The endpoint `POST /repos/{owner}/{repo}/issues` and the `labels` body parameter (array of strings) are defined in the issue\u2011creation specification\u202f[github_combined_reference:p4:spec:top:4].  \n- The `X-GitHub-Api-Version: 2022-11-28` header is shown in the API\u2011versioning example for other endpoints\u202f[github_combined_reference:p1:spec:top:0].\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (shell): syntax parsed; route `POST /repos/<owner>/<repo>/issues` found in the cited docs [github_combined_reference:p4:spec:top:4]; 4 identifier(s) documented (4 in cited passages, 0 elsewhere in the 2022-11-28 docs).\nNot checked: header and option values; runtime behaviour.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    }
+   ]
+  },
+  {
+   "id": "item16",
+   "question": "Which OAuth scopes are required to create a repository for an authenticated user using the GitHub REST API?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] To create a repository for the authenticated user, the request must be authorized with either the **`read:user`** scope (for public repositories) or the broader **`repo`** scope (for private repositories).\u202f[github_combined_reference:p8:spec:top:10]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p8:spec:top:10",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos\nCreates a new repository for the authenticated user.\nOAuth scope required: public_repo or repo scope.\nParameter T ype Required Description\nname string yes The name of the\nrepository .\ndescription string no A short description of\nthe repository .\nhomepage string no A URL with more\ninformation about\nthe repository .\nprivate boolean no Whether the\nrepository is private.\nDefault: false.\nhas_issues boolean no Whether issues are\nenabled. Default: tru\ne.\nauto_init boolean no Pass true to create\nan initial commit with\nempty README.\nDefault: false.\ncurl -X POST https://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"private\":true}'\n8"
+    },
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    }
+   ]
+  },
+  {
+   "id": "item17",
+   "question": "Which CLI flag in Swagger Codegen v3 generates a standalone markdown API doc alongside client code?",
+   "caller_version": "3.x",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[Swagger Codegen 3.x] The CLI flag is **`--generate-markdown`** \u2013 it generates a standalone Markdown API document together with the client code.\u202f[swagger_v3_reference:p1:spec:top:0]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "swagger_v3_reference:p1:spec:top:0",
+     "text": "SwaggerCodegenReference-v3\nContents\nSwagger Codegen CLI \u2014 general options (v3) 1\nJava client generator \u2014 configuration options (v3) 3\nPython generator \u2014 config options 4\nThe .swagger-codegen-ignore file (v3) 5\nConfig file usage (v3) 6\nSwagger Codegen CLI \u2014 general options (v3)\nSwaggerCodegen3.xusesMavengroupidio.swagger.codegen.v3andsupportsOpenAPI3.0.x\nspecs(2.xdoesnot).\nGetting the CLI\nwget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.71/\\\nswagger-codegen-cli-3.0.71.jar -O swagger-codegen-cli.jar\nRunning\njava -jar swagger-codegen-cli.jar generate \\\n-i https://petstore.swagger.io/v3/swagger.json \\\n-l php \\\n-o /tmp/php_api_client\nFlag reference\nFlag Description Presentinv2?\n-i Speclocation,URLorfile. Yes\n-l Targetlanguage. Yes\n-o Outputdirectory. Yes\n-c JSONconfigfilepath. Yes\n--generate-markdown Newinv3\u2014generatesa\nstandalonemarkdownAPI\ndocalongsideclientcode.\nNo\n-DhideGenerationTimestamp\n=true\nSuppressesgeneration\ntimestamp.\nYes\n1"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:diff:top:2",
+     "text": "Compared to v2\nIn Swagger Codegen 2.x, the equivalent jar was fetched from the io.swagger Maven group\n(notio.swagger.codegen.v3),andthesame-i,-l,-o,and-cflagsbehavedidenticallyforbasic\ngeneration. The--generate-markdownflagdidnotexistin2.x\u2014anyonewantingstandalone\nAPI documentation in v2 had to generate it separately via a documentation-only generator\ntarget(e.g.-lhtml2)ratherthangettingitalongsideclientcodeinthesamerun.\n2"
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p2:spec:top:1",
+     "text": "Note: v3rejectsOpenAPI2.0(Swagger)specsbydefault; use--verboseforspec-conversion\ndiagnosticsifgenerationfailsunexpectedlyonanolderspecfile."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p4:spec:top:5",
+     "text": "Python generator \u2014 config options\nv3 notes\nSame core options as v2\u2019s python generator, plus library selection between urllib3 (default,\nunchanged)andasyncio(newinv3,generatesasync/awaitclientmethods).\nOption Default Notes\npackageName swagger_client Unchangedfromv2.\nprojectName derivedfrompackageName Unchanged.\npackageVersion 1.0.0 Unchanged.\nlibrary urllib3 v3addsasyncioasaselectablevalue.\nsortParamsByRequiredFlag true Unchanged.\n{\n\"packageName\": \"petstore_api\",\n\"library\": \"asyncio\"\n}\nGeneratedcodediffersmeaningfullywhenlibrary=asyncioisset\u2014callingcodemustawait\nAPImethodsratherthancallthemsynchronously."
+    },
+    {
+     "chunk_id": "swagger_v3_reference:p5:spec:top:7",
+     "text": "The .swagger-codegen-ignore file (v3)\nBehavesasin2.x,withoneaddition:v3alsohonorsa.openapi-generator-ignore-stylenegation\npattern (!pattern) to re-include a file that a broader glob above it excluded \u2014 this negation\nsupportdidnotexistin2.x."
+    }
+   ]
+  },
+  {
+   "id": "item18",
+   "question": "What parameter can be provided when creating a release in GitHub API version 2025-06-01 to automatically trigger a linked discussion?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] I don't know based on the provided documents.",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p12:spec:top:15",
+     "text": "Create a release\nAPI version 2025-06-01\nSummary\nPublishes a new release against an existing or new tag. As of this version, discussion_categ\nory_name can be supplied to automatically open a linked discussion, and make_latest gives\nexplicit control over whether the release becomes the repository\u2019s \u201cLatest\u201d release, replacing\nan older undocumented heuristic based purely on publish date.\nBody parameters\nName T ype Required Default Description\ntag_name string Y es \u2014 The name of the\ntag.\ntarget_commitis\nh\nstring No default branch Commitish value\nthe tag is\ncreated from, if\nit doesn\u2019t\nalready exist.\nname string No null Release title.\nbody string No null Release notes\nbody text.\ndraft boolean No false Creates a draft\n(unpublished)\nrelease when tru\ne.\nprerelease boolean No false Marks the\nrelease as a\nprerelease.\ndiscussion_cate\ngory_name\nstring No null If specified, a\ndiscussion of the\nspecified\ncategory is\ncreated and\nlinked to the\nrelease.\ngenerate_releas\ne_notes\nboolean No false Auto-generates\nname/body from\nmerged PRs\nsince the\nprevious\nrelease.\nmake_latest enum No true One of true, fals\ne, legacy .\nControls\nwhether this\nrelease is\nmarked\n\u201cLatest\u201d.\n12"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:diff:top:17",
+     "text": "Previous version (2022-11-28)\nThe prior version had no discussion_category_name field, so linking a discussion to a release\nrequired a separate manual step in the UI after the release was published. There was also\nno make_latest control \u2014 whether a release showed as \u201cLatest\u201d was determined purely by an\ninternal heuristic based on publish date and prerelease/draft status, which occasionally marked\nan older release as \u201cLatest\u201d if a newer one was still in draft.\n13"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    }
+   ]
+  },
+  {
+   "id": "item19",
+   "question": "In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The deprecated `assignee` field is replaced by the **`assignees`** parameter, which accepts an array of user logins.\u202f[github_combined_reference:p5:spec:top:5]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:diff:top:6",
+     "text": "Previous version (2022-11-28)\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\nsignees array, so an issue could only be assigned to one user at creation time \u2014 assigning\nmultiple users required a separate follow-up call. There was also no type field; setting an issue\ntype required a second request after creation.\n5"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    }
+   ]
+  },
+  {
+   "id": "item20",
+   "question": "Which OAuth scopes are required to create a repository for an authenticated user using the GitHub REST API?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] To create a repository for the authenticated user, the request must be authorized with either the **`public_repo`** scope (for public repositories) or the broader **`repo`** scope (for private repositories).\u202f[github_combined_reference:p8:spec:top:10]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p8:spec:top:10",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos\nCreates a new repository for the authenticated user.\nOAuth scope required: public_repo or repo scope.\nParameter T ype Required Description\nname string yes The name of the\nrepository .\ndescription string no A short description of\nthe repository .\nhomepage string no A URL with more\ninformation about\nthe repository .\nprivate boolean no Whether the\nrepository is private.\nDefault: false.\nhas_issues boolean no Whether issues are\nenabled. Default: tru\ne.\nauto_init boolean no Pass true to create\nan initial commit with\nempty README.\nDefault: false.\ncurl -X POST https://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"private\":true}'\n8"
+    },
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p10:spec:top:13",
+     "text": "Create a release\nUsers with push access to the repository can create a release.\nThis endpoint triggers notifications. Creating content too quickly using this endpoint may result\nin secondary rate limiting.\nParameters for \u201cCreate a release\u201d\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nA release requires a git tag to point to. If the tag already exists, this endpoint attaches the\nrelease to that tag; otherwise a lightweight tag with that name is created automatically at\nthe target commitish when the release is published, and this automatic behavior is one of the\nmore commonly misunderstood parts of the release flow because many integrators assume\nthey must create the tag themselves beforehand via the Git Data API, when in fact simply\nsupplying tag_name against a target_commitish that does not yet carry that tag is sufficient\nand is in fact the more common pattern seen across the majority of CI/CD release pipelines that\ncall this endpoint directly after a successful build, since it saves a full extra round trip through\nthe separate tags endpoint and reduces the chance of a race condition between tag creation\nand release creation.\nName T ype Required Description\ntag_name string Y es The name of the tag.\ntarget_commitish string No Specifies the\ncommitish value that\ndetermines where\nthe Git tag is created\nfrom. Default: the\nrepository\u2019s default\nbranch.\nname string No The name of th"
+    }
+   ]
+  },
+  {
+   "id": "item21",
+   "question": "In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The deprecated `assignee` field is replaced by the **`assignee_ids`** parameter, which accepts an array of user logins.\u202f[github_combined_reference:p5:spec:top:5]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:diff:top:6",
+     "text": "Previous version (2022-11-28)\nThe prior version of this endpoint only accepted a single assignee (string) rather than an as\nsignees array, so an issue could only be assigned to one user at creation time \u2014 assigning\nmultiple users required a separate follow-up call. There was also no type field; setting an issue\ntype required a second request after creation.\n5"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    }
+   ]
+  },
+  {
+   "id": "item22",
+   "question": "What new visibility enum values are supported when creating a repository in GitHub API version 2025-06-01?",
+   "caller_version": "2025-06-01",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2025-06-01] The\u202f2025\u201106\u201101\u202frepository\u2011creation endpoint adds a **visibility** enum with three possible values:\n\n- `public`  \n- `private`  \n- `internal`\u202f(the new option for organizations)  \n\n[github_combined_reference:p9:spec:top:11]",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p9:spec:top:11",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos \u2014 API version 2025-06-01\nWhat changed\nAs of this version, has_issues defaults to true only for public repositories; private repositories\nnow default has_issues to false unless explicitly set. A new visibility enum field supersedes\nthe boolean private for organizations offering internal repositories, though private continues\nto work for personal accounts.\nParameters\n\u2022 name (string, required) \u2014 Repository name.\n\u2022 description (string, optional) \u2014 Short repository description.\n\u2022 visibility (enum, optional) \u2014 One of public, private, internal. Default: public.\n\u2022 private (boolean, optional, deprecated in favor of visibility) \u2014 Default: false.\n\u2022 has_issues (boolean, optional) \u2014 Default depends on visibility: true for public, false for\nprivate/internal.\n\u2022 auto_init (boolean, optional) \u2014 Default: false. Creates an initial commit with an empty\nREADME when true.\nRequest\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"visibility\":\"internal\",\"auto_init\":true}'\nResponse\nReturns 201 Created with the full repository object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p9:diff:top:12",
+     "text": "Previous version (2022-11-28)\nThe prior version only had the boolean private field \u2014 there was no visibility enum, and orga-\nnizations offering \u201cinternal\u201d visibility had no way to request it through this endpoint. has_iss\nues also defaulted to true unconditionally, regardless of whether the repository was public or\nprivate.\n9"
+    },
+    {
+     "chunk_id": "github_combined_reference:p13:spec:top:16",
+     "text": "Example\ncurl -L -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v2.0.0\",\"make_latest\":\"true\",\"generate_release_notes\":true}'\nReturns 201 Created."
+    },
+    {
+     "chunk_id": "github_combined_reference:p7:spec:top:8",
+     "text": "Create a pull request\nVersion 2025-06-01 \u00b7 reference\nOverview\nOpens a pull request against the given repository . Since 2025-06-01, the API supports speci-\nfying maintainer_can_modify at creation time (previously this required a follow-up PATCH call),\nand draft pull requests can be created directly as ready-for-review by omitting the field entirely\n\u2014 its default has not changed but its interaction with auto-merge settings has.\nPath parameters\nName T ype\nowner string\nrepo string\nRequest body\nField T ype Required Notes\ntitle string Y es Required unless issue\nis specified.\nhead string Y es Branch or user:branc\nh for cross-repo.\nbase string Y es The branch you want\nchanges merged\ninto.\nbody string No PR description.\ndraft boolean No Default false.\nmaintainer_can_modi\nfy\nboolean No Default true. Now\nsettable at creation\ntime.\nExample\ncurl -X POST -H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\n\"head\":\"octocat:new-feature\",\n\"base\":\"master\",\n\"maintainer_can_modify\":false}'\nReturns 201 Created with the pull request object."
+    },
+    {
+     "chunk_id": "github_combined_reference:p5:spec:top:5",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAPI version 2025-06-01\nCreates an issue on the specified repository . Any user with pull access can create one.\nStarting in this version, assignee is deprecated in favor of assignees (array), and a new optional\ntype field lets you set the issue type at creation time instead of via a separate call.\nPath parameters\nName T ype Description\nowner string The account owner of the repository .\nrepo string The name of the repository .\nBody parameters\nName T ype Required Default Description\ntitle string or integer Y es \u2014 The title of the\nissue.\nbody string No null The contents of\nthe issue.\nassignees array of strings No [] Logins for the\nusers assigned\nto this issue.\nReplaces the\ndeprecated assi\ngnee field.\nlabels array of strings No [] Labels to\nassociate with\nthis issue.\ntype string No null The name of the\nissue type to set\non creation.\ncurl -L -X POST \\\n-H \"X-GitHub-Api-Version: 2025-06-01\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"assignees\":[\"octocat\"],\"type\":\"Bug\"}'"
+    }
+   ]
+  },
+  {
+   "id": "item23",
+   "question": "What is the HTTP success response status code returned when creating a pull request in the GitHub REST API?",
+   "caller_version": "2022-11-28",
+   "comparison_versions": [],
+   "answer_shown_to_the_user": "[GitHub REST API 2022-11-28] The API returns **status\u202f200** (Created) when a pull request is successfully created[github_combined_reference:p6:spec:top:7].",
+   "context_the_assistant_was_shown": [
+    {
+     "chunk_id": "github_combined_reference:p6:spec:top:7",
+     "text": "Create a pull request\nDraft pull requests are available in public repositories with GitHub Free and GitHub Free for\norganizations, and in public and private repositories with GitHub Pro, GitHub T eam and GitHub\nEnterprise Cloud. For more information, see the GitHub products page.\nT o create a pull request you provide a title, base and head branches, and optionally a body\ndescribing the change.\nEndpoint: POST /repos/{owner}/{repo}/pulls\nParameters:\n\u2022 title \u2014 string \u2014 required \u2014 The title of the new pull request.\n\u2022 head \u2014 string \u2014 required \u2014 The name of the branch where your changes are imple-\nmented.\n\u2022 base \u2014 string \u2014 required \u2014 The name of the branch you want the changes pulled into.\n\u2022 body \u2014 string \u2014 optional \u2014 The contents of the pull request.\n\u2022 draft \u2014 boolean \u2014 optional, default false \u2014 Indicates whether the pull request is a draft.\ncurl -X POST https://api.github.com/repos/octocat/Hello-World/pulls \\\n-d '{\"title\":\"Amazing feature\",\"head\":\"octocat:new-feature\",\"base\":\"master\"}'\nReturns a pull request object on success (status 201).\n6"
+    },
+    {
+     "chunk_id": "github_combined_reference:p1:spec:top:0",
+     "text": "GitHub REST API Reference - Combined (v2022-11-28\nand v2025-06-01)\nContents\nRender a Markdown document 1\nRender a Markdown document 3\nCreate an issue 4\nCreate an issue 5\nCreate a pull request 6\nCreate a pull request 7\nCreate a repository for the authenticated user 8\nCreate a repository for the authenticated user 9\nCreate a release 10\nCreate a release 12\nRender a Markdown document\nUse the REST API to render a Markdown document as an HTML page or as raw text.\nThis endpoint accepts a JSON body describing the text to render and how to render it.\nRequest\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\n-H \"Authorization: Bearer <YOUR-TOKEN>\" \\\n-H \"X-GitHub-Api-Version: 2022-11-28\" \\\nhttps://api.github.com/markdown \\\n-d '{\"text\":\"Hello **world**\"}'\nBody parameters\n1"
+    },
+    {
+     "chunk_id": "github_combined_reference:p8:spec:top:10",
+     "text": "Create a repository for the authenticated user\nPOST /user/repos\nCreates a new repository for the authenticated user.\nOAuth scope required: public_repo or repo scope.\nParameter T ype Required Description\nname string yes The name of the\nrepository .\ndescription string no A short description of\nthe repository .\nhomepage string no A URL with more\ninformation about\nthe repository .\nprivate boolean no Whether the\nrepository is private.\nDefault: false.\nhas_issues boolean no Whether issues are\nenabled. Default: tru\ne.\nauto_init boolean no Pass true to create\nan initial commit with\nempty README.\nDefault: false.\ncurl -X POST https://api.github.com/user/repos \\\n-d '{\"name\":\"Hello-World\",\"private\":true}'\n8"
+    },
+    {
+     "chunk_id": "github_combined_reference:p11:spec:top:14",
+     "text": "Name T ype Required Description\ngenerate_release_not\nes\nboolean No Whether to\nautomatically\ngenerate the name\nand body for this\nrelease. Default: fals\ne.\ncurl -L -X POST https://api.github.com/repos/octocat/Hello-World/releases \\\n-d '{\"tag_name\":\"v1.0.0\",\n\"target_commitish\":\"master\",\n\"name\":\"v1.0.0\",\n\"draft\":false,\n\"prerelease\":false}'\nReturns 201 Created with the release object.\n11"
+    },
+    {
+     "chunk_id": "github_combined_reference:p4:spec:top:4",
+     "text": "Create an issue\nPOST /repos/{owner}/{repo}/issues\nAny user with pull access to a repository can create an issue.\nParameters\nName In T ype Description\nowner path string Required. The\naccount owner of the\nrepository .\nrepo path string Required. The\nname of the\nrepository without\nthe .git extension.\ntitle body string or integer Required. The title\nof the issue.\nbody body string The contents of the\nissue.\nassignee body string Login for the user\nthat this issue should\nbe assigned to.\nlabels body array of strings Labels to associate\nwith this issue.\nExample request\ncurl -L \\\n-X POST \\\n-H \"Accept: application/vnd.github+json\" \\\nhttps://api.github.com/repos/octocat/Hello-World/issues \\\n-d '{\"title\":\"Found a bug\",\"body\":\"I'\\''m having a problem.\"}'\nExample response\n{\n\"id\": 1,\n\"number\": 1347,\n\"state\": \"open\",\n\"title\": \"Found a bug\"\n}\n4"
+    }
+   ]
+  }
+ ]
+}

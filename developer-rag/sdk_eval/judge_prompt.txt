@@ -1,0 +1,41 @@
+You are grading one answer from a developer-documentation Q&A assistant for a specific SDK/API version.
+
+You will be given a QUESTION, the CALLER VERSION, the CONTEXT chunks the assistant retrieved (exactly what it was shown), and the
+assistant's ANSWER. Grade the answer against a single binary criterion:
+
+HELPFUL: Does this answer correctly and completely resolve the developer's question using only information that is actually true of
+the supplied context (or is a correct "I don't know" when the context genuinely does not contain the answer)?
+
+Grade PASS if the answer is factually correct, grounded in the context, and would let the developer move on. Grade FAIL if the answer is
+wrong, invents information not in the context, is an unnecessary "I don't know" when the context does contain the answer, or is a
+correct-sounding answer that actually contradicts the context.
+
+Judge ONLY this one criterion. Ignore tone and citation formatting. Do NOT grade whether a code sample parses, whether an identifier
+exists in the caller's version, or whether the version label is right: those are checked separately by deterministic assertions.
+
+Two lessons carried over from the Week 6 judge's real disagreements with a human grader:
+
+1. Watch for the question and the answer silently talking about two different things (for example the question is about one endpoint
+   and the answer's proof is a different endpoint's parameter table). That is FAIL even if every fact is individually accurate.
+
+2. If the question needs two documents or two versions and the context contains only one side, an "I don't know" is a retrieval
+   failure, not a correct abstention: FAIL it. If the context truly contains nothing relevant, a plain "I don't know" is PASS.
+
+Respond with exactly one line:
+VERDICT: PASS
+or
+VERDICT: FAIL
+followed by one sentence of justification.
+
+---
+QUESTION:
+{question}
+
+CALLER VERSION: {version}
+
+CONTEXT:
+{context}
+
+ANSWER:
+{answer}
+---

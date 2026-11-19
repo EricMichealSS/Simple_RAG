@@ -1,0 +1,574 @@
+{
+  "header": {
+    "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+    "request_id": "ecf3ce53ea05",
+    "started": "2026-11-03T18:47:46.564027+00:00",
+    "duration_ms": 5038.812,
+    "outcome": "answered",
+    "spans": 16,
+    "services": [
+      "mcp_server",
+      "sdk_engine"
+    ],
+    "summarised": true
+  },
+  "stages": {
+    "stages": [
+      {
+        "stage": "request",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 5038.81,
+        "api_cost_usd": null,
+        "basis": "root span: contains every other stage (not additive)"
+      },
+      {
+        "stage": "validate_request",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 0.26,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "select_corpus",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 0.02,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "resolve_version",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 4.28,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "route",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 0.42,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "retrieve",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 438.26,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "mcp.call",
+        "service": "sdk_engine",
+        "calls": 2,
+        "total_ms": 445.26,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "mcp.tool.search_docs",
+        "service": "mcp_server",
+        "calls": 1,
+        "total_ms": 421.99,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "changelog",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 13.39,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "mcp.tool.lookup_changes",
+        "service": "mcp_server",
+        "calls": 1,
+        "total_ms": 2.43,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "assess_sufficiency",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 0.44,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "generate",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 4548.01,
+        "api_cost_usd": 0.00056145,
+        "basis": "calculated: real token usage x published rate"
+      },
+      {
+        "stage": "verify_citations_and_version",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 4.96,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "code_validation",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 3.11,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      },
+      {
+        "stage": "finalize",
+        "service": "sdk_engine",
+        "calls": 1,
+        "total_ms": 0.19,
+        "api_cost_usd": 0.0,
+        "basis": "no API charge (local compute)"
+      }
+    ],
+    "api_cost_usd": 0.00056145,
+    "note": "times are inclusive: nested stages overlap, so do not add them up"
+  },
+  "spans": [
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "6e58edfa589b468a",
+      "parent_span_id": null,
+      "service": "sdk_engine",
+      "name": "request",
+      "start_ts": "2026-11-03T18:47:46.564027+00:00",
+      "end_ts": "2026-11-03T18:47:51.602872+00:00",
+      "duration_ms": 5038.812,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "service_entry": "Engine.ask",
+        "outcome": "answered",
+        "llm_calls": 1,
+        "security_events": 0,
+        "summary_version": 1,
+        "corpus": "official",
+        "sdk_version": "2022-11-28",
+        "product": "github_rest",
+        "comparison_versions": [],
+        "scope_versions": [
+          "2022-11-28"
+        ],
+        "retrieval_via": "mcp",
+        "tools_called": [
+          "search_docs",
+          "lookup_changes"
+        ],
+        "tool_failures": 0,
+        "mcp_fallbacks": 0,
+        "model": "openai/gpt-oss-120b",
+        "provider": "groq",
+        "prompt_version": "sdk-answer-v1",
+        "prompt_tokens": 1639,
+        "completion_tokens": 526,
+        "cost_usd": 0.00056145,
+        "cost_status": "calculated",
+        "retrieval_attempts": 1,
+        "generation_attempts": 1,
+        "code_blocks": 1,
+        "code_tiers": [
+          "cited"
+        ],
+        "code_hard": 0,
+        "code_soft": 0,
+        "reason_category": "",
+        "tools_authorized": [
+          "check_symbol",
+          "lookup_changes",
+          "search_docs"
+        ],
+        "tools_rejected": [],
+        "tools_suspicious_description": []
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "c4ca845764484538",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "validate_request",
+      "start_ts": "2026-11-03T18:47:46.573386+00:00",
+      "end_ts": "2026-11-03T18:47:46.573668+00:00",
+      "duration_ms": 0.263,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "question_chars": 187,
+        "redactions": {
+          "provider-key": 1,
+          "email": 1
+        },
+        "has_owner": false,
+        "scope_hint": "auto",
+        "security_flags": []
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "bf66a4f4ca474c77",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "select_corpus",
+      "start_ts": "2026-11-03T18:47:46.575761+00:00",
+      "end_ts": "2026-11-03T18:47:46.575792+00:00",
+      "duration_ms": 0.019,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "corpus": "official",
+        "scope_hint": "auto",
+        "owner_key": null
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "037cf17f371e4b8a",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "resolve_version",
+      "start_ts": "2026-11-03T18:47:46.577559+00:00",
+      "end_ts": "2026-11-03T18:47:46.581859+00:00",
+      "duration_ms": 4.28,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "status": "resolved",
+        "sdk_version": "2022-11-28",
+        "product": "github_rest",
+        "source": "question",
+        "needs_clarification": false,
+        "comparison_versions": [],
+        "confidence": 0.95
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "10523206689e48fa",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "route",
+      "start_ts": "2026-11-03T18:47:46.583891+00:00",
+      "end_ts": "2026-11-03T18:47:46.584325+00:00",
+      "duration_ms": 0.419,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "intent": "code_help",
+        "needs_changelog": true,
+        "needs_code_validation": true,
+        "specialists": [
+          "documentation_researcher",
+          "deprecation_migration",
+          "code_validation"
+        ],
+        "confidence": 0.85,
+        "made_by": "rule"
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "cc1ad4f1064e40b0",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "retrieve",
+      "start_ts": "2026-11-03T18:47:46.586026+00:00",
+      "end_ts": "2026-11-03T18:47:47.024310+00:00",
+      "duration_ms": 438.262,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "attempt": 1,
+        "via": "mcp",
+        "where": null,
+        "filtered_pool": null,
+        "returned": 5,
+        "top_k": 5,
+        "scope_versions": [
+          "2022-11-28"
+        ],
+        "chunk_ids": [
+          "github_combined_reference:p4:spec:top:4",
+          "github_combined_reference:p11:spec:top:14",
+          "github_combined_reference:p8:spec:top:10",
+          "github_combined_reference:p6:spec:top:7",
+          "github_combined_reference:p1:spec:top:0"
+        ],
+        "reranked": null,
+        "boosted_endpoints": [
+          "create_issue"
+        ],
+        "security_flags": []
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "5fe1a639c5b84436",
+      "parent_span_id": "cc1ad4f1064e40b0",
+      "service": "sdk_engine",
+      "name": "mcp.call",
+      "start_ts": "2026-11-03T18:47:46.586429+00:00",
+      "end_ts": "2026-11-03T18:47:47.020065+00:00",
+      "duration_ms": 433.615,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "tool": "search_docs",
+        "arg_keys": [
+          "query",
+          "top_k",
+          "version"
+        ],
+        "arg_chars": 237,
+        "server": "sdk-docs",
+        "ok": true,
+        "latency_ms": 433.06,
+        "truncated": false,
+        "error_category": null,
+        "response_trace_id": "17a2fafb064d4d7b9cb9470c04867f7e"
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "eed2644d673043fc",
+      "parent_span_id": "5fe1a639c5b84436",
+      "service": "mcp_server",
+      "name": "mcp.tool.search_docs",
+      "start_ts": "2026-11-03T18:47:46.589899+00:00",
+      "end_ts": "2026-11-03T18:47:47.011918+00:00",
+      "duration_ms": 421.991,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "tool": "search_docs",
+        "requested_version": "2022-11-28",
+        "top_k": 5,
+        "query_chars": 187,
+        "returned": 5,
+        "truncated": false,
+        "chunk_ids": [
+          "github_combined_reference:p4:spec:top:4",
+          "github_combined_reference:p11:spec:top:14",
+          "github_combined_reference:p8:spec:top:10",
+          "github_combined_reference:p6:spec:top:7",
+          "github_combined_reference:p1:spec:top:0"
+        ]
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "9a6222cdbf7d4a46",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "changelog",
+      "start_ts": "2026-11-03T18:47:47.026441+00:00",
+      "end_ts": "2026-11-03T18:47:47.039844+00:00",
+      "duration_ms": 13.386,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "via": "mcp",
+        "scope_versions": [
+          "2022-11-28",
+          "2025-06-01"
+        ],
+        "found": 1,
+        "kept": 1,
+        "chunk_ids": [
+          "github_combined_reference:p5:diff:top:6"
+        ],
+        "deprecation_facts": 1
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "5127aaa93d12494a",
+      "parent_span_id": "9a6222cdbf7d4a46",
+      "service": "sdk_engine",
+      "name": "mcp.call",
+      "start_ts": "2026-11-03T18:47:47.027077+00:00",
+      "end_ts": "2026-11-03T18:47:47.038737+00:00",
+      "duration_ms": 11.643,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "tool": "lookup_changes",
+        "arg_keys": [
+          "endpoint",
+          "version"
+        ],
+        "arg_chars": 53,
+        "server": "sdk-docs",
+        "ok": true,
+        "latency_ms": 11.18,
+        "truncated": false,
+        "error_category": null,
+        "response_trace_id": "17a2fafb064d4d7b9cb9470c04867f7e"
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "09d6ec6901e14388",
+      "parent_span_id": "5127aaa93d12494a",
+      "service": "mcp_server",
+      "name": "mcp.tool.lookup_changes",
+      "start_ts": "2026-11-03T18:47:47.030586+00:00",
+      "end_ts": "2026-11-03T18:47:47.033036+00:00",
+      "duration_ms": 2.426,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "tool": "lookup_changes",
+        "requested_version": "2022-11-28",
+        "endpoint": "create_issue",
+        "returned": 1,
+        "deprecations": 1,
+        "truncated": false,
+        "scope_versions": [
+          "2022-11-28",
+          "2025-06-01"
+        ]
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "f6da6bd53f244b05",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "assess_sufficiency",
+      "start_ts": "2026-11-03T18:47:47.041729+00:00",
+      "end_ts": "2026-11-03T18:47:47.042185+00:00",
+      "duration_ms": 0.441,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "sufficient": true,
+        "why": "an in-scope passage covers the asked endpoint",
+        "attempts": 1
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "acafc68ebc524850",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "generate",
+      "start_ts": "2026-11-03T18:47:47.043794+00:00",
+      "end_ts": "2026-11-03T18:47:51.591834+00:00",
+      "duration_ms": 4548.012,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "attempt": 1,
+        "model": "openai/gpt-oss-120b",
+        "provider": "groq",
+        "prompt_version": "sdk-answer-v1",
+        "prompt_tokens": 1639,
+        "completion_tokens": 526,
+        "cost_usd": 0.00056145,
+        "cost_status": "calculated",
+        "prompt_chars": 6340,
+        "answer_chars": 922
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "569a990fb084429e",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "verify_citations_and_version",
+      "start_ts": "2026-11-03T18:47:51.594961+00:00",
+      "end_ts": "2026-11-03T18:47:51.599933+00:00",
+      "duration_ms": 4.956,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "ok": true,
+        "failures": [],
+        "cited": [
+          "github_combined_reference:p4:spec:top:4"
+        ],
+        "allowed_versions": [
+          "2022-11-28"
+        ],
+        "security_failures": 0,
+        "code_failures": 0
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "bbce25db407a40c2",
+      "parent_span_id": "569a990fb084429e",
+      "service": "sdk_engine",
+      "name": "code_validation",
+      "start_ts": "2026-11-03T18:47:51.595885+00:00",
+      "end_ts": "2026-11-03T18:47:51.599011+00:00",
+      "duration_ms": 3.111,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "blocks": 1,
+        "languages": [
+          "shell"
+        ],
+        "syntax": [
+          "parsed"
+        ],
+        "lookups": 0,
+        "symbol_source": "none",
+        "mcp_fallbacks": 0,
+        "hard": 0,
+        "soft": 0,
+        "tiers": [
+          "cited"
+        ]
+      }
+    },
+    {
+      "trace_id": "17a2fafb064d4d7b9cb9470c04867f7e",
+      "request_id": "ecf3ce53ea05",
+      "span_id": "0a056d5f826a4a65",
+      "parent_span_id": "6e58edfa589b468a",
+      "service": "sdk_engine",
+      "name": "finalize",
+      "start_ts": "2026-11-03T18:47:51.601421+00:00",
+      "end_ts": "2026-11-03T18:47:51.601626+00:00",
+      "duration_ms": 0.193,
+      "status": "ok",
+      "error_category": null,
+      "attributes": {
+        "outcome": "answered",
+        "citations": 1,
+        "deprecation_notes": 1
+      }
+    }
+  ]
+}

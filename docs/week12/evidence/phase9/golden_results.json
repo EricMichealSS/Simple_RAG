@@ -1,0 +1,2382 @@
+[
+ {
+  "id": "easy_01",
+  "level": "easy",
+  "question": "What is the default value for the mode parameter when rendering a Markdown document in GitHub API version 2025-06-01?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "b974a111895f421cba895e3581bef257",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] The **default value** for the `mode` parameter is **`markdown`**.\u202f[github_combined_reference:p3:spec:top:2]",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p3:spec:top:2",
+   "github_combined_reference:p3:diff:top:3",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p9:spec:top:11"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 Both answers correctly state that the default value for the mode parameter is \u201cmarkdown.\u201d",
+   "tokens": 331
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1660,
+  "completion_tokens": 130,
+  "cost_usd": 0.000327,
+  "cost_status": "calculated",
+  "latency_ms": 1432.88,
+  "wall_s": 7.8,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2025-06-01",
+    "2025-06-01"
+   ],
+   "calls": 2,
+   "valid_tool_calls": 2,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_02",
+  "level": "easy",
+  "question": "What Maven group id is used to download the Swagger Codegen CLI jar for version 3.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "c947966b03eb454893b0d3c68bd5e3b3",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The Maven group id for the Swagger Codegen\u202fCLI jar in version\u202f3.x is **`io.swagger.codegen.v3`**[swagger_v3_reference:p1:spec:top:0]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states the Maven group id as 'io.swagger.codegen.v3', matching the golden answer.",
+   "tokens": 336
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1417,
+  "completion_tokens": 129,
+  "cost_usd": 0.00028995000000000003,
+  "cost_status": "calculated",
+  "latency_ms": 11415.64,
+  "wall_s": 18.47,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 2,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "3.x",
+    "3.x"
+   ],
+   "calls": 2,
+   "valid_tool_calls": 1,
+   "wrong_tool_calls": [
+    "lookup_changes"
+   ],
+   "unnecessary_calls": 1,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": false,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "correct_answer_unreliable_path"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_03",
+  "level": "easy",
+  "question": "What is the default library template used by the Java client generator in Swagger Codegen 2.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "65982cb5f64c4fccaa1a18e07e8a0f7a",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The Java client generator uses **`okhttp\u2011gson`** as its default library template.\u202f[swagger_v2_reference:p2:spec:top:1]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p3:spec:top:2",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 Both answers correctly state that the default library template is \u201cokhttp\u2011gson.\u201d",
+   "tokens": 324
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1495,
+  "completion_tokens": 145,
+  "cost_usd": 0.00031125,
+  "cost_status": "calculated",
+  "latency_ms": 10781.24,
+  "wall_s": 17.67,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_04",
+  "level": "easy",
+  "question": "What is the maximum file size limit supported when rendering Markdown content via the GitHub REST API?",
+  "answerable": true,
+  "explicit_version": "2022-11-28",
+  "trace_id": "3b8a5b0277dc43c2adf97bd4ff78cb19",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] The Markdown rendering endpoint accepts content up to **400\u202fKB** in size.\u202f[github_combined_reference:p2:spec:top:1]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p2:spec:top:1",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p10:spec:top:13",
+   "github_combined_reference:p4:spec:top:4"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 Both answers state that the maximum file size limit for rendering Markdown via the GitHub REST API is 400\u202fKB.",
+   "tokens": 330
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1637,
+  "completion_tokens": 111,
+  "cost_usd": 0.00031214999999999997,
+  "cost_status": "calculated",
+  "latency_ms": 10788.59,
+  "wall_s": 17.33,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_05",
+  "level": "easy",
+  "question": "What is the default package version string generated by the Python generator in Swagger Codegen v3?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "9c977c5192144ea4b1f3bbd5369ebf0d",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The Python generator\u2019s default `packageVersion` is **`1.0.0`**[swagger_v3_reference:p4:spec:top:5]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p2:spec:top:1",
+   "swagger_v3_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the default package version string is \u201c1.0.0,\u201d matching the golden answer.",
+   "tokens": 323
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1307,
+  "completion_tokens": 120,
+  "cost_usd": 0.00026805,
+  "cost_status": "calculated",
+  "latency_ms": 11448.42,
+  "wall_s": 18.43,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_06",
+  "level": "easy",
+  "question": "What is the default value of sortParamsByRequiredFlag in the Swagger Codegen 2.x Java client generator?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "05e9e163562943658bc2ebedc3d17315",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The default value of **`sortParamsByRequiredFlag`** for the Swagger Codegen\u202f2.x Java client generator is **`true`**. [swagger_v2_reference:p2:spec:top:1]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v2_reference:p3:spec:top:2",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 both answers state that the default value is true.",
+   "tokens": 323
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1498,
+  "completion_tokens": 136,
+  "cost_usd": 0.00030629999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 10793.07,
+  "wall_s": 17.27,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_07",
+  "level": "easy",
+  "question": "Which OAuth scopes are required to create a repository for an authenticated user using the GitHub REST API?",
+  "answerable": true,
+  "explicit_version": "2022-11-28",
+  "trace_id": "5fbb0bdf1c1a4c6ea017ab6f9fb04173",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] To create a repository for the authenticated user, the request must be authorized with either the **`public_repo`** scope (for public repositories) or the broader **`repo`** scope (for private repositories).\u202f[github_combined_reference:p8:spec:top:10]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p10:spec:top:13"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the required OAuth scopes are `public_repo` or `repo`.",
+   "tokens": 356
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1796,
+  "completion_tokens": 147,
+  "cost_usd": 0.00035759999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 11301.45,
+  "wall_s": 17.53,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_08",
+  "level": "easy",
+  "question": "What Maven group id was used for fetching the Swagger Codegen CLI jar in version 2.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "c397408ddde7452ea275985c8b370095",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The Swagger Codegen\u202f2.x CLI jar is fetched from the Maven group **`io.swagger`**[swagger_v2_reference:p1:spec:top:0].",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v2_reference:p3:spec:top:2"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 both answers correctly state that the Maven group id is `io.swagger`.",
+   "tokens": 318
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1496,
+  "completion_tokens": 179,
+  "cost_usd": 0.0003318,
+  "cost_status": "calculated",
+  "latency_ms": 11408.52,
+  "wall_s": 17.89,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 2,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_09",
+  "level": "easy",
+  "question": "What is the default value of the draft parameter when creating a pull request via the GitHub REST API?",
+  "answerable": true,
+  "explicit_version": "2022-11-28",
+  "trace_id": "7e03ddda7e6342b184753df5274d7a15",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] The **draft** parameter defaults to **false** when you create a pull request.\u202f[github_combined_reference:p6:spec:top:7]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p10:spec:top:13"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 Both answers state that the default value of the draft parameter is false.",
+   "tokens": 319
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1755,
+  "completion_tokens": 130,
+  "cost_usd": 0.00034125,
+  "cost_status": "calculated",
+  "latency_ms": 11362.45,
+  "wall_s": 17.71,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_10",
+  "level": "easy",
+  "question": "What default value does Swagger Codegen 2.x assign to the packageName option in the Python generator?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "d30ccea7977049f8a0e77d02917f369a",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] Swagger Codegen\u202f2.x sets the default value of the **`packageName`** option for the Python generator to **`swagger_client`**.\u202f[swagger_v2_reference:p3:spec:top:2]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p3:spec:top:2",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 both answers state that the default packageName is \u201cswagger_client.\u201d",
+   "tokens": 331
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1496,
+  "completion_tokens": 131,
+  "cost_usd": 0.000303,
+  "cost_status": "calculated",
+  "latency_ms": 11143.23,
+  "wall_s": 17.75,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_11",
+  "level": "easy",
+  "question": "What is the default value of allowUnicodeIdentifiers in the Swagger Codegen 3.x Java generator?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "d9566c777e434934a0eb76e96d7a9899",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The default value for **allowUnicodeIdentifiers** in the Swagger Codegen\u202f3.x Java generator is **true**.\u202f[swagger_v3_reference:p3:diff:top:4]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p5:spec:top:7",
+   "swagger_v3_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "FAIL",
+   "raw": "VERDICT: FAIL \u2013 The system answer incorrectly states the default value as true, whereas the golden answer says it is false.",
+   "tokens": 328
+  },
+  "outcome_pass": false,
+  "llm_calls": 1,
+  "prompt_tokens": 1304,
+  "completion_tokens": 156,
+  "cost_usd": 0.0002892,
+  "cost_status": "calculated",
+  "latency_ms": 11159.41,
+  "wall_s": 17.7,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_12",
+  "level": "easy",
+  "question": "What is the HTTP success response status code returned when creating a pull request in the GitHub REST API?",
+  "answerable": true,
+  "explicit_version": "2022-11-28",
+  "trace_id": "c23834bd14e24220b56f3afcc27af75c",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] The create\u2011pull\u2011request endpoint returns **HTTP\u202f201\u202fCreated** on success.\u202f[github_combined_reference:p6:spec:top:7]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p4:spec:top:4"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 Both answers correctly state that the GitHub REST API returns HTTP 201 Created when a pull request is successfully created.",
+   "tokens": 330
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1607,
+  "completion_tokens": 123,
+  "cost_usd": 0.00031485,
+  "cost_status": "calculated",
+  "latency_ms": 11072.55,
+  "wall_s": 17.74,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "easy_13",
+  "level": "easy",
+  "question": "What is the rate limit for unauthenticated GraphQL queries in GitHub API version 2025-06-01?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "dff71fa91302442ba982d7ac3c31dea7",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p5:spec:top:5",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p9:diff:top:12"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 334
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1637,
+  "completion_tokens": 91,
+  "cost_usd": 0.00030015,
+  "cost_status": "calculated",
+  "latency_ms": 11292.55,
+  "wall_s": 18.99,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 0,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs"
+   ],
+   "versions_seen": [
+    "2025-06-01"
+   ],
+   "calls": 1,
+   "valid_tool_calls": 1,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "abstain",
+   "expected_outcome": "abstain",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs"
+  ]
+ },
+ {
+  "id": "easy_14",
+  "level": "easy",
+  "question": "What is the default library template used by the Rust generator in Swagger Codegen 3.x?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "33d02c8627fd415699343590d63de642",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 323
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1416,
+  "completion_tokens": 84,
+  "cost_usd": 0.0002628,
+  "cost_status": "calculated",
+  "latency_ms": 9803.47,
+  "wall_s": 16.31,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 0,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs"
+  ]
+ },
+ {
+  "id": "easy_15",
+  "level": "easy",
+  "question": "What secret header is sent when validating a HMAC-SHA256 GitHub webhook payload in version 2022-11-28?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "cf50bb93f6974850895e9769175be4db",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p6:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 325
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1618,
+  "completion_tokens": 93,
+  "cost_usd": 0.0002985,
+  "cost_status": "calculated",
+  "latency_ms": 10987.48,
+  "wall_s": 19.53,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 0,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs"
+  ]
+ },
+ {
+  "id": "medium_01",
+  "level": "medium",
+  "question": "In GitHub API version 2025-06-01, what parameter replaces the deprecated single assignee field when creating an issue?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "003ce1842d244f23abc75425b96e178b",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] The deprecated **`assignee`** field is replaced by the **`assignees`** parameter (an array of user logins) when creating an issue\u202f[github_combined_reference:p5:spec:top:5].",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p5:spec:top:5",
+   "github_combined_reference:p5:diff:top:6",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p9:spec:top:11"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 both answers correctly state that the deprecated single assignee field is replaced by the assignees array.",
+   "tokens": 370
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1647,
+  "completion_tokens": 188,
+  "cost_usd": 0.00035985,
+  "cost_status": "calculated",
+  "latency_ms": 9182.13,
+  "wall_s": 15.67,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2025-06-01",
+    "2025-06-01"
+   ],
+   "calls": 2,
+   "valid_tool_calls": 2,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_02",
+  "level": "medium",
+  "question": "Which CLI flag in Swagger Codegen v3 generates a standalone markdown API doc alongside client code?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "439fc22fd9ab43368b5296a74ae2548b",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The CLI flag is **`--generate-markdown`** \u2013 it creates a standalone Markdown API document together with the generated client code.\u202f[swagger_v3_reference:p1:spec:top:0]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p2:spec:top:1",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 both answers correctly state that the flag is `--generate-markdown`.",
+   "tokens": 324
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1303,
+  "completion_tokens": 139,
+  "cost_usd": 0.00027885,
+  "cost_status": "calculated",
+  "latency_ms": 11126.7,
+  "wall_s": 17.89,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_03",
+  "level": "medium",
+  "question": "How does the .swagger-codegen-ignore file handle wildcard patterns in Swagger Codegen 2.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "a1f9ac2d074d4e6da8be186d251480e9",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The\u202f.swagger\u2011codegen\u2011ignore file uses the same glob syntax as\u202f.gitignore, so you can write wildcard patterns (e.g., `**/*`) to match files or directories recursively. For example, the pattern  \n\n```\nbuild/**/*\n```  \n\nignores everything under the\u202f`build`\u202ffolder. The ignore rules are read once at the start of a generation run and are not re\u2011read if you regenerate in the same output directory during a single CLI invocation.  \n\n[swagger_v2_reference:p4:spec:top:3]  \n[swagger_v2_reference:p4:spec:ignore-everything-under-a-folder:6]\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (unknown): syntax not checked.\nNot checked: syntax and identifiers; runtime behaviour.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v2_reference:p4:spec:ignore-everything-under-a-folder:6",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that .swagger-codegen-ignore uses .gitignore\u2011style glob patterns, is read once at generation start, and does not allow re\u2011inclusion, matching the key facts in the golden answer.",
+   "tokens": 590
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1435,
+  "completion_tokens": 306,
+  "cost_usd": 0.00039884999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 11175.07,
+  "wall_s": 18.25,
+  "citations": 2,
+  "code_blocks": 1,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_04",
+  "level": "medium",
+  "question": "What is the default behavior of has_issues when creating a private repository in GitHub API version 2025-06-01 vs 2022-11-28?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "afe026d192604b5d83087fd8f28799cb",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] - **2022\u201111\u201128 API** \u2013 The `has_issues` field defaults to **true** for all repositories, regardless of whether they are private or public.\u202f[github_combined_reference:p8:spec:top:10]\n\n- **2025\u201106\u201101 API** \u2013 The default for `has_issues` now depends on the repository\u2019s visibility. For a **private** repository (or internal), `has_issues` defaults to **false** unless you set it explicitly.\u202f[github_combined_reference:p9:spec:top:11]\u202f[github_combined_reference:p9:diff:top:12]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p9:diff:top:12",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2025\u201106\u201101 defaults has_issues to false for private repos and 2022\u201111\u201128 defaults it to true for all repos.",
+   "tokens": 497
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1518,
+  "completion_tokens": 356,
+  "cost_usd": 0.0004413,
+  "cost_status": "calculated",
+  "latency_ms": 11802.49,
+  "wall_s": 18.82,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_05",
+  "level": "medium",
+  "question": "What new library option was added to the Python generator in Swagger Codegen v3 that produces async/await client methods?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "b3041986e5764d5aa1a28ce5c5e6aa9a",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The Python generator added a new **`asyncio`** library option, which generates client methods using async/await syntax.\u202f[swagger_v3_reference:p4:spec:top:5]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p4:diff:top:6",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p3:diff:top:4"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the new library option is \u201casyncio,\u201d matching the golden answer.",
+   "tokens": 345
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1456,
+  "completion_tokens": 145,
+  "cost_usd": 0.0003054,
+  "cost_status": "calculated",
+  "latency_ms": 10487.76,
+  "wall_s": 18.15,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_06",
+  "level": "medium",
+  "question": "In Swagger Codegen 2.x, can you pass a YAML file directly to the -c configuration flag?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "7d70f43f40dc4b2d897cf6ef6f6ea449",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] No. In Swagger\u202fCodegen\u202f2.x the `-c` flag is documented only for **JSON** configuration files. The reference describes \u201cUsing a JSON config file (-c)\u201d and shows examples such as `-c config.json`\u202f\u2014\u202fthere is no mention of YAML being accepted for that flag.\u202f[swagger_v2_reference:p1:spec:top:0]\u202f[swagger_v2_reference:p5:spec:top:7]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v2_reference:p3:spec:top:2"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that Swagger Codegen 2.x only accepts JSON for the -c flag and does not accept YAML.",
+   "tokens": 427
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1498,
+  "completion_tokens": 210,
+  "cost_usd": 0.0003507,
+  "cost_status": "calculated",
+  "latency_ms": 10075.01,
+  "wall_s": 16.44,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 0,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs"
+  ]
+ },
+ {
+  "id": "medium_07",
+  "level": "medium",
+  "question": "What new visibility enum values are supported when creating a repository in GitHub API version 2025-06-01?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "1094d8a60c244ef89265ead5934e1966",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] The\u202f2025\u201106\u201101\u202fcreate\u2011repository endpoint adds a **visibility** enum with three possible values:\n\n- `public`  \n- `private`  \n- `internal`  \n\nThese replace the older boolean\u202f`private`\u202ffield and enable internal repositories for organizations.  \n\n[github_combined_reference:p9:spec:top:11]",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p9:diff:top:12",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p5:spec:top:5"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer lists the same three visibility enum values ('public', 'private', 'internal') as the golden answer.",
+   "tokens": 403
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1638,
+  "completion_tokens": 191,
+  "cost_usd": 0.0003602999999999999,
+  "cost_status": "calculated",
+  "latency_ms": 11555.74,
+  "wall_s": 18.46,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2025-06-01",
+    "2025-06-01"
+   ],
+   "calls": 2,
+   "valid_tool_calls": 2,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_08",
+  "level": "medium",
+  "question": "Which CLI option flag suppresses generation timestamp comments in output files across both Swagger Codegen v2 and v3?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "0bca1270a08e4c13be09ab44ea3394ec",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The flag that disables the generation\u2011timestamp comment in both Swagger Codegen\u202f2.x and 3.x is:\n\n**`-DhideGenerationTimestamp=true`**\n\n* In v2 the flag is listed under \u201cGeneral flags\u201d with the description \u201cSuppresses the generation timestamp comment in output files.\u201d\u202f[swagger_v2_reference:p1:spec:top:0]  \n* In v3 the same flag appears in the flag reference table with the description \u201cSuppresses generation timestamp.\u201d\u202f[swagger_v3_reference:p1:spec:top:0]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states the flag '-DhideGenerationTimestamp=true' and confirms it applies to both Swagger Codegen v2 and v3.",
+   "tokens": 410
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1597,
+  "completion_tokens": 312,
+  "cost_usd": 0.00042674999999999994,
+  "cost_status": "calculated",
+  "latency_ms": 11023.91,
+  "wall_s": 17.79,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_09",
+  "level": "medium",
+  "question": "What parameter can be provided when creating a release in GitHub API version 2025-06-01 to automatically trigger a linked discussion?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "695bb7c4e97046e58e46dc486c4368b6",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] The parameter is **`discussion_category_name`** \u2013 when supplied in the release creation request, it automatically creates and links a discussion to the release.\u202f[github_combined_reference:p12:spec:top:15]",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p12:spec:top:15",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p13:diff:top:17",
+   "github_combined_reference:p5:spec:top:5",
+   "github_combined_reference:p7:spec:top:8"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the parameter is `discussion_category_name`.",
+   "tokens": 361
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1688,
+  "completion_tokens": 126,
+  "cost_usd": 0.00032879999999999997,
+  "cost_status": "calculated",
+  "latency_ms": 11002.0,
+  "wall_s": 17.46,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_10",
+  "level": "medium",
+  "question": "How does Swagger Codegen 3.x handle OpenAPI 2.0 (Swagger) specification files by default?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "5b8f6c8449604e33992720d6b2741525",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] Swagger Codegen\u202f3.x is built to work with OpenAPI\u202f3.0.x specifications. By default it does **not** support OpenAPI\u202f2.0 (Swagger) files\u2014the tool\u2019s CLI and generators are oriented toward the newer 3.0.x format\u202f[swagger_v3_reference:p1:spec:top:0].",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p5:spec:top:7",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p5:diff:top:10"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that Swagger Codegen 3.x does not support OpenAPI\u202f2.0 by default, matching the golden answer.",
+   "tokens": 433
+  },
+  "outcome_pass": true,
+  "llm_calls": 2,
+  "prompt_tokens": 2846,
+  "completion_tokens": 684,
+  "cost_usd": 0.0008373,
+  "cost_status": "calculated",
+  "latency_ms": 29856.19,
+  "wall_s": 36.63,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 0,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs"
+  ]
+ },
+ {
+  "id": "medium_11",
+  "level": "medium",
+  "question": "What option was added in Swagger Codegen v3 Java generator to support OpenAPI oneOf schemas?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "770c130f3e2b40f398e0d3be38eb73ed",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 3.x] The Java generator added the **`useOneOfInterfaces`** option (default\u202f`false`) to generate a Java interface for each OpenAPI\u202foneOf schema.\u202f[swagger_v3_reference:p3:spec:top:3]",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p3:spec:top:3",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the `useOneOfInterfaces` option was added to support OpenAPI oneOf schemas.",
+   "tokens": 363
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1489,
+  "completion_tokens": 140,
+  "cost_usd": 0.00030735,
+  "cost_status": "calculated",
+  "latency_ms": 10858.69,
+  "wall_s": 18.25,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_12",
+  "level": "medium",
+  "question": "What is the target_commitish default value when creating a release in the GitHub REST API?",
+  "answerable": true,
+  "explicit_version": "2022-11-28",
+  "trace_id": "e4c2f97b80be48dda61e966b029682a8",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] When you create a release, if you omit **`target_commitish`**, GitHub uses the repository\u2019s default branch as the default value.\u202f[github_combined_reference:p10:spec:top:13]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p10:spec:top:13",
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p1:spec:top:0"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the default value is the repository\u2019s default branch.",
+   "tokens": 344
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1696,
+  "completion_tokens": 150,
+  "cost_usd": 0.0003444,
+  "cost_status": "calculated",
+  "latency_ms": 10351.0,
+  "wall_s": 16.83,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_13",
+  "level": "medium",
+  "question": "Which CLI flag in Swagger Codegen 3.x allows auto-formatting the generated Python code using the Black formatter?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "4a55885ac2b049b7b6973d788bb6a5d4",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p5:spec:top:7",
+   "swagger_v3_reference:p5:diff:top:10"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly declines to answer, matching the golden answer that the information is not provided.",
+   "tokens": 338
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1378,
+  "completion_tokens": 139,
+  "cost_usd": 0.0002901,
+  "cost_status": "calculated",
+  "latency_ms": 11237.76,
+  "wall_s": 17.75,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 2,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "3.x",
+    "3.x"
+   ],
+   "calls": 2,
+   "valid_tool_calls": 1,
+   "wrong_tool_calls": [
+    "lookup_changes"
+   ],
+   "unnecessary_calls": 1,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": false,
+   "outcome": "abstain",
+   "expected_outcome": "abstain",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "correct_answer_unreliable_path"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_14",
+  "level": "medium",
+  "question": "What parameter is used to specify the auto-delete policy when archiving a repository using POST /repos/{owner}/{repo}/archive in GitHub API version 2025-06-01?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "f3ce6df03ff64494b988e1f70b5dcbd4",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2025-06-01"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p9:diff:top:12",
+   "github_combined_reference:p5:spec:top:5",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p7:spec:top:8"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly acknowledges lack of information, matching the golden answer.",
+   "tokens": 333
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1649,
+  "completion_tokens": 116,
+  "cost_usd": 0.00031695000000000003,
+  "cost_status": "calculated",
+  "latency_ms": 11278.44,
+  "wall_s": 17.79,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_15",
+  "level": "medium",
+  "question": "What is the default value of the enableGrpcClient option in the Swagger Codegen 3.x Java generator?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "99c37fbc4a214a5896a928c60710902c",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p3:spec:top:3",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v3_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 344
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1509,
+  "completion_tokens": 116,
+  "cost_usd": 0.00029594999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 10931.09,
+  "wall_s": 17.45,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_01",
+  "level": "hard",
+  "question": "Compare how the context parameter format changed between GitHub API version 2022-11-28 and 2025-06-01 for rendering Markdown.",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "688b57ef5dc040318f03fa45cccad7b4",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] **2022\u201111\u201128** \u2013 The `context` field is a **plain string** that contains the repository name (e.g., `\"octocat/Hello-World\"`).\u202fIt is used only for reference linking when `mode=gfm`[github_combined_reference:p2:spec:top:1].\n\n**2025\u201106\u201101** \u2013 The `context` field becomes a **structured object** with two properties: `owner` and `repo` (e.g., `{ \"owner\": \"octocat\", \"repo\": \"Hello-World\" }`).\u202fThis change allows the API to parse the repository more reliably and is required for `mode=gfm`[github_combined_reference:p3:spec:top:2]. The earlier plain\u2011string format is described in the changelog as the prior behavior[github_combined_reference:p3:diff:top:3].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p2:spec:top:1",
+   "github_combined_reference:p3:spec:top:2",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p3:diff:top:3",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2022\u201111\u201128 used a plain string for context and 2025\u201106\u201101 switched to a structured owner/repo object.",
+   "tokens": 567
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1516,
+  "completion_tokens": 410,
+  "cost_usd": 0.00047339999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 11523.29,
+  "wall_s": 18.3,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2022-11-28",
+    "2025-06-01",
+    "2022-11-28"
+   ],
+   "calls": 3,
+   "valid_tool_calls": 3,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_02",
+  "level": "hard",
+  "question": "What negation syntax does the .swagger-codegen-ignore file support in Swagger Codegen v3 that is missing in v2?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "6ce3abfebf1c46ebb5cefca6364f043f",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] Swagger Codegen\u202fv3 adds support for an **exclamation\u2011mark negation pattern** (`!pattern`) in the `.swagger-codegen-ignore` file. This lets you re\u2011include a file that a broader glob pattern above it excluded\u2014a feature that did not exist in v2.x.  \n\n- v3: \u201chonors a openapi-generator-ignore style negation pattern (!pattern) to re\u2011include a file \u2026 this negation support did not exist in 2.x.\u201d\u202f[swagger_v3_reference:p5:spec:top:7]  \n- v2: only plain glob\u2011style exclude patterns were supported, with no override mechanism.\u202f[swagger_v2_reference:p4:spec:top:3]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v3_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:ignore-everything-under-a-folder:6",
+   "swagger_v3_reference:p5:diff:top:10",
+   "swagger_v2_reference:p1:spec:top:0"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that v3 supports a negation pattern (!pattern) and that v2 had no such syntax.",
+   "tokens": 494
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1176,
+  "completion_tokens": 280,
+  "cost_usd": 0.00034439999999999997,
+  "cost_status": "calculated",
+  "latency_ms": 11471.87,
+  "wall_s": 18.03,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_03",
+  "level": "hard",
+  "question": "What top-level configuration key was introduced in Swagger Codegen v3 config files to nest generator-specific options that did not exist in v2?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "aa392f021d174b9ea58f5967401d04e8",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v2_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": false,
+  "judge": {
+   "verdict": "FAIL",
+   "raw": "VERDICT: FAIL \u2013 The system answer incorrectly claims ignorance, whereas the golden answer specifies that the key is 'additionalProperties'.",
+   "tokens": 350
+  },
+  "outcome_pass": false,
+  "llm_calls": 1,
+  "prompt_tokens": 1755,
+  "completion_tokens": 270,
+  "cost_usd": 0.00042524999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 11802.3,
+  "wall_s": 18.37,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 5,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_04",
+  "level": "hard",
+  "question": "How did setting maintainer_can_modify during pull request creation change between GitHub API 2022-11-28 and 2025-06-01?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "a2ebb6d8130241c7a8087a6a6b90fd5c",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] **2022\u201111\u201128** \u2013 The\u202f`maintainer_can_modify`\u202ffield is not listed among the pull\u2011request creation parameters, so it could not be set when the PR was created. It was always `true` by default and could only be changed later with a separate\u202fPATCH\u202frequest\u202f[github_combined_reference:p6:spec:top:7]\u202f(and the changelog confirms this limitation)\u202f[github_combined_reference:p7:diff:top:9].\n\n**2025\u201106\u201101** \u2013 The API adds a\u202f`maintainer_can_modify`\u202fboolean to the request body. It defaults to `true` but can now be set at creation time (e.g., `\"maintainer_can_modify\": false`)\u202f[github_combined_reference:p7:spec:top:8].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p7:diff:top:9",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p4:spec:top:4"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that in 2022\u201111\u201128 the field was not settable at creation and defaulted to true, while in 2025\u201106\u201101 it can be specified in the body.",
+   "tokens": 544
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1641,
+  "completion_tokens": 449,
+  "cost_usd": 0.00051555,
+  "cost_status": "calculated",
+  "latency_ms": 11593.31,
+  "wall_s": 18.28,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2022-11-28",
+    "2025-06-01",
+    "2022-11-28"
+   ],
+   "calls": 3,
+   "valid_tool_calls": 3,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_05",
+  "level": "hard",
+  "question": "Migrate a Java generator configuration from Swagger Codegen 2.x to 3.x that uses oneOf schemas and the webclient library. What config keys change?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "7b061fe2df064db9bbe88933c62135bc",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] **Config keys that differ when moving from 2.x \u2192\u202f3.x**\n\n| 2.x configuration | 3.x configuration | What changes |\n|-------------------|-------------------|--------------|\n| `library` (values: `jersey1`, `jersey2`, `feign`, `okhttp\u2011gson`, `retrofit`, `retrofit2`, `resttemplate`, `resteasy`) | `library` (still present, but the enum now also includes `native` and `webclient`) | The same key is kept, but you can now set it to `webclient` to use the new WebClient library\u202f[swagger_v3_reference:p3:spec:top:3]\u202f[swagger_v3_reference:p3:diff:top:4] |\n| *none* | `useOneOfInterfaces` (default\u202f`false`) | New key that tells the generator to create a Java interface for each OpenAPI `oneOf` schema\u202f[swagger_v3_reference:p3:spec:top:3]\u202f[swagger_v3_reference:p3:diff:top:4] |\n\nAll other Java\u2011client options (`sortParamsByRequiredFlag`, `ensureUniqueParams`, `allowUnicodeIdentifiers`, `modelPackage`, `apiPackage`, \u2026) remain unchanged between the two versions\u202f[swagger_v2_reference:p2:spec:top:1]\u202f[swagger_v3_reference:p3:spec:top:3].",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v3_reference:p3:spec:top:3",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 the system answer correctly identifies the new `useOneOfInterfaces` flag and the expanded `library` options (including `webclient`) that replace the old configuration.",
+   "tokens": 742
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1747,
+  "completion_tokens": 602,
+  "cost_usd": 0.00062325,
+  "cost_status": "calculated",
+  "latency_ms": 12125.81,
+  "wall_s": 18.53,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_06",
+  "level": "hard",
+  "question": "How does the make_latest parameter in GitHub API version 2025-06-01 release creation replace the undocumented heuristic used in 2022-11-28?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "1599dfa5979d4efaae75e1ae7ac8eb20",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] In the 2025\u201106\u201101 API, the **`make_latest`** field lets you explicitly decide whether a newly created release should be marked as the repository\u2019s \u201cLatest\u201d release. This replaces the older, undocumented behavior that the 2022\u201111\u201128 API used, which automatically selected the \u201cLatest\u201d release solely based on the release\u2019s publish date\u202f\u2014\u202fwithout any parameter to control it\u202f[github_combined_reference:p12:spec:top:15].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p13:spec:top:16",
+   "github_combined_reference:p10:spec:top:13",
+   "github_combined_reference:p12:spec:top:15",
+   "github_combined_reference:p6:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The answer correctly states that the `make_latest` parameter replaces the undocumented heuristic that previously determined the \u201cLatest\u201d release based on publish date.",
+   "tokens": 641
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1710,
+  "completion_tokens": 283,
+  "cost_usd": 0.0004263,
+  "cost_status": "calculated",
+  "latency_ms": 11675.02,
+  "wall_s": 18.19,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2022-11-28",
+    "2025-06-01",
+    "2022-11-28"
+   ],
+   "calls": 3,
+   "valid_tool_calls": 3,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_07",
+  "level": "hard",
+  "question": "How did the documentation format and options list for the Java client generator differ between Swagger Codegen 2.x and 3.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "08cc11509c33481bb45e3f1bda896d40",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] **Documentation format**\n\n* **2.x** \u2013 The Java client generator options were shown as a plain bulleted list, with defaults written inline in the text (e.g., \u201c(Default: true)\u201d)[swagger_v2_reference:p2:spec:top:1].  \n* **3.x** \u2013 The options are presented in a structured table (Option\u202f|\u202fType\u202f|\u202fDefault\u202f|\u202fDescription) and the help output is version\u2011specific[swagger_v3_reference:p3:spec:top:3].  \n\n**Options list**\n\n| Feature | 2.x | 3.x |\n|---|---|---|\n| Common options (same names) | `sortParamsByRequiredFlag`, `ensureUniqueParams`, `allowUnicodeIdentifiers`, `modelPackage`, `library` (limited to jersey1, jersey2, feign, okhttp\u2011gson, retrofit, retrofit2, resteasy)[swagger_v2_reference:p2:spec:top:1] | Same options appear in the table, but `library` is now an enum that also includes native and web client choices[swagger_v3_reference:p3:spec:top:3] |\n| New options | \u2013 | `useOneOfInterfaces` (generates a Java interface for each OpenAPI\u202foneOf schema)[swagger_v3_reference:p3:spec:top:3] |\n| Documentation style note | Options were listed as bullets with defaults in prose[swagger_v3_reference:p3:diff:top:4] | Options are listed in a table with explicit columns for type and default[swagger_v3_reference:p3:diff:top:4] |\n\n**Summary**\n\nThe 2.x docs used a simple bullet list and only the original set of options, while the 3.x docs switched to a tabular format, kept the original options, added `useOneOfInterfaces`, and expanded the `library` option to include native and web client choices.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v3_reference:p3:spec:top:3",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2.x used a plain bulleted list with inline defaults, 3.x used a markdown table with separate columns, and that 3.x added the `useOneOfInterfaces` option and expanded the `library` choices to include native and webclient.",
+   "tokens": 829
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1739,
+  "completion_tokens": 723,
+  "cost_usd": 0.00069465,
+  "cost_status": "calculated",
+  "latency_ms": 12326.78,
+  "wall_s": 18.94,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_08",
+  "level": "hard",
+  "question": "How did draft pull requests interact with auto-merge settings in GitHub API version 2022-11-28 versus 2025-06-01?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "09d580e82a304a509bee7417fbed8462",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] - **2022\u201111\u201128 API** \u2013 A pull request created as a draft could **not** have auto\u2011merge turned on. Auto\u2011merge could only be enabled after the draft was explicitly marked \u201cready for review.\u201d  \n\n- **2025\u201106\u201101 API** \u2013 The same draft\u2011pull\u2011request restriction was removed: a draft PR may now have auto\u2011merge **pre\u2011armed** (enabled) even before it is marked ready for review.  \n\nThese changes are described in the changelog comparing the two versions\u202f[github_combined_reference:p7:diff:top:9].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p6:spec:top:7",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p7:diff:top:9",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p4:spec:top:4"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that in 2022\u201111\u201128 a draft PR could not have auto\u2011merge enabled until marked ready, while in 2025\u201106\u201101 auto\u2011merge can be pre\u2011armed on a draft.",
+   "tokens": 510
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1642,
+  "completion_tokens": 419,
+  "cost_usd": 0.0004977,
+  "cost_status": "calculated",
+  "latency_ms": 12268.23,
+  "wall_s": 19.21,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_09",
+  "level": "hard",
+  "question": "Compare how Markdown table rendering behavior changed between GitHub API version 2022-11-28 and 2025-06-01.",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "6525f466240a4543a8eb9282ea871354",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] **Markdown table rendering**\n\n| API version | Behavior for wide tables | Relevant parameter |\n|-------------|--------------------------|--------------------|\n| **2022\u201111\u201128** | Tables that are wider than the container simply overflow; there is no option to change this. | \u2013 (no `wrap_tables` flag) \u2013 |\n| **2025\u201106\u201101** | A new `wrap_tables` boolean flag can be set. When `wrap_tables: true`, wide tables are wrapped in a horizontal\u2011scroll container instead of overflowing. The default remains `false`, preserving the old overflow behavior. | `wrap_tables` (default\u202ffalse) |\n\n**Sources**\n\n- 2025\u201106\u201101 spec describing the `wrap_tables` flag and its effect on wide tables[github_combined_reference:p3:spec:top:2].  \n- 2025\u201106\u201101 changelog noting that the prior 2022\u201111\u201128 version had no `wrap_tables` option and that tables overflowed their container[github_combined_reference:p3:diff:top:3].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p3:spec:top:2",
+   "github_combined_reference:p2:spec:top:1",
+   "github_combined_reference:p3:diff:top:3",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2022\u201111\u201128 had no wrap_tables option and tables overflowed, while 2025\u201106\u201101 introduced a wrap_tables flag (default false) to wrap wide tables.",
+   "tokens": 612
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1515,
+  "completion_tokens": 527,
+  "cost_usd": 0.00054345,
+  "cost_status": "calculated",
+  "latency_ms": 11347.45,
+  "wall_s": 18.14,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_10",
+  "level": "hard",
+  "question": "Migrate a Python client configuration file from Swagger Codegen 2.x to 3.x to support asynchronous execution and YAML format. What steps are required?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "44f9eef9a8844321a4d5226493517cc7",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] **Steps to migrate a Python client config from 2.x to 3.x and enable async calls with a YAML file**\n\n1. **Keep the existing 2.x options** \u2013 the core options (`packageName`, `projectName`, `packageVersion`, `sortParamsByRequiredFlag`) are unchanged in 3.x[swagger_v2_reference:p3:spec:top:2].  \n\n2. **Add the new `library` option** \u2013 3.x introduces the selectable `library` value `asyncio` to generate `async/await` client methods[swagger_v3_reference:p4:spec:top:5].\n\n3. **Place the `library` option under `additionalProperties`** \u2013 3.x allows language\u2011specific options to be nested inside an `additionalProperties` object; if present, top\u2011level keys of the same name are ignored[swagger_v3_reference:p6:spec:top:11].\n\n4. **Convert the JSON config to YAML** \u2013 3.x automatically detects the file type by extension, so a `.yaml` (or `.yml`) file can be used instead of JSON[swagger_v3_reference:p6:spec:top:11].\n\n5. **Run the generator with the new config file** \u2013 use the 3.x CLI jar, specify the Python language, and point `-c` to the YAML file[swagger_v3_reference:p6:spec:top:11].\n\n---\n\n### Example YAML configuration (`config.yaml`)\n\n```yaml\npackageName: petstore_api\nadditionalProperties:\n  library: asyncio\n```\n\n### Generation command (3.x)\n\n```bash\njava -jar swagger-codegen-cli.jar generate \\\n  -i spec.yaml \\\n  -l python \\\n  -c config.yaml\n```\n\nThese steps migrate the 2.x JSON config to a 3.x YAML config, enable asynchronous client methods, and keep all existing settings intact.\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (yaml): syntax not checked.\n- block 2 (shell): syntax parsed; 3 identifier(s) documented (3 in cited passages, 0 elsewhere in the 2.x docs).\nNot checked: syntax and identifiers; header and option values; runtime behaviour.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v3_reference:p4:spec:top:5",
+   "swagger_v2_reference:p3:spec:top:2",
+   "swagger_v3_reference:p6:spec:top:11",
+   "swagger_v2_reference:p1:spec:top:0"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 the system answer correctly states converting the config to YAML, adding the `library: asyncio` option (under `additionalProperties`), and enabling async/await usage.",
+   "tokens": 842
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1648,
+  "completion_tokens": 789,
+  "cost_usd": 0.0007206,
+  "cost_status": "calculated",
+  "latency_ms": 12249.94,
+  "wall_s": 18.77,
+  "citations": 3,
+  "code_blocks": 2,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 2,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_11",
+  "level": "hard",
+  "question": "How did setting issue types on creation change between GitHub API versions 2022-11-28 and 2025-06-01?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "2099bdfebfc04e36a010476549a5f1e7",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] - **2022\u201111\u201128** \u2013 The\u202f`Create an issue` endpoint did **not** include a `type` parameter.\u202fIssue types could only be set after the issue was created, requiring a separate API call\u202f[github_combined_reference:p5:diff:top:6].\n\n- **2025\u201106\u201101** \u2013 The endpoint adds an optional `type` field that lets you specify the issue type (e.g., `\"Bug\"`) **when the issue is created**\u202f[github_combined_reference:p5:spec:top:5].",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p5:spec:top:5",
+   "github_combined_reference:p5:diff:top:6",
+   "github_combined_reference:p11:spec:top:14",
+   "github_combined_reference:p6:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2022\u201111\u201128 had no type field and required a second request, while 2025\u201106\u201101 added an optional type parameter for creation.",
+   "tokens": 499
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1615,
+  "completion_tokens": 368,
+  "cost_usd": 0.00046305,
+  "cost_status": "calculated",
+  "latency_ms": 12427.24,
+  "wall_s": 19.02,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": true,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2022-11-28",
+    "2025-06-01",
+    "2022-11-28"
+   ],
+   "calls": 3,
+   "valid_tool_calls": 3,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_12",
+  "level": "hard",
+  "question": "Compare generating standalone markdown documentation alongside client code in Swagger Codegen 2.x versus 3.x.",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "8d6155a29aef403d95b322cf630ff1f2",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] **Swagger Codegen\u202f2.x**\n\n* There is no `--generate-markdown` flag.  \n* To obtain standalone markdown (or any other documentation) you must run a separate generation using a documentation\u2011only language (e.g., `-l html2`) and cannot bundle it with the client code in the same command.\u202f[swagger_v3_reference:p2:diff:top:2]\n\n**Swagger Codegen\u202f3.x**\n\n* Introduces a new `--generate-markdown` flag.  \n* When this flag is supplied, the CLI creates a standalone markdown API document **in the same run** that also generates the client code, so both outputs appear together in the output directory.\u202f[swagger_v3_reference:p1:spec:top:0]\n\n**Comparison**\n\n| Feature | 2.x | 3.x |\n|---------|-----|-----|\n| `--generate-markdown` flag | Not available (must run a separate doc\u2011only generator) | Available; produces markdown alongside client code in one invocation |\n\nThus, generating markdown together with client code is only supported starting with Swagger Codegen\u202f3.x.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 3.x supports generating markdown alongside client code with `--generate-markdown`, while 2.x requires a separate documentation-only run.",
+   "tokens": 623
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1594,
+  "completion_tokens": 449,
+  "cost_usd": 0.0005085,
+  "cost_status": "calculated",
+  "latency_ms": 11564.25,
+  "wall_s": 17.93,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 5,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_13",
+  "level": "hard",
+  "question": "How did setting the max_team_members restriction during repository creation change between GitHub API version 2022-11-28 and 2025-06-01?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "34f7d235d3244939b280e6c22dc5b7ae",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p7:spec:top:8",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 353
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1718,
+  "completion_tokens": 129,
+  "cost_usd": 0.00033509999999999996,
+  "cost_status": "calculated",
+  "latency_ms": 11156.45,
+  "wall_s": 17.67,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_14",
+  "level": "hard",
+  "question": "How do you configure the additionalProperties block in Swagger Codegen v3 to convert OpenAPI 3.0 anyOf schemas into Java sealed classes?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "6ed94665b5234c7fa231ff4ed4d6fd57",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "3.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v3_reference:p1:spec:top:0",
+   "swagger_v3_reference:p2:diff:top:2",
+   "swagger_v3_reference:p5:spec:top:7",
+   "swagger_v3_reference:p6:spec:top:11"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly states it does not know, matching the golden answer that the information is not provided.",
+   "tokens": 359
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1467,
+  "completion_tokens": 123,
+  "cost_usd": 0.00029385,
+  "cost_status": "calculated",
+  "latency_ms": 11177.53,
+  "wall_s": 17.68,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_15",
+  "level": "hard",
+  "question": "What negation syntax can be used in Swagger Codegen 2.x inside .swagger-codegen-ignore to override an exclusion rule set in additionalProperties?",
+  "answerable": false,
+  "explicit_version": null,
+  "trace_id": "f49da29f90414b68ada3c47b9a970ff5",
+  "outcome": "abstain",
+  "reason": "model_abstained: documents do not contain the answer",
+  "answer": "I don't know based on the provided documents.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p4:spec:top:3",
+   "swagger_v2_reference:p4:spec:ignore-everything-under-a-folder:6",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p2:spec:top:1"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": null,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system correctly declines to answer, matching the golden answer that the information is not provided.",
+   "tokens": 339
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1445,
+  "completion_tokens": 174,
+  "cost_usd": 0.00032115,
+  "cost_status": "calculated",
+  "latency_ms": 11062.08,
+  "wall_s": 17.56,
+  "citations": 0,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ }
+]

@@ -1,0 +1,5 @@
+concurrency  1: 40 requests in   7.39s = 5.41 req/s | p50 146.5 ms p95 288.1 ms max 297.2 ms | {'answered': 40}
+concurrency  2: 40 requests in   5.77s = 6.94 req/s | p50 249.2 ms p95 419.5 ms max 493.9 ms | {'answered': 40}
+concurrency  4: 40 requests in   5.89s = 6.79 req/s | p50 437.1 ms p95 993.3 ms max 1064.5 ms | {'answered': 40}
+concurrency  8: 40 requests in  12.72s = 3.14 req/s | p50 1916.0 ms p95 5063.0 ms max 5154.5 ms | {'answered': 40}
+exit 0

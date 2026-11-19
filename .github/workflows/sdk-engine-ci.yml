@@ -1,0 +1,70 @@
+# CI for the Week 12 SDK docs answer engine (developer-rag/sdk_engine, developer-rag/sdk_eval).
+#
+# What it does: scans for pasted credentials, installs the pinned requirements, runs the unit/protocol/security suite.
+# What it deliberately does NOT do:
+#   * call any model provider: no secrets are configured and the key variables are forced empty, so the engine has no key and
+#     degrades quietly (a test that expected a live answer would fail on its assertion); no money can be spent;
+#   * run the tests marked `integration`, the live evaluation, or the load test: they need the real vector index (git-ignored,
+#     rebuilt with `python -m sdk_engine index rebuild --yes`) and the local embedding stack (torch).
+# Run those locally; see developer-rag/sdk_engine/README.md.
+#
+# Status: this workflow file has not been executed on GitHub by its author. The same install and pytest commands were run
+# in a fresh virtual environment on Windows (docs/week12/phase11.md). The Linux leg is therefore untested until the first run.
+name: sdk-engine-ci
+
+on:
+  push:
+    branches: [main, week12_implementation]
+    paths: ["developer-rag/**", ".github/workflows/sdk-engine-ci.yml"]
+  pull_request:
+    paths: ["developer-rag/**", ".github/workflows/sdk-engine-ci.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sdk-engine-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Scan the tree for credential-shaped strings
+        run: python developer-rag/scripts/scan_secrets.py
+
+  tests:
+    needs: secret-scan
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+        working-directory: developer-rag
+    env:
+      GROQ_API_KEY: ""
+      GROK_API_KEY: ""
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: |
+            developer-rag/requirements-dev.txt
+            developer-rag/requirements-sdk-engine.txt
+      - name: "Install the pinned requirements (no torch, the suite uses a deterministic hash embedding)"
+        run: python -m pip install -r requirements-dev.txt
+      - name: Unit, protocol and security tests
+        run: python -m pytest -m "not integration" -q

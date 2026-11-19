@@ -1,0 +1,11 @@
+reg01  RED=fail  GREEN=pass  VERIFIED  | semver value read as a claim about another product's version  | observed:phase6 live run (a correct release example was withheld)
+      RED fails (1): ["delivered, not withheld as 'claims about versions outside the allowed set'"]
+reg02  RED=fail  GREEN=pass  VERIFIED  | the user's own token echoed in a Bearer header treated as an invented secret  | observed:phase7 live demo (a correct curl answer was withheld)
+      RED fails (1): ["delivered, not blocked as 'a secret-shaped value that is not in the sources'"]
+reg03  RED=fail  GREEN=pass  VERIFIED  | multi-line quoted curl body split into shell commands  | observed:phase6 live run (footer listed JSON keys as commands)
+      RED fails (2): ['the block parses', 'no JSON key was mistaken for a command']
+reg05  RED=fail  GREEN=pass  VERIFIED  | a date with a non-breaking hyphen not recognised as a version  | observed:phase8 live run (the model writes 2022‑11‑28; the version-claim check could not see it) + phase9 golden run (17 of 35 answers had one inside an identifier or date)
+      RED fails (3): ["a pasted date with a non-breaking hyphen resolves, not 'unsupported'", "a model's claim about another version is caught whichever hyphen it used", 'what the user receives has plain ASCII hyphens, so an identifier or flag pastes and runs']
+reg04  RED=fail  GREEN=pass  VERIFIED  | degraded mode printing a poisoned excerpt unchecked  | observed:phase5 live run (degraded mode printed retrieved text unchecked)
+      RED fails (1): ["degraded answer, none of the poisoned page's URL shown"]
+5/5 regression cases verified RED with the defect re-created and GREEN on the current code

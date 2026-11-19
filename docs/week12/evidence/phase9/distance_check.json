@@ -1,0 +1,525 @@
+{
+ "passages": 225,
+ "none": 0,
+ "exactly_1.0": 0,
+ "range": [
+  0.124,
+  0.41
+ ],
+ "top1_answerable": {
+  "n": 36,
+  "min": 0.124,
+  "median": 0.179,
+  "max": 0.25
+ },
+ "top1_unanswerable": {
+  "n": 9,
+  "min": 0.161,
+  "median": 0.233,
+  "max": 0.334
+ },
+ "threshold": 0.65,
+ "answerable_top1_above_threshold": 0,
+ "unanswerable_top1_below_threshold": 9,
+ "overlap": {
+  "max_answerable_top1": 0.25,
+  "min_unanswerable_top1": 0.161
+ },
+ "per_question": [
+  {
+   "id": "easy_01",
+   "answerable": true,
+   "dists": [
+    0.191,
+    0.3,
+    0.32,
+    0.352,
+    0.355
+   ]
+  },
+  {
+   "id": "easy_02",
+   "answerable": true,
+   "dists": [
+    0.186,
+    0.21,
+    0.258,
+    0.286,
+    0.286
+   ]
+  },
+  {
+   "id": "easy_03",
+   "answerable": true,
+   "dists": [
+    0.144,
+    0.229,
+    0.252,
+    0.254,
+    0.263
+   ]
+  },
+  {
+   "id": "easy_04",
+   "answerable": true,
+   "dists": [
+    0.209,
+    0.287,
+    0.315,
+    0.381,
+    0.398
+   ]
+  },
+  {
+   "id": "easy_05",
+   "answerable": true,
+   "dists": [
+    0.152,
+    0.157,
+    0.187,
+    0.244,
+    0.246
+   ]
+  },
+  {
+   "id": "easy_06",
+   "answerable": true,
+   "dists": [
+    0.214,
+    0.22,
+    0.222,
+    0.255,
+    0.272
+   ]
+  },
+  {
+   "id": "easy_07",
+   "answerable": true,
+   "dists": [
+    0.126,
+    0.285,
+    0.291,
+    0.324,
+    0.334
+   ]
+  },
+  {
+   "id": "easy_08",
+   "answerable": true,
+   "dists": [
+    0.172,
+    0.236,
+    0.269,
+    0.296,
+    0.318
+   ]
+  },
+  {
+   "id": "easy_09",
+   "answerable": true,
+   "dists": [
+    0.17,
+    0.268,
+    0.301,
+    0.311,
+    0.314
+   ]
+  },
+  {
+   "id": "easy_10",
+   "answerable": true,
+   "dists": [
+    0.156,
+    0.17,
+    0.25,
+    0.258,
+    0.28
+   ]
+  },
+  {
+   "id": "easy_11",
+   "answerable": true,
+   "dists": [
+    0.186,
+    0.195,
+    0.206,
+    0.227,
+    0.239
+   ]
+  },
+  {
+   "id": "easy_12",
+   "answerable": true,
+   "dists": [
+    0.25,
+    0.294,
+    0.318,
+    0.321,
+    0.337
+   ]
+  },
+  {
+   "id": "easy_13",
+   "answerable": false,
+   "dists": [
+    0.315,
+    0.395,
+    0.406,
+    0.407,
+    0.41
+   ]
+  },
+  {
+   "id": "easy_14",
+   "answerable": false,
+   "dists": [
+    0.181,
+    0.2,
+    0.21,
+    0.222,
+    0.243
+   ]
+  },
+  {
+   "id": "easy_15",
+   "answerable": false,
+   "dists": [
+    0.334,
+    0.358,
+    0.362,
+    0.376,
+    0.389
+   ]
+  },
+  {
+   "id": "medium_01",
+   "answerable": true,
+   "dists": [
+    0.182,
+    0.235,
+    0.272,
+    0.288,
+    0.302
+   ]
+  },
+  {
+   "id": "medium_02",
+   "answerable": true,
+   "dists": [
+    0.125,
+    0.165,
+    0.224,
+    0.262,
+    0.265
+   ]
+  },
+  {
+   "id": "medium_03",
+   "answerable": true,
+   "dists": [
+    0.147,
+    0.162,
+    0.236,
+    0.295,
+    0.296
+   ]
+  },
+  {
+   "id": "medium_04",
+   "answerable": true,
+   "dists": [
+    0.204,
+    0.231,
+    0.24,
+    0.264,
+    0.275
+   ]
+  },
+  {
+   "id": "medium_05",
+   "answerable": true,
+   "dists": [
+    0.139,
+    0.17,
+    0.211,
+    0.251,
+    0.259
+   ]
+  },
+  {
+   "id": "medium_06",
+   "answerable": true,
+   "dists": [
+    0.192,
+    0.217,
+    0.252,
+    0.287,
+    0.3
+   ]
+  },
+  {
+   "id": "medium_07",
+   "answerable": true,
+   "dists": [
+    0.158,
+    0.2,
+    0.268,
+    0.284,
+    0.285
+   ]
+  },
+  {
+   "id": "medium_08",
+   "answerable": true,
+   "dists": [
+    0.149,
+    0.155,
+    0.22,
+    0.225,
+    0.228
+   ]
+  },
+  {
+   "id": "medium_09",
+   "answerable": true,
+   "dists": [
+    0.221,
+    0.269,
+    0.276,
+    0.33,
+    0.331
+   ]
+  },
+  {
+   "id": "medium_10",
+   "answerable": true,
+   "dists": [
+    0.176,
+    0.187,
+    0.207,
+    0.208,
+    0.231
+   ]
+  },
+  {
+   "id": "medium_11",
+   "answerable": true,
+   "dists": [
+    0.184,
+    0.201,
+    0.218,
+    0.233,
+    0.235
+   ]
+  },
+  {
+   "id": "medium_12",
+   "answerable": true,
+   "dists": [
+    0.19,
+    0.228,
+    0.312,
+    0.316,
+    0.321
+   ]
+  },
+  {
+   "id": "medium_13",
+   "answerable": false,
+   "dists": [
+    0.161,
+    0.207,
+    0.217,
+    0.23,
+    0.245
+   ]
+  },
+  {
+   "id": "medium_14",
+   "answerable": false,
+   "dists": [
+    0.278,
+    0.292,
+    0.314,
+    0.321,
+    0.355
+   ]
+  },
+  {
+   "id": "medium_15",
+   "answerable": false,
+   "dists": [
+    0.2,
+    0.221,
+    0.232,
+    0.25,
+    0.253
+   ]
+  },
+  {
+   "id": "hard_01",
+   "answerable": true,
+   "dists": [
+    0.212,
+    0.239,
+    0.245,
+    0.268,
+    0.283
+   ]
+  },
+  {
+   "id": "hard_02",
+   "answerable": true,
+   "dists": [
+    0.131,
+    0.166,
+    0.172,
+    0.174,
+    0.181
+   ]
+  },
+  {
+   "id": "hard_03",
+   "answerable": true,
+   "dists": [
+    0.16,
+    0.161,
+    0.213,
+    0.218,
+    0.221
+   ]
+  },
+  {
+   "id": "hard_04",
+   "answerable": true,
+   "dists": [
+    0.164,
+    0.251,
+    0.273,
+    0.279,
+    0.307
+   ]
+  },
+  {
+   "id": "hard_05",
+   "answerable": true,
+   "dists": [
+    0.174,
+    0.177,
+    0.208,
+    0.212,
+    0.236
+   ]
+  },
+  {
+   "id": "hard_06",
+   "answerable": true,
+   "dists": [
+    0.208,
+    0.258,
+    0.282,
+    0.285,
+    0.289
+   ]
+  },
+  {
+   "id": "hard_07",
+   "answerable": true,
+   "dists": [
+    0.124,
+    0.125,
+    0.161,
+    0.178,
+    0.195
+   ]
+  },
+  {
+   "id": "hard_08",
+   "answerable": true,
+   "dists": [
+    0.198,
+    0.2,
+    0.258,
+    0.27,
+    0.278
+   ]
+  },
+  {
+   "id": "hard_09",
+   "answerable": true,
+   "dists": [
+    0.203,
+    0.258,
+    0.287,
+    0.288,
+    0.31
+   ]
+  },
+  {
+   "id": "hard_10",
+   "answerable": true,
+   "dists": [
+    0.201,
+    0.203,
+    0.209,
+    0.251,
+    0.267
+   ]
+  },
+  {
+   "id": "hard_11",
+   "answerable": true,
+   "dists": [
+    0.184,
+    0.263,
+    0.266,
+    0.269,
+    0.272
+   ]
+  },
+  {
+   "id": "hard_12",
+   "answerable": true,
+   "dists": [
+    0.149,
+    0.16,
+    0.172,
+    0.22,
+    0.221
+   ]
+  },
+  {
+   "id": "hard_13",
+   "answerable": false,
+   "dists": [
+    0.282,
+    0.284,
+    0.288,
+    0.29,
+    0.32
+   ]
+  },
+  {
+   "id": "hard_14",
+   "answerable": false,
+   "dists": [
+    0.233,
+    0.241,
+    0.243,
+    0.256,
+    0.259
+   ]
+  },
+  {
+   "id": "hard_15",
+   "answerable": false,
+   "dists": [
+    0.195,
+    0.223,
+    0.295,
+    0.307,
+    0.313
+   ]
+  }
+ ]
+}

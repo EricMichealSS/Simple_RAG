@@ -1,0 +1,62 @@
+[ 1/40] v01    offline PASS       0.1s  An explicit version beats anything in the question and scopes retrieva
+[ 2/40] v02    offline PASS       0.1s  The version is read from the question when none is passed
+[ 3/40] v03    offline PASS       7.8s  No version, or an unsupported one: ask the caller; nothing is retrieve
+[ 4/40] v04    offline PASS       0.1s  An explicit comparison is the only way to reach two versions, and both
+[ 5/40] f01    offline PASS       0.3s  No wrong-version chunk, and the asked endpoint is found, for every (ve
+[ 6/40] f02    offline PASS       0.1s  A vector store whose filter is broken fails closed instead of answerin
+[ 7/40] d01    offline PASS       0.1s  An older caller gets a LABELLED upgrade note, never newer text present
+[ 8/40] g01    live    PASS       1.8s  GitHub 2022-11-28: HTTP status for creating a pull request
+[ 9/40] g02    live    PASS      17.6s  GitHub 2022-11-28: OAuth scopes to create a repository
+[10/40] g03    live    PASS      17.9s  GitHub 2025-06-01: the field that replaces the deprecated assignee
+[11/40] g04    live    PASS      17.6s  Swagger Codegen 3.x: the flag that generates standalone markdown docs
+[12/40] g05    live    PASS      17.7s  GitHub 2025-06-01: visibility values for creating a repository
+[13/40] g06    live    PASS      17.8s  GitHub 2025-06-01: the parameter that links a discussion to a release
+[14/40] g07    live    PASS      18.4s  Multi-version: make_latest in 2025-06-01 versus the 2022-11-28 heurist
+[15/40] g08    live    PASS      18.4s  Multi-version: how setting the issue type on creation changed
+[16/40] g09    live    PASS      17.7s  Unanswerable (not in the corpus): GraphQL rate limit in 2025-06-01
+[17/40] c01    offline PASS       0.1s  A fabricated citation, or a claim about another version, is rejected a
+[18/40] a02    offline PASS       0.1s  No answer model available: the user still gets cited, version-correct 
+[19/40] o01    offline PASS       0.1s  An obsolete symbol in a community-style page must not hide the officia
+[20/40] i01    offline PASS       0.2s  A poisoned official page and an obedient model: the exfiltration chann
+[21/40] i02    offline PASS       0.1s  A poisoned UPLOAD and an obedient model: flagged at upload, kept as da
+[22/40] u01    live    PASS      17.0s  Question about the user's own upload: answered from it, cited by filen
+[23/40] x01    offline PASS       0.3s  Cross-user isolation: another owner sees nothing of it; the same owner
+[24/40] x02    offline PASS       0.2s  Deleting an upload invalidates it: no retrieval afterwards, and the de
+[25/40] x03    offline PASS       0.1s  One engine instance, the same question for two versions: no state carr
+[26/40] m01    offline PASS       0.1s  MCP: tools are discovered at runtime and allow-listed; the calls the g
+[27/40] m02    offline PASS       0.1s  MCP failure: every tool call times out; the request is still served, f
+[28/40] m03    offline PASS       0.1s  check_symbol is called through the MCP tool for an identifier the pass
+[29/40] k01    offline PASS       0.2s  Wrong-version samples are blocked, with a plain explanation: a 2025 fi
+[30/40] k02    offline PASS       0.1s  A documented header the passage does not show is accepted, and the foo
+[31/40] k03    offline PASS       0.1s  A Python sample that does not parse is never delivered
+[32/40] k04    live    PASS      17.4s  Live: a code sample from the real model parses, and no identifier belo
+[33/40] t01    offline PASS       0.1s  One trace id spans the engine and the MCP server process, with the ser
+[34/40] t02    offline PASS       0.1s  A question containing an email and a token: redacted before persistenc
+[35/40] r01    offline PASS       0.3s  Routing: intent, changelog and specialist follow from the question
+[36/40] reg01  offline PASS       0.1s  REGRESSION: a semver tag in a code sample ("v2.0.0") is not a claim ab
+[37/40] reg02  offline PASS       0.1s  REGRESSION: the user's own pasted token echoed in a Bearer header is n
+[38/40] reg03  offline PASS       0.1s  REGRESSION: a multi-line quoted JSON body in curl is one argument, not
+[39/40] reg05  offline PASS       0.1s  REGRESSION: a date written with a non-breaking hyphen is the same vers
+[40/40] reg04  offline PASS       0.1s  REGRESSION: with no answer model, a poisoned page's auto-loading image
+
+# Integrated evaluation run — 2026-11-03T19:45:19.564527+00:00
+
+cases: 40 · executed: 40 · status: {'pass': 40} · pass rate over executed cases: 100.0%
+status: {'pass': 40}  | by mode: code_wrong_version 5/5, cross_document 3/3, false_refusal 12/12, generation_unavailable 2/2, isolation_breach 4/4, over_blocking 5/5, retrieval_miss 3/3, tool_path_failure 5/5, unsafe_content 6/6, unsupported_answer 2/2, version_confusion 15/15
+results written to C:\Users\ERICMI~1\AppData\Local\Temp\claude\C--Projects-AI-Learning-Simple-RAG\e3881073-bc5d-46d8-a353-4c8e72ce7215\scratchpad\eval_live2
+exit 0
+[1/10] judged g01#1: PASS
+[2/10] judged g02#1: PASS
+[3/10] judged g03#1: PASS
+[4/10] judged g04#1: PASS
+[5/10] judged g05#1: PASS
+[6/10] judged g06#1: PASS
+[7/10] judged g07#1: PASS
+[8/10] judged g08#1: PASS
+[9/10] judged g09#1: PASS
+[10/10] judged k04#1: PASS
+10 verdicts: {'PASS': 10, 'FAIL': 0, 'UNPARSED': 0, 'ERROR': 0} | judge cost (reported separately from user-query cost): 0.001498 USD, 17144 tokens
+informational (NOT hand labels): {"n": 10, "agree": 10, "agreement": 1.0, "note": "judge vs the suite's deterministic case verdict; NOT human labels; not the 85% check"}
+10 outputs to label -> C:\Users\ERICMI~1\AppData\Local\Temp\claude\C--Projects-AI-Learning-Simple-RAG\e3881073-bc5d-46d8-a353-4c8e72ce7215\scratchpad\eval_live2\hand_label_sheet.json (read) and C:\Users\ERICMI~1\AppData\Local\Temp\claude\C--Projects-AI-Learning-Simple-RAG\e3881073-bc5d-46d8-a353-4c8e72ce7215\scratchpad\eval_live2\hand_labels_template.json (fill in).
+The sheet is blind: it contains no judge verdict. Do not open judge_verdicts.json before labelling.
+all done

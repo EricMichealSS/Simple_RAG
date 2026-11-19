@@ -1,0 +1,186 @@
+[
+ {
+  "id": "item01",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS\nThe answer correctly identifies the `discussion_category_name` parameter as the one that triggers a linked discussion when creating a release.",
+  "prompt_tokens": 1640,
+  "completion_tokens": 94,
+  "cost_usd": 0.0001512
+ },
+ {
+  "id": "item02",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer does not address the question about OAuth scopes for creating a repository; it incorrectly discusses pull request status.",
+  "prompt_tokens": 1733,
+  "completion_tokens": 51,
+  "cost_usd": 0.000145275
+ },
+ {
+  "id": "item03",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer omits the 2025\u201106\u201101 changes, only describing the older version.",
+  "prompt_tokens": 1570,
+  "completion_tokens": 61,
+  "cost_usd": 0.00013604999999999997
+ },
+ {
+  "id": "item04",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, whereas the context explicitly states that the deprecated single assignee field is replaced by the `assignees` array.",
+  "prompt_tokens": 1560,
+  "completion_tokens": 76,
+  "cost_usd": 0.0001398
+ },
+ {
+  "id": "item05",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS  \nThe answer correctly states that the 2022\u201111\u201128 version lacked a `type` field and required a separate call to set the issue type, while the 2025\u201106\u201101 version introduced an optional `type` field to set it at creation.",
+  "prompt_tokens": 1619,
+  "completion_tokens": 143,
+  "cost_usd": 0.000164325
+ },
+ {
+  "id": "item06",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer lists \u201cconfidential\u201d instead of the correct enum value \u201cinternal\u201d from the context.",
+  "prompt_tokens": 1601,
+  "completion_tokens": 65,
+  "cost_usd": 0.000139575
+ },
+ {
+  "id": "item07",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe provided context contains no information about GraphQL rate limits, yet the answer claims a 60\u2011request\u2011per\u2011hour limit, which is unsupported by the supplied excerpts.",
+  "prompt_tokens": 1556,
+  "completion_tokens": 71,
+  "cost_usd": 0.000138
+ },
+ {
+  "id": "item08",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer fails to explain that `make_latest` replaces the previous undocumented heuristic that determined the \u201cLatest\u201d release purely by publish date.",
+  "prompt_tokens": 1675,
+  "completion_tokens": 131,
+  "cost_usd": 0.000164925
+ },
+ {
+  "id": "item09",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS",
+  "prompt_tokens": 1753,
+  "completion_tokens": 84,
+  "cost_usd": 0.00015667499999999997
+ },
+ {
+  "id": "item10",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer does not address the Swagger Codegen CLI flag question and instead discusses unrelated GitHub API details.",
+  "prompt_tokens": 1294,
+  "completion_tokens": 53,
+  "cost_usd": 0.00011295000000000001
+ },
+ {
+  "id": "item11",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer cites a flag `--generate-docs`, but the context specifies the correct flag is `--generate-markdown`.",
+  "prompt_tokens": 1270,
+  "completion_tokens": 70,
+  "cost_usd": 0.00011624999999999999
+ },
+ {
+  "id": "item12",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, whereas the context clearly lists the new visibility enum values (public, private, internal).",
+  "prompt_tokens": 1549,
+  "completion_tokens": 75,
+  "cost_usd": 0.000138675
+ },
+ {
+  "id": "item13",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS  \nThe answer correctly abstains because the supplied context contains no information about the rate limit.",
+  "prompt_tokens": 1537,
+  "completion_tokens": 94,
+  "cost_usd": 0.000143475
+ },
+ {
+  "id": "item14",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS\nThe answer correctly states that a successful pull request creation returns HTTP status 201, as documented in the provided context.",
+  "prompt_tokens": 1544,
+  "completion_tokens": 74,
+  "cost_usd": 0.000138
+ },
+ {
+  "id": "item15",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS\nThe answer provides a correct curl example that uses the POST /repos/{owner}/{repo}/issues endpoint with a labels array, matching the context.",
+  "prompt_tokens": 1886,
+  "completion_tokens": 107,
+  "cost_usd": 0.00017355
+ },
+ {
+  "id": "item16",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states that the `read:user` scope is required; the context specifies `public_repo` or `repo` scopes.",
+  "prompt_tokens": 1759,
+  "completion_tokens": 67,
+  "cost_usd": 0.000152025
+ },
+ {
+  "id": "item17",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS\nThe answer correctly identifies the `--generate-markdown` flag as the CLI option that produces a standalone Markdown API document alongside client code, matching the information in the supplied context.",
+  "prompt_tokens": 1270,
+  "completion_tokens": 98,
+  "cost_usd": 0.00012465
+ },
+ {
+  "id": "item18",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states uncertainty, whereas the context clearly specifies that the `discussion_category_name` parameter can be used to automatically trigger a linked discussion.",
+  "prompt_tokens": 1601,
+  "completion_tokens": 69,
+  "cost_usd": 0.000140775
+ },
+ {
+  "id": "item19",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS",
+  "prompt_tokens": 1595,
+  "completion_tokens": 93,
+  "cost_usd": 0.000147525
+ },
+ {
+  "id": "item20",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS\nThe answer correctly states that the required OAuth scopes are `public_repo` or `repo`, matching the context.",
+  "prompt_tokens": 1759,
+  "completion_tokens": 93,
+  "cost_usd": 0.000159825
+ },
+ {
+  "id": "item21",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states that the replacement is `assignee_ids`; the context specifies the new parameter is `assignees` (an array of strings).",
+  "prompt_tokens": 1595,
+  "completion_tokens": 66,
+  "cost_usd": 0.000139425
+ },
+ {
+  "id": "item22",
+  "verdict": "PASS",
+  "raw": "VERDICT: PASS",
+  "prompt_tokens": 1600,
+  "completion_tokens": 76,
+  "cost_usd": 0.0001428
+ },
+ {
+  "id": "item23",
+  "verdict": "FAIL",
+  "raw": "VERDICT: FAIL  \nThe answer incorrectly states a 200 status; the context specifies a 201 status for a successful pull request creation.",
+  "prompt_tokens": 1544,
+  "completion_tokens": 67,
+  "cost_usd": 0.0001359
+ }
+]

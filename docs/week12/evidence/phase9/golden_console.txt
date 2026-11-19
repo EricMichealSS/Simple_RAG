@@ -1,0 +1,47 @@
+[ 1/45] easy_01    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 1433ms
+[ 2/45] easy_02    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11416ms
+[ 3/45] easy_03    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10781ms
+[ 4/45] easy_04    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10789ms
+[ 5/45] easy_05    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11448ms
+[ 6/45] easy_06    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10793ms
+[ 7/45] easy_07    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11301ms
+[ 8/45] easy_08    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11409ms
+[ 9/45] easy_09    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11362ms
+[10/45] easy_10    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11143ms
+[11/45] easy_11    answered  judge=FAIL   tools=['search_docs', 'lookup_changes'] 11159ms
+[12/45] easy_12    answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11073ms
+[13/45] easy_13    abstain   judge=PASS   tools=['search_docs'] 11293ms
+[14/45] easy_14    abstain   judge=PASS   tools=['search_docs'] 9803ms
+[15/45] easy_15    abstain   judge=PASS   tools=['search_docs'] 10987ms
+[16/45] medium_01  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 9182ms
+[17/45] medium_02  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11127ms
+[18/45] medium_03  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11175ms
+[19/45] medium_04  answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11802ms
+[20/45] medium_05  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10488ms
+[21/45] medium_06  answered  judge=PASS   tools=['search_docs'] 10075ms
+[22/45] medium_07  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11556ms
+[23/45] medium_08  answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11024ms
+[24/45] medium_09  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 11002ms
+[25/45] medium_10  answered  judge=PASS   tools=['search_docs'] 29856ms
+[26/45] medium_11  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10859ms
+[27/45] medium_12  answered  judge=PASS   tools=['search_docs', 'lookup_changes'] 10351ms
+[28/45] medium_13  abstain   judge=PASS   tools=['search_docs', 'lookup_changes'] 11238ms
+[29/45] medium_14  abstain   judge=PASS   tools=['search_docs', 'lookup_changes'] 11278ms
+[30/45] medium_15  abstain   judge=PASS   tools=['search_docs', 'lookup_changes'] 10931ms
+[31/45] hard_01    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11523ms
+[32/45] hard_02    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11472ms
+[33/45] hard_03    abstain   judge=FAIL   tools=['search_docs', 'search_docs', 'lookup_changes'] 11802ms
+[34/45] hard_04    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11593ms
+[35/45] hard_05    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 12126ms
+[36/45] hard_06    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11675ms
+[37/45] hard_07    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 12327ms
+[38/45] hard_08    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 12268ms
+[39/45] hard_09    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11347ms
+[40/45] hard_10    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 12250ms
+[41/45] hard_11    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 12427ms
+[42/45] hard_12    answered  judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11564ms
+[43/45] hard_13    abstain   judge=PASS   tools=['search_docs', 'search_docs', 'lookup_changes'] 11156ms
+[44/45] hard_14    abstain   judge=PASS   tools=['search_docs', 'lookup_changes'] 11178ms
+[45/45] hard_15    abstain   judge=PASS   tools=['search_docs', 'lookup_changes'] 11062ms
+45 questions -> C:\Users\ERICMI~1\AppData\Local\Temp\claude\C--Projects-AI-Learning-Simple-RAG\e3881073-bc5d-46d8-a353-4c8e72ce7215\scratchpad\golden_full\golden_results.json
+exit 0

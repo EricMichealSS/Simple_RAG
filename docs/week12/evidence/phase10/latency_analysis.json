@@ -1,0 +1,464 @@
+{
+ "n_all": 45,
+ "n_with_model_call": 19,
+ "n_degraded_by_quota": 26,
+ "degraded_reasons": {
+  "llm_unavailable: provider call failed: RateLimitError": 26
+ },
+ "degraded_engine_only_latency_ms": {
+  "n": 26,
+  "min": 202.8,
+  "p50": 293.8,
+  "p95": 878.7,
+  "max": 904.0,
+  "mean": 377.7
+ },
+ "n": 19,
+ "latency_run_flag": [
+  true
+ ],
+ "latency_ms_all": {
+  "n": 19,
+  "min": 478.1,
+  "p50": 951.3,
+  "p95": 2022.5,
+  "max": 2022.5,
+  "mean": 1013.6
+ },
+ "latency_ms_by_outcome": {
+  "abstain": {
+   "n": 3,
+   "min": 478.1,
+   "p50": 755.7,
+   "p95": 798.2,
+   "max": 798.2,
+   "mean": 677.3
+  },
+  "answered": {
+   "n": 16,
+   "min": 793.9,
+   "p50": 1000.8,
+   "p95": 2022.5,
+   "max": 2022.5,
+   "mean": 1076.7
+  }
+ },
+ "latency_ms_by_shape": {
+  "one search (single version)": {
+   "n": 19,
+   "min": 478.1,
+   "p50": 951.3,
+   "p95": 2022.5,
+   "max": 2022.5,
+   "mean": 1013.6
+  },
+  "two searches (comparison)": null
+ },
+ "latency_ms_by_level": {
+  "easy": {
+   "n": 15,
+   "min": 478.1,
+   "p50": 889.1,
+   "p95": 2022.5,
+   "max": 2022.5,
+   "mean": 974.3
+  },
+  "medium": {
+   "n": 4,
+   "min": 1000.8,
+   "p50": 1115.5,
+   "p95": 1351.9,
+   "max": 1351.9,
+   "mean": 1161.2
+  },
+  "hard": null
+ },
+ "slowest": [
+  [
+   "easy_01",
+   2022,
+   "7e97c4157e3f490aa161f2695502f571",
+   1
+  ],
+  [
+   "medium_03",
+   1352,
+   "89d8f4e26f9442fdbf509302d0afda35",
+   1
+  ],
+  [
+   "easy_10",
+   1211,
+   "176636d9946e449f8071fb6b3d0c14ca",
+   1
+  ],
+  [
+   "medium_10",
+   1176,
+   "d54c55862336436a84c7e002e2640433",
+   1
+  ]
+ ],
+ "note_p99": "not reported: n=45; p95 is set by the 3rd-slowest request",
+ "stage_ms": {
+  "request": {
+   "n": 19,
+   "min": 476.93,
+   "p50": 950.06,
+   "p95": 2021.32,
+   "max": 2021.32,
+   "mean": 1011.4,
+   "requests_with_stage": 19
+  },
+  "generate": {
+   "n": 19,
+   "min": 358.85,
+   "p50": 761.46,
+   "p95": 1391.14,
+   "max": 1391.14,
+   "mean": 818.0,
+   "requests_with_stage": 19
+  },
+  "mcp.call": {
+   "n": 19,
+   "min": 87.75,
+   "p50": 103.33,
+   "p95": 461.06,
+   "max": 461.06,
+   "mean": 144.43,
+   "requests_with_stage": 19
+  },
+  "retrieve": {
+   "n": 19,
+   "min": 90.78,
+   "p50": 97.92,
+   "p95": 451.31,
+   "max": 451.31,
+   "mean": 139.09,
+   "requests_with_stage": 19
+  },
+  "server:mcp.tool.search_docs": {
+   "n": 19,
+   "min": 76.61,
+   "p50": 83.71,
+   "p95": 430.03,
+   "max": 430.03,
+   "mean": 123.4,
+   "requests_with_stage": 19
+  },
+  "changelog": {
+   "n": 15,
+   "min": 12.09,
+   "p50": 13.51,
+   "p95": 15.21,
+   "max": 15.21,
+   "mean": 13.49,
+   "requests_with_stage": 15
+  },
+  "server:mcp.tool.lookup_changes": {
+   "n": 15,
+   "min": 1.67,
+   "p50": 2.14,
+   "p95": 4.49,
+   "max": 4.49,
+   "mean": 2.32,
+   "requests_with_stage": 15
+  },
+  "resolve_version": {
+   "n": 19,
+   "min": 0.38,
+   "p50": 0.43,
+   "p95": 5.26,
+   "max": 5.26,
+   "mean": 0.69,
+   "requests_with_stage": 19
+  },
+  "route": {
+   "n": 19,
+   "min": 0.29,
+   "p50": 0.34,
+   "p95": 0.47,
+   "max": 0.47,
+   "mean": 0.35,
+   "requests_with_stage": 19
+  },
+  "verify_citations_and_version": {
+   "n": 19,
+   "min": 0.13,
+   "p50": 0.32,
+   "p95": 0.71,
+   "max": 0.71,
+   "mean": 0.34,
+   "requests_with_stage": 19
+  },
+  "assess_sufficiency": {
+   "n": 19,
+   "min": 0.27,
+   "p50": 0.3,
+   "p95": 0.35,
+   "max": 0.35,
+   "mean": 0.31,
+   "requests_with_stage": 19
+  },
+  "validate_request": {
+   "n": 19,
+   "min": 0.16,
+   "p50": 0.19,
+   "p95": 0.32,
+   "max": 0.32,
+   "mean": 0.2,
+   "requests_with_stage": 19
+  },
+  "finalize": {
+   "n": 19,
+   "min": 0.01,
+   "p50": 0.09,
+   "p95": 0.38,
+   "max": 0.38,
+   "mean": 0.09,
+   "requests_with_stage": 19
+  },
+  "select_corpus": {
+   "n": 19,
+   "min": 0.01,
+   "p50": 0.02,
+   "p95": 10.56,
+   "max": 10.56,
+   "mean": 0.57,
+   "requests_with_stage": 19
+  }
+ },
+ "generate_share_of_request": {
+  "p50": 0.847,
+  "min": 0.624,
+  "max": 0.875
+ },
+ "everything_except_generate_ms": {
+  "n": 19,
+  "min": 111.1,
+  "p50": 135.0,
+  "p95": 631.3,
+  "max": 631.3,
+  "mean": 195.6
+ },
+ "cost_usd": {
+  "n": 19,
+  "min": 0.000259,
+  "p50": 0.000308,
+  "p95": 0.000467,
+  "max": 0.000467,
+  "mean": 0.000323,
+  "total": 0.006146,
+  "priced": 19,
+  "of": 19
+ },
+ "cost_by_outcome": {
+  "answered": {
+   "n": 16,
+   "mean": 0.000331
+  },
+  "abstain": {
+   "n": 3,
+   "mean": 0.000286
+  }
+ },
+ "cost_by_shape": {
+  "one search": 0.000323,
+  "comparison": null
+ },
+ "tokens": {
+  "prompt": {
+   "n": 19,
+   "min": 1303,
+   "p50": 1499,
+   "p95": 1797,
+   "max": 1797,
+   "mean": 1521.0
+  },
+  "completion": {
+   "n": 19,
+   "min": 77,
+   "p50": 135,
+   "p95": 420,
+   "max": 420,
+   "mean": 159.0
+  },
+  "total_per_query": {
+   "n": 19,
+   "min": 1423,
+   "p50": 1705,
+   "p95": 1944,
+   "max": 1944,
+   "mean": 1680
+  },
+  "sum_total": 31920
+ },
+ "llm_calls": {
+  "1": 19
+ },
+ "judge_tokens": {
+  "n": 19,
+  "sum": 6667,
+  "usd_bounds_gpt_oss_20b": [
+   0.0005,
+   0.002
+  ],
+  "note": "only the total token count is recorded, so cost is bounded between the all-input and all-output rate"
+ },
+ "lookalike_hyphens_in_delivered_answers": {
+  "answered": 16,
+  "with_lookalike": 0
+ },
+ "outcomes": {
+  "answered": 16,
+  "abstain": 3
+ },
+ "judge_pass": {
+  "count": 18,
+  "of": 19,
+  "failed": [
+   "easy_11"
+  ]
+ },
+ "vs_first_run": {
+  "same_outcome": 19,
+  "same_judge_verdict": 19,
+  "identical_answer_text_after_hyphen_repair": 11,
+  "of": 19,
+  "judge_flipped": []
+ },
+ "non_answer_outcomes": [],
+ "trace_bytes": {
+  "files": {
+   "server_spans.jsonl": 65535,
+   "spans.jsonl": 341336
+  },
+  "requests_in_files": 45,
+  "per_request_total": 9042,
+  "note": "the trace files hold ALL requests of the run (model-answered and quota-degraded), so divide by len(ALL); the first version of this line divided by the 19 model-answered ones and overstated it 2.4x"
+ },
+ "degraded_by_shape": {
+  "one search": {
+   "n": 11,
+   "min": 202.8,
+   "p50": 244.9,
+   "p95": 263.3,
+   "max": 263.3,
+   "mean": 241.9
+  },
+  "two searches": {
+   "n": 15,
+   "min": 292.0,
+   "p50": 376.2,
+   "p95": 904.0,
+   "max": 904.0,
+   "mean": 477.3
+  }
+ },
+ "degraded_stage_ms": {
+  "assess_sufficiency": {
+   "n": 26,
+   "min": 0.3,
+   "p50": 0.36,
+   "p95": 0.55,
+   "max": 3.94,
+   "mean": 0.51
+  },
+  "changelog": {
+   "n": 25,
+   "min": 12.33,
+   "p50": 15.18,
+   "p95": 23.55,
+   "max": 26.25,
+   "mean": 16.34
+  },
+  "finalize": {
+   "n": 26,
+   "min": 0.28,
+   "p50": 0.64,
+   "p95": 1.66,
+   "max": 2.03,
+   "mean": 0.74
+  },
+  "generate": {
+   "n": 26,
+   "min": 65.04,
+   "p50": 69.92,
+   "p95": 117.87,
+   "max": 139.61,
+   "mean": 75.78
+  },
+  "mcp.call": {
+   "n": 26,
+   "min": 106.53,
+   "p50": 198.79,
+   "p95": 718.56,
+   "max": 745.45,
+   "mean": 264.33
+  },
+  "request": {
+   "n": 26,
+   "min": 201.52,
+   "p50": 292.51,
+   "p95": 876.55,
+   "max": 902.46,
+   "mean": 376.03
+  },
+  "resolve_version": {
+   "n": 26,
+   "min": 0.42,
+   "p50": 0.49,
+   "p95": 1.02,
+   "max": 1.16,
+   "mean": 0.55
+  },
+  "retrieve": {
+   "n": 26,
+   "min": 97.76,
+   "p50": 193.54,
+   "p95": 705.08,
+   "max": 738.78,
+   "mean": 256.04
+  },
+  "route": {
+   "n": 26,
+   "min": 0.36,
+   "p50": 0.41,
+   "p95": 0.62,
+   "max": 0.67,
+   "mean": 0.43
+  },
+  "select_corpus": {
+   "n": 26,
+   "min": 0.01,
+   "p50": 0.02,
+   "p95": 0.02,
+   "max": 0.02,
+   "mean": 0.02
+  },
+  "server:mcp.tool.lookup_changes": {
+   "n": 25,
+   "min": 1.62,
+   "p50": 2.22,
+   "p95": 4.12,
+   "max": 4.35,
+   "mean": 2.43
+  },
+  "server:mcp.tool.search_docs": {
+   "n": 26,
+   "min": 83.89,
+   "p50": 168.43,
+   "p95": 626.12,
+   "max": 706.79,
+   "mean": 227.68
+  },
+  "validate_request": {
+   "n": 26,
+   "min": 0.17,
+   "p50": 0.21,
+   "p95": 0.29,
+   "max": 0.48,
+   "mean": 0.24
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "openai/gpt-oss-120b": {
+  "status": 200,
+  "headers": {
+   "x-ratelimit-limit-requests": "1000",
+   "x-ratelimit-limit-tokens": "8000",
+   "x-ratelimit-remaining-requests": "946",
+   "x-ratelimit-remaining-tokens": "7906",
+   "x-ratelimit-reset-requests": "1h17m45.6s",
+   "x-ratelimit-reset-tokens": "705ms"
+  }
+ },
+ "openai/gpt-oss-20b": {
+  "status": 200,
+  "headers": {
+   "x-ratelimit-limit-requests": "1000",
+   "x-ratelimit-limit-tokens": "8000",
+   "x-ratelimit-remaining-requests": "896",
+   "x-ratelimit-remaining-tokens": "7906",
+   "x-ratelimit-reset-requests": "2h29m45.6s",
+   "x-ratelimit-reset-tokens": "705ms"
+  }
+ }
+}

@@ -1,0 +1,14 @@
+[
+ {
+  "model": "openai/gpt-oss-120b",
+  "status": 429,
+  "message": "Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_<redacted>` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198646, Requested 1455. Please try again in 43.632s. Need more tokens? Upgrade to Dev Tier today at https://conso",
+  "retry_after": "44"
+ },
+ {
+  "model": "openai/gpt-oss-120b",
+  "status": 429,
+  "message": "Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_<redacted>` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198646, Requested 1455. Please try again in 43.632s. Need more tokens? Upgrade to Dev Tier today at https://conso",
+  "retry_after": "44"
+ }
+]

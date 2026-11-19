@@ -1,0 +1,52 @@
+question   expected tools                               actual tools                                       path outcome gap
+easy_01    search_docsx1                                search_docs, lookup_changes                        ok   answered  agree
+easy_02    search_docsx1                                search_docs, lookup_changes                        NO   answered  correct_answer_unreliable_path
+easy_13    search_docsx1  [refusal expected]            search_docs                                        ok   abstain   agree
+medium_01  search_docsx1, lookup_changesx1              search_docs, lookup_changes                        ok   answered  agree
+medium_07  search_docsx1                                search_docs, lookup_changes                        ok   answered  agree
+medium_13  search_docsx1  [refusal expected]            search_docs, lookup_changes                        NO   abstain   correct_answer_unreliable_path
+hard_01    search_docsx2, lookup_changesx1              search_docs, search_docs, lookup_changes           ok   answered  agree
+hard_04    search_docsx2, lookup_changesx1              search_docs, search_docs, lookup_changes           ok   answered  agree
+hard_06    search_docsx2, lookup_changesx1              search_docs, search_docs, lookup_changes           ok   answered  agree
+hard_11    search_docsx2, lookup_changesx1              search_docs, search_docs, lookup_changes           ok   answered  agree
+
+{
+ "questions": 10,
+ "tool_calls": 23,
+ "tool_choice_accuracy": {
+  "valid": 21,
+  "of": 23,
+  "rate": 0.913
+ },
+ "path_ok": {
+  "count": 8,
+  "of": 10
+ },
+ "outcome_as_expected": {
+  "count": 10,
+  "of": 10
+ },
+ "outcome_pass_judge": {
+  "count": 10,
+  "of": 10
+ },
+ "unnecessary_calls": 2,
+ "failed_calls": 0,
+ "wrong_tool_calls": 2,
+ "questions_missing_a_required_call": 0,
+ "version_args_ok": {
+  "count": 10,
+  "of": 10
+ },
+ "outcome_vs_path": {
+  "outcome_pass&path_ok": 8,
+  "outcome_pass&path_not_ok": 2,
+  "outcome_fail&path_ok": 0,
+  "outcome_fail&path_not_ok": 0
+ },
+ "gap": {
+  "agree": 8,
+  "correct_answer_unreliable_path": 2
+ }
+}
+written to ..\docs\week12\evidence\phase9\trajectory_summary.json

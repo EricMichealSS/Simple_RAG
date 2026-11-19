@@ -1,0 +1,34 @@
+[
+ {
+  "max_tokens": 16,
+  "remaining_tokens_header": "7906",
+  "usage": [
+   78,
+   16
+  ]
+ },
+ {
+  "max_tokens": 1500,
+  "remaining_tokens_header": "7734",
+  "usage": [
+   78,
+   25
+  ]
+ },
+ {
+  "max_tokens": 16,
+  "remaining_tokens_header": "7903",
+  "usage": [
+   78,
+   16
+  ]
+ },
+ {
+  "max_tokens": 1500,
+  "remaining_tokens_header": "7803",
+  "usage": [
+   78,
+   30
+  ]
+ }
+]

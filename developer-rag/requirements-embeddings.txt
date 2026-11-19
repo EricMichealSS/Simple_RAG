@@ -1,0 +1,11 @@
+# The local embedding stack (BAAI/bge-small-en-v1.5 by default). Large: torch alone is a multi-hundred-MB download.
+#
+# Needed for EVERY retrieval, because the question is embedded locally: every `query` (even --no-llm), `health --deep`,
+# `python -m sdk_engine index rebuild --yes`, uploads, every `eval` command except `eval list`, and the tests marked `integration`.
+# NOT needed for the unit suite, which uses a deterministic hash embedding (SDK_ENGINE_EMBEDDING_MODEL=hash-test) and is what CI runs.
+#
+# The first run downloads the model from the Hugging Face hub (anonymous requests are rate-limited; set HF_TOKEN for
+# higher limits). The MCP server then runs offline (HF_HUB_OFFLINE=1) from the cache.
+sentence-transformers==6.2.0
+torch==2.15.0
+transformers==5.22.1

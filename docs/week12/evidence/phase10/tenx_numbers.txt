@@ -1,0 +1,35 @@
+sustained capacity in requests/second at 1,836 tokens per query:
+  free key, tokens/day (measured)                            0.001 req/s  =          109 per day if sustained
+  free key, tokens/minute (measured)                         0.073 req/s  =        6,275 per day if sustained
+  paid plan, tokens/minute (documented)                      2.269 req/s  =      196,078 per day if sustained
+  paid plan, requests/minute (documented)                   16.667 req/s  =    1,440,000 per day if sustained
+  local engine, one process, scripted model (measured)       6.900 req/s  =      596,160 per day if sustained
+
+free key: 109 queries/day at the mean token cost
+
+| queries per integrator per day | requests/day | busy-hour avg req/s | peak req/s | tokens/day | USD/day | USD/30 days | trace GB/day | scan of 1 day (s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 (baseline) | 9,000 | 0.25 | 0.75 | 16.5M | 3 | 105 | 0.09 | 0 |
+| 3 (baseline) | 27,000 | 0.75 | 2.25 | 49.6M | 10 | 314 | 0.26 | 1 |
+| 10 (baseline) | 90,000 | 2.50 | 7.50 | 165.2M | 35 | 1,048 | 0.86 | 4 |
+| 1 (10x) | 90,000 | 2.50 | 7.50 | 165.2M | 35 | 1,048 | 0.86 | 4 |
+| 3 (10x) | 270,000 | 7.50 | 22.50 | 495.7M | 105 | 3,143 | 2.57 | 14 |
+| 10 (10x) | 900,000 | 25.00 | 75.00 | 1652.4M | 349 | 10,476 | 8.57 | 45 |
+
+factor by which each scenario exceeds each capacity (peak req/s / capacity):
+| scenario | vs free-key tokens/day | vs paid tokens/minute | vs local engine |
+|---|---|---|---|
+| 1/day x1: 9,000 req/day, avg 0.25, peak 0.75 req/s | 83x (per day) | 0.33x | 0.11x |
+| 3/day x1: 27,000 req/day, avg 0.75, peak 2.25 req/s | 248x (per day) | 0.99x | 0.33x |
+| 10/day x1: 90,000 req/day, avg 2.50, peak 7.50 req/s | 826x (per day) | 3.30x | 1.09x |
+| 1/day x10: 90,000 req/day, avg 2.50, peak 7.50 req/s | 826x (per day) | 3.30x | 1.09x |
+| 3/day x10: 270,000 req/day, avg 7.50, peak 22.50 req/s | 2,479x (per day) | 9.91x | 3.26x |
+| 10/day x10: 900,000 req/day, avg 25.00, peak 75.00 req/s | 8,262x (per day) | 33.05x | 10.87x |
+
+in-flight requests by Little's law (rate x request latency 0.95 s with the model):
+  1/day x1: average 0.2, peak 0.7
+  3/day x1: average 0.7, peak 2.1
+  10/day x1: average 2.4, peak 7.1
+  1/day x10: average 2.4, peak 7.1
+  3/day x10: average 7.1, peak 21.4
+  10/day x10: average 23.8, peak 71.2

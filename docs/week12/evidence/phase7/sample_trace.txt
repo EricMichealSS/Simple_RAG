@@ -1,0 +1,36 @@
+trace 17a2fafb064d4d7b9cb9470c04867f7e  started 2026-11-03T18:47:46.564027+00:00  outcome=answered  16 spans across mcp_server, sdk_engine
+
+request [sdk_engine] 5038.8 ms  outcome=answered sdk_version=2022-11-28 corpus=official retrieval_via=mcp tools_called=[search_docs, lookup_changes] llm_calls=1 cost_usd=0.00056145 cost_status=calculated
+  validate_request [sdk_engine] 0.3 ms  question_chars=187 redactions={"provider-key":1,"email":1}
+  select_corpus [sdk_engine] 0.0 ms  corpus=official
+  resolve_version [sdk_engine] 4.3 ms  status=resolved sdk_version=2022-11-28 source=question
+  route [sdk_engine] 0.4 ms  intent=code_help specialists=[documentation_researcher, deprecation_migration, code_validation]
+  retrieve [sdk_engine] 438.3 ms  attempt=1 via=mcp returned=5 scope_versions=[2022-11-28]
+    mcp.call [sdk_engine] 433.6 ms  tool=search_docs ok=True latency_ms=433.06
+      mcp.tool.search_docs [mcp_server] 422.0 ms  tool=search_docs requested_version=2022-11-28 returned=5
+  changelog [sdk_engine] 13.4 ms  via=mcp found=1 kept=1
+    mcp.call [sdk_engine] 11.6 ms  tool=lookup_changes ok=True latency_ms=11.18
+      mcp.tool.lookup_changes [mcp_server] 2.4 ms  tool=lookup_changes requested_version=2022-11-28 returned=1
+  assess_sufficiency [sdk_engine] 0.4 ms  sufficient=True attempts=1
+  generate [sdk_engine] 4548.0 ms  attempt=1 model=openai/gpt-oss-120b provider=groq prompt_version=sdk-answer-v1 prompt_tokens=1639 completion_tokens=526 cost_usd=0.00056145 cost_status=calculated
+  verify_citations_and_version [sdk_engine] 5.0 ms  ok=True security_failures=0 code_failures=0
+    code_validation [sdk_engine] 3.1 ms  blocks=1 languages=[shell] hard=0 soft=0 tiers=[cited] symbol_source=none lookups=0
+  finalize [sdk_engine] 0.2 ms  outcome=answered citations=1
+
+Stages (times are inclusive; nested stages overlap):
+  request                        sdk_engine  calls=1      5038.8 ms  api_cost=-           root span: contains every other stage (not additive)
+  validate_request               sdk_engine  calls=1         0.3 ms  api_cost=$0.000000   no API charge (local compute)
+  select_corpus                  sdk_engine  calls=1         0.0 ms  api_cost=$0.000000   no API charge (local compute)
+  resolve_version                sdk_engine  calls=1         4.3 ms  api_cost=$0.000000   no API charge (local compute)
+  route                          sdk_engine  calls=1         0.4 ms  api_cost=$0.000000   no API charge (local compute)
+  retrieve                       sdk_engine  calls=1       438.3 ms  api_cost=$0.000000   no API charge (local compute)
+  mcp.call                       sdk_engine  calls=2       445.3 ms  api_cost=$0.000000   no API charge (local compute)
+  mcp.tool.search_docs           mcp_server  calls=1       422.0 ms  api_cost=$0.000000   no API charge (local compute)
+  changelog                      sdk_engine  calls=1        13.4 ms  api_cost=$0.000000   no API charge (local compute)
+  mcp.tool.lookup_changes        mcp_server  calls=1         2.4 ms  api_cost=$0.000000   no API charge (local compute)
+  assess_sufficiency             sdk_engine  calls=1         0.4 ms  api_cost=$0.000000   no API charge (local compute)
+  generate                       sdk_engine  calls=1      4548.0 ms  api_cost=$0.000561   calculated: real token usage x published rate
+  verify_citations_and_version   sdk_engine  calls=1         5.0 ms  api_cost=$0.000000   no API charge (local compute)
+  code_validation                sdk_engine  calls=1         3.1 ms  api_cost=$0.000000   no API charge (local compute)
+  finalize                       sdk_engine  calls=1         0.2 ms  api_cost=$0.000000   no API charge (local compute)
+API cost of this request: $0.000561

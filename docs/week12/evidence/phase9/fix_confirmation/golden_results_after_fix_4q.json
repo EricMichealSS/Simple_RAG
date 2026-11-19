@@ -1,0 +1,290 @@
+[
+ {
+  "id": "easy_03",
+  "level": "easy",
+  "question": "What is the default library template used by the Java client generator in Swagger Codegen 2.x?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "a8f3f20af177455db764ea07328d8924",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] The Java client generator uses **`okhttp-gson`** as its default library template.\u202f[swagger_v2_reference:p2:spec:top:1]",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x"
+  ],
+  "comparison": false,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p3:spec:top:2",
+   "swagger_v2_reference:p5:spec:top:7",
+   "swagger_v2_reference:p4:spec:top:3"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the default library template is 'okhttp-gson', matching the golden answer.",
+   "tokens": 328
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1496,
+  "completion_tokens": 145,
+  "cost_usd": 0.0003114,
+  "cost_status": "calculated",
+  "latency_ms": 5020.27,
+  "wall_s": 12.16,
+  "citations": 1,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "stage_ms": {
+   "request": 5007.95,
+   "validate_request": 0.22,
+   "select_corpus": 0.03,
+   "resolve_version": 30.29,
+   "route": 0.38,
+   "retrieve": 1927.16,
+   "mcp.call": 1939.97,
+   "server:mcp.tool.search_docs": 1900.05,
+   "changelog": 19.41,
+   "server:mcp.tool.lookup_changes": 4.87,
+   "assess_sufficiency": 0.3,
+   "generate": 2259.89,
+   "verify_citations_and_version": 0.34,
+   "finalize": 0.1
+  },
+  "latency_run": false,
+  "tool_sequence": [
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "medium_04",
+  "level": "medium",
+  "question": "What is the default behavior of has_issues when creating a private repository in GitHub API version 2025-06-01 vs 2022-11-28?",
+  "answerable": true,
+  "explicit_version": "2025-06-01",
+  "trace_id": "78fe1626d26a4147ababc6d3db1c4a81",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2025-06-01] - **2022-11-28 API** \u2013 The `has_issues` field always defaults to **true**, regardless of whether the repository is private or public.\u202f[github_combined_reference:p8:spec:top:10]\n\n- **2025-06-01 API** \u2013 The default for `has_issues` depends on the repository\u2019s visibility. For a **private** repository (or internal), the default is **false** unless you set it explicitly.\u202f[github_combined_reference:p9:spec:top:11]",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p8:spec:top:10",
+   "github_combined_reference:p9:spec:top:11",
+   "github_combined_reference:p9:diff:top:12",
+   "github_combined_reference:p4:spec:top:4",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that 2025\u201106\u201101 defaults has_issues to false for private repos and 2022\u201111\u201128 defaults it to true regardless of visibility.",
+   "tokens": 485
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1516,
+  "completion_tokens": 312,
+  "cost_usd": 0.0004146,
+  "cost_status": "calculated",
+  "latency_ms": 11408.14,
+  "wall_s": 18.37,
+  "citations": 2,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "stage_ms": {
+   "request": 11375.06,
+   "validate_request": 0.23,
+   "select_corpus": 0.02,
+   "resolve_version": 0.99,
+   "route": 0.44,
+   "retrieve": 7111.29,
+   "mcp.call": 7119.49,
+   "server:mcp.tool.search_docs": 6927.4,
+   "changelog": 16.49,
+   "server:mcp.tool.lookup_changes": 2.05,
+   "assess_sufficiency": 0.36,
+   "generate": 4133.03,
+   "verify_citations_and_version": 0.63,
+   "finalize": 0.11
+  },
+  "latency_run": false,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_01",
+  "level": "hard",
+  "question": "Compare how the context parameter format changed between GitHub API version 2022-11-28 and 2025-06-01 for rendering Markdown.",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "fc58cafe3e9a4fe1b437e3a115a6c7dc",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[GitHub REST API 2022-11-28] **2022-11-28** \u2013 The `context` field is a **plain string** that specifies the repository (e.g., `\"octocat/Hello-World\"`).\u202fIt is documented as a string parameter\u202f[github_combined_reference:p2:spec:top:1].\n\n**2025-06-01** \u2013 The `context` field becomes a **structured object** with two properties: `owner` and `repo` (e.g., `{ \"owner\": \"octocat\", \"repo\": \"Hello-World\" }`).\u202fThis change is described in the 2025-06-01 spec\u202f[github_combined_reference:p3:spec:top:2] and confirmed by the changelog noting the prior version used a plain string\u202f[github_combined_reference:p3:diff:top:3].\n\n**Summary** \u2013 The parameter switched from a simple string to a JSON object containing separate `owner` and `repo` fields.",
+  "version_status": "resolved",
+  "resolved": [
+   "2022-11-28",
+   "2025-06-01"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "github_combined_reference:p2:spec:top:1",
+   "github_combined_reference:p3:spec:top:2",
+   "github_combined_reference:p1:spec:top:0",
+   "github_combined_reference:p3:diff:top:3",
+   "github_combined_reference:p11:spec:top:14"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the 2022\u201111\u201128 context was a plain string and that the 2025\u201106\u201101 context is a structured object with owner and repo fields.",
+   "tokens": 586
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1517,
+  "completion_tokens": 429,
+  "cost_usd": 0.00048495,
+  "cost_status": "calculated",
+  "latency_ms": 11330.12,
+  "wall_s": 18.78,
+  "citations": 3,
+  "code_blocks": 0,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "stage_ms": {
+   "request": 11323.7,
+   "validate_request": 0.24,
+   "select_corpus": 0.02,
+   "resolve_version": 0.56,
+   "route": 4.13,
+   "retrieve": 7949.16,
+   "mcp.call": 7957.78,
+   "server:mcp.tool.search_docs": 7842.44,
+   "changelog": 18.37,
+   "server:mcp.tool.lookup_changes": 2.27,
+   "assess_sufficiency": 0.42,
+   "generate": 3187.5,
+   "verify_citations_and_version": 8.88,
+   "finalize": 0.19
+  },
+  "latency_run": false,
+  "score": {
+   "tool_sequence": [
+    "search_docs",
+    "search_docs",
+    "lookup_changes"
+   ],
+   "versions_seen": [
+    "2022-11-28",
+    "2025-06-01",
+    "2022-11-28"
+   ],
+   "calls": 3,
+   "valid_tool_calls": 3,
+   "wrong_tool_calls": [],
+   "unnecessary_calls": 0,
+   "missing_required": {},
+   "failed_calls": 0,
+   "version_args_ok": true,
+   "path_ok": true,
+   "outcome": "answered",
+   "expected_outcome": "answered",
+   "outcome_as_expected": true,
+   "outcome_pass": true,
+   "gap": "agree"
+  },
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ },
+ {
+  "id": "hard_05",
+  "level": "hard",
+  "question": "Migrate a Java generator configuration from Swagger Codegen 2.x to 3.x that uses oneOf schemas and the webclient library. What config keys change?",
+  "answerable": true,
+  "explicit_version": null,
+  "trace_id": "4c8daf031bf84966a5c504c6404e9709",
+  "outcome": "answered",
+  "reason": "",
+  "answer": "[Swagger Codegen 2.x] **Config keys that differ when moving from 2.x \u2192\u202f3.x**\n\n| Feature | 2.x config key/value | 3.x config key/value | What changes |\n|---------|----------------------|----------------------|--------------|\n| **One-of schema support** | \u2013 (no option) | `useOneOfInterfaces` (boolean, default\u202f`false`) \u2013 set to `true` to generate a Java interface for each OpenAPI\u202f`oneOf` schema. | New key added in v3. |\n| **WebClient library** | `library` can be `jersey1`, `jersey2`, `feign`, `okhttp-gson`, `retrofit`, `retrofit2`, `resttemplate`, `resteasy`. | `library` still exists (default\u202f`okhttp-gson`) **but now also includes native and `webclient` options**. | The same key is used, but the allowed values are expanded; you can now set `library` to `webclient`. |\n| **Unchanged keys** | `sortParamsByRequiredFlag`, `ensureUniqueParams`, `allowUnicodeIdentifiers`, `modelPackage`, `apiPackage` | Same names and defaults in v3. | No change needed. |\n\n**What to modify in your JSON config**\n\n```json\n{\n  \"library\": \"webclient\",          // new value available in 3.x\n  \"useOneOfInterfaces\": true,      // new option to enable oneOf support\n  // other keys (sortParamsByRequiredFlag, ensureUniqueParams, allowUnicodeIdentifiers,\n  // modelPackage, apiPackage) stay the same\n}\n```\n\n**Sources**\n\n- 2.x Java generator options list (no `useOneOfInterfaces`, no webclient)\u202f[swagger_v2_reference:p2:spec:top:1]  \n- 3.x Java generator options list showing `useOneOfInterfaces` and expanded `library` values\u202f[swagger_v3_reference:p3:spec:top:3]  \n- Changelog confirming that `library` now includes native and webclient options and that `useOneOfInterfaces` is new\u202f[swagger_v3_reference:p3:diff:top:4]\n\nCode check (static, against the documents; nothing was executed):\n- block 1 (json): not strict JSON (comments or elisions?); 2 identifier(s) documented (2 in cited passages, 0 elsewhere in the 2.x docs).\nNot checked: values; runtime behaviour.",
+  "version_status": "resolved",
+  "resolved": [
+   "2.x",
+   "3.x"
+  ],
+  "comparison": true,
+  "retrieved": [
+   "swagger_v2_reference:p2:spec:top:1",
+   "swagger_v3_reference:p3:spec:top:3",
+   "swagger_v3_reference:p3:diff:top:4",
+   "swagger_v2_reference:p1:spec:top:0",
+   "swagger_v2_reference:p5:spec:top:7"
+  ],
+  "wrong_version_chunks": [],
+  "gold_page_retrieved": true,
+  "judge": {
+   "verdict": "PASS",
+   "raw": "VERDICT: PASS \u2013 The system answer correctly states that the new key `useOneOfInterfaces` must be set to true and that the `library` key can be set to `webclient`, matching the golden answer.",
+   "tokens": 914
+  },
+  "outcome_pass": true,
+  "llm_calls": 1,
+  "prompt_tokens": 1747,
+  "completion_tokens": 770,
+  "cost_usd": 0.00072405,
+  "cost_status": "calculated",
+  "latency_ms": 11830.74,
+  "wall_s": 19.03,
+  "citations": 3,
+  "code_blocks": 1,
+  "non_ascii_date_in_answer": false,
+  "deprecation_notes": 1,
+  "security_events": 0,
+  "stage_ms": {
+   "request": 11823.47,
+   "validate_request": 0.23,
+   "select_corpus": 0.02,
+   "resolve_version": 0.52,
+   "route": 0.42,
+   "retrieve": 1106.54,
+   "mcp.call": 1113.51,
+   "server:mcp.tool.search_docs": 1079.8,
+   "changelog": 14.21,
+   "server:mcp.tool.lookup_changes": 2.62,
+   "assess_sufficiency": 0.4,
+   "generate": 10584.42,
+   "verify_citations_and_version": 42.29,
+   "code_validation": 1.69,
+   "finalize": 0.15
+  },
+  "latency_run": false,
+  "tool_sequence": [
+   "search_docs",
+   "search_docs",
+   "lookup_changes"
+  ]
+ }
+]

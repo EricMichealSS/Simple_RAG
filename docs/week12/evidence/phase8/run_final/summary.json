@@ -1,0 +1,330 @@
+{
+ "cases": 40,
+ "executed": 40,
+ "status": {
+  "pass": 40
+ },
+ "pass_rate_executed": 1.0,
+ "by_taxonomy_mode": {
+  "code_wrong_version": {
+   "cases": 5,
+   "pass": 5,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 5
+  },
+  "cross_document": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "false_refusal": {
+   "cases": 12,
+   "pass": 12,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 12
+  },
+  "generation_unavailable": {
+   "cases": 2,
+   "pass": 2,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 2
+  },
+  "isolation_breach": {
+   "cases": 4,
+   "pass": 4,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 4
+  },
+  "over_blocking": {
+   "cases": 5,
+   "pass": 5,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 5
+  },
+  "retrieval_miss": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "tool_path_failure": {
+   "cases": 5,
+   "pass": 5,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 5
+  },
+  "unsafe_content": {
+   "cases": 6,
+   "pass": 6,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 6
+  },
+  "unsupported_answer": {
+   "cases": 2,
+   "pass": 2,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 2
+  },
+  "version_confusion": {
+   "cases": 15,
+   "pass": 15,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 15
+  }
+ },
+ "by_category": {
+  "abstention": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "breaking_changes": {
+   "cases": 9,
+   "pass": 9,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 9
+  },
+  "cache_isolation": {
+   "cases": 2,
+   "pass": 2,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 2
+  },
+  "code_validation": {
+   "cases": 8,
+   "pass": 8,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 8
+  },
+  "community_obsolete": {
+   "cases": 1,
+   "pass": 1,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 1
+  },
+  "cross_user_isolation": {
+   "cases": 2,
+   "pass": 2,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 2
+  },
+  "deprecation_reporting": {
+   "cases": 4,
+   "pass": 4,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 4
+  },
+  "injection": {
+   "cases": 4,
+   "pass": 4,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 4
+  },
+  "mcp": {
+   "cases": 5,
+   "pass": 5,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 5
+  },
+  "multi_hop": {
+   "cases": 2,
+   "pass": 2,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 2
+  },
+  "strict_filtering": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "tool_routing": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "trace_pii": {
+   "cases": 4,
+   "pass": 4,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 4
+  },
+  "upload_qa": {
+   "cases": 3,
+   "pass": 3,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 3
+  },
+  "version_resolution": {
+   "cases": 5,
+   "pass": 5,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 5
+  },
+  "version_tagged_citations": {
+   "cases": 8,
+   "pass": 8,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 8
+  }
+ },
+ "by_tier": {
+  "live": {
+   "cases": 11,
+   "pass": 11,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 11
+  },
+  "offline": {
+   "cases": 29,
+   "pass": 29,
+   "fail": 0,
+   "error": 0,
+   "skipped": 0,
+   "pass_rate": 1.0,
+   "denominator": 29
+  }
+ },
+ "retrieval_version_filter": {
+  "chunks_returned": 325,
+  "wrong_version_chunks": 0,
+  "wrong_version_rate": 0.0,
+  "endpoint_recall": "20/20"
+ },
+ "wrong_version_code": {
+  "live_code_samples": 1,
+  "live_wrong_version_delivered": 0,
+  "live_rate": 0.0,
+  "scripted_wrong_version_samples_blocked": "3/3"
+ },
+ "code_outcomes": {
+  "samples_with_code": 11,
+  "live": 1,
+  "scripted": 10,
+  "syntax": {
+   "parsed": 10,
+   "error": 1
+  },
+  "languages": {
+   "json": 5,
+   "shell": 5,
+   "python": 1
+  },
+  "tiers": {
+   "cited": 10,
+   "deprecated": 1,
+   "elsewhere_in_version": 2,
+   "other_version_only": 1,
+   "absent_per_docs": 2,
+   "syntax_error": 1
+  },
+  "delivered_with_hard_finding": 0
+ },
+ "citations_live": {
+  "citations": 12,
+  "incorrect": 0,
+  "correct_rate": 1.0,
+  "definition": "retrieved in this request AND api_version within the allowed versions AND has source_name and location (deterministic; whether a citation SUPPORTS its claim is not checked here)"
+ },
+ "cost": {
+  "priced_api_cost_usd": 0.004141,
+  "live_llm_calls": 11,
+  "scripted_llm_calls_unpriced": 24
+ },
+ "non_coverage": [
+  "Version-specific PAGINATION and removed-method scenarios are not in the indexed corpus (the brief's example); the version-specific changes that ARE in it (assignee -> assignees, make_latest, issue type, visibility, --generate-markdown, the asyncio library option) are covered.",
+  "There is no community content in the corpus; `o01` is a controlled fixture (one planted page), not an observation of real community content.",
+  "The engine has no answer or retrieval cache; `x02`/`x03` check invalidation of uploads and the absence of cross-request state, not a cache.",
+  "The Week 6 suite's 26 cases are tied to Stack A's corpus and are preserved untouched; they were not run (and cannot be asked of this engine).",
+  "Scripted-model cases simulate a model behaviour (an obedient model, a wrong-version sample); they test the engine's defences, not how often a real model misbehaves.",
+  "Live cases are a small sample (see the case count), one run each, temperature 0 on a provider that is not perfectly deterministic.",
+  "Hostile-MCP-server behaviour (poisoned tool descriptions/results) is covered by unit tests (tests/test_security_adversarial.py), not by this suite."
+ ]
+}
